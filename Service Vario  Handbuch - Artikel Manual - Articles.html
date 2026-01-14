@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+
+<html lang="de">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="VARIO 8 Handbuch" name="source"/>
+<meta content="7" name="section"/>
+<meta content="Artikel" name="section-title"/>
+<meta content="11" name="total-subsections"/>
+<meta content="2026-01-13 13:39:07" name="download-date"/>
+<title>VARIO 8 - Artikel</title>
+<style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+            background-color: #fff;
+        }
+        .warning-header {
+            background-color: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+        .warning-header h1 {
+            margin: 0 0 10px 0;
+            color: #856404;
+            font-size: 1.3em;
+        }
+        .warning-header p {
+            margin: 5px 0;
+            color: #856404;
+        }
+        nav {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        nav h2 {
+            margin-top: 0;
+            color: #495057;
+        }
+        nav ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        nav li {
+            margin: 8px 0;
+        }
+        nav a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        section {
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #e9ecef;
+        }
+        section:last-child {
+            border-bottom: none;
+        }
+        h1 {
+            color: #212529;
+            border-bottom: 3px solid #007bff;
+            padding-bottom: 10px;
+            margin-top: 20px;
+        }
+        h2 {
+            color: #495057;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        h3 {
+            color: #6c757d;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        h4 {
+            color: #868e96;
+            margin-top: 15px;
+            margin-bottom: 8px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin: 15px 0;
+            display: block;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #e9ecef;
+            font-weight: 600;
+        }
+        code {
+            background-color: #f8f9fa;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        pre {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        pre code {
+            background-color: transparent;
+            padding: 0;
+        }
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        p {
+            margin: 12px 0;
+            line-height: 1.7;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        strong {
+            font-weight: 600;
+        }
+        em {
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+<div class="warning-header">
+<h1>ДОКУМЕНТ ВНЕШНЕГО СЕРВИСА — НЕ ЯВЛЯЕТСЯ ТРЕБОВАНИЯМИ К ПРОДУКТУ</h1>
+<p>Этот документ описывает внешний сервис / API и т.п. как инструкция.</p>
+<p><strong>Как использовать:</strong></p>
+<ul>
+<li>для определения возможностей и ограничений интеграции</li>
+<li>для формулирования требований к интеграции (что отправляем/получаем, авторизация, ошибки, лимиты, поведение при недоступности)</li>
+<li>для ответов пользователю по сервису и т.п.</li>
+</ul>
+</div>
+<h1>VARIO 8 Handbuch - Artikel</h1>
+<nav>
+<h2>Inhaltsverzeichnis</h2>
+<ul>
+<li><a href="#section-7-1">Artikel verwalten - kurz</a></li>
+<li><a href="#section-7-2">Artikel verwalten - ausführlich</a></li>
+<li><a href="#section-7-3">Rabattgruppen verwalten</a></li>
+<li><a href="#section-7-4">Warengruppen</a></li>
+<li><a href="#section-7-5">Mengeneinheiten verwalten</a></li>
+<li><a href="#section-7-6">Retourengründe und Retourengruppen</a></li>
+<li><a href="#section-7-7">Varianten verwalten</a></li>
+<li><a href="#section-7-8">Artikelzusatzdaten verwalten</a></li>
+<li><a href="#section-7-9">Webshopübersicht</a></li>
+<li><a href="#section-7-10">Artikel veröffentlichen</a></li>
+<li><a href="#section-7-11">FAQ Artikel</a></li>
+</ul>
+</nav>
+<section data-section-number="7.1" data-source-url="https://help.vario-software.de/vario-8-handbuch/artikel/artikel-verwalten-kurz/" data-title="Artikel verwalten - kurz" id="section-7-1">
+<h2>Artikel verwalten - kurz</h2>
+<p>Zuletzt aktualisiert am 16. Februar 2023</p>
+<p>In die Artikelverwaltung gelangen Sie entweder über Ziffernwahl 121 (sofern aktiviert), mit STRG + R, über das Stammmenü, oder per Auswahl in der Button-Leiste.</p>
+<h3>Artikel anlegen</h3>
+<p>Die <strong>Artikelnummer</strong> kann bis zu 30 Zeichen lang sein (alpha-nummerisch) und muss eindeutig sein.<br/>
+Die <strong>Artikelbezeichnung</strong> (Artikel-Bez. 1) kann bis zu 60 Zeichen enthalten.<br/>
+Der <strong>Zusatztext</strong> kann beliebig viele Zeichen enthalten. Ein Zeilenumbruch wird durch STRG + ENTER erzeugt.</p>
+<p>Bei der <strong>Artikelart</strong> stehen folgende Optionen zur Verfügung:</p>
+<ul>
+<li>Mit Bestandsführung</li>
+<li>Ohne Bestandsführung</li>
+<li>Dienstleistungen</li>
+<li>Textbausteine</li>
+<li>Baugruppen</li>
+<li>Zu-/Abschlag</li>
+<li>Variantenhauptartikel</li>
+<li>Pfandartikel</li>
+</ul>
+<h3>Preise einpflegen</h3>
+<p><strong>Netto-VK</strong> und <strong>Brutto-VK</strong> werden neu berechnet, wenn ein Wert verändert wird. Beim Einkauf errechnen sich "Letzer EK" und "Durchschnittlicher EK".</p>
+<p>In der Preisrecherche gilt folgende Priorisierung:</p>
+<ol>
+<li>Aktionspreis</li>
+<li>Kundensonderpreis</li>
+<li>Kundensonderpreis aus übergeordneter Adresse</li>
+<li>Rabattgruppen</li>
+<li>Rabattstaffeln</li>
+<li>Kunden-Artikel-Sonderrabatte</li>
+<li>Kunden-Warengruppen-Sonderrabatte</li>
+<li>Mengenabhängige Preisgruppenrabatte</li>
+<li>Mengenabhängige Staffelpreise</li>
+<li>Mengenabhängige Rabatte</li>
+<li>Staffelpreise</li>
+<li>Zeitraumabhängige Preise</li>
+<li>Zeitraumabhängige Rabatte</li>
+<li>Mengenabhängige Verkaufspreise</li>
+<li>VK aus dem Artikel</li>
+</ol>
+<p>Setzen Sie eine Mengeneinheit und geben Sie die Verpackungseinheit an. Die Preiseinheit bestimmt, für wie viele Artikel der Preis gilt.<br/>
+Markieren Sie "Rabatttierfähig" oder "Skontierbar", sofern gewünscht.</p>
+<h3>Wichtige Hinweise</h3>
+<ul>
+<li>Die <strong>Artikelnummer</strong> kann nach Erstbuchung nicht mehr geändert oder gelöscht werden. Gesperrte Artikel lassen sich in der Suche ausblenden.</li>
+<li>Die <strong>Artikelart</strong> darf nach Buchung nicht geändert werden.</li>
+<li><strong>Preiseinheit</strong> und <strong>Kennzeichnung für Seriennummer</strong> müssen beim Anlegen festgelegt sein. Änderungen nach Buchung sind nicht möglich.</li>
+<li><strong>Buche-von-Artikel</strong> kann nicht über gelagerte Buchungen verändert werden.</li>
+<li><strong>Variantenhauptartikel</strong>-Änderungen sind nach ersten Buchungen (Lager, Belege) nicht zulässig.</li>
+</ul>
+<p>Weitere Informationen: <a href="https://help.vario-software.de/vario-8-handbuch/artikel/artikel-verwalten-ausfuehrlich">Artikel verwalten – ausführlich</a></p>
+</section>
+<section data-section-number="7.2" data-source-url="https://help.vario-software.de/vario-8-handbuch/artikel/artikel-verwalten-ausfuehrlich/" data-title="Artikel verwalten - ausführlich" id="section-7-2">
+<h2>Artikel verwalten - ausführlich</h2>
+<p>Zuletzt aktualisiert am 19. September 2025</p>
+<p>VARIO 8 unterstützt Sie mit der Artikelverwaltung dabei, alle wichtigen Artikeldaten schnell und übersichtlich anzulegen und zu pflegen.</p>
+<h3>Ribbon-Menü</h3>
+<h4>Registerkarte Datei</h4>
+<p><strong>Kopieren eines Artikels:</strong> Beim Kopieren eines Artikels können Sie auswählen, welche Daten kopiert werden (Staffelpreise, Artikelbilder, Komponenten, Arbeitsplan).</p>
+<p><strong>Suche:</strong> Über die Suchfunktion können Sie Artikeldaten öffnen und bearbeiten.</p>
+<h4>Registerkarte Ansehen</h4>
+<p><strong>Offene Lieferungen anzeigen:</strong> Ermöglicht eine Auswertung überfälliger Lieferungen.</p>
+<p><strong>Änderungsprotokoll:</strong> Zeigt Artikeländerungen an, wenn aktiviert.</p>
+<h4>Registerkarte Druck</h4>
+<p><strong>Artikel selektieren/drucken:</strong> Ermöglicht Selektion und Ausgabe von Artikeln.</p>
+<p><strong>Report:</strong> Ermöglicht individuelle Auswertungen zu Artikeln.</p>
+<p><strong>Etiketten drucken:</strong> Drucken von Etiketten für Artikel.</p>
+<h4>Registerkarte Sonderfunktion</h4>
+<p><strong>Sonderfunktion Artikelpreise:</strong></p>
+<ul>
+<li><strong>Preisänderungen durchführen</strong>: Anzeigeoptionen für zu ändernde Verkaufspreise</li>
+<li><strong>Datenmanipulation</strong>: VK um %/€ erhöhen, Schönzeichnung, EK Korrekturbuchung</li>
+</ul>
+<p><strong>Zwischenablage für Artikel:</strong> Definieren Sie Formate für die Zwischenablage.</p>
+<p><strong>Sonstiges:</strong></p>
+<ul>
+<li>Zählerstand für EANs neu setzen</li>
+<li>Artikelstatus verwalten</li>
+<li>Artikelnummer ändern (nur für Admins)</li>
+</ul>
+<h3>Reiter Stammdaten</h3>
+<p><strong>Artikel-Nr.:</strong> Bis 30 Zeichen, obligatorische, nicht änderbare eindeutige Nummer.</p>
+<p><strong>Suchcode:</strong> Fünfzehn Zeichen für die Suche.</p>
+<p><strong>Artikelart:</strong> Mit/ohne Bestandsführung, Dienstleistungen, Textbausteine, Baugruppen, etc.</p>
+<h4>Sektion Preise</h4>
+<p><strong>Netto-/Brutto-VK EUR:</strong> Eingabe von Preisen.</p>
+<p><strong>Durchschnittlicher EK:</strong> Automatisch berechneter Einkaufspreis.</p>
+<p><strong>Letzter EK:</strong> Letzter gekaufte Einkaufspreis.</p>
+<h4>Sektion Bestände</h4>
+<p>Anzeige von Lagerbeständen, verfügbaren Mengen, Reservierungen und Bestellungen.</p>
+<h3>Weitere Reiter</h3>
+<ul>
+<li><strong>Allgemeine Angaben:</strong> Barcode, Variantenhauptartikel, Seriennummern, Mengeneinheiten</li>
+<li><strong>Werkstatt:</strong> Einstellungen für Werkstattaufträge</li>
+<li><strong>Preise:</strong> Preis-Staffel, Aktionspreise, Teuerungszuschlag</li>
+<li><strong>Zusatzinfos:</strong> Inventurkennzeichen, Hersteller, Garantie, Lager</li>
+<li><strong>Assoziierte Dateien:</strong> Hinzufügen von Dokumenten</li>
+<li><strong>Intrastat:</strong> Daten für Intrastat-Meldungen</li>
+<li><strong>Kasse:</strong> Kurzbezeichnung, Replikationsart</li>
+<li><strong>Zubehör:</strong> Einstellungen für Zubehörartikel</li>
+<li><strong>Dashboard:</strong> Ausgabe von Umsätzen und Bestellungen</li>
+<li><strong>FiBu:</strong> Buchungsspezifische Einstellungen</li>
+<li><strong>Verpackungen:</strong> Umverpackungen zuordnen</li>
+<li><strong>Gefahrgut/Produktsicherheit:</strong> Gefahrgutinformationen</li>
+<li><strong>Lieferanten:</strong> Verwaltung von Lieferanteninformationen</li>
+<li><strong>Komponenten:</strong> Baugruppen mit Komponenten</li>
+<li><strong>Bilder:</strong> Bis zu 9 Artikelbilder hochladen</li>
+<li><strong>Sprachen:</strong> Multisprachige Artikelbezeichnungen</li>
+<li><strong>Variantenartikel:</strong> Erzeugung von Varianten</li>
+<li><strong>Historie:</strong> Ver- und Einkaufshistorie</li>
+</ul>
+</section>
+<section data-section-number="7.3" data-source-url="https://help.vario-software.de/vario-8-handbuch/artikel/rabattgruppen-verwalten/" data-title="Rabattgruppen verwalten" id="section-7-3">
+<h2>Rabattgruppen verwalten</h2>
+<p>Informationen zu Rabattgruppen werden in diesem Abschnitt verwaltet.</p>
+</section>
+<section data-section-number="7.4" data-source-url="https://help.vario-software.de/vario-8-handbuch/artikel/warengruppen-verwalten/" data-title="Warengruppen" id="section-7-4">
+<h2>Warengruppen</h2>
+<h3>Warengruppen verwalten</h3>
+<p>Warengruppen dienen dazu, einzelne Artikel zu Gruppen zusammenzufassen. Zum einen können Sie über die Warengruppen bestimmte Auswertungen sehen, um beispielsweise ganze Teile Ihres Produktprogramms zu bewerten. Zum anderen werden über die Warengruppe die Konten für die FiBu-Übergabe zugeordnet.</p>
+<p>Über "Neu" und "Ändern" können Datensätze neu angelegt bzw. geändert werden. Mit "Löschen" wird der angezeigte bzw. markierte Datensatz gelöscht.</p>
+<h4>Reiter Stammdaten</h4>
+<p><strong>Warengruppe:</strong> Maximal fünfstelliges Kürzel (Zahlen und Buchstaben erlaubt).</p>
+<p><strong>Bezeichnung:</strong> Erläuternde Bezeichnung für die Warengruppe.</p>
+<p><strong>Hauptwarengruppe:</strong> Gruppierung in Obergruppen für einfachere Auswertungen.</p>
+<p><strong>Temporär:</strong> Wird automatisch beim Import gesetzt, wenn Artikel importiert werden deren Warengruppe nicht existiert.</p>
+<p><strong>Gesperrt:</strong> Warengruppe sperren.</p>
+<p><strong>EAN-Präfix-Nr.:</strong> Vornummer für eigene EAN-Vergabe.</p>
+<p><strong>Kostenträger:</strong> Für FiBu-Übergabe (syska/DATEV).</p>
+<h4>Reiter FiBu-Konten</h4>
+<p>Hier können Sie für die jeweilige Warengruppe FiBu-Konten hinterlegen:</p>
+<ul>
+<li>Einkauf/Verkauf Inland</li>
+<li>Einkauf/Verkauf EU (mit/ohne MwSt.)</li>
+<li>Einkauf/Verkauf Ausland</li>
+<li>Einkauf/Verkauf § 13b</li>
+<li>Lagerbuchung</li>
+</ul>
+<h3>Hauptwarengruppen verwalten</h3>
+<p>Hauptwarengruppen dienen dazu, einzelne Warengruppe zu Gruppen (Hauptgruppen) zusammenzufassen. Sie können über die Warengruppen bestimmte Auswertungen sehen, um beispielsweise ganze Teile Ihres Produktprogramms zu bewerten.</p>
+<p><strong>Hauptwarengruppen:</strong> Maximal acht stelliger alphanumerischer Wert.</p>
+<p><strong>Bezeichnung:</strong> Erläuternde Bezeichnung für die Warengruppe.</p>
+</section>
+<section data-section-number="7.5" data-source-url="https://help.vario-software.de/vario-8-handbuch/artikel/mengeneinheiten-verwalten/" data-title="Mengeneinheiten verwalten" id="section-7-5">
+<h2>Mengeneinheiten verwalten</h2>
+<p>Zuletzt aktualisiert am 3. November 2023</p>
+<p>Unter Menüpunkt 1.2.6. können Mengeneinheiten bezüglich der Artikel verwaltet werden. Nach Neuanlage oder Änderung von Mengeneinheiten müssen Sie Programmmasken, die Daten aus den Mengeneinheiten nutzen, neu laden (schließen und öffnen).</p>
+<p>Über <strong>Neu</strong> und <strong>Ändern</strong> können Datensätze angelegt bzw. geändert werden. Geben Sie die Mengeneinheit und ein dazugehöriges Kürzel an. Ausschließlich das Kürzel wird in der Auswahlliste angezeigt und auch in den Belegen für die Abbildung verwendet.</p>
+<h3>Reiter Stammdaten</h3>
+<p><strong>Mengeneinheit:</strong> Die gerade geöffnete Mengeneinheit.</p>
+<p><strong>Kürzel:</strong> Das der Mengeneinheit zugehörige Kürzel.</p>
+<p><strong>Gesperrt:</strong> Mengeneinheit sperren.</p>
+<p><strong>Angelegt am/von:</strong> Datum und User der Anlage.</p>
+<p><strong>Geändert am/von:</strong> Datum und User der letzten Änderung.</p>
+<h3>Reiter Sprache</h3>
+<p>Im Reiter <strong>Sprache</strong> lässt sich zu der entsprechenden Mengeneinheit ein Eintrag je Sprache verwalten. Fügen Sie entsprechend des Werts für <strong>Sprache</strong> die Übersetzungen der Werte für Mengeneinheit, Kürzel und eine Übersetzung der Mengeneinheit im Plural hinzu.</p>
+<p>Die Sprachvariante der Mengeneinheit, die im Bezug auf Belege genutzt wird, hängt von der Sprache ab, die in der Adressverwaltung zu einer Adresse hinterlegt ist.</p>
+</section>
+<section data-section-number="7.6" data-source-url="https://help.vario-software.de/vario-8-handbuch/artikel/retourengruende-und-retourengruppen/" data-title="Retourengründe und Retourengruppen" id="section-7-6">
+<h2>Retourengründe und Retourengruppen</h2>
+<p>Zuletzt aktualisiert am 21. November 2023</p>
+<p>Hier können Sie Retourengründe und -gruppen anlegen und ändern sowie einzelne Retourengründe einer Retourengruppe zuweisen.</p>
+<h3>Retourengruppen verwalten</h3>
+<p>Über die Funktion <em>Retourengruppen verwalten</em> können Sie Retourengruppen anlegen, denen Sie unter <strong>1.2.7.2 Retourengründe</strong> zuordnen können. Sie können beispielsweise eine Gruppe für den Warenumtausch mit Gründen wie „falsche Größe" oder „falsche Farbe" und eine für die „Warenrückgabe" mit Gründen wie „defekt" oder „gefällt nicht" anlegen.</p>
+<h3>Retourengründe verwalten</h3>
+<p>Über die Funktion <em>Retourengründe verwalten</em> können Sie Retourengründe anlegen, die Sie zu in <strong>1.2.7.1</strong> angelegten Retourengruppen zuordnen können. Sie können beispielsweise zu einer Gruppe „Warenumtausch" Gründe wie „falsche Größe" oder „falsche Farbe" erstellen und für eine Gruppe „Warenrückgabe" zum Beispiel Gründe wie „defekt" oder „gefällt nicht" anlegen.</p>
+</section>
+<section data-section-number="7.7" data-source-url="https://help.vario-software.de/vario-8-handbuch/artikel/varianten-verwalten/" data-title="Varianten verwalten" id="section-7-7">
+<h2>Varianten verwalten</h2>
+<p>Zuletzt aktualisiert am 28. Juli 2025</p>
+<p>Hier können Sie Attribute und die zugehörigen Attributwerte verwalten. Außerdem finden Sie unter diesem Menüpunkt den Variantengenerator.</p>
+<h3>Attribute verwalten</h3>
+<p>Zunächst müssen die Varianten bzw. Attribute selbst und deren Auswahlwerte definiert werden. Verwenden Sie hierzu bitte die Ziffernkombination <strong>1.2.8.1.</strong> oder starten Sie das Modul über die Menüpunkte <strong>Stammdaten &gt; Artikel &gt; Varianten &gt; Attribute verwalten.</strong></p>
+<p>Legen Sie alle benötigten Attribute wie <em>Farbe, Größe, Länge</em> usw. an. Diese Attribute stehen dann unter den Variantenartikeln zur Auswahl zur Verfügung.</p>
+<h4>Reiter Stammdaten</h4>
+<ul>
+<li><strong>Sprache:</strong> Gewünschte Sprache eintragen</li>
+<li><strong>Bezeichnung:</strong> Bezeichnung eintragen</li>
+<li><strong>Beschreibung:</strong> Beschreibung der Attributbezeichnung</li>
+<li><strong>Webshop-Bezeichnung:</strong> Bezeichnung für Webshop</li>
+</ul>
+<h4>Reiter Sprachen</h4>
+<p>Auf dem Reiter <em>Sprachen</em> können Sie die Variantenbezeichnungen in abweichenden Sprachen angeben, sofern Sie welche angelegt haben.</p>
+<h3>Attributwerte verwalten</h3>
+<p>Hier können Sie für jedes Attribut alle Werte angeben, die für die Variantenartikel verwendet werden sollen. Zudem können Sie eine Bemerkung zu dem entsprechenden Wert angeben.</p>
+<h4>Reiter Stammdaten</h4>
+<ul>
+<li><strong>Sprache:</strong> Gewünschte Sprache</li>
+<li><strong>Wert:</strong> Attributwert (maßgeblich für automatische Artikelnummernvergabe)</li>
+<li><strong>Attribut:</strong> Zugehöriges Attribut</li>
+<li><strong>Bemerkung:</strong> Bemerkung zum Attributwert</li>
+</ul>
+<h3>Variantengenerator</h3>
+<p>Jede Variante zu einem Varianten-Hauptartikel wird in <strong>VARIO 8 als eigener Artikel</strong> angelegt. Sie können die Artikel manuell anlegen, indem Sie mithilfe der Tastenkombination <strong>STRG+F7</strong> den Varianten-Hauptartikel in einen Variantenartikel kopieren können.</p>
+<p>Der Variantenartikelgenerator bietet eine effizientere Methode:</p>
+<ul>
+<li>Abhängig von dem ausgewählten Raster auf dem Reiter <em>Variantenartikel</em> in der Artikelverwaltung, sehen Sie die verfügbaren Variantenkombinationen</li>
+<li><strong>Einzelne Kombinationen:</strong> Aktivieren Sie Kombinationen per Doppelklick</li>
+<li><strong>Alle möglichen Varianten:</strong> Erzeugen Sie sie mit einem Rechtsklick</li>
+<li><strong>Alle markieren:</strong> Generieren Sie Artikelvarianten für alle möglichen Kombinationen</li>
+</ul>
+</section>
+<section data-section-number="7.8" data-source-url="https://help.vario-software.de/vario-8-handbuch/artikel/artikelzusatzdaten-verwalten/" data-title="Artikelzusatzdaten verwalten" id="section-7-8">
+<h2>Artikelzusatzdaten verwalten</h2>
+<p>Zuletzt aktualisiert am 13. Februar 2025</p>
+<h3>Artikelstatus verwalten</h3>
+<p>In diesem Menüpunkt verwalten Sie die möglichen Artikelstatus Ihrer Artikel bzw. Ihres Sortiments. Beispielsweise können Sie Status für Neu, Gebraucht oder B-Ware definieren.</p>
+<p><strong>Felder:</strong></p>
+<ul>
+<li><strong>Status:</strong> Beliebiger Status</li>
+<li><strong>Farbe:</strong> Farbzuweisung zur Hervorhebung</li>
+<li><strong>Bemerkung:</strong> Ergänzende Kommentare</li>
+<li><strong>Farbe in Verwaltung/Suchmaske:</strong> Farbliche Darstellung</li>
+</ul>
+<h3>Endverbleibserklärungen verwalten</h3>
+<p>Für definierte Artikel ist eine Endverbleibserklärung erforderlich. Diese müssen vorliegen, bevor der Artikel ausgeliefert werden kann.</p>
+<h3>Bearbeitungsphase verwalten</h3>
+<p>In der Bearbeitungsphasen-Verwaltung können Sie Status für die Artikelverwaltung definieren. Diese können in der Artikelverwaltung (Reiter "Zusatzinfos") und der Artikelsuche genutzt werden.</p>
+<h3>Verpackung verwalten</h3>
+<p>In der Verpackungsverwaltung können Sie Umverpackungen anlegen und zuordnen:</p>
+<ol>
+<li>Erstellen Sie eine eindeutige Bezeichnung</li>
+<li>Weisen Sie im Reiter "Positionen" einen oder mehrere Verpackungstypen zu</li>
+<li>Geben Sie pro Verpackungstyp ein Gewicht in Gramm an</li>
+<li>Speichern Sie die Verpackung</li>
+</ol>
+<h3>Kalkulationsschemata verwalten</h3>
+<p>Kalkulationen können für Verkaufs- (VK) oder Einkaufspreise (EK) definiert werden.</p>
+<p><strong>Felder:</strong></p>
+<ul>
+<li><strong>Bezeichnung:</strong> Eindeutiger Name für das Schema</li>
+<li><strong>Bereich:</strong> EK-Kalkulation oder VK-Kalkulation</li>
+<li><strong>Operator:</strong> Addition, Subtraktion, Multiplikation, Division, %-Aufschlag/-Abschlag</li>
+<li><strong>Wert-Herkunft:</strong> Wert aus Feld, Fester Wert, oder Formel</li>
+</ul>
+<h3>Artikelpreise kalkulieren</h3>
+<p>In der Artikelverwaltung (1.2.1.) wählen Sie Kalkulationsschemata für EK/VK aus. Durch Klick auf "Ändern" können Berechnungen übernommen werden.</p>
+<h3>Chargen MHD Kontrolle</h3>
+<p>Farbkodierungen zur Visualisierung von Verfallsdaten für Chargen/Seriennummernartikel:</p>
+<ul>
+<li><strong>Rot</strong> für &lt; 28 Tage Verfallsdatum</li>
+<li>Erweiterbare Regelung für individuelle Zeiträume</li>
+<li>Visualisierung in der Artikelübersicht zur rechtzeitigen Vermeidung von Abschreibungen</li>
+</ul>
+</section>
+<section data-section-number="7.9" data-source-url="https://help.vario-software.de/vario-8-handbuch/artikel/artikel-webshopuebersicht/" data-title="Webshopübersicht" id="section-7-9">
+<h2>Webshopübersicht</h2>
+<p>Zuletzt aktualisiert am 13. Juni 2024</p>
+<p>Per Klick auf den blauen Bereich mit dem VARIO 8-Symbol öffnet sich ein Menü, in welchem Sie neben weiteren Funktionen auch die <strong>Webshopübersicht</strong> einblenden können.</p>
+<p>Klicken Sie auf „Webshopübersicht anzeigen", so öffnet sich ein Fenster neben der Artikelverwaltung. Sie sehen hier alle Shops, denen der in der Artikelverwaltung geöffnete Artikel zugeordnet ist.</p>
+<h3>Reiter Allgemein</h3>
+<p><strong>Veröffentlichen:</strong> Wählen Sie diese Option, um den Artikel im Webshop zu veröffentlichen.</p>
+<p><strong>Upload-Optionen:</strong></p>
+<ul>
+<li>Vollständig: Alles wird repliziert</li>
+<li>Bestand und Preis (nur Shopware 6)</li>
+<li>Nur Bestand</li>
+<li>Nur Preis (nur Shopware 6)</li>
+</ul>
+<p><strong>Sprachabhängige Eingaben:</strong></p>
+<ul>
+<li>Artikelbezeichnung</li>
+<li>Untertitel</li>
+<li>Produkt-URL</li>
+<li>Webshop-ID</li>
+<li>Ext. Referenz</li>
+</ul>
+<p><strong>Lieferstatus:</strong></p>
+<ul>
+<li>Lieferstatus errechnen</li>
+<li>Lieferzeit (Tage)</li>
+</ul>
+<p><strong>Verfügbarkeitsoptionen:</strong></p>
+<ul>
+<li>Ber. „Verfügbar": Berechnungsmethoden</li>
+<li>Max. verfügbar / Min. verfügbar</li>
+<li>Fixmenge verfügbar</li>
+</ul>
+<h3>Reiter Texte</h3>
+<p><strong>Kurzbeschreibung / Beschreibung:</strong></p>
+<ul>
+<li>Edite als Plaintext (sicherer) oder HTML</li>
+<li>Platzhalter-Optionen vorhanden</li>
+<li>Vorschau anzeigen</li>
+</ul>
+<h3>Reiter Meta-Infos</h3>
+<p><strong>Meta-Stichwörter / Suchbegriffe:</strong> Suchmaschinenrelevante Tags</p>
+<p><strong>Meta-Titel / Meta-Beschreibung:</strong> SEO-Optimierung</p>
+<h3>Reiter Sonstiges</h3>
+<ul>
+<li>Highlightartikel</li>
+<li>Erscheinungsdatum</li>
+<li>Artikeldetails / Artikeloptionen</li>
+<li>VPE anzeigen</li>
+<li>FSK 18</li>
+<li>Sichtbarkeit für Kundengruppen</li>
+</ul>
+<h3>Reiter Cross-Selling</h3>
+<p>Füge weiteren Artikel via <strong>Hinzufügen</strong>. Gruppenzuweisungen ermöglichen.</p>
+<h3>Reiter Bilder</h3>
+<ul>
+<li>Hauptbild auswählen</li>
+<li>Bild ist Haupt- und Variantenbild aktivieren</li>
+<li>Repliziere Filialbilder</li>
+</ul>
+<h3>Reiter Kategorien</h3>
+<p>Max. 2 Kategorien zuordnen. Fehlermeldungen via <strong>Log</strong>.</p>
+</section>
+<section data-section-number="7.10" data-source-url="https://help.vario-software.de/vario-8-handbuch/artikel/artikel-veroeffentlichen-2-2/" data-title="Artikel veröffentlichen" id="section-7-10">
+<h2>Artikel veröffentlichen</h2>
+<p>Zuletzt aktualisiert am 13. Juni 2024</p>
+<p>In dieser Maske werden alle Artikel zu der gewählten Plattform veröffentlicht. Es ist per Selektion möglich, einen/mehrere Artikel für einen Webshop/Marktplatz zu veröffentlichen.</p>
+<h3>Selektion</h3>
+<p><strong>Artikel von / bis:</strong> Artikelnummer von bis eintragen.</p>
+<p><strong>Warengruppe:</strong> Warengruppe für Veröffentlichung.</p>
+<p><strong>Benutzerdefiniertes Feld:</strong> Feld für Selektion auswählen.</p>
+<p><strong>eBay-Kategorie 1 / 2:</strong> Alle Artikel in eBay Kategorie X veröffentlichen.</p>
+<p><strong>Selektion hinzufügen:</strong> Fügt selektierte Artikel zur Liste hinzu.</p>
+<p><strong>Bei Variantenhauptartikel auch deren Varianten selektieren:</strong> Varianten mit übernehmen.</p>
+<h3>Reiter veröffentlichen</h3>
+<p>Als erstes muss die Webshop Auswahl getroffen werden. Anschließend kann festgelegt werden, welche Aktion bei Veröffentlichen oder Bestände aktualisieren geschehen soll.</p>
+<h3>Reiter Bilder</h3>
+<p>Hier besteht die Möglichkeit, Artikelbilder für die ausgewählte Plattform zu veröffentlichen – sprich hochzuladen.</p>
+<h3>Reiter Beschreibung</h3>
+<p>Für die selektierten Artikel kann die Beschreibung aktualisiert werden. Platzhalter werden wie folgt aufgebaut: <code>{Tabelle.Feldname}</code>.</p>
+<p><strong>Achtung:</strong> Bestehende Beschreibungen werden durch eine leere neue Beschreibung überschrieben, wenn Beschreibungen aktualisieren aktiv ist, aber kein Text eingefügt wurde.</p>
+<h3>Reiter Kurzbeschreibung</h3>
+<p>Für die selektierten Artikel kann die Kurzbeschreibung aktualisiert werden. Platzhalter: <code>{Tabelle.Feldname}</code>.</p>
+<h3>Reiter Allgemein</h3>
+<ul>
+<li><strong>Lieferstatus errechnen:</strong> Automatische Berechnung</li>
+<li><strong>Lieferstatus:</strong> Definierten Lieferstatus wählen</li>
+<li><strong>Lieferzeit (Tage):</strong> Fixe Lieferzeit eingeben</li>
+<li><strong>Ber. „Verfügbar":</strong> Berechnungsmethode für verfügbaren Bestand</li>
+<li><strong>Max. verfügbar / Min. verfügbar:</strong> Verfügbarkeitsgrenzen</li>
+<li><strong>Fixmenge verfügbar:</strong> Fixe Menge unabhängig vom Bestand</li>
+</ul>
+<h3>Reiter Meta-Infos</h3>
+<p><strong>Meta-Stichwörter</strong> und <strong>Suchbegriffe</strong> für Suchmaschinen optimieren.</p>
+<p><strong>Achtung:</strong> Informieren Sie sich bei Ihrem Webshop-Betreiber, um gewünschte Formatvorlagen zu prüfen.</p>
+<h3>Reiter Benutzerdefinierte Selektion</h3>
+<p>Mit SQL-Kenntnissen können Artikel selektiert werden. Der SQL-Code muss die folgenden 4 Felder enthalten:</p>
+<pre><code>Select distinct  
+art.id,  
+art.artikelnr,  
+art.artikelbezeichnung1 as Bezeichnung,  
+art.warengruppe,  
+art.eannr  
+from art  
+where art.hersteller = 'VARIO'</code></pre>
+</section>
+<section data-section-number="7.11" data-source-url="https://help.vario-software.de/vario-8-handbuch/artikel/faq-artikel/" data-title="FAQ Artikel" id="section-7-11">
+<h2>FAQ Artikel</h2>
+<p>Hier finden Sie die von Ihnen häufig gestellten Fragen – beantwortet von Mitarbeiter:innen aus dem Support.</p>
+<h3>Artikel Stammdaten</h3>
+<p><strong>Der Lieferantenbestand soll zu meiner Verfügbarkeit addiert werden. Ist das möglich?</strong><br/>
+Ja, die Verfügbarkeitsberechnung kann unter dem Reiter "Zusatzinfos" geändert werden.</p>
+<p><strong>Ich sehe die EK´s vom Artikel nicht, obwohl ich die Rechte habe. Woran liegt das?</strong><br/>
+Vermutlich haben Sie die Einkaufspreise ausgeblendet.</p>
+<p><strong>Es steht eine falsche Bestell- bzw. Reserviermenge im Artikel. Was kann ich tun?</strong><br/>
+Wenn es keine Bestellungen oder Aufträge zu diesem Artikel gibt, muss die Bestell- und Reserviermenge über Menü 9.1.2.1 neu berechnet werden.<br/>
+<strong>Achtung:</strong> Dies sollte nur gemacht werden, wenn keiner Belege bucht.</p>
+<p><strong>Wie wird der DEK im Artikel errechnet?</strong><br/>
+Der DEK ist der Mittelwert von allen eingekauften Artikeln. Beispiel:<br/>
+Ich kaufe Artikel 4711: 10 Stück für je 100 € → DEK = 100 €<br/>
+Nun kaufe ich den Artikel 10 mal für je 50 € → DEK = 75 €<br/>
+Rechnung: 10x 100 € + 10x 50 € = 1500 € / 20 = 75 €<br/>
+Der DEK Wert bleibt solange im Artikel vorhanden bis der Bestand auf 0 fällt.</p>
+<p><strong>Warum kann ich in das Feld "Lieferanten EK" nichts eintragen?</strong><br/>
+In den Parametern unter Artikel gibt es die Möglichkeit, für den Lieferanten EK manuelle Eingaben zuzulassen.</p>
+<p><strong>Ich möchte wichtige Dokumente wie z.B. Baupläne bei einem Artikel hinterlegen. Wie gehe ich vor?</strong><br/>
+Beim Reiter <em>assoziierte Dateien</em> können per Drag &amp; Drop oder per Rechtsklick („Dateien hinzufügen") Dateien hinzugefügt werden.</p>
+<p><strong>Kann ich eine Artikelnummer ändern oder löschen?</strong><br/>
+Wenn man in Vario als Administrator angemeldet ist, kann man über die Sonderfunktion die Artikelnr. ändern.</p>
+<p><strong>Die maximale Anzahl von Bildern ist zu wenig. Wo kann ich das ändern?</strong><br/>
+Pro Artikel können max. 999 Bilder hinterlegt werden. Diese Einstellung kann bei dem Parameter <strong>Artikel</strong> vorgenommen werden.</p>
+<h3>Baugruppe</h3>
+<p><strong>Was ist eine Baugruppe?</strong><br/>
+Baugruppen sind sogenannte Set-Artikel. Beispiel: <em>Geschenkkorb</em> (bestehend aus Korb, Flasche Wein, Kekse, etc.).</p>
+<p><strong>Eine Baugruppe soll bei einer anderen Baugruppe als Komponente hinterlegt werden. Geht das?</strong><br/>
+Nein. Eine Baugruppe kann keine Komponente einer anderen Baugruppe sein.</p>
+<p><strong>Wie berechnet sich das Gewicht einer Baugruppe?</strong><br/>
+Das Gewicht der Komponenten wird summiert. Wenn das Gewicht einer Komponente geändert wird, muss die Komponente der Baugruppe neu hinzugefügt werden.</p>
+<h3>Varianten Artikel</h3>
+<p><strong>Wie lege ich einen Varianten Artikel an?</strong><br/>
+Zunächst müssen Sie einen Variantenhauptartikel anlegen. Im Reiter „Sonstiges" im Feld S01 wird das Attribut (z.B. Farbe, Größe) eingegeben. Danach werden Attributwerte über Menü 1.2.8.2 angelegt. Die einfachste Möglichkeit sind die Variantengeneratoren (Menü 1.2.8.9).</p>
+<p><strong>Wie kann ich den Bestand vom Variantenhauptartikel ändern?</strong><br/>
+Der Bestand vom Variantenhauptartikel kann <strong>nicht</strong> geändert werden. Er ergibt sich aus den Varianten.</p>
+<h3>Seriennummern/Charge Artikel</h3>
+<p><strong>Wie kann ich eine Seriennummer in VARIO einbuchen?</strong><br/>
+Über Eingangsbeleg oder Lagerzugang/Abgang. Seriennummern dürfen nicht doppelt sein.</p>
+<p><strong>Muss ich das Mindesthaltbarkeitsdatum in der Charge pflegen/füllen?</strong><br/>
+Nein, nicht zwingend, aber angeraten bei Nahrungsmitteln.</p>
+<h3>Produktions Artikel</h3>
+<p><strong>Wie lege ich ein Produktionsartikel an?</strong><br/>
+Einen bestandsgeführten Artikel anlegen und bei Produktion abhaken. Im Reiter Komponenten werden die benötigten Artikel hinterlegt.</p>
+<p><strong>Kann ein Produktionsartikel auch eine Komponente eines Produktionsartikels sein?</strong><br/>
+Ja. Hat kein Bestand bei der Produktion, wird automatisch ein Unterproduktionsauftrag erstellt.</p>
+<h3>Artikel mit/ohne Bestandsführung</h3>
+<p><strong>Ich möchte einen Artikel „mit Bestandsführung" in „ohne Bestandsführung" ändern. Ist das möglich?</strong><br/>
+Nur, wenn der Artikel noch nicht bebucht wurde.</p>
+<p><strong>Wenn ich bei einem Artikel einen „Buche von" hinterlege, wird der Artikel ohne Bestandsführung angelegt. Ist das richtig?</strong><br/>
+Ja. Da der Artikel keinen Bestand hat und von einem anderen Artikel abgekoppelt wird.</p>
+</section>
+<footer style="margin-top: 50px; padding-top: 20px; border-top: 2px solid #e9ecef; color: #6c757d; font-size: 0.9em;">
+<p>Quelle: <a href="https://help.vario-software.de/vario-8-handbuch/artikel/" target="_blank">https://help.vario-software.de/vario-8-handbuch/artikel/</a></p>
+<p>Heruntergeladen am: 13.01.2026 um 13:39:07</p>
+<p>Abschnitt: Artikel (Abschnitt 7 von 28)</p>
+</footer>
+</body>
+</html>

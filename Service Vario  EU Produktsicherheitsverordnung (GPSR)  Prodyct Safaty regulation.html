@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EU-Produktsicherheitsverordnung (GPSR) - VARIO 8 Handbuch</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .header-notice {
+            background-color: #fff3cd;
+            border: 2px solid #ffc107;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+        }
+        .header-notice h2 {
+            color: #856404;
+            margin-top: 0;
+        }
+        .toc {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .toc h2 {
+            color: #333;
+            border-bottom: 2px solid #84b933;
+            padding-bottom: 10px;
+        }
+        .toc ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .toc ul ul {
+            padding-left: 20px;
+        }
+        .toc li {
+            margin: 5px 0;
+        }
+        .toc a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        .toc a:hover {
+            text-decoration: underline;
+        }
+        section {
+            background-color: white;
+            padding: 30px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #84b933;
+            border-bottom: 3px solid #84b933;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #333;
+            margin-top: 30px;
+        }
+        h3 {
+            color: #555;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px 0;
+        }
+        .metadata {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-left: 4px solid #84b933;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-notice">
+        <h2>ДОКУМЕНТ ВНЕШНЕГО СЕРВИСА — НЕ ЯВЛЯЕТСЯ ТРЕБОВАНИЯМИ К ПРОДУКТУ</h2>
+        <p>Этот документ описывает внешний сервис / API и т.п. как инструкция.</p>
+        <p><strong>Как использовать:</strong></p>
+        <ul>
+            <li>для определения возможностей и ограничений интеграции</li>
+            <li>для формулирования требований к интеграции (что отправляем/получаем, авторизация, ошибки, лимиты, поведение при недоступности), ответам пользователя по сервису и т.п.</li>
+        </ul>
+    </div>
+
+    <div class="toc">
+        <h2>Inhaltsverzeichnis - EU-Produktsicherheitsverordnung (GPSR)</h2>
+        <ul>
+        </ul>
+    </div>
+
+    <section id="section-20" data-section-number="20" data-section-title="EU-Produktsicherheitsverordnung (GPSR)">
+        <h1>EU-Produktsicherheitsverordnung (GPSR)</h1>
+
+        <div class="metadata">
+            <strong>Источник:</strong> <a href="https://help.vario-software.de/vario-8-handbuch/produktsicherheitsverordnung/" target="_blank">https://help.vario-software.de/vario-8-handbuch/produktsicherheitsverordnung/</a>
+        </div>
+        <div class="col dokucontent">
+<nav aria-label="breadcrumb" id="ne-alt-breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="https://help.vario-software.de/vario-8-handbuch"></a></li><li aria-current="page" class="breadcrumb-item active">EU-Produktsicherheitsverordnung (GPSR)</li></ol></nav> <h1 id="post-title">EU-Produktsicherheitsverordnung (GPSR)<a aria-label="Permalink kopieren" class="heading-anchor" href="#post-title">#</a></h1>
+<p class="last-modified">Zuletzt aktualisiert am 31. Oktober 2025</p>
+<p>Am <strong>13.12.2024</strong> tritt in allen Mitgliedsstaaten der EU die <a href="https://www.haendlerbund.de/de/ratgeber/recht/produktsicherheitsverordnung" rel="noreferrer noopener" target="_blank">Produktsicherheitsverordnung </a>(General Product Safety Regulation, kurz GPSR) in Kraft. Diese Verordnung ersetzt die Richtlinie 2001/95/EG, auch als Allgemeine Produktsicherheitsrichtlinie bekannt, und damit in weiten Teilen auch das Produktsicherheitsgesetz (ProdSG). Als <strong>Händler, Hersteller oder Importeur</strong> müssen Sie entsprechende Maßnahmen ergreifen, um die neuen Anforderungen zu erfüllen.</p>
+<p>Dabei handelt es sich um bestimmte <strong>Informationspflichten und Angaben zu Produkten, die für Verbraucher bestimmt sind</strong>. Dabei wird nicht zwischen B2B- und B2C-Geschäften unterschieden.</p>
+<div class="lazyblock-youtube-vario-ZC4e77 wp-block-lazyblock-youtube-vario">
+<figure class="wp-block-embed aligncenter">
+<div class="video-container">
+<div class="uc-embedding-container uc-embedding-1" data-nosnippet="true" element-type="iframe" id="uc1768334337663" pid="BJz7qNsdj-7|iVTAGV51C|r1ejcEi_jZ7|rJXQ54ouo-X" style=""> <img alt="Youtube video preview image" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAUDBA0KCg0KDQoICAoICAgICAgNCAgICAgICAgICAgICAgIChANCAgOCggIDRUNDhERExMTCA0WGBYSGBASExIBBQUFCAcIDwkJDxUQDw8VFRUVFRUSFRUSFRUSEhUSFRIVFRUVEhUVFRUWEhUVEhISFRUVFRIVFRUVEhUVEhUVFf/AABEIAWgB4AMBIgACEQEDEQH/xAAdAAEAAQUBAQEAAAAAAAAAAAAABgECAwUHBAgJ/8QAVRAAAgEDAQMHBQwGBggFBAMAAQIDAAQRIQUSMQYTIkFRYXEHMlKBkRQVI0JTcpKTobHS0xaywdHU8AgzQ2KCgxckRKKzwuHxVGNkc8OjxOLjJXSk/8QAGwEBAAMBAQEBAAAAAAAAAAAAAAECAwQFBgf/xAA4EQACAQMCAwUGBgEEAwEAAAAAAQIDESEEMRJBUQUTInGRBmGBodHwFDJCscHhklJigvFDU6IV/9oADAMBAAIRAxEAPwD4ypSlAKUpQClKUApSlAKUpQClKUApSlAKUpQClKUApSlAKUpQClKUApSlAKUpQClKUApSlAKUpQClKUApSlAKUpQClKUApSlAKUpQClKUApSlAKUpQClKUApSlAKUpQClKUApSlAKUpQClKUApSlAKUpQClKUApSlAKUpQClKUApSlAKUpQClKUApSlAKUpQClKUApSlAKUpQClKUApSlAKUpQClKUApSlAKUpQClKUApSlAKUpQClKUApSlAKUpQClKUApW0Ow39KP2t+GnvG/pR+1vw0Bq6VtPeN/Sj9rfhp7xv6Uftb8NAaulbT3jf0o/a34ae8b+lH7W/DQGrpW09439KP2t+GnvG/pR+1vw0Bq6VtPeN/Sj9rfhp7xv6Uftb8NAaulbT3jf0o/a34ae8b+lH7W/DQGrpW09439KP2t+GnvG/pR+1vw0Bq6VtPeN/Sj9rfhp7xv6Uftb8NAaulbT3jf0o/a34ae8b+lH7W/DQGrpW09439KP2t+Gq+8b+lH7W/DQGqpW194n9KP2t+GnvDJ6Uftb8NAaqlbb3gk9KL2t+Gqjk/J6UX0n/AAUBqKVuRyck9KL6T/gq4cmZPSh+k/4KA0lK3o5LS+lD9J/wVeOScvpwfSk/BS4I/SpEOR83pwfSk/Lq8cjJvTt/pSfl1FwRqlSYcipvTt/pyfl1d+hE/p2/05Py6XBF6VKByHn9O3+nJ+XVf0Gn9O3+nL+XS4ItSpV+gs/p2305fyqfoJP6dt9OX8qlwRWlSv8AQSf07b6cv5VP0Dn9O2+nL+VS4IpSpX+gc/p2305fyqfoHP6dt9OX8ql0CKUqWfoFP6dt9OX8qn6BT/KW305fyqXBE6VLP0Cn9O2+nL+VVf0Bn+Utvpy/lUuCJUqWfoDP8pbfTl/Kp+gU/wApbfTl/KpdAidKln6BT/KW305fyqfoFP6dt9OX8ql0CJ0qWfoFP6dt9OX8qn6BT/KW305fyqXQInSpZ+gM/wApbfTl/Kqv6Az/AClt9OX8ql0CJUqWfoFP8pbfTl/Kp+gU/p2305fyqXRNiJ0qWfoFP6dt9OX8qn6BT+nbfTl/KpdCxE6VLP0Cn9O2+nL+VT9Ap/Ttvpy/lUuhYidKln6Bz+nbfTl/Kqn6Bz+nbfTl/KpdCx634nxP31Srn4nxP31bUkClKUApSlAKUpQClKUApSlAKUpQClKteQDGSozoMkDJ7BnjQF1KUoBVapVRQFRVwq0VcKAuFXrVgrItAZErNHWJazJUAyx1nSsMYrPGKgkyoKzqKxIKzIKgF6ir1qi1eKElVFXVaKuFQBVwpQUILqrVKuoSUFMVUCq0BbirhQ0FAVpSgoAapVTVGbFQBQV5Zr0DQKzEdgJ066skv91QSknSOAoQknTJIpdE2Z7arXkivFPXg9h/njXrVs1CZFhVcVXFDUgsxTFX4qmKAtxVcVWmKApVMVcBVSKC5ZihFXYpihJz6TifE/fVtVfifE/fVK1KClKUApSlAKUpQClKUApSlAKUrpP9H/yTy8orx4hIbW0sxFJf3IAaVVmZxFBbKwKm4k5qXDMCqBCxDdFWA1Hkl8m15t669z2qBUjKm7vXDe5rONvjSEf1kxGd2Fek391Qzr95eTbyRbO2RZ+5I7WG5Mq4vLqeKKee9YjDGYupAi1YCJQEUMcDUkyXkTyVttl2qWVpCltbwg7qDJZ3PnyyyN0ppmIyXYkmuT/0rW2zax221dmXTrb7Jdp7+wSPeMg1Hum4UHN3ZrGXR4dN0Nzg1UNGB8T8u7aOLaV7FFG8EEO1NoRW0Do8bw2yXky28bRyAMhEQjG6wyOvWtNX1tt3YFjy+2edo2fNbP5QWUSR3lszDdlYKebhumAzLbPuNzN2BlcFWHRaNflTbOzJbWeS2niktri2kMU9u67skTgA4YcCCCrBgSrKysCQQSB5KrVKqKAqKuFWirhQFy1kWrBWRaAyLWZKxJWdKqDLGK9EYrClZ0FCTKgrMtY0FZlqCS9auFUFXUBcKqKoKrUAuqoqlXVIKVdVKqKAupVBVagFKrSlAKClKAOcDPACojtXlICxVNVGmeBc69fUo9p++/lvtfH+rqfi5mOugOoTI68a+yreQPIyW/kCqGVCwBcjTx6qpOSirs0p03J2RZsjbRL4Vck/3hr3Y/adalE+z2uSqBuaE3QPSPQdtFfXXG9xHZnursGwfITZogLNMZBxYOVXPWN3r9dbuy8kkKSK4kkYRkEKSDjHqrz5ayD2PUj2dU3Z8lXNtJbyGORXjZTggjX/ALVLdhSlgMkMCOi+c4OnRPd4/wDf6q5W+T60voyk0COSMCQDdkUjgwYddfN3LTkdLsK6GS09jcNuq5HSQ50D40yM8evWppatTdtmK3Z7hHiWUWL2dY0/7dtX4rNfRjAdfN03j2KdVP2j1evOGu+MrnlSjZlKpV2KYqxQpSmKrioJsUApiq0xUixSlVpUEWOdPxPifvqlVfifE/fVK2KilKUApSlAKUpQClKUApSlAK6J5DPK1ccnJ5pYYIbyK9jhS5tpJGh3mt2la3kjnRWMTLz8wI3WDB+4Ec7pQH6L/wBHjyrJyisXmMcdtd2szQ3losjSLEHLPbSo7gF4njHnEDpxSD4tdLYZ9elfm35BPKG2wdqxXhLG1lHubaUQBbfs5GBaRUHnSwsFlXQk7rqP6w1+kNrOsiLIjK6SKrxupDI6OAyurDRlIIIPfQHyL5cvJrc8l74cpNjb0NqkjNfWaqWis1kYGZHhB+E2PKcBo9OYIUqVAQwzLavJ6w8oGyF2hCvvftW2DWxmKljDcRjeexunVR7ssSX3lkXpJv5AU85Gfom4hV1KMqujqyOjAMrqwKsrKdGUgkEHjmsGytnRW0SQQxRW0MKCOGCONYoYkHBI40AVF7gKA+KLT+iRtdoyz3OxopMZSL3ReSAnGgeUWg3NewNXHeX/ACOutj3bWN3GsVwiJKAsiyxSQyFhHNFIvnRsUcahTlCCARX3H/SD8uVvsCP3PGEvdqSoGhs974O2VvNub5lOY4utYx05Mabq7zr8I8quUNxtG5kvLqZ7q5uG3pJWwAANFjjQdGKFRoqKAB6ySBrBVwqgq4UBctZUrGtZUFAZEFZ0FYkFZkqoM0Yr0IKwoKzoKMkypWZRWNRWVKgF61dVBVcUJLhVaoKrQFRVaoKrUArVaoKuFABVapVRQCmKrihqAUxWK8nEaM54IpY+ocKzYrRcuZt22YD42B6uv7AaNghFqWuJxkgtNLrnh0m+4D7q+uvJTsNba3UDpMwDFu3ojgf5418lcjIi91GFBLb4x3Y4mvszkY2IkHooo+wZrzte9kez2XHLZO9loD3VvYLVdNR36HStBsx/2VvYZBga1wU0rZPUrN8j0bQtFA0bJ8Pt+yuc+Vbk6t5YzRFd4hC8RxqsiDeUj1ip/cSjHbWn2gcqdNNc/wDWlXDuhRvw2Z8f7FuNOZbGoMWDrjio3s+ccsGI7FA66t2ZMXQE+cMqe3Kkrr/e0rX8sh7n2ncRgkc1ezBBjqkBaPHad0/YKxbDvQbiRNMSHn1798At669elK9n1PntTDhbXQ31KUroOQVUUqooCgFKrVaAtxVcVXFMUBzd+J8T99Uqr8T4n76pWxQUpSgFKUoBSlKAUpVpcdo9ooC6lXQRl/NVn+apf9UV7odh3LebaXr/ADbO5f2bsZqrnFbtIi5r6VIbfkRfvwsbsfOj5o+yUrXvt/JntFv9k3PnXFqv3Sk1hLW6eO9SK/5L6kOcVzRD6+1P6C3LyS8sJtlSh3bY3Mm2n3ej7hujKIbZ2z58UkMyrw+DKAeYxr5qh8kN+ePuOP51wxx9XE1fVv8AQ15HtsvZt3zrQNNPtIu7ozFVt4rO1WJGaRVOjtcNwx0/Gq09fp6kuCE037n0IVSLdkzu9cV8qHlVuJ7w7B2EiX21Tpe3xAaw2JFkLJLPIQUe5XPmYYKwwVdhzTYvLbyunvIWsbC9Oz0fKXW0EiMs8kZ0aKycSp7nB1BmGWwehu6OefeQTZp5O3Dsl1Pc212qLd2piiVGZCebuYiOkkyBnGN7DBiDqFZeSfbejjLhc87YTt62sUdeCdrnzHyy2fcW99cwXnOG9iuZFvWkdpZZJ8gmVpW1lDqVdXPnK6ngRWqr7t8vXkosttKm11DvLFbhJWik3Bc2qsSryAKSZYiz9h3SwPmKBxyDyWbOX/Z5H+ddXJ+xZADTWds0NNJRmpO6umkmmvc7ideMNz52FXCvpiDkFYLwsbc/OVpP+Ixr3WvJi0j82ysUPaLSAN9LczXnS9qKPKEn6L6mf4uPRny4rDtHtr221lI/mxTP82KR/wBVa+p4bVF81I08EVfuFZs1zy9qf9NP1l/RT8X7vmfM1rybun4Wd4e/3NMo9rKBWzt+Q983CzmHi0Uf/EcV9DUrCXtPW5QivV/Qq9XLocMtvJzenjCkfzriE/8ADZq2MHkyujxe0T/Mkb7oq7FSueXtHqntwr4fVsq9VP3HLYPJdJ8a5hHhHI/3la90HkwHxrpj4QBfvkNdEpXPLt3WP9dv+K+hD1NTqQeLyaQDjNdN4GFfvjNeyLyfWg4id/GbH6iipZSsJdq6uW9R+tv2sUdafUj0XIuzX/ZwfGWZvvfFeuLk3arwtbf1xK362a21KwlrK8t5yf8Ayf1KupLqzl3lWsEiliKIkSvC43VRUUlHznCjjhxUMro/lihzHA/oySp9YqN/8Vc5r7zsWo56SDbzlejZ6Wnd4IVcKtqor1DcuFKUoC6lUFVxUApitFt6FZZIo20ie4t4pTkgbkk8KtkjUDdZtR31vWrX3FiZrV3Xz2lbmm/9tii+PSUn2VSo7I1orxGXk1yb9zbbZVha3i5oyRxk84EyEV0WT4wD7/qIrtVqxiOXleCLdzkFVBGclmdhwFRPacqm4S5XzJ40kU5zgzKHIz24INdZgso7q2EUiI6so4gHOQOPbXj16zunLpY+mo6ZJy4et/UjuyuWUZfch2gk4YqAhgucAlSVxcmMQvkAkbrHhxroGyLxnXBILAa9XfnTurz7K5ORp0t2PIXd3ubXe3Qu7u57CumOzSvbZYEhwAOiRwA0I00FZTadrGlOLTdyO8qtvSW/TNwYELADEW+QNAf8PaSQBWo2Zt63uiVS6u5LgAkLl4ZOixQssBXpxb6kBsFWxoWroL2SSjDKpwMaqrAjIODkcM4PqrANkRRsJObQsmd07i5TPHd7KjiXAFBuZ8eeXC0aLa9znK7xhmGmCTzEak+Od72VGdky7s8Una5Rj2AsQPvrp39KyDF/DIONxaMni0UmPukHsrl9rFmGUjjGI5I+3IdC/sXeNelp5N00zyNbT4arRP6Vhspt9Ff00VvaATWau08gYqtBVcVIAFKqKYoBSlVxQEfTyebRY6WUoyTq0lsn68oNe6DyUbQbjFBH865T/wCPer6JpXxcvabUvaMV8H9TzHq5e44Jb+Rq9PnS2EY/964dvYLcD7a2MHkTl+Newr823kf7TItdqpWEvaHWPZpeUV/Nyr1Mzklv5E4/jXsrfNt0T7Wkavfb+Ri0HnT3z92/boPshz9tdMpXPLtrWS/8j+CS/gq68+pA4fJLs8cY7iTxupR/wyte+18m2zk4WaN8+a5l+yWUipbSsJdo6qW9SX+TK97PqzQwcjbFOFhZeJtomPtZTWyt9lwp5sFvH82CJP1Vr2UrnlXqS/NJvzbKuTfMooxw08NPuquaUrN5IFKUqCBWeG9kRGjWSRI5cc7GHYJJjhvqDhqwUqVJrbBNxSqE1WoIJByT5WzWIZUCSxyA5hfJRXIxvrg6HtHA48DUf/nsHqHZSss9q6KrMjosoLRMVKrIqkAlCR0gMjh2itpVak4KLbaht7rlnJtW6GKlKViVFKVTNCStKqqk5IBIUZYgEhRwySOArMbOQJzvNSiI8JebcRHq0kxun21bhfQWMFK2Oz9hzzbpjglkEgdkYLhGWJgshDthcKxAOvHStxyK5KyzyQzNbmS0eUB2Lqm9HqGZV3w7KDrlR1eNb0dJVqyUYxfi52duWfJXV2WjBtkWpUkk5LSTXF0sKxrHaXckbb0gQRRGaQIxLf2aohJPYvXVJ+R8qXEEBkt2F6CYLhHMkDboy3SC5yNOrHSFW/A1t1F2va/Lfh/fHmT3cuhHKVu7Tk8zrdtziqdm+eu6TzvwkkZ3TkboHNk6g8a3FlySgAtjNduh2jFC0EaQEsJZd0FXc5URhnRQeJLHgBU09DVnskvNpc+Hm+uAqcmQylSuz5Nxxi7knM0q7OlSHmoiqPKXcqJGLg83FjB9Z1018/LvZkNs8SQrOvOWyXLmR1ZsTeYhVVHNuu42R3ik9DUhTdSVlblz3cf3T58g6bSuzl3lXh3rMN8ncRt6mV4/vcVyquyeUGHesJh6Ko/0JUY/YDXGq+u9m530zXST/ZM7tI/B8S6gFBSvfOouqtWg1XNAVqtW1XNAeTbVzzcLv2Lp846L9pFbvk/Bu2aL1iPJPXnfL58f31DeV11looR8aRHcd29uID4s32VOtnECNFPye6/rCKc48a5az2OmitzR7P5URCIWsjslxDeNFCCjFJrR+daP4QdFZYpRze6QMrKmrYO73XkHtgPGuvAAV8mcpMrOxHRZXLDrww3Wz7a7x5MLoTRQzK26spAP91ipOD35GK49XTTgpI9js+vKNRxefod0k2sEjOmeiT2nQGtNyQ5RQXDyAXEbsjHf1GU0GhVeArxbYWW3AYRvdRsOm6tGGQHGgRyN4ceGunXpWmtNm2skgmaC5yeDR5BOepmhyGXhkZ6q4qaueva/5UTL3/G+3NPznMnEqBcjv3WxguMHogn7q9lztYOu9pqAc9unGtTHcYIhjgMZxugFt0RgaajGceqsVxsgomS5LyOFMY0jVuBMYxkKew/ZWc8YNFZO7WTgH9J2/D3luvHmoJJPpyqB9kbVzzZyZyuRumG48OjbyAEdZyQDUg8vV0H2rIoORbQw2/dkK0j/AGyEeIqOWcmSmpGQ6+AO+oHtLH1161BWpI+d1suKsyQ8i7nftgOuJmjb1dIH2N9lbuoZyBm3ZJI/SVJB6tD+uPZUzrtjseTNWYq7FUFVqxQCrqoBVRQChqtCKA7rSlK/KDwhSpnaQ20Gzre5ayW8lnnnhcm4nTVHlKbqISM7iqNAOGday7W5GrJeCCA+5ud2et8IZCzmJ94qbdmJyozjU5I17q9D/wDNqOKcWm3w4V7+NXW6S9Ga907Y+7kHpUqs+TUDtK4vDJa2cMb3NwsDKzTO7qIYEc9MHcB3+HSHbV78kVke2aCZpLe/laJZHQLLC8e8ZVkUaFgqSEYxnd7ME0XZ9Zq6Sfk1ffhvvtfF9rjupEatrGSRHkVGZIArTOMYjDkhS2T1kHh2V566RYRWqw7St7cXO9FauJGkaNklNs0g30CgFTv73VgjHCtJd7HhQ7MYJ0b3mfdQLuRIeegSXi3QBEh0XFbVOznGKcZJ4znF+Pgxjli5LpY3+72NDabJeS3luRuc3bNGsuWIfMrBV3VA1GT2isOy7CS4kEUac5IwYhcquQqlmOWIGgBromydiqzbUslKwR85asrEnchiWR5C2p13VHWeqs+x5Rb7YjtUt4IoGgMcMnNo0ssYgllFyJwMszshU8fNxxznpj2UrwcnZN8Ltnxcco46LG75l+52v5fM5UmvDXPDrJ9VbHZ1pG8MztJIksKoYYxEzrISxD844GIwABxxx68YqUbA5ShXujMWtZH5qEX0NtGwtRE7qEeMLhVbGNBk47gRs1s5UfaSSyrcvcbKFyswQRc4iK6oWiAHNt1EevrrKjoIStKL4r8SeNsStfxXu+HGLe92sRGmt/P+SAWOypplLxwTzKvnMkTuoI1Iyo493GpCeSbTWlrLbxSSyzi6909Ibg5qQIhy5Cx8GHfmtxtW2uZrSx9xc8YRbCORYpOb3bnQSmfdYYyd7VtAd7t11u1XdNiwqC8bQbRuInUMRh1M8gDbvEq/2itI6OnTUlNSa4L3tZPMH4XZ8na+cEqmle/T6bEftdgTvcG1ERE0eTKjFVESgAl5HJwEwynPXvDGcivW/JOYTQw5gPussIJ1l5y3crneAkQHUY4Y6xU5vtpwrtCdXaADaGzYFSSQ5t+dAYCOcoQRGwAzqPNA6xWnuNotDNZrI2yooob0Tc1asWEKnCvJK2SFVgzHt6OavLs/TwTu27StusLiSs/OOb332WGHSivX+S/kTsH3PeCGSS3llntLtJIFYSNbMBCy86cYVyCeHYaj+1OTCx2puYrqK8EMqQXCJG6iN2wBuOzfDLvFRkAA72RXu2JteKHbD3BkHMNc3rmUBnBSYSlSAoJI3mXqrw7O2rHHZXlsWbenlge2IVsHmpd5mJx0Oiq8e2qyenlT4GkrOpbxO6tFNPfPE1zx0sHw2t5m4XkGu97m5y5N5zJkLC2JsFk3OcFu0/HexpvZxqNM9GrbKBFj2XPLJczI08sfNb6bkDxzosYjBXox7yjeBJJC4GMVdtLldDcgSyS7WglEQSS3gnVLWSQAgSKS+Y1J1Ix1dfE6GfboNlb2wVhJaXMk4lyCpDs7gAcchmHsq9Sppabfd2tbG7vaUWrrObJ7+mxLcFt95RJ9q2tnJtZ4pEMIUzNKz3BSK5uXWJ4ULAfAR4Z+B1OB3HFHsqNb2OCewjs47yCSGJ1ne4iNwc83PDIT0T5q7va6k8a1W1+U8E8wuGsI2lcYud+4laOX4NYwUQACJgFGG19Z1rwbc5QGZYY44ltIbTeMESu8hR2YOXMsnSZsgY7KirqqCcpeF+K6tHdNrDvFWxfZrPJ3uQ5xy8b9P6N7Z7EjjgtoJkQTXu13ikk3QJVt7aQW8scch6SK0uBpjz62XKq6t1W6tpJLT4NHWyto7CWOS1lj/qszhMEMCN48DvaHHGG8peUUt66PJuKYlKoEUoAWbeZ9WPTJxqOwVmveV11LGYnlDK6c27c1CJZI/QeUJvEevJxVfx1CEZQgsWSTtuuGzTXFHm75v5YQ7yKul94+BJeVu1isdjHlY7e7s7R7zCLvTIDGrK7kZ3VXOgI841v1Nx76OjhzsxrZgQV/1EW3uYY3T5gbf07cE9VcnvL+SVUV3Z1gTm4VOMRpp0RgcNBx7Kqdpy83zPPTmLhzPOyc1js3M43e7hRdrLjcnxWvFrNvyqzi/wDa22x32fT5Ervrpl2JCI3dEG0Z4jhipZDz8qBiNSOBx247K20tsbg7OvIpYFt7KK2S43pkjFq0DqZt5Sc7zKN3Qa7q9RzXNd84xk4znGTjPbjtq3Fc8e0usbrhirXtmGU1h46r5lO9/j5HQr+7iD7XjMsI90LDJB8KnwzrzkhWLX4RsuNFzXit9txx22zW31aSyupzPENZEhackHd70Ax41CqrVX2lO90kt/nU7z5PHkO9f353Og3O0bOL3cUumnbacM5RRbyKkTsXZI3Y6s5aQ4OAAF14itJtHb0bJs/d39/Z4+H6OPMlhdAhJ6Wkbe0VGapVavaM53SSSfS/+rj5t8/oQ6rf377nSuTu0RNPtC6iS6KyLbFFh3fd4y4Dc1H0lK5Uk8dAO2tLy92dGsUVzm9juLiRhJb3MivcGJQQJiB0kGQowe3QDFROGZkO8rNGR8ZWKMB85SDVJZCxySzMeJJJY9mSdeFaVO0FUo8Eo3eXfkm5OV1i/O1r7FnVvGzX3c1vKOHftZ062tpwPnc0279uK4UDX0G65BHpAj2jFfPbrukr1qSp9Rx+yvc9l5+GpH3p+t/odGjeGi7NVzWPNXCvqWdpdmqg1Zmq5oC/NU3uvs492KtzWk5WX25HzYOGmyp7RH8c/aF/xd1RewSuaS3n5+9R9cPMHUdkURyg14HEe9XTo2wg7oyCe/oknuGhrmnIqLfmaTGkcZ3fnOQigf5ZlNdJuPNI6xzoPVrgjHhXFXkd9GJzflfHmVz2M+df7xH3Cpb/AEe9vYWaydt0F1ltnJ0SXztw9xKH6RqO8poSRIR1nd7yzucDv6/ZTyYbMJMrAHRkXI45TLZB/wAQ9lRG0qLTOhJx1EWuh9e7Fv0uY1XO6zKAVzwkXosp9Y+6vRYbB3id1lQ56Wh148ceuuF7K21NbuCGIZWDAng+Mcew6D2V0rZnlPTGXjkic6sAN6Mt1kHiBXnui47HuUq+/Jk/stmCJsnBwMnTGT31E/KLytiso3mdhu20bMVGN6SYrupFGOtjk+0VqNseUd5ehCjOzaZwePAYU6nHacCuYeVTZsnMb8zFnZJJN3JKodxifFu0+qoVNOWStSq7XWXY4pt3aTTSPM5zJcStLIc56TsZGA7gSQO6vXs2fDL17p9o00+/7a0V63A9mSfWf3VsYX4H7uwnP7a9mUbRPmlNyk2zZbNmEN4DwUSSRHuXfYDP+7XQ1Olcu2s3wzn0pHbv1JJ+810LYF3zsKtnJxut84aH7s+sVMWZVUbCrhVKqK0MStKVWgKiqGq0NQDulKUr8pPCJns7lK1vspUhuBDcLfPvIAjSG3aNyTuupwvOFdR2V4uRW3xFfe6LiR2DxTJLKQ8rneTCjCgkjKqOwVGaV3fj6vFB/wDrtZZtjnb9zTvHj3G/5JbYjhSe2mWR7a8jRHZN3nY3jJMciB9Dx1B9EceB9t3yoSFbaK1WXm7GdrkvLuh55n3gwKxnCpuu69uG7smJ0qsNdVhBRVlbZ2ylfitfpfIVRpWJnLytt1M7RWTo9/DNHcM1wSEMwOTEoUjd3mLHhnurw2HK0x28ULW1vPJaFzaXD7xaAuwbPN8HIIGNQOiuhxUapVn2jXbumlvtFWy7vFuqvfqT3sjfXPKqVpLmTchX3xjEU67rkKoQJmM7+jYycnIyTpXnHKKcJCocA2TE20m4vOxg/E3z50eMDdOmAB1VqaVi9VVeeJ/9vi/fPmV431N+/LK75wyi4KOyBG3Y4VVlVmYbybm6xy7nJGeka1s21pmd5TNMZJlKSvvsGkQ4BRt3GUwB0eGleKlRPU1Z/mnJ892HOT5mW3unQELJJGr+eqyOit1dIKcN66w4qtKxu9itygFK32w7NPcd3cOquUWG2gBGQss8nSkHY6ouh/vGtlFY29nbQTTQNfXF8plig554YooNN1iYwSzsGU8DxPDGT109HKSUm0lbibd8Li4Vsm8vZIuqbefvoRClTXkdZwT7S3PcpjhkgkaO2lLSYdUDEgsAWXeV8d3sGS5tVuLC4mksItnPbc0baVIpIBMztutEVf8ArOoZ188dlaw7OlKDkpL9XJ54Fd5tjDxexZUrq/n8iC58KvjiLcFZu4KWP2CuqXAlaFDs9Nn3NmLdVktTHE8/Obp3zOr4LPwPHJI4Hr8HI8XB2WyQSi3mj2kysWZIsIYk3o2Mg0bfYaYzpW67K8fDdvwt3UcO1sRd7PffHkW7nNv4IHs7Z0kzmNF3nWOSQpkK27GN5gqsQWfHxRr3aGvGK6Byz2gYLyzLMr3lokXu6VV3Q7MyELndG9mMya44SDwqL8trQQXtxGoAVJ2ZV6lVwJAo7gHx6q5tVpI0k7O7jKz+KuutmrNPLyik4JfBmoompxkDUAnU4z1kDXA7q6x7mthtFbD3Dac1d23OtIULShjE7DmmP9SoER83XJzkVHtozrdbLuHMFtC9jdRpDzUQj3InKx82TxYdJtTxIB4it6nZfAn402uLFnvBXavjk8P/ALLOjbn1+Rol5P8AOXLW8E0N2EiaUTjKRsqIGcDG90gTu8Tk14tjWAluI4HY2/PSJHvmMsUL+ZlCV0JKjj8bNdUt71k20iKwRL6wikZcLh2SKZoyNMgjdfhXK9syzNMWmMvPHG8zqUkO50FbGBw3MAj0anWaWlRSkrvxyTX6bKzte7ez+7ZTgo595t9j8l9/aD2UjmMQmYyygDPNxKWWQBuAbMZ8Hr08jOS8V3E8jySxM87W1kAUCvOLeS4AmypJG6F80jXI6xUku7hWtJdrAqHuNlixkAxkXRlWCRseCpjuQVrhtCKxsrFZIZJ5SW2igWcwbkhfMTSYUlugwGD6Jrrjo9PSknO3DZyu75jKSjBYvyu9ty6hFPO2/rsabkVsuJ1u2nieU2VuZxEJXhOY+c5xCycD0QO7FZ9qbPt3s0vo4JLQLeJbvC8rTRzJjeLxu4BPDGmnRbszUitr2GG9uLiOeCNL/Zb3MRMkQ3LpjGTEyucc6W6e6Rk7zaaGo9yj20L+wRpJgl3aMVaEkql1G4wJY41G6Jh18ODdqiolSo0qLg+FySlbCu7Sunxb/ld1HmsC0VG3mbeXk9Am1LreiU21jae7BbDzXKwRkIR1rnfbHWcZ0yK82wb1Nqc7ayW1pC4t5JrSaGHmmiePGEY5O+hyOzzT3YrtTlZEu0vdK/6xBPZpb3SAFSysCJFAcDLLhD2HUZGcjy2e1LOxEsts9zcXE0TwwiSPm0tlkxlnYgc44wOHHdxpkmtHUoxm+GUVDinxrGU9rdcYSWzzgteN+Vru5rfJqy+74t5DJvb6phOc5uQodyUp1qp1J6uPVW55dxSmxhaWWK/cXcuL+LcaNYCmFgd0A6TPlsYwN3Ge2L8ltr+5JxLuCVdx4pIySu/HIu6wDjzW4a91e7aO24VtXtLeGaOOeVJpnllWRyY8FERUACqCq9LicYrg0+oprSSpydm+LGf9tsWs8rdtOPLcyjJcDRHq4Nyki3LqdfRuZ8eBkYj7CK7zXE/KLFu3847Wjcd+/DGx+0mu/wBmZ2rTj1jf0a+pro34mvcaLNVBqzNM19oegXk1UGseawXF3ukKFeR20SNVLu3gB1Dt6qAzXl0saF2IVVGSf2DtPdXPdqX7TyF/NB6Kj0UHD16k+LGpLtLk1e3TZMXNKPNWR1UDPXujOunXVIORjxsDJJEoHHDFznB7gKrLGTSKNjyBtN2PJGrEv6l6K+B1uPEAd1SkvoevO+Qe0nA+4jWvFs0CKBn06WQoA4nd3AF8AKpZSEox4ksFU8BnOu6OsAYHtNedJ8V2ehFcODHYcn2uyEDhBkFj8Ysd8Lud4DfaK6LyU5GLaAKF0JJGnHIGT31zbZ3LuHZ87QzQSyr0X51d3eTTAUA4IGmpBPhXTuTvlO2fLjF2m6cHm5A0UiHTOOdADHwPV18a1ejlKknF56dS1PXRhWamsden9G2veSAfUDj1Y/nIqln5PA2pLr2jeIHhipxsK8imQSRSR3ER4SIwcA8d1sea3cda30bfzjP315rnJYZ7iUZLiWbkT2NyUSDzVHfoM+s+yod5YdkGQhOAljeMHqBIwBXRdvcqba1JWW4gSRd3MPOx84pZQ6hk3uhlSrdLGQwPXUD5UcrrS6Ko09qQXCpGJVd2c6DO7r9mNeJrehpalR32XU5NTraVJWbu+iPknbVi8MjROpVlJGo0ODxB6xV1mdF7gM+I01rsvK7ycxXD70NzDGzEgxlt9AM6hAOGMHgahG2eQr2oIMscuNeim6eHzzj19lexOm0j52NVNkXvuIPHIPt6/YTmt3yG2oEcxMdJD0e5+zwIHtFamZCVxplToO3tHrGPZWtlBRvtB7dcZ7uFZR6GtRHY80qN8kOUAmXm3PwqjQ/KKPjfO7RUjzVznZeDVwNYwauBogX1WrQarQg7pSlK/KTwhSlKAUpSgFKUoBSlKAUpSgFKUoCS7A+E2deQjz4mtrxV6zHGxSZvBVIJ8a2lneR3dvbYu4dn3mzV5pGlISKSIbvNsshBAYBV0Odd7TBBqI7I2i9vJzkZAbddCCoZHSRSrI6HRlIPA9grxivQhrVCMVa+OFrbClxRaaymm/kaqpZffmdJn5RQptGzla5Wf3LaNBd3So5jeQxyjeXdGXyzfFBGo9UI25taWdiHnmnRZHMYZ3ZQN47rBG0B3T2Z1rXUquo19SsnF4Td8N9Es5z+XnzEqjkTDYm09nwPHcqu0knhVfgA8JikkC4JMmQ3NsdSNOvo40rwXHKQSW11C0Z372992BgRuREursuDqdAQDUepUPXVOHhSSWcJb8Ss36B1XyJNLthb6S0WZUikheOKe9aUKssCvn4VWXAcLnpb2pJ7dNVypvxc3U0w82WZynUebHRjJHUd1VrXUrOrqp1I8Ms3abfWysv5zu75KubaybyblTMbmO6+CWW3hWCMhDulVWRMurMctiRtfCvAu1pRHLEHxHdOrzpuJh2Vt9dSMoA2vRIrxUqstTVlvJ5vz6qz9Vh+4ccup7bna0zukrSuZIUSOKQEI8aRklFUoBjG82vHWse0r+Sd9+WR5nwF3mYsQoJIUdgyTp3mvNSqOrN3Tbzvn5kOTLucON3Lbuc7uTu57d3hmrKrSqXIFKUqCBSlKAUpSgFci8r0W7eg/KW0TeJDSJ/yiuu1zDy2RYkt39KOZCfmMjD/AIhr2/Z+fDq0uqa+V/4OnSvxkAzTNWZqm9X356ZbeXG4ucZJIVFzjeY6AeHf3GtlsraEFmu+4EszDMjc5GjNngqK7ZVR1DTt45NR65HOyYG+/N6BE0Jb4zNJkLGvAZJzxq68tBEFDJHmRsLbxqU3z/51w/wkmuPNKjXrosZJWSVycvImHwcTdEZZjI6CMYPHTBP7qjd1tpruQKpATPVkgnUZ3uJ0zr3aVJ+TdhDBhpQhkOCg3QLaMnqUEed/eI8MVlv5FklG6FAGekMbrHTUEfFGmPGsK9+HL35HRRtxYW3M8s9vvBVXzIVx4ue3wyD4isuzlG8ExkA5PZkgjh2Eb1Z7qVUTcGDrljnJ69NP541g2aRvqN7c3nVmO7vHc3sBQudWY9Ed8mdBmudw2gjZSeZMkn6LW9wg52PebGjcDx6j661F35I7UtvI00Rz8VyNfDhXQrRcKNOoe2s6p4V7UYpKx5UpNu5CeTnJmaxYNFctGVIxKkaxzDJ6Jl3ehdxAkZSUMME4wal8nL24vt60WJ7B7fBu7pJEJnCs0YW3yN+3SR4pjnVt2IjKkgnNudXaCD36V4LCFluJBhd3AbeCgO3OtLIoZgcuAxmxkDG8e3XKpRhNptLBrT1NSEXGLaTIjtvyercFjz8gZmJ3ixMvrdsswGnFjUfHkTQnJvJR4IufaTXYGXuz3ddWrjsxW1kY3Zy638i8CnPuq7DYxvLIEJ8SBWik5AkBXimlUIJVZjHFvyO0pLSI5TpqU5pN7HGEjqrt1wQEbq6LfqmtByWRWRl6bDosWY5Xfkhil5uM4GEETwNjUgTDtqskiYs45tvk1uLzql5MZMmcb2B5zAKANOOOytc3J4zxkrneXXzSwz1glckDGDnB0Irs+3NhMmXQZwd7d7x/0zUYs7b3NNz6Kfc0mBcRcTbOCemq/J6nw3j1Yxy1KNndHVCreNmctt+TNyrZWN8jUEEAgjxxk9wqZbFvnPwUyPDcRqC6Mu4WU5CyKOtTg6jTSu1bOjXAbAbIGG6iOrxFeXlnsFb2EqN1LiIF7SbA6EuPMc9cD4CsvYQRggEWdDF0Zd6tmczBq4GvNaTby5KlGUskiHG9HJGxSSNsfGV1ZT4VnBrAuZVNXg1hU1lWiJO60pSvyo8AUpSgFKUoBSlKAUpSgFKUxQkUrFNOqecyJ85lX7zWvueUdrH595ZJ43UA+960jSnLZN/AWZtaVG5uXlgvG+tT81+d/wCGDmtdceVLZy/7Sz/Ntrk59ZjAreOg1Etqcv8AF/QsqcnyZNaVzu68sVivBb2X5sEa/wDGlStfL5bLf4tpeN85oE/Vd63j2PrJbU38l+5dUJ9DqlK5M3lj3vNshrwLXX3hYf21Y3lWnPm29svi0r/cy1vHsDWP9NvOS+pZaafQ65SuOt5SLtuAtk8IWP68hrBJy5vG/t93uWGAfaYyftrePs1qnu4r4v8AhFvws/cdppXDJOVV23G6n9TBP1AK8su152864uW7jPKR7N6t4+y9XnNL4N/QstI+p30+yvPLexr50sS+MiL95rgMkhbizN4sW++rMdwroj7LLnU/+f7LLR+/5HdZeUNsvG6tfATxMfYrGvLLyxtF/wBpQ+Cyv+qhriuKpW0fZihznJ+i/hlvwkerOwS8vrQcHlfwhkH64FeObykW44R3Tf4Il++SuV5q0mt4+zulW/E/j9Eiy0sDpc3lOT4ttI3jKifcrV45fKe/xbWMeM7P90a1z7NWk10R7C0a/Rfzb+pb8PT6E2m8pdweEVqvisrf/IK8c3lDvDweFPCFT+uTUSJq0mt49laWO1OPpf8AcsqMOhIpuW143+0uPCOFf1UrU7U2vNcY52aWbdzu7zEhc4zujgOA9leAmqb1dFPS0abvCEU/cki6jFbIvzRNeHHgPE8KxFq9myV3nHdqf2ftroiruxNze7PgS3h3z0QgYk4yzMck+LE59tF2X8A93Io59yu4pOeYjVwVjGuN7rJ6znurNDFz0qp8SLdc9hmxmJT27o6Z7+b7a9O13PNSx8FBhIHDz3CkeGQa6VFehS+Da7YlBhyQpLjdXTXhlm1OmBnTrqOWmzA3TZnXzgoXC51456sn7DWymud8dfSwi/3VyN4j+8SB6hWSC3MpCKMKuF3ur5ufacd9cFbxT8jto+GBrDajREBI4DrJOuviazJsowXKMWKMsBYygljb77Km/GgIMlx0+bQadKUNld3eEzs9lLGAVPSHFurPcOoVotvby3kbnK4jwsqjeljZpYol9zRjz7pjII016Jk38jc3l2hp1BNvcxqV+N2WxMbTVRwGn3dVZs15dmtlRx07ePr769VdaOVlV4j76xBQJz2vDH/uM49nTNXZ/nNYLmUe6Yx1tbyexZoPxj20YR7WGmaxHB46Vlz1fyaugUFgGO6pYBmxvFVzgsFyMkDXGmaEXPJNaZBG8QCCPbpUX5NROknN5kdouehyfM5qG4kInb55nSFT/wCiYa4G70q35P8AU8ixHEuuAU3RLBbwSb+R8HJNOBnGioza8KgFrs8pfGJzKrS3sbN0dY3kM1uiuDnEcEUG15m83WVQe2sJV4PZkwkng3RZh5yHHaOkK1Vxs0MS8ZCtnpKR0ZF61YdRxmpPcbKKoSLhDKkYka3McmcdHo85jdD4IONQMEZyMVo4b0F9xlMMg1x8Vh3fvq8JxmrxIhO+xj2FEYl5vgijMWfiDri7wOo9h7q2EUhOvfpV88enqzmsaYC+r9lXSsS3c5/y/wBlczc8+NI77Vx1LdRKFPXoZIlU4A4wSHrrRCumcrbHn7SRAN50Xnou3nIekFHZvDeTwkNczU+vOCD3EZFcdaNpHRB3ReKyKaxKavWsi52y42tAnn3FtH86eJP1mrXT8s7FON/ZeAuI2PsQk18tsoydBxPV30r5+PstS/VUb8kl9Tz1pF1PpS68pezk43it8yC6l+2OIivBN5Wtnjg9xJ822kH/ABN2vnqldEfZnSrdyfxX0LLSw953W48tFoPNt75+/ct0H2zE/ZXhuPLYnxLGVvnXKJ9ixt99cYpW8fZ/Rr9LfnJ/0WWmh0OrzeWyU+bZQL864kf9VFrXT+WS9PmxWCD/ANmdm9puMfZXOaVvHsfRx2pr5v8AdssqEFyJzceVfaDcJYI/m20enhzm9Wum8oe0G43so+bHbx/qRCovSuiPZ+mjtTj/AIr6FlTiuSNzccq7x/Ovr49wuplHsVhWvn2jK/nTXEmeO9NK+fpMa81K3jShH8sUvgiySRYIh6K+wVcBVaVoSKGlDQFtKUFAbCxbQVtLc1qNnnTwNba3oD3R1mWsMVZ1qAXCqgUFVFQABVaqKUBbVDVTVpNADVjVUmrGNQChNWk0JqwmpJBNWlqoxqwmhALVaWq1mqxmoC8tW32K24jSHhgkjrIGRgd+fvrSE1JNk2pbm1xopV37Ojgr697B/wANaU1kiRvdj2pEWDjfYlyeouxJcZ7ARujuQVbyllGp4c5BGT86GYFvXiT7K2NqMIw6gQVPWprTcq5PNPUTu6cCsi4P27tb7IpuzWPtAA6thU3949iqx18c5recnNt3DqOZ2fI0YziR5Y4N/PFlVzvHxIFQ7ZFoWuijNHhJF3gxwWCgGNlXB3iS2SDw0rrWydAAMYGB/I7K56MMuRtWnhRMlhdM+klvJbHt3kdT/ijJHtrwcqbUiWB95sgyRqUwbgl2hAjtV1+HcZTewQiuzcQoMkif+f8ArWn5THDxald5Zoxua3chkaBfc9qNd15ODSYO6oI13tx9p/lZhHc91vDhQBkaDhWZWP8AIrOg+4VVkqxBhWU1qNt3G5dWrdTtdW57t+Dn0zj+9a49Yrdc3/3rT8r7b4JJOu3vLObPYBOsb+A3JXowjcib11es47cVjMWDj9tUaLNSQb/Zm0gcrJPNEohWON13spzbs0aYRcso52Q4yo146AVEOXUkZu1dXuZWezzcS84V3hHPF8HAGTKzSyGC3DAai4YkHUVsVjNazb1mS0UqndeKRgJM4WFZI3Vrl+siHSYAa70S8cYOUqcbNotDcm0N/Fgrzl1uSqwmLJC8xZirsBJjeVecLllBAbHfUc5VbMSbRWIIGYpcOWjfsYlFLJnqxw76s2Ig5pd1JI0Cjmkf+sEWhh38AdIxlDp217XUgZzjHj+zWrQillENWZotg7S34l39HSRoZB1h0yrr6iK9rNndHbg95A1rT7SnjMqtG8bM8uLhQcEOsZCsy8Q2AAc+gO+tjA2TnqVQD4nUgd9XB7on+3UeFcn2lBzcskeABFNIijsQNmP/AOmU9tdUiPX7PD/tXO+XEO5eydkscE3tUwEf/wCfP+KuausXNaRqAayLWEGr1Ncpsc8k4nxP31bVX4nxP31SukyFKUoBSlKAUpSgFKUoBSlKAUpSgFUNVqlAUqlVq0mgPbs06keBrc24rRbNPT8QR+39lb+3FQwe2EVmWsMVehRUAriq4pVakCqGqmrWqAWmrSaE1Y5oAxqwmqE1YzUJKk1YWq1mrGWoQXMaxk1RmrGzUBVjVharGarC1AeqzXedR35PgvSP2A1O9gx6hevcDKe0HiPtqKcmIciST0U3B4tqfsH21L7QbjRnq80Hs0GntFdFJYM5M2Nu2rrwO7kDqyO+tLdpz0TqNGTeOOsFdRjsrbbUzDKko1V+i/Zhv2g/fWq26vueZZQPg5ei/ZhgSp8eI9daEERtoj7vWTirRNvdzjcxp3jP0a6jsi40Fc1mfE5YeaCoH2n7mHsqabFutAO6qRViZO5MYpq1vKSTBRt7mVVJ+duQMyRRO0CvHbjODcS6IOBA3tVXfYUgm0rxbZcmWIqqmRFneN3I5m2IMJa6mBBBSNQxAPxt3RiArJ/lYhuSuGcEDqyAcdeo66ymQdw9lae1uMoOkX6IIkIILjAwzAnIJ469tXtdY7KsiptQ9YdrbrW8oOg5sE92GBz7Rn1Vqn2jjsrX7f2yPcs2SMc2i54EbzqD69aPYJEyk458f1iKoa0K7UBA163/AFzivTFfZ66EG1H8+qsG1YlaJwyGVd3fMQODLzZEgj016RXd9dYknrOsmR4jwOv3UZKMOwHJVwWZ3WeQTSn+rkuGw9xzOBjmllZ4xjIPN5GAwA2bDSo7yalC4XLD4GExQndHNWq7ywu5H9vMxluGHD4dSNG032/VIPwlprxEN5WIsd2jgpvPEcqFxJlWGGZvjAjAHZun1e6zfQA9Z3j4mtNy0kHuxD8nAG8d6VwufDcY+uvTsmffOeA6qvEhkiieol5SrfWKXtVomPeCHQfbJUkt5MnTqrV+UOPetN75OaM+0On/ADCsqyvEtTdmc/Bq4NWDeqoauI6CDScT4n76tqr8T4n76pXSZClKUApSlAKUpQClKUApSlAKUpQCqVWraAGrDVxqxqAzWTYdfHHt0/bUltxUVQ4IPYQfZUrt6A9kdZxWGOsy1ALxSgqtGChqw1eaxOagFjNWMtVJGrE70BV2rEzVaz1jZqAudqxlqsZ6xM1EDIzVjZ6xs9Y2epBez1YXrGz1idtD4GgOgbMsTFZxtjBnJc+Egwv2btbmZMxcNVAYduV10rYcoYA1sCuFEaxuuOAQboOPDSsVqjFAcBxjUrr1ccV1JYMb5PUMT2+NT0Rkerq7DUe2pIGtdxySqMUZxxUfFY9hDAGtrsGcRyGP4pOgOhAPVr2VreU6iF3BHwcy4YdRyOINSEQm0uMO6EhihU5GoKkYUj6JqR7GvcaZqB7DBE0oILDVV4kncJOfDBFS7ZNux6RHDq6+qoTuixNrS7/ntrybXmDSwqUkm3jIBApIM7kK0cT7pB5syIhONegMYOCPDBc7mo6Q+MhB+w9Rq7aEqGaF8ywqedWRkwzGN4JFdIxnAZ1JTXTp66ZqJbMRWSTw3B+MYmbebe5vd5neJyRHujd3ASQN3TTTIwarJJp2VhtdkyEZ3I7cafAb5JiwoURsx1MgAG9nXeLZAOQPZBsVs6unfgk/s1qY7IiW5qZcnhmo/wAsrORoNwBvhbm1jOM8GkU/s+yuh22y0XiSfUQD9mleflHJFGsQIOGvrVOHxmZlUntGT9tTLYhPJHYGfAO6dVB9ZJJ++thaSHrB/nxqQNaRyAAdHAGD1EY0ry3Gy3XgN4e32YqbC4t58f8AevQtzWodXXipHqq7nDgnB4Ht+/FQCvJu6yFO+26/Og72ecuZo2VZJCTpzEC8xAmc6mYjGWAkZm0qD8lJiYFOUYpI8cjFcbg5+5a3tYOiOA90zSMOJnjyS3GQPtBV847o6z3dZzWMTSW5DuWl0fdZXOCyRbnzMHX6W/W3spdxFRTlmGvVUX5XbZhnvk5o7/MWwWUgZHnuYlB4E9Jj4EVv+To0MrcfijPAeH88K2iyjJNb9EAae3NXbYs/dFu8Ocb4G6ex1YMhP93eUZ7q8WzzvtnDY78gY7q20ZBOOHUPbmokrkJ2Zx58glSCCpKsDxBBwQe8EGqB623LyEJduRwmVJvW+Q59bKzf4q0O9XBKNnY6U7oib8T4n76pVX4nxP31StigpSlAKUpQClKUApSlAKUpQClKUBQ1SrjVpoC01a1XGrWoCi1KNmtlFPaq+3AzUWjNSPYTZjHcWH25+40BuY6zLWCOs60BcBVaVU0Ba1eeU1nevHO1QDDK1YHeqytWBjUXBVnrEz1RjVjVADPWJmo1Y2NTcFHesbNVGNY3NAVLVfZxGR1RfOdgo7BnrPcOPqrzMa9OyA7SqseRJIdxCBnDHgfAYyT1DNStwdTj2p7kjVWhuJLfVXmIyQToWCH4hzwGmK9VjbB1521nV0PSC5yo7VyDlezXhVlurou4817O4ABdYYnUHHa0IBHtrAF7Z47eXOUufcz2r56knQ/B3Kd4ZT2YrrRieq8v8jMtvIGTjIq5dO87nSK9+MV4uUUy3FqWRt8qumoOR1fbWxstsTx6TwruD/aY2Elu49LeGqdXnAaniahXlWURSRyQh7cz73OlD8DKMZ3iB0Q/AZ0JzrUSeCUXckNnmCETsnOyTrnGN7cTJIHiTqfV2V6LiaaQ9GGQf4SB4DhWt5GcpJraPJQzwK5Q6aocBsBjox14ceHbXQNhctLac7oZYn9FhuN7GxpSOwe5EItmXh1C4Hfhf21bY211DcRvlAUlDBs7wjPAyKGGjqCWBGoIBGoFdDvbETcLjI7FZR9ua0Y2BuOZCQ0aEaZLF2J4Ek8AMk+IqbXCZltTec4UtlgS2GBE0s29M+B8LLKqA7rNJvtujQAgZbBY7iGyvT588Az1KH9mSO+tnybgZIVD4D4wQDldSWyGwOOR7K2WaiOEG8mu2fDImhcN16q/X3kjT1Vl29aLLEFfGPdFsQwGMMs0Uicc8SoFZ55QB29lafbl9hFBON66tVGvY6yEexD7aS2IW5IHQY4AkgHGD1itbtO5mQZjtklI+IJt12A6lJAG93Eis1ncBsZ06A7u+tnjTTX15qQRC15dW5bm5+dspc45qaMpkjqRnXDj5pIrabR25CY23TzgKNgqumcHGvCvZtPZiTLuvFHKvWrIrqR1gqw1rn/KvkFDCnOwtcWW8wVhE7cx0uAMDZVRp8XFGFYy8m1k5gbsaSyDn3jjyitDHNKWd2JPSuZmWNQPOEWz2OCCDXhk5MXlyxMjJGgU83CMlC48zfZj0h4j1aV6dkWFxFbrDFNG8xMksVz0VdfMRpJYN7ekKRuYkx0F90Ssdcb2SLZN4mZZdolVQbzsY1EIA7dRpWUVuaSexzXYdgYbiYOSpD7x3jl8EnKtk8QwYequhbHv4zhN92wRkKM+3HAVz3yi3Za8MyPkSRxIzqMB5Ixh2785HsNTvkRmO3G5EJppASTugFB2u+MKPHt66tTeCsiZm56IVFxpx7O81dZnOQDvNqB2Atpx6sDJ9VR22iMrEyzPIi55wRHmrSIrxVpjrPIOGF07QK9pvwTzKN7mTAwqlDduD1kyaW6nHAgseICkVoyho/KfYskyy5XckjSNBnpAxLrlfROc58fXEN+pzyg2CnMO5QRNFGzxTm8muJJmVS/Nzc+oLOwGMgkg48KgGa4qqtI3g8GgfifE/fVKq/E+J++qVYClKUApSlAKUpQClKUApSlAKUpQA1aaqatNAUNWPV5rG1AWKda3/Jpuiw7GB+kP/wATUeB1rc8mn6bDtUH6Jx/zUBJ4qzA1hjrKtCDIKrVFq4VDJMcvCtdcNXvvWwK1Z1qrZFzE1YytexYM1lFpWbmiHJI1bJVpWtqbSsUlrUd4iONGrZKwstbGSCsDw1KmieI17isTCvc8NYmhq3EhxI8TLXt2A5WdMZy55vI4jfIAI9eKxNFXo2TlZkYAkhxgAZOvR0Hbg1aM8kXOy7KXcUDJY41JYs2e81sFbPo+sZrW2ZIUcAcYPXk/vrYxw6akjhp2epa7ShhubUFTurE2QQy43VYHqYAEMPnA1zbltFzaFFJiiIIktJNebkzlHtmyeicnQHAxpgaV1HdA1yG7Rkgjv0NQ3yn7PV4gTkSI2Yj6YJAZDjQ6HI68+NRPYIx8gttQi2jt3Rd0IN7QdJz/AFjHvLZrbXfI+yudQTGTroRgHtAbh6qjm0uTfuZ91lJgkIEE4OebO6Pg5Meac5x29tWPZtEN5ZpAOwYzga6Z0zjx8KlKyBsbjkEsfm3soHUu8c/rVKtkMsESRAlljXVid5mPFnYnizNk+uohb3ckmoGRoC2h4a5dtBn2eFbOCJmwuGx8Y4Op7uxagWN7d7ebO6imQ93VWIXN048wDvJrLslli6OMHt7T41vIrjP76kEabn1PTxjx/nWtBysvHMlvEPjXE0p8II9xTw7XWug3FmH1bONMYxx8CK0+0NkA3MRxkLHKc9haeDsHWAahko8AuZFyVIJB83JzoAvWO6ssHKd4vPjdR6RBK/SFSi3tAPiDQk72hPH7Dqaz82pGCo16sdtSQa/Z/KeOUaMM9n/Ssm0ZllRoyRhwMeshlYDucf7ta7bPJdG6UZELjUYHRJ7Gwa0nOOow28CmUbA3j0jlTr8XOR/iqAbHY9vvXME6c3uR217bzne3SDK1rJD0T53ShkGnD11sds2aSkGV42RM/BlsJ0l3Sd340mCRk8ATjiaj+zuTnPM0nuu4hjdy5iXm03GbV13yCd0tkjGMAgdVba35PQxsN0NI3nc67vK2OOhc6a9lVLHGtu2e6XQDnDDKwTqLGJyAe4kA+2pPyQicKN9ZJ5pgG9yqzx2sC46IupB/WyYIJTXj5rYydZfx9N27ZJG/3iamPIC5Elqj72+SCmh4BNCNOAJ104jFY6eV20TJm5Sw38c65IQDEMeY4UI4AbuC2PV4Ctpa2KJ5sSID2HUnrJx11dbRAYJGuMAaDA8OqvScHgD7V/fXWZkd5bwRmHDhygOQwY5jJO6GwTgjXga5WVrrnKuENDIrZHwTHhnUAsp07GANcs5quHUOzNYvBF34nxP31bV0nE+J++rasWFKUoBSlKAUpSgFKUoBSlKAUpSgKGrTVaoaAoaxtV5qx6A8zmtrsF8TL/eDD/dJH2gVqZa9ezHw6N2Ons3gD9lATmOsq1jjrKKAvFYb27WJd5jjsHxmPYB115dqbUWEY85zwXs727BUbnkaRt5zk9Q6gOzHUO6oZB75tuM/9moUHTpHJ7M6VWLbIHGLe/zMf8tawmsbCqNXLWJFHykQf2LfWA/eteyPlVEBrDJ6ih+01DytWms3RiyjpJkzPKiD5OceqP8AFWOTlHAfizD/AAp+Oocataq/h4+/1K9zElkm3YD1Sj/APxV55NrwHrkH+D/rUYNWGp7mPvJ7pEkfacPpN9A1jO0IfTP0G/dUdarDVu5XVkd2iRG9h9P/AHH/AHV7Ni30QmTDgksFXosNW04kaH99Q80DEcDgjUHrBGoI7wamNJJ3uO7R9DWB6WPRA07zrW0kfJwcDrOOHrJ0/dWj5LX6TRiUENziJwOCHx0wSOBGDWzSUZ45I6+Pf7a70VPYuANCT/hJHtC4+2o9y5jBtiSQFiZJg3EKI23jw+LoT6jW73yeutft23EkMkZ0WaKSJj2b6Fc+rSkldWINbyL5SJOnMuySdR0yrg8CN7q/aK297sBTgId0E7yde6MHPHq1H2Vyaw2XIqJIhKuqjGDqMdXeKmvJPlhrzU+EkA3Qfitj7jrw7qlXSJPTbf6vMUdeBJQnzSD1rnTFSu0vUI4LrwPjp1VSaOK5TDAMDqCOI71PVWu94XjOY5N9eoNxHd39VAbOaJW7M1SDonjWrEsi+cjDHdkfZWeC9B01B8KCxv4ZQcDhwxWMsDMnWeZyPr468dvIDg94rymci7j7BZAn13MI4fzxqGESEvqfGqc6P5/nxrysrPwONT95rEbCT01/dUg9quM8dPGvHeW8bnQDOunEEHiD3Gi2RPFye5R+0167aALwQD+8Tk0IueW1ssAjq3SMHQ9w3uDjr7fGvRLurHvkgdAEtkYwBrg9lefbPKOC1GZZkUnRUzl3PUERdWbuFQ/brzbQt5VVTBEYpeYiziSV9WjEuPMQnA3NdDr2VWRZI0TxoSTvx6knzl6zntqUcjdlCGNnDqTPJziLpuxruqhK401KlsntHr4Uhzr1HBrr/Ia9U2UOCRupzbLnK70REemeG9jexw41yaWlwzbuJQtkmKwqdWy56ulgHwHWOPVWVMDgBH35kTHDrdAo9ZFYIXxwyPVrwxWYz47+uu8oebakfxt7G7kHtGmu9UBmgBJPRGSSBkYGTnFSnltcBLK4xpm2kRO7fUog9ROB2DA6q4Wa4NVDiayaKN0eiTifE/fVtVY6+s1SrmgpSlAKUpQClKUApSlAKUpQClKUBbVDVaoaAtNY3rIaxvQHlmrLbtp4H/rWKaq2h40B0O3fKg+koPtGaxXqzthIYJpGfQOEO5qcYVjoTnTJ0rzbJn+BTuQL9Ho/srqVjMYdhG5UKXgV5V3gSuY7rgwBBI0PXVoq5WTscn/RK7By1tOWOpO7n7jqatfk7cjjbXH1Tn7hU0TyiT9cdsf8Eg/+SvXBy7lbjFB6ucH/ADVSSS3HHY5xJseccbe4H+TJ+GvO+z5B/ZTD/KkH3iur7W5WtHHG3NRtz0jIRvMN3ETyZGhz5uPXWpflySM8wo/zT+1Ko5RTsR3qvY5u9sw4o48UYfsrE0Z7D7DXQJeXHbAPrv8A9deaTlkp/sD9YD/yVaxfiIIRVhqaycqUP9i3tQ/srzycoYj/AGR9kZqeEXIeRVhFTqf/APrgjt+B4es145UH/h/sg/FUWJuQ8irSKk8ka/If7sP4q8skS/JY/wAMf7GqRcj7CqVuniX5PHqX99YjCvofZ/1pYgpyf21JavlGIU53k4rkjG9j0hofVXYuSl0ZYY5DxkXez1HDEaeyuNmJfR+w/vrqnIm9VLSBNSxyCBj4KNp3Ad8nODwCjJYkDTUi6qKCbk7JFoUJ1ZKMFdvoTDeAGSQB1knA9Z4Csd0iyoyhly6sow4J6QIyoB1PhUq2LZrowhywGd456OeOX6/AYXsXrrdz2gdSjRJhhwA3M+BABNcUu03fEce95PUj2RG3inn3K69b5OB7MjKpjGGRirDwr1z7HhuRqN1u3v76kHKDZvua4ZXUhZOkjkeeBxbPAvrr3t2EV4JYUOqtukcew16VKanFNHj1abpycXyNbabFurc/AyiVOpGJ9ma2MW2bpNHtm09FlYfaRXrtL1l6t4d3VWwivd7iMeOa0MzwQ8qCPPinj7cxOR9IDFe622tFL8YetSv7KzqoOufVVk9qp1IB7MgH7xUAzKVOiyKc8BkeoaV4JJQLhD/6NQD/AJ8Lfz49fVnjG72cez+RWq2jcf63b4Gd6Cfe06ke3GvtxUMI3Mu0miPmuw46KxA9eK89xyv3R/VzN4RO3qOFxmvSYsnPRXwVR6sgVnSFRrxNAR+blZdSaQ2Mzf3nxCntJz9leO6sdoXP9bcrZoRrHB/WEdYaZtfo4qWSXYHAj7q8/O51JHt/ZSwuR7ZHJGGFt8KZH+NM5MkhPbvN66kkC4AHZ99W73qGmlaTlLykW3G4uDMRoNCIVOBzkmevXReJyNO2GibnKuW8KpfXCpjcE5I6gGdVeUDuEjSD1V7uQdyxmS3Gd2SZHI6l3AzMfDArybXjjeQuz7pl6eC6g+cy9fzftqbeRbkc95dc7EfgrdWE8xIZBvoRzSbvGYqeHUDk8RnjlUVN3lix006bq2jHNzquzeTM8qLIqoFbzd6QI79hjTB3we0leqsV/seaPIeGVManKHCnrKuuVYeBNTbklcs9xInEQrGFzjCjpDcUfFwVNSyW4zvAg9ELrjOCc/s++uFdp1E7uzXQ9h9kU+FLKfX+j5E8q+1cYtl+MFlk+aGbcX1sCf8ACO2ud4r6A8uPk7DyttCInmuaPuiMFV5oRli0yAjWPDMWHxd0nhnHIhsiD5f/AOrFXStQqniR5lXTSovhZH6VHvfx/Rj9jfip7+P6Mfsb8VdJzEhpUe9/H9GP2N+Knv4/ox+xvxUBIaVHvfx/Rj9jfip7+P6Mfsb8VASGlR738f0Y/Y34qe/j+jH7G/FQEhpUe9/H9GP2N+Knv4/ox+xvxUBIaVHvfx/Rj9jfip7+P6Mfsb8VASGlR738f0Y/Y34qe/j+jH7G/FQG/arTWhO239GP2N+Knv0/ox+xvxUBvaxvWl9+X7I/Y34qodsP2J7G/FQGymFWWx1rWNtNj1J7D++qLtBgc4X2H99AdQ5F7Fe5gLK8ahJGjIbfznCvnoqdOnXUooP/AOGfZx/rnhnjWT+xDSSM6EnzsDIz0T66+feTXL64s1ZY0tmEjBzvpKcMF3dNyVeIA9lbkeWC7+Rsfqrj+Iqt5J4Jai1kmqch5uPOW/0pfy69EHJGZT58Bx/ek/LqCf6Y7z5Gw+quP4iqf6Yrz5Gx+quP4iqtSYcYs6JtXkvNKkahoPgpWc5dx0TFIgxhDk5YaHHXWtPIS4xjet/rJMf8KoePLJefI2H1Vx/EVUeWW8+RsPqrj+Iqjptu5Xu4bklk8nt12231sn5VYn8nl1/6Y/5r/tjrQf6Z7z5HZ/1Vx/EVU+Wi8+Q2f9Vc/wARWniLcMTdN5Orvst/rj+1KsfybXmOFv8AXgf8taY+Wa8+RsPqrj+IovllvB/Y2B/yrn+Ip4haJ0D9E7jAG7GSAB/WpxxWCXkbc/Jof82P9pqEr5arwf2Gz/qrn+JrKvlwvR/YbO+quf4motInBKZeRF38kv10P4q8svIW8+QH10H460P+nO++Q2d9Tc/xND5cb35DZ31Nz/E1PiGDbvyDvf8Aw+f8+2/NrA/IK+/8K311r+bWuHlxvfkNnfVXP8TRvLhen+w2d9Tc/wATUeIYNlZ+Ty/kYKLUrvsF32mg5tSetikhIGh4AnThXauRPk+jtAkZYXFxGnTkKjEWWMhSPOdCzMR3eNcRi/pB36shFtsoCIEKnMXe5luLt/reS/HXPWaWP9IXaEUkkog2WzXD77ZhuiFO4keExdAhcIDrnUmuWtTqzxsvM9TS1tPRzdt+XyPp5ZgWECecqh3bAyEJKqPElW9hrBtbawhdYSwLv0lB4qqaux7gK+V9h+W+/tria5C2czXRQmOSKcxQiMyFUgWOdWVfhG84seGtebbPlhvbi4e5ZbRGlhWBo1jmEQRd7zQ8xYE72Tr1CuV6Krbkdy7T0/v9D6u5Q2Ed9asp88FnikI/q5BndPzeojvNchGypGGRHKh+YcZ681Btnf0gb+KIQiDZjKqBN5oboucDG8WF0Mt++tfH5ar0f2Oz/qrn+Jrt0UKtKLjI8ztGtRrSUofsdLj2bOp/qpT/AIGx91e63gl+Rl+rb91crHlxvvkdnfVXP8TV/wDp0vvkNnfVXX8TXd3suh5vAjrsccnXDL9W/wC6s6Bj/Zy/Vv8Aurjg8u198hs76m6/iaqvl4vh/YbN+quv4qnevoRwI69JC3ycn1b/ALq8cuz256FublwFuQTuP0ciIgE46yv2Vy9fL1fD/Z9m6/8Ak3X8VVX8vl+f7DZun/lXf8VUOo+g4EdikRgxAV+JHmnvrE6t1rJ9A9XqrkC+Xi+H9hs36q6/iquHl7v/APw+zDjthuj/APdVPevoOBdTqjLn4ja9e6xx9lAh44I78EAf9K5X/p8v/wDw+zB/lXf8VQeXy/8AkNm/U3X8VTvX0HAupL9vcpmXKQRSOwyDOY25sf8AtAjpnvPR7N6oXOjyassm8SWbovkk/GJIyWx1nWsx8v1/8hs36q7/AIqrD5er/wCR2d9Vd/xVSqzXL5kOmnzMG4cYKt0WI1U9YQ9Y11zX0x5CLuM7OjiiwhCnnsAFjO2OdY+LZx3Y7K+aLjy43rgq0GzmB4gxXR/+6rX8mPK5eWMzTQraDnAQ0TJM0OvBgvPAhh4+3SuHV0XWTsehoa8aEs7H2J5PLFzc3nOjBjuFiUjg6CNZd8ePO+1alMDfBu+Ru77nXhup0Cc9nRz4V8Zcn/6Re07aMpubPuHd2d7iWCfnnZuG9zFwiYACgAINFGc1Xav9IvaU1m9kYtnRxy272xlSG6WdUeMxs6O10QJN0nXHE15/4Cpf+z2Jdq0Xd59D6vtLhJdmpeMPg5o/dKqwxmGU84gKtwJRhkceliuLeV/kbHs64QxgLBdIzxoTkxOm7vxgtqU6akcesdQrnW0/6RW0ZrZbXmdmRRJzAG5BdKxSB42EZLXRG4wj3GwAd1jgg6iu1v6Rm0Zypa32WNwYULDdgdXpXZ7K2paSpGXu8zl1Wto1YNc+WDjdKUr1DxBSlKAUpSgFKUoBSlKAUpSgFKUoBSlKAUpSgFKUoBSlKAUpSgFKUoBSlKAUpSgFKUoBSlKAUpSgFKUoBSlKAUpSgFKUoBSlKAUpSgFKUoBSlKAUpSgFKUoBSlKAUpSgFKUoBSlKAUpSgFKUoBSlKAUpSgFKUoBSlKAUpSgFKUoBSlKAUpSgFKUoBSlKAUpSgFKUoBSlKAUpSgFKUoBSlKAUpSgFKUoBSlKAUpSgFKUoBSlKAUpSgFKUoBSlKAUpSgFKUoBSlKAUpSgFKUoBSlKAUpSgFKUoBSlKAUpSgFKUoBSlKAUpSgFKUoBSlKAUpSgFKUoBSlKAUpSgFKUoBSlKAUpSgFKUoBSlKAUpSgFKUoBSlKAUpSgFKUoBSlKAUpSgP//Z" style="width: 100%; height: 100%; object-fit: cover;"/><div class="uc-embedding-wrapper"><h3>Wir benötigen Ihre Zustimmung, um den YouTube Video-Service zu laden!</h3><p class="description-text">Wir verwenden einen Service eines Drittanbieters, um Videoinhalte einzubetten. Dieser Service kann Daten zu Ihren Aktivitäten sammeln. Bitte lesen Sie die Details durch und stimmen Sie der Nutzung des Service zu, um dieses Video anzusehen.</p><p class="not-existing-service">Dieser Inhalt darf aufgrund von Trackern, die Besuchern nicht offengelegt werden, nicht geladen werden. Der Besitzer der Website muss diese mit seinem CMP einrichten, um diesen Inhalt zur Liste der verwendeten Technologien hinzuzufügen.</p><div class="uc-embedding-buttons">
+<button class="uc-embedding-more-info" type="button"> Mehr Informationen </button><button class="uc-embedding-accept" type="button"> Akzeptieren </button> </div><span>powered by <a href="https://usercentrics.com/" target="_blank">Usercentrics Consent Management Platform</a></span></div> </div>
+</div>
+<figcaption class="wp-element-caption"></figcaption>
+</figure>
+</div>
+<p>Im Folgenden haben wir die entsprechenden Programmteile in unserer VARIO 8.6 zusammengefasst:</p>
+<ul class="wp-block-list">
+<li><a href="https://help.vario-software.de/vario-8-handbuch/ecommerce/ebay/#Gefahrgutinformationen-an-eBay-hochladen">Gefahrgutkennzeichnung eBay</a></li>
+<li><a href="https://help.vario-software.de/vario-8-handbuch/ecommerce/ebay/#Sicherheitshinweise-hinterlegen">Sicherheitskennzeichnung eBay</a></li>
+<li><a href="https://help.vario-software.de/vario-8-handbuch/adressen/hersteller-verwalten/#Akteure-hinterlegen">Wirtschaftsakteur in Herstellerverwaltung</a></li>
+<li>Dokumentenupload (Sicherheitsdatenblätter, Bedienungsanleitungen, etc.)
+<ul class="wp-block-list">
+<li><a href="https://help.vario-software.de/vario-8-handbuch/ecommerce/ebay/#Upload-von-assoziierten-Dateien">eBay</a></li>
+<li><a href="https://help.vario-software.de/vario-8-handbuch/ecommerce/shopware/shopware-6/#Assoziierte-Dateien-an-Shopware-6-hochladen">Shopware 6</a></li>
+<li><a href="https://help.vario-software.de/vario-8-handbuch/ecommerce/amazon/">Amazo</a><a href="https://help.vario-software.de/vario-8-handbuch/installation-einrichtung/ecommerce/amazon/#Sicherheitsdatenblatt-hochladen">n</a></li>
+</ul>
+</li>
+</ul>
+<p>Sobald sich hier für weitere Shops und Marktplätze Änderungen ergeben, werden wir die Implementierung prüfen und an dieser Stelle unser Handbuch entsprechend erweitern.</p>
+<h2 class="wp-block-heading" id="Funktionsübersicht-nach-Plattform">Funktionsübersicht nach Plattform<a aria-label="Permalink kopieren" class="heading-anchor" href="#Funktionsübersicht-nach-Plattform">#</a></h2>
+<p>Im folgenden finden Sie eine Übersicht, bei welche Plattformen wir bereit Erweiterungen hinzugefügt haben, bei welchen Plattformen wir bisher keine Informationen erhalten haben und welche bereits in Arbeit sind.</p>
+<figure class="wp-block-table"><table class="has-fixed-layout"><tbody><tr><td><strong>Marktplatz/Onlineshop</strong></td><td><strong>Status</strong></td><td><strong>ab Version</strong></td><td><strong>Bemerkung</strong></td></tr><tr><td><a href="https://help.vario-software.de/vario-8-handbuch/ecommerce/ebay/#Erweiterungen-im-Rahmen-der-EU-Produktsicherheitsverordnung">eBay</a></td><td>fertig</td><td>8.5.24.24.72232</td><td>Gefahrgut, Dokumentenupload, Upload Wirtschaftsakteur</td></tr><tr><td><a href="https://help.vario-software.de/vario-8-handbuch/ecommerce/otto-anbindung/#Erweiterungen-im-Rahmen-der-EU-Produktsicherheitsverordnung">OTTO market</a></td><td>in Arbeit</td><td>8.5.24.24.72232</td><td>Upload Wirtschaftsakteur</td></tr><tr><td><a href="https://help.vario-software.de/vario-8-handbuch/ecommerce/amazon/#Erweiterungen-im-Rahmen-der-EU-Produktsicherheitsverordnung">Amazon</a></td><td>in Arbeit</td><td>8.5.26.14.74020</td><td>Sicherheitsdatenblatt  und Wirtschaftsakteur über Feldmapping in Beta-Flat-Files</td></tr><tr><td><a href="https://help.vario-software.de/vario-8-handbuch/ecommerce/kaufland/#Erweiterungen-im-Rahmen-der-EU-Produktsicherheitsverordnung">Kaufland</a></td><td>in Arbeit</td><td>8.5.26.17.74220</td><td>Upload Wirtschaftsakteur</td></tr><tr><td><a href="https://help.vario-software.de/vario-8-handbuch/ecommerce/shopware/shopware-5/#Erweiterungen-im-Rahmen-der-EU-Produktsicherheitsverordnung">Shopware 5</a></td><td>in Arbeit</td><td>8.5.26.14.74020</td><td>Wirtschaftsakteur über Freifeldmapping in Filiale</td></tr><tr><td><a href="https://help.vario-software.de/vario-8-handbuch/ecommerce/shopware/shopware-6/#Erweiterungen-im-Rahmen-der-EU-Produktsicherheitsverordnung">Shopware 6</a></td><td>in Arbeit</td><td>8.5.25.6.72488</td><td>Dokumentenupload über Plugin, Wirtschaftsakteur über Freifeldmapping in Filiale</td></tr><tr><td><a href="https://help.vario-software.de/vario-8-handbuch/ecommerce/shopify/#Erweiterungen-im-Rahmen-der-EU-Produktsicherheitsverordnung">Shopify</a></td><td>in Arbeit</td><td>8.5.25.6.72488</td><td>Wirtschaftsakteur über Freifeldmapping in Filiale</td></tr><tr><td><a href="https://help.vario-software.de/vario-8-handbuch/installation-einrichtung/ecommerce/gambio/gambio-gx4/#Erweiterungen-im-Rahmen-der-EU-Produktsicherheitsverordnung">Gambio GX 4.5</a></td><td>in Arbeit</td><td>8.6.3.0.75223</td><td>Wirtschaftsakteur über Freifeldmapping in Filiale</td></tr><tr><td><a href="https://help.vario-software.de/vario-8-handbuch/ecommerce/magento-2/#Erweiterungen-im-Rahmen-der-EU-Produktsicherheitsverordnung">Magento 2</a></td><td>in Arbeit</td><td>8.5.25.6.72488</td><td>Wirtschaftsakteur über Freifeldmapping in Filiale</td></tr><tr><td><a href="https://help.vario-software.de/vario-8-handbuch/ecommerce/xtcommerce-6/#Erweiterungen-im-Rahmen-der-EU-Produktsicherheitsverordnung">xt:Commerce 6</a></td><td>in Arbeit</td><td>8.5.25.6.72488</td><td>Wirtschaftsakteur über Freifeldmapping in Filiale</td></tr><tr><td>WooCommerce</td><td>warten auf Informationen</td><td></td><td></td></tr><tr><td>OXID PE</td><td>warten auf Informationen</td><td></td><td></td></tr></tbody></table></figure>
+<p>Auf unserer Handbuchseite zu den <a href="https://help.vario-software.de/vario-8-handbuch/ecommerce/leistungsbeschreibungen/">Leistungsbeschreibungen für Online-Shops und Marktplätze</a> erfahren Sie detailliertere Informationen zu allen verfügbaren Schnittstellenfunktionen.</p>
+<div class="searchwp-related">
+<h4>Ähnliche Inhalte</h4>
+<ol>
+<li>
+<a href="https://help.vario-software.de/vario-8-handbuch/ecommerce/magento-2/">
+<span>Magento 2</span>
+</a>
+</li>
+<li>
+<a href="https://help.vario-software.de/vario-8-handbuch/ecommerce/amazon/">
+<span>Amazon</span>
+</a>
+</li>
+<li>
+<a href="https://help.vario-software.de/vario-8-handbuch/ecommerce/ebay/">
+<span>eBay</span>
+</a>
+</li>
+<li>
+<a href="https://help.vario-software.de/vario-8-handbuch/ecommerce/gambio/gambio-gx4/">
+<span>Gambio GX 4.5</span>
+</a>
+</li>
+</ol>
+</div>
+<style type="text/css">
+        .searchwp-related > ol {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            align-items: stretch;
+            margin: 0 0 0 -1em;
+        }
+
+        .searchwp-related > ol > li {
+            flex: 1;
+            padding: 0 0 0 1em;
+            display: flex;
+            align-items: stretch;
+        }
+
+        .searchwp-related > ol > li > a {
+            display: block;
+            width: 100%;
+            text-decoration: none;
+            background-color: #f5f7f9;
+            border-radius: 2px;
+        }
+
+        .searchwp-related > ol > li > a > span {
+            display: block;
+            padding: 1em;
+        }
+
+        .searchwp-related > ol > li > a > img {
+            display: block;
+            max-width: 100%;
+            height: auto !important;
+        }
+
+        .searchwp-related > ol > li > a:hover {
+            
+        }
+    </style>
+<div class="searchwp-related">
+<h4>Ähnliche Inhalte</h4>
+<ol>
+<li>
+<a href="https://help.vario-software.de/vario-8-handbuch/ecommerce/magento-2/">
+<span>Magento 2</span>
+</a>
+</li>
+<li>
+<a href="https://help.vario-software.de/vario-8-handbuch/ecommerce/amazon/">
+<span>Amazon</span>
+</a>
+</li>
+<li>
+<a href="https://help.vario-software.de/vario-8-handbuch/ecommerce/ebay/">
+<span>eBay</span>
+</a>
+</li>
+<li>
+<a href="https://help.vario-software.de/vario-8-handbuch/ecommerce/gambio/gambio-gx4/">
+<span>Gambio GX 4.5</span>
+</a>
+</li>
+</ol>
+</div>
+<style type="text/css">
+        .searchwp-related > ol {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            align-items: stretch;
+            margin: 0 0 0 -1em;
+        }
+
+        .searchwp-related > ol > li {
+            flex: 1;
+            padding: 0 0 0 1em;
+            display: flex;
+            align-items: stretch;
+        }
+
+        .searchwp-related > ol > li > a {
+            display: block;
+            width: 100%;
+            text-decoration: none;
+            background-color: #f5f7f9;
+            border-radius: 2px;
+        }
+
+        .searchwp-related > ol > li > a > span {
+            display: block;
+            padding: 1em;
+        }
+
+        .searchwp-related > ol > li > a > img {
+            display: block;
+            max-width: 100%;
+            height: auto !important;
+        }
+
+        .searchwp-related > ol > li > a:hover {
+            
+        }
+    </style>
+<div class="searchwp-related">
+<h4>Ähnliche Inhalte</h4>
+<ol>
+<li>
+<a href="https://help.vario-software.de/vario-8-handbuch/ecommerce/magento-2/">
+<span>Magento 2</span>
+</a>
+</li>
+<li>
+<a href="https://help.vario-software.de/vario-8-handbuch/ecommerce/amazon/">
+<span>Amazon</span>
+</a>
+</li>
+<li>
+<a href="https://help.vario-software.de/vario-8-handbuch/ecommerce/ebay/">
+<span>eBay</span>
+</a>
+</li>
+<li>
+<a href="https://help.vario-software.de/vario-8-handbuch/ecommerce/gambio/gambio-gx4/">
+<span>Gambio GX 4.5</span>
+</a>
+</li>
+</ol>
+</div>
+<style type="text/css">
+        .searchwp-related > ol {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            align-items: stretch;
+            margin: 0 0 0 -1em;
+        }
+
+        .searchwp-related > ol > li {
+            flex: 1;
+            padding: 0 0 0 1em;
+            display: flex;
+            align-items: stretch;
+        }
+
+        .searchwp-related > ol > li > a {
+            display: block;
+            width: 100%;
+            text-decoration: none;
+            background-color: #f5f7f9;
+            border-radius: 2px;
+        }
+
+        .searchwp-related > ol > li > a > span {
+            display: block;
+            padding: 1em;
+        }
+
+        .searchwp-related > ol > li > a > img {
+            display: block;
+            max-width: 100%;
+            height: auto !important;
+        }
+
+        .searchwp-related > ol > li > a:hover {
+            
+        }
+    </style>
+<ul id="sub-nav"></ul>                [ratemypost]
+            </div>
+    </section>
+
+</body>
+</html>

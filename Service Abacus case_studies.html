@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abacus.AI - Case Studies</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; line-height: 1.6; max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .header { background: #f0f0f0; padding: 20px; margin-bottom: 30px; border-radius: 5px; }
+        .toc { background: #f9f9f9; padding: 20px; margin-bottom: 30px; border-radius: 5px; }
+        .toc ul { list-style: none; padding-left: 0; }
+        .toc li { margin: 8px 0; }
+        .toc a { text-decoration: none; color: #0066cc; }
+        .toc a:hover { text-decoration: underline; }
+        section { margin-bottom: 50px; padding: 20px; border: 1px solid #e0e0e0; border-radius: 5px; }
+        .page-meta { background: #f5f5f5; padding: 10px; margin-bottom: 20px; border-radius: 3px; font-size: 0.9em; }
+        .page-meta a { color: #0066cc; }
+        h1 { color: #333; border-bottom: 2px solid #0066cc; padding-bottom: 10px; }
+        h2 { color: #444; margin-top: 30px; }
+        h3 { color: #555; }
+        img { max-width: 100%; height: auto; }
+        pre { background: #f5f5f5; padding: 15px; border-radius: 5px; overflow-x: auto; }
+        code { background: #f0f0f0; padding: 2px 6px; border-radius: 3px; }
+        table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background: #f5f5f5; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>ДОКУМЕНТ ВНЕШНЕГО СЕРВИСА — НЕ ЯВЛЯЕТСЯ ТРЕБОВАНИЯМИ К ПРОДУКТУ</h1>
+    <p>Этот документ описывает внешний сервис / API и т.п. как инструкция.</p>
+    <p><strong>Как использовать:</strong></p>
+    <ul>
+        <li>для определения возможностей и ограничений интеграции</li>
+        <li>для формулирования требований к интеграции (что отправляем/получаем, авторизация, ошибки, лимиты, поведение при недоступности), ответам пользователю по сервису и т.п.</li>
+    </ul>
+</div>
+
+<div class="toc">
+    <h2>Оглавление (Table of Contents)</h2>
+    <ul>
+        <li><a href="#page-1">Automatic Email Campaign</a></li>
+        <li><a href="#page-2">Content Auditing</a></li>
+        <li><a href="#page-3">Customer Service Assistant</a></li>
+        <li><a href="#page-4">Engineering Drawing Extraction</a></li>
+        <li><a href="#page-5">Enterprise Analytics Assistant</a></li>
+        <li><a href="#page-6">Azure Warehouse Analytics Chatbot</a></li>
+        <li><a href="#page-7">AI-Powered T&E Expense Audit</a></li>
+        <li><a href="#page-8">Forecast Analysis Chatbot</a></li>
+        <li><a href="#page-9">Case Studies</a></li>
+        <li><a href="#page-10">Jira Automation</a></li>
+        <li><a href="#page-11">AI-Powered Job Matching</a></li>
+        <li><a href="#page-12">Predicting Oil Production</a></li>
+        <li><a href="#page-13">Customer Propensity Scoring</a></li>
+        <li><a href="#page-14">Retail Demand Forecasting</a></li>
+        <li><a href="#page-15">RFP Automation</a></li>
+        <li><a href="#page-16">Sales Insights Chatbot</a></li>
+        <li><a href="#page-17">Support Email Automation</a></li>
+    </ul>
+</div>
+
+<section id="page-1">
+    <div class="page-meta">
+        <strong>Источник:</strong> <a href="https://abacus.ai/help/case-studies/automatic-email-campaign" target="_blank">https://abacus.ai/help/case-studies/automatic-email-campaign</a>
+    </div>
+    <h1>Automatic Email Campaign</h1>
+<div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Automatic Email Campaign</h1></header><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="business-need">Business Need<a href="#business-need" class="hash-link" aria-label="Direct link to Business Need" title="Direct link to Business Need" translate="no">​</a></h3>
+<p>Proactively engage customers showing signs of reduced platform usage or other risk indicators through personalized, automated email campaigns that drive re-engagement while maintaining a human touch in follow-up conversations.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="solution-overview">Solution Overview<a href="#solution-overview" class="hash-link" aria-label="Direct link to Solution Overview" title="Direct link to Solution Overview" translate="no">​</a></h3>
+<p>This solution leverages AI Workflows with CRM and email integration to deliver intelligent customer outreach:</p>
+<p><strong>Step 1: Customer Data Integration</strong></p>
+<ul>
+<li class=""><strong>Data Sources</strong>: Customer usage data accessed via API with customer's CRM system.</li>
+<li class=""><strong>Outlook Integration</strong>: Email sending and receiving through Outlook connector</li>
+<li class=""><strong>Monitoring Frequency</strong>: Workflow runs daily to identify engagement opportunities</li>
+</ul>
+<p><strong>Step 2: Trigger Identification</strong></p>
+<p>The AI Workflow queries the CRM system to identify actionable triggers:</p>
+<ul>
+<li class=""><strong>Usage Decline</strong>: Customers with 40%+ reduction in platform activity over 30 days</li>
+<li class=""><strong>Feature Abandonment</strong>: Users who started but didn't complete key workflows</li>
+<li class=""><strong>License Underutilization</strong>: Accounts using &lt;30% of purchased capacity</li>
+<li class=""><strong>Renewal Risk</strong>: Accounts with contracts expiring in 60-90 days showing decreased usage</li>
+</ul>
+<div class="card item shadow--lg" style="background:#2d3748;border:3px solid #667eea;border-radius:12px;overflow:hidden;margin-top:1.5rem;margin-bottom:1.5rem"><div class="card__body" style="padding:1.5rem"><div style="font-size:1.1rem;font-weight:600;color:#667eea;margin-bottom:0.75rem;display:flex;align-items:center;gap:0.5rem"><span style="font-size:1.3rem">💡</span>Pro Tip</div><div style="color:#e2e8f0;line-height:1.6"><p>Configure multiple workflow branches for different trigger types. A usage decline email should have a different tone and call-to-action than a feature abandonment message. This personalization increases response rates.</p></div></div></div>
+<p><strong>Step 3: Personalized Message Generation</strong></p>
+<p>For each identified customer, the workflow:</p>
+<ul>
+<li class="">Retrieves customer context (industry, use case, account history, previous interactions)</li>
+<li class="">Generates personalized email content addressing specific usage patterns</li>
+<li class="">Includes relevant resources, success stories, or feature highlights</li>
+<li class="">Adds appropriate call-to-action (schedule call, access training, contact support)</li>
+</ul>
+<p><strong>Step 4: Automated Sending &amp; Intelligent Response Handling</strong></p>
+<ul>
+<li class="">Emails are sent automatically through Outlook connector</li>
+<li class="">Workflow monitors for customer replies</li>
+<li class="">When customers respond with questions, AI Workflow accesses their CRM data and usage metrics</li>
+<li class="">Generates contextual, data-informed responses automatically</li>
+<li class="">Escalates to human team members for complex requests or high-priority accounts</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="how-its-used-in-practice">How It's Used in Practice<a href="#how-its-used-in-practice" class="hash-link" aria-label="Direct link to How It's Used in Practice" title="Direct link to How It's Used in Practice" translate="no">​</a></h3>
+<p>This solution operates as a fully autonomous customer engagement system:</p>
+<p><strong>Daily Automation Cycle</strong>:</p>
+<ul>
+<li class="">Workflow executes every morning</li>
+<li class="">Analyzes customer accounts</li>
+<li class="">Identifies customers meeting trigger criteria</li>
+<li class="">Sends personalized emails within 1 hour</li>
+<li class="">Monitors for responses throughout the day</li>
+</ul>
+<p><strong>Response Handling</strong>:</p>
+<ul>
+<li class="">Simple questions (feature how-to, account access) answered automatically within 15 minutes</li>
+<li class="">Complex inquiries (pricing changes, technical issues) flagged for human review</li>
+<li class="">All responses include relevant account data and usage insights</li>
+<li class="">Customer success team receives daily summary of automated interactions</li>
+</ul>
+<div class="card item shadow--xl" style="border:3px solid #667eea;border-radius:12px;overflow:hidden;margin-top:1.5rem;margin-bottom:1.5rem"><div class="card__header" style="background:linear-gradient(135deg, #667eea 0%, #764ba2 100%);color:#ffffff;padding:1rem 1.5rem;border-bottom:none"><h3 style="margin:0;font-size:1.3rem;font-weight:700;display:flex;align-items:center;gap:0.5rem;text-align:center;justify-content:center"><span style="font-size:1.5rem">✨</span>Key Outcomes</h3></div><div class="card__body" style="padding:1.5rem;background-color:#2d3748;color:#e2e8f0;line-height:1.7"><p><strong>Key achievements:</strong></p><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="-8500-personalized-emails-sent-automatically">📧 8,500+ personalized emails sent automatically<a href="#-8500-personalized-emails-sent-automatically" class="hash-link" aria-label="Direct link to 📧 8,500+ personalized emails sent automatically" title="Direct link to 📧 8,500+ personalized emails sent automatically" translate="no">​</a></h4><p>Proactive outreach without requiring customer success team bandwidth</p><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="-30-email-open-rate">📈 30% email open rate<a href="#-30-email-open-rate" class="hash-link" aria-label="Direct link to 📈 30% email open rate" title="Direct link to 📈 30% email open rate" translate="no">​</a></h4><p>20% higher than generic batch campaigns</p><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="-responses-handled-automatically">🤖 Responses handled automatically<a href="#-responses-handled-automatically" class="hash-link" aria-label="Direct link to 🤖 Responses handled automatically" title="Direct link to 🤖 Responses handled automatically" translate="no">​</a></h4><p>AI Workflow answers customer questions using their actual usage data</p><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="-reduce-churn">📉 Reduce churn<a href="#-reduce-churn" class="hash-link" aria-label="Direct link to 📉 Reduce churn" title="Direct link to 📉 Reduce churn" translate="no">​</a></h4><p>Early intervention shows that we can prevents customer disengagement</p></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="additional-information">Additional Information<a href="#additional-information" class="hash-link" aria-label="Direct link to Additional Information" title="Direct link to Additional Information" translate="no">​</a></h3>
+<ul>
+<li class=""><a class="" href="/help/developer-platform/useCases/AI_AGENTS">AI Workflows</a></li>
+<li class=""><a class="" href="/help/connectors/applicationConnectors/outlook">Outlook Connector</a></li>
+<li class=""><a class="" href="/help/developer-platform/tools/">Tools</a></li>
+</ul></div>
+</section>
+
+<section id="page-2">
+    <div class="page-meta">
+        <strong>Источник:</strong> <a href="https://abacus.ai/help/case-studies/content-auditing-quiz-generation" target="_blank">https://abacus.ai/help/case-studies/content-auditing-quiz-generation</a>
+    </div>
+    <h1>Content Auditing</h1>
+<div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Content Auditing</h1></header><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="business-need">Business Need<a href="#business-need" class="hash-link" aria-label="Direct link to Business Need" title="Direct link to Business Need" translate="no">​</a></h3>
+<p>Ensure learning content meets company standards and style guidelines while automatically generating quiz questions in the organization's required format, reducing content review time and accelerating course development.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="solution-overview">Solution Overview<a href="#solution-overview" class="hash-link" aria-label="Direct link to Solution Overview" title="Direct link to Solution Overview" translate="no">​</a></h3>
+<p>This solution leverages AI Workflows to deliver automated content quality assurance and assessment creation:</p>
+<p><strong>Step 1: Content Upload &amp; Parsing</strong></p>
+<ul>
+<li class=""><strong>Data Source</strong>: Content writers upload learning materials through the ChatLLM interface</li>
+<li class=""><strong>Content Types</strong>: Word documents, markdown files, PDF lessons, slide decks (PowerPoint, Google Slides)</li>
+<li class=""><strong>Processing</strong>: AI Workflow parses content structure, extracts learning objectives, key concepts, and instructional material</li>
+</ul>
+<p><strong>Step 2: Content Auditing</strong></p>
+<p>The workflow applies comprehensive quality checks against company standards:</p>
+<ul>
+<li class=""><strong>Style Guide Compliance</strong>: Checks for approved terminology, tone, and formatting conventions</li>
+<li class=""><strong>Accessibility Standards</strong>: Validates readability scores, heading structure, alt-text for images</li>
+<li class=""><strong>Learning Objectives Alignment</strong>: Ensures content supports stated learning outcomes</li>
+<li class=""><strong>Technical Accuracy</strong>: Flags inconsistencies, outdated information, or conflicting statements</li>
+<li class=""><strong>Completeness</strong>: Identifies missing sections or insufficient coverage of topics</li>
+</ul>
+<p>The AI Workflow provides a detailed audit report with specific issues highlighted and suggestions for improvement.</p>
+<div class="card item shadow--lg" style="background:#2d3748;border:3px solid #667eea;border-radius:12px;overflow:hidden;margin-top:1.5rem;margin-bottom:1.5rem"><div class="card__body" style="padding:1.5rem"><div style="font-size:1.1rem;font-weight:600;color:#667eea;margin-bottom:0.75rem;display:flex;align-items:center;gap:0.5rem"><span style="font-size:1.3rem">💡</span>Pro Tip</div><div style="color:#e2e8f0;line-height:1.6"><p>Maintain a style guide document retriever that the workflow references during auditing. Update this retriever whenever style guidelines change, and all future audits will automatically use the latest standards without reprogramming the workflow.</p></div></div></div>
+<p><strong>Step 3: Quiz Question Generation</strong></p>
+<p>Automatically generates assessment questions in the organization's exact format:</p>
+<ul>
+<li class=""><strong>Question Types</strong>: Multiple choice, true/false, fill-in-the-blank, scenario-based</li>
+<li class=""><strong>Difficulty Levels</strong>: Bloom's taxonomy levels (remember, understand, apply, analyze)</li>
+<li class=""><strong>Format Compliance</strong>: Outputs questions in the organization's LMS-ready template</li>
+<li class=""><strong>Answer Keys</strong>: Includes correct answers, distractors, and rationale explanations</li>
+</ul>
+<p>Questions are designed to assess the specific learning objectives identified in the content.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="how-its-used-in-practice">How It's Used in Practice<a href="#how-its-used-in-practice" class="hash-link" aria-label="Direct link to How It's Used in Practice" title="Direct link to How It's Used in Practice" translate="no">​</a></h3>
+<p>This solution integrates into the content development workflow:</p>
+<p><strong>Content Development Cycle</strong>:</p>
+<ul>
+<li class="">Writer uploads draft content through ChatLLM UI</li>
+<li class="">AI Workflow completes audit in 2-3 minutes</li>
+<li class="">Writer receives audit report with flagged issues and improvement suggestions</li>
+<li class="">Writer makes revisions and re-submits if needed</li>
+<li class="">Once content passes audit, workflow generates quiz questions automatically</li>
+<li class="">Writer reviews questions, makes minor adjustments if needed, and copy-pastes into LMS</li>
+</ul>
+<p><strong>Typical Timeline</strong>:</p>
+<ul>
+<li class=""><strong>Audit Processing</strong>: 2-3 minutes for 2,000-4,000 word lessons</li>
+<li class=""><strong>Quiz Generation</strong>: 1-2 minutes for 8-10 questions</li>
+<li class=""><strong>Total Time Savings</strong>: 5 hours per week per content writer</li>
+</ul>
+<div class="card item shadow--xl" style="border:3px solid #667eea;border-radius:12px;overflow:hidden;margin-top:1.5rem;margin-bottom:1.5rem"><div class="card__header" style="background:linear-gradient(135deg, #667eea 0%, #764ba2 100%);color:#ffffff;padding:1rem 1.5rem;border-bottom:none"><h3 style="margin:0;font-size:1.3rem;font-weight:700;display:flex;align-items:center;gap:0.5rem;text-align:center;justify-content:center"><span style="font-size:1.5rem">✨</span>Key Outcomes</h3></div><div class="card__body" style="padding:1.5rem;background-color:#2d3748;color:#e2e8f0;line-height:1.7"><p><strong>Key achievements:</strong></p><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="️-5-hours-saved-per-week-per-content-writer">⏱️ 5 hours saved per week per content writer<a href="#️-5-hours-saved-per-week-per-content-writer" class="hash-link" aria-label="Direct link to ⏱️ 5 hours saved per week per content writer" title="Direct link to ⏱️ 5 hours saved per week per content writer" translate="no">​</a></h4><p>Eliminated manual style guide checking and quiz question creation</p><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="-100-style-guide-compliance">✅ 100% style guide compliance<a href="#-100-style-guide-compliance" class="hash-link" aria-label="Direct link to ✅ 100% style guide compliance" title="Direct link to ✅ 100% style guide compliance" translate="no">​</a></h4><p>Automated checking ensures no content violates standards</p><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="-copy-paste-ready-quiz-questions">📝 Copy-paste ready quiz questions<a href="#-copy-paste-ready-quiz-questions" class="hash-link" aria-label="Direct link to 📝 Copy-paste ready quiz questions" title="Direct link to 📝 Copy-paste ready quiz questions" translate="no">​</a></h4><p>Questions generated in exact LMS format, no reformatting needed</p><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="-faster-content-production-cycle">📈 Faster content production cycle<a href="#-faster-content-production-cycle" class="hash-link" aria-label="Direct link to 📈 Faster content production cycle" title="Direct link to 📈 Faster content production cycle" translate="no">​</a></h4><p>Content moves from draft to published in half the time</p></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="additional-information">Additional Information<a href="#additional-information" class="hash-link" aria-label="Direct link to Additional Information" title="Direct link to Additional Information" translate="no">​</a></h3>
+<ul>
+<li class=""><a class="" href="/help/developer-platform/useCases/AI_AGENTS">AI Workflows</a></li>
+<li class=""><a class="" href="/help/connectors/applicationConnectors/google_drive">Google Drive Connector</a></li>
+<li class=""><a class="" href="/help/connectors/applicationConnectors/onedrive">OneDrive Connector</a></li>
+<li class=""><a class="" href="/help/developer-platform/tools/">Tools</a></li>
+</ul></div>
+</section>
+
+<section id="page-3">
+    <div class="page-meta">
+        <strong>Источник:</strong> <a href="https://abacus.ai/help/case-studies/customer-service-assistant" target="_blank">https://abacus.ai/help/case-studies/customer-service-assistant</a>
+    </div>
+    <h1>Customer Service Assistant</h1>
+<div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Customer Service Assistant</h1></header><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="business-need">Business Need<a href="#business-need" class="hash-link" aria-label="Direct link to Business Need" title="Direct link to Business Need" translate="no">​</a></h3>
+<p>Empower customer service representatives with an AI assistant that provides instant access to solutions from historical support cases, reducing resolution time and improving consistency in customer interactions.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="solution-overview">Solution Overview<a href="#solution-overview" class="hash-link" aria-label="Direct link to Solution Overview" title="Direct link to Solution Overview" translate="no">​</a></h3>
+<p>This solution uses Abacus.AI's Custom Chatbot to transform historical case data into an intelligent knowledge base:</p>
+<p><strong>Step 1: Ingest Historical Cases</strong></p>
+<ul>
+<li class=""><strong>Data Source</strong>: Historical support case data is ingested from Salesforce using our native connector</li>
+<li class=""><strong>Data Structure</strong>: Cases include customer descriptions, agent responses, resolution steps, case categories, and outcomes</li>
+<li class=""><strong>Volume</strong>: 50,000+ resolved cases spanning 3 years of support history</li>
+</ul>
+<p><strong>Step 2: Data Preprocessing</strong></p>
+<ul>
+<li class=""><strong>Python Feature Group</strong>: A custom Python feature group preprocesses raw case text to improve quality</li>
+<li class=""><strong>Text Cleaning</strong>: Removes formatting artifacts, standardizes terminology, and corrects common typos</li>
+<li class=""><strong>Text Rewriting</strong>: Uses an LLM to rewrite messy or unclear case descriptions into clear, concise summaries</li>
+<li class=""><strong>Metadata Extraction</strong>: Automatically tags cases with product areas, issue types, and resolution categories</li>
+</ul>
+<div class="card item shadow--lg" style="background:#2d3748;border:3px solid #667eea;border-radius:12px;overflow:hidden;margin-top:1.5rem;margin-bottom:1.5rem"><div class="card__body" style="padding:1.5rem"><div style="font-size:1.1rem;font-weight:600;color:#667eea;margin-bottom:0.75rem;display:flex;align-items:center;gap:0.5rem"><span style="font-size:1.3rem">💡</span>Pro Tip</div><div style="color:#e2e8f0;line-height:1.6"><p>Preprocessing historical support data significantly improves the custom Chatbots response quality. Raw case notes often contain internal jargon, abbreviations, and formatting issues that confuse retrieval systems.</p></div></div></div>
+<p><strong>Step 3: Build Custom Chatbot</strong></p>
+<p>A Custom Chatbot is configured with:</p>
+<ul>
+<li class=""><strong>Knowledge Base</strong>: The preprocessed case history serves as the primary knowledge source</li>
+<li class=""><strong>Response Generation</strong>: Synthesizes solutions from multiple relevant cases</li>
+<li class=""><strong>Citation</strong>: Provides links to original Salesforce cases for verification</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="how-its-used-in-practice">How It's Used in Practice<a href="#how-its-used-in-practice" class="hash-link" aria-label="Direct link to How It's Used in Practice" title="Direct link to How It's Used in Practice" translate="no">​</a></h3>
+<p>Customer service representatives leverage the Chatbot through the UI provided by Abacus.</p>
+<p><strong>During Customer Interactions</strong>:</p>
+<ol>
+<li class="">Service representative types a summary into the AI assistant</li>
+<li class="">Chatbot instantly retrieves 3-5 similar historical cases</li>
+<li class="">Service representative reviews suggested solutions and resolution steps and relays back to customer.</li>
+</ol>
+<p><strong>Example Queries</strong>:</p>
+<ul>
+<li class="">"Customer can't log in after password reset"</li>
+<li class="">"Billing charge showing twice on account"</li>
+<li class="">"Product feature not working on mobile app"</li>
+<li class="">"Request for refund on cancelled subscription"</li>
+</ul>
+<p><strong>Continuous Improvement</strong>:</p>
+<ul>
+<li class="">New resolved cases are added to the knowledge base weekly</li>
+<li class="">Service representative feedback helps refine retrieval relevance</li>
+<li class="">Common unresolved queries identify knowledge gaps</li>
+</ul>
+<div class="card item shadow--xl" style="border:3px solid #667eea;border-radius:12px;overflow:hidden;margin-top:1.5rem;margin-bottom:1.5rem"><div class="card__header" style="background:linear-gradient(135deg, #667eea 0%, #764ba2 100%);color:#ffffff;padding:1rem 1.5rem;border-bottom:none"><h3 style="margin:0;font-size:1.3rem;font-weight:700;display:flex;align-items:center;gap:0.5rem;text-align:center;justify-content:center"><span style="font-size:1.5rem">✨</span>Key Outcomes</h3></div><div class="card__body" style="padding:1.5rem;background-color:#2d3748;color:#e2e8f0;line-height:1.7"><p><strong>Key achievements:</strong></p><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="-50-faster-resolution-time">⚡ 50% faster resolution time<a href="#-50-faster-resolution-time" class="hash-link" aria-label="Direct link to ⚡ 50% faster resolution time" title="Direct link to ⚡ 50% faster resolution time" translate="no">​</a></h4><p>Agents find solutions instantly instead of searching manually</p><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="-accelerated-agent-onboarding">🎓 Accelerated agent onboarding<a href="#-accelerated-agent-onboarding" class="hash-link" aria-label="Direct link to 🎓 Accelerated agent onboarding" title="Direct link to 🎓 Accelerated agent onboarding" translate="no">​</a></h4><p>New agents become more productive productive</p></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="additional-information">Additional Information<a href="#additional-information" class="hash-link" aria-label="Direct link to Additional Information" title="Direct link to Additional Information" translate="no">​</a></h3>
+<ul>
+<li class=""><a class="" href="/help/developer-platform/useCases/CHAT_LLM">Custom Chatbots</a></li>
+<li class=""><a class="" href="/help/connectors/databaseConnectors/salesforce">Salesforce Connector</a></li>
+<li class=""><a class="" href="/help/developer-platform/feature-groups/python_feature_group">Python Feature Groups</a></li>
+</ul></div>
+</section>
+
+<section id="page-4">
+    <div class="page-meta">
+        <strong>Источник:</strong> <a href="https://abacus.ai/help/case-studies/engineering-drawing-extraction" target="_blank">https://abacus.ai/help/case-studies/engineering-drawing-extraction</a>
+    </div>
+    <h1>Engineering Drawing Extraction</h1>
+<div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Engineering Drawing Extraction</h1></header><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="business-need">Business Need<a href="#business-need" class="hash-link" aria-label="Direct link to Business Need" title="Direct link to Business Need" translate="no">​</a></h3>
+<p>Extract structured data from engineering drawings and technical schematics at scale, including part numbers, dimensions, materials, tolerances, and revision information, while automatically mapping dependencies between related components and assemblies.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="solution-overview">Solution Overview<a href="#solution-overview" class="hash-link" aria-label="Direct link to Solution Overview" title="Direct link to Solution Overview" translate="no">​</a></h3>
+<p>This solution leverages AI Workflows to deliver automated technical documentation processing:</p>
+<p><strong>Step 1: Drawing Ingestion</strong></p>
+<ul>
+<li class=""><strong>Data Source</strong>: PDF files containing engineering drawings stored in S3 buckets</li>
+<li class=""><strong>Scheduling</strong>: Automated pipeline runs weekly to process new or updated drawings</li>
+</ul>
+<p><strong>Step 2: Data Extraction</strong></p>
+<p>Advanced large language models extract structured information:</p>
+<ul>
+<li class=""><strong>Part Identifiers</strong>: Part numbers, assembly codes, drawing numbers</li>
+<li class=""><strong>Specifications</strong>: Dimensions, tolerances, materials, finishes</li>
+<li class=""><strong>Metadata</strong>: Revision numbers, dates, approval signatures, change notices</li>
+</ul>
+<p>The AI Workflow uses specialized technical document understanding to maintain precision even with handwritten annotations or legacy drawings.</p>
+<div class="card item shadow--lg" style="background:#2d3748;border:3px solid #667eea;border-radius:12px;overflow:hidden;margin-top:1.5rem;margin-bottom:1.5rem"><div class="card__body" style="padding:1.5rem"><div style="font-size:1.1rem;font-weight:600;color:#667eea;margin-bottom:0.75rem;display:flex;align-items:center;gap:0.5rem"><span style="font-size:1.3rem">💡</span>Pro Tip</div><div style="color:#e2e8f0;line-height:1.6"><p>Create validation rules for critical fields (e.g., part numbers must match company format regex). The AI Workflow can flag drawings where extracted data doesn't match expected patterns, reducing downstream errors in bill-of-materials systems.</p></div></div></div>
+<p><strong>Step 3: Dependency Analysis</strong></p>
+<p>The workflow builds a comprehensive dependency graph:</p>
+<ul>
+<li class="">Identifies assembly relationships (parent-child component hierarchies)</li>
+<li class="">Maps referenced parts and sub-assemblies</li>
+<li class="">Detects cross-references between drawings</li>
+</ul>
+<p><strong>Step 4: Structured Output Generation</strong></p>
+<p>Results are delivered in below formats:</p>
+<ul>
+<li class=""><strong>JSON</strong>: Structured data for each drawing with all extracted attributes</li>
+<li class=""><strong>CSV</strong>: Tabular format for import into PLM/ERP systems</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="how-its-used-in-practice">How It's Used in Practice<a href="#how-its-used-in-practice" class="hash-link" aria-label="Direct link to How It's Used in Practice" title="Direct link to How It's Used in Practice" translate="no">​</a></h3>
+<p>This solution operates as a scheduled batch process with API-triggered on-demand processing:</p>
+<p><strong>Weekly Batch Processing</strong>:</p>
+<ul>
+<li class="">Engineering team uploads new/revised drawings to designated S3 bucket</li>
+<li class="">AI Workflow runs automatically on a weekly basis</li>
+<li class="">Outputs are written back to S3 and metadata loaded into Snowflake data warehouse</li>
+</ul>
+<p><strong>On-Demand Processing</strong> (via API):</p>
+<ul>
+<li class="">Urgent drawing updates can be processed immediately</li>
+<li class="">API endpoint accepts single drawing or small batch</li>
+</ul>
+<p>The system has processed over 50,000 engineering drawings with 90%+ straight-through processing rate (no human intervention required).</p>
+<div class="card item shadow--xl" style="border:3px solid #667eea;border-radius:12px;overflow:hidden;margin-top:1.5rem;margin-bottom:1.5rem"><div class="card__header" style="background:linear-gradient(135deg, #667eea 0%, #764ba2 100%);color:#ffffff;padding:1rem 1.5rem;border-bottom:none"><h3 style="margin:0;font-size:1.3rem;font-weight:700;display:flex;align-items:center;gap:0.5rem;text-align:center;justify-content:center"><span style="font-size:1.5rem">✨</span>Key Outcomes</h3></div><div class="card__body" style="padding:1.5rem;background-color:#2d3748;color:#e2e8f0;line-height:1.7"><p><strong>Key achievements:</strong></p><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="-reduction-in-manual-data-entry">🚀 Reduction in manual data entry<a href="#-reduction-in-manual-data-entry" class="hash-link" aria-label="Direct link to 🚀 Reduction in manual data entry" title="Direct link to 🚀 Reduction in manual data entry" translate="no">​</a></h4><p>Eliminated hours per week of manual drawing data transcription</p><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="-automated-dependency-mapping">🔍 Automated dependency mapping<a href="#-automated-dependency-mapping" class="hash-link" aria-label="Direct link to 🔍 Automated dependency mapping" title="Direct link to 🔍 Automated dependency mapping" translate="no">​</a></h4><p>Created comprehensive part relationship graphs across 45,000+ drawings</p><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="-90-straight-through-processing-rate">✅ 90%+ straight-through processing rate<a href="#-90-straight-through-processing-rate" class="hash-link" aria-label="Direct link to ✅ 90%+ straight-through processing rate" title="Direct link to ✅ 90%+ straight-through processing rate" translate="no">​</a></h4><p>Most drawings require no human review or correction</p><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="-2-4-hour-batch-processing">⚡ 2-4 hour batch processing<a href="#-2-4-hour-batch-processing" class="hash-link" aria-label="Direct link to ⚡ 2-4 hour batch processing" title="Direct link to ⚡ 2-4 hour batch processing" translate="no">​</a></h4><p>Weekly processing of 500-2,000 drawings completed overnight</p></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="additional-information">Additional Information<a href="#additional-information" class="hash-link" aria-label="Direct link to Additional Information" title="Direct link to Additional Information" translate="no">​</a></h3>
+<ul>
+<li class=""><a class="" href="/help/developer-platform/useCases/AI_AGENTS">AI Workflows</a></li>
+<li class=""><a class="" href="/help/developer-platform/pipelines/creating-pipelines">Pipelines</a></li>
+</ul></div>
+</section>
+
+<section id="page-5">
+    <div class="page-meta">
+        <strong>Источник:</strong> <a href="https://abacus.ai/help/case-studies/enterprise-analytics-assistant" target="_blank">https://abacus.ai/help/case-studies/enterprise-analytics-assistant</a>
+    </div>
+    <h1>Enterprise Analytics Assistant</h1>
+<div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Enterprise Analytics Assistant</h1></header><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="business-need">Business Need<a href="#business-need" class="hash-link" aria-label="Direct link to Business Need" title="Direct link to Business Need" translate="no">​</a></h3>
+<p>Provide employees with a unified AI assistant that can both search across enterprise documents (emails, files, tickets) and query structured data (databases, warehouses) through a single conversational interface.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="solution-overview">Solution Overview<a href="#solution-overview" class="hash-link" aria-label="Direct link to Solution Overview" title="Direct link to Solution Overview" translate="no">​</a></h3>
+<p>This solution combines enterprise search capabilities with text-to-SQL analytics in a single Custom Chatbot:</p>
+<p><strong>Step 1: Configure User-Level Search</strong></p>
+<ul>
+<li class=""><strong>Document Sources</strong>: User connectors provide access to Outlook, SharePoint, OneDrive, and Jira</li>
+<li class=""><strong>Real-Time Search</strong>: No data ingestion; searches execute with user credentials respecting access controls</li>
+<li class=""><strong>Semantic Retrieval</strong>: Finds relevant documents, emails, and tickets based on natural language queries</li>
+</ul>
+<p><strong>Step 2: Configure Text-to-SQL Analytics</strong></p>
+<ul>
+<li class=""><strong>Data Warehouse</strong>: Direct connection to Snowflake for structured data queries</li>
+<li class=""><strong>Schema Understanding</strong>: Automatically maps business questions to database tables and columns</li>
+<li class=""><strong>Query Generation</strong>: Translates natural language to optimized SQL queries</li>
+<li class=""><strong>Result Visualization</strong>: Generates charts and tables from query results</li>
+</ul>
+<div class="card item shadow--lg" style="background:#2d3748;border:3px solid #667eea;border-radius:12px;overflow:hidden;margin-top:1.5rem;margin-bottom:1.5rem"><div class="card__body" style="padding:1.5rem"><div style="font-size:1.1rem;font-weight:600;color:#667eea;margin-bottom:0.75rem;display:flex;align-items:center;gap:0.5rem"><span style="font-size:1.3rem">💡</span>Pro Tip</div><div style="color:#e2e8f0;line-height:1.6"><p>Combining enterprise search with text-to-SQL creates a powerful "unified data assistant" that eliminates the false boundary between structured and unstructured data. Users get answers regardless of where the information lives.</p></div></div></div>
+<p><strong>Step 3: Build Hybrid Custom Chatbot</strong></p>
+<p>A Custom Chatbot is configured with:</p>
+<ul>
+<li class=""><strong>Multiple Knowledge Sources</strong>: Both user-level document connectors and database connections</li>
+<li class=""><strong>Intelligent Routing</strong>: Automatically determines whether to search documents or query databases based on the question</li>
+<li class=""><strong>Cross-Source Synthesis</strong>: Can combine insights from both structured data and documents in a single response</li>
+<li class=""><strong>Context Awareness</strong>: Maintains conversation history and can answer follow-up questions</li>
+</ul>
+<p><strong>Step 4: Deploy Enterprise-Wide</strong></p>
+<p>The assistant is deployed through the web interface accessible via the Abacus ChatLLM Teams UI.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="how-its-used-in-practice">How It's Used in Practice<a href="#how-its-used-in-practice" class="hash-link" aria-label="Direct link to How It's Used in Practice" title="Direct link to How It's Used in Practice" translate="no">​</a></h3>
+<p>Employees interact with the analytics assistant for a wide range of information needs:</p>
+<p><strong>Document Search Queries</strong>:</p>
+<ul>
+<li class="">"Find the product roadmap presentation from last month"</li>
+<li class="">"Show me all emails about the customer onboarding project"</li>
+<li class="">"What are the open P1 bugs in Jira?"</li>
+</ul>
+<p><strong>Analytical Queries</strong>:</p>
+<ul>
+<li class="">"Show me revenue by product line for Q4"</li>
+<li class="">"Compare our sales pipeline to this time last year"</li>
+<li class="">"What's the average customer lifetime value?"</li>
+</ul>
+<div class="card item shadow--xl" style="border:3px solid #667eea;border-radius:12px;overflow:hidden;margin-top:1.5rem;margin-bottom:1.5rem"><div class="card__header" style="background:linear-gradient(135deg, #667eea 0%, #764ba2 100%);color:#ffffff;padding:1rem 1.5rem;border-bottom:none"><h3 style="margin:0;font-size:1.3rem;font-weight:700;display:flex;align-items:center;gap:0.5rem;text-align:center;justify-content:center"><span style="font-size:1.5rem">✨</span>Key Outcomes</h3></div><div class="card__body" style="padding:1.5rem;background-color:#2d3748;color:#e2e8f0;line-height:1.7"><p><strong>Key achievements:</strong></p><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="-single-point-of-access">🔍 Single point of access<a href="#-single-point-of-access" class="hash-link" aria-label="Direct link to 🔍 Single point of access" title="Direct link to 🔍 Single point of access" translate="no">​</a></h4><p>Eliminated need to search across 5+ systems</p><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="-faster-insights">⚡ Faster insights<a href="#-faster-insights" class="hash-link" aria-label="Direct link to ⚡ Faster insights" title="Direct link to ⚡ Faster insights" translate="no">​</a></h4><p>From question to answer in seconds</p><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="-combined-document--data-analysis">📊 Combined document &amp; data analysis<a href="#-combined-document--data-analysis" class="hash-link" aria-label="Direct link to 📊 Combined document &amp; data analysis" title="Direct link to 📊 Combined document &amp; data analysis" translate="no">​</a></h4><p>Unified unstructured and structured information</p><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="-80-question-resolution-rate">🎯 80% question resolution rate<a href="#-80-question-resolution-rate" class="hash-link" aria-label="Direct link to 🎯 80% question resolution rate" title="Direct link to 🎯 80% question resolution rate" translate="no">​</a></h4><p>Minimal escalation to analysts or IT support</p></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="additional-information">Additional Information<a href="#additional-information" class="hash-link" aria-label="Direct link to Additional Information" title="Direct link to Additional Information" translate="no">​</a></h3>
+<ul>
+<li class=""><a class="" href="/help/developer-platform/useCases/CHAT_LLM">Custom Chatbots</a></li>
+<li class=""><a class="" href="/help/connectors/userConnectors/">User Connectors Overview</a></li>
+<li class=""><a class="" href="/help/connectors/userConnectors/snowflake_user">Snowflake Connector</a></li>
+</ul></div>
+</section>
+
+<section id="page-6">
+    <div class="page-meta">
+        <strong>Источник:</strong> <a href="https://abacus.ai/help/case-studies/enterprise-search-azure" target="_blank">https://abacus.ai/help/case-studies/enterprise-search-azure</a>
+    </div>
+    <h1>Azure Warehouse Analytics Chatbot</h1>
+<div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Azure Warehouse Analytics Chatbot</h1></header><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="business-need">Business Need<a href="#business-need" class="hash-link" aria-label="Direct link to Business Need" title="Direct link to Business Need" translate="no">​</a></h3>
+<p>Enable business users to query enterprise data warehouses using natural language instead of SQL, with automatic generation of visualizations and insights, while maintaining proper authentication and data access controls.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="solution-overview">Solution Overview<a href="#solution-overview" class="hash-link" aria-label="Direct link to Solution Overview" title="Direct link to Solution Overview" translate="no">​</a></h3>
+<p>This solution leverages a Custom Chatbot with Azure integration to deliver conversational data access:</p>
+<p><strong>Step 1: Authentication &amp; Access Control</strong></p>
+<ul>
+<li class=""><strong>Authentication</strong>: Users authenticate through Microsoft Entra ID (Azure Active Directory)</li>
+<li class=""><strong>Security</strong>: Row-level and table-level permissions are automatically enforced based on user identity</li>
+<li class=""><strong>Connection</strong>: Azure SQL user connector maintains live connection to the data warehouse</li>
+</ul>
+<p><strong>Step 2: Natural Language to SQL Translation</strong></p>
+<p>The Custom Chatbot interprets natural language queries and generates optimized SQL:</p>
+<ul>
+<li class="">Understands business terminology and translates to technical column names</li>
+<li class="">Handles complex queries including joins, aggregations, and time-based filtering</li>
+<li class="">Optimizes queries for performance on large datasets</li>
+</ul>
+<div class="card item shadow--lg" style="background:#2d3748;border:3px solid #667eea;border-radius:12px;overflow:hidden;margin-top:1.5rem;margin-bottom:1.5rem"><div class="card__body" style="padding:1.5rem"><div style="font-size:1.1rem;font-weight:600;color:#667eea;margin-bottom:0.75rem;display:flex;align-items:center;gap:0.5rem"><span style="font-size:1.3rem">💡</span>Pro Tip</div><div style="color:#e2e8f0;line-height:1.6"><p>Provide the chatbot with a data dictionary mapping business terms to technical schema. For example, "last quarter's sales" → "SUM(revenue) WHERE date &gt;= DATEADD(quarter, -1, GETDATE())". This dramatically improves accuracy for domain-specific queries.</p></div></div></div>
+<p><strong>Step 3: Visualization &amp; Insights</strong></p>
+<ul>
+<li class="">Python code is automatically generated for data visualization based on query results</li>
+<li class="">Creates appropriate chart types (line graphs, bar charts, heatmaps) based on data structure</li>
+<li class="">Provides statistical summaries and key insights alongside visualizations</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="how-its-used-in-practice">How It's Used in Practice<a href="#how-its-used-in-practice" class="hash-link" aria-label="Direct link to How It's Used in Practice" title="Direct link to How It's Used in Practice" translate="no">​</a></h3>
+<p>This solution provides self-service analytics to business users:</p>
+<p><strong>Daily Operations</strong>:</p>
+<ul>
+<li class="">Business analysts access the Chatbot through the ChatLLM UI</li>
+<li class="">Ask questions like "Show me sales trends by region for Q4" or "Which products had the highest return rate last month?"</li>
+<li class="">Receive immediate SQL execution results with visualizations</li>
+<li class="">Export results or share visualizations with stakeholders</li>
+</ul>
+<p><strong>Typical Response Time</strong>: 10-25 seconds for most queries</p>
+<p><strong>Common Use Cases</strong>:</p>
+<ul>
+<li class="">Sales performance analysis across regions and time periods</li>
+<li class="">Customer behavior and cohort analysis</li>
+<li class="">Inventory and supply chain metrics</li>
+<li class="">Financial reporting and variance analysis</li>
+</ul>
+<p>Users report reduction in time spent requesting and waiting for data from analytics teams, with business users now able to self-serve 80% of their data needs.</p>
+<div class="card item shadow--xl" style="border:3px solid #667eea;border-radius:12px;overflow:hidden;margin-top:1.5rem;margin-bottom:1.5rem"><div class="card__header" style="background:linear-gradient(135deg, #667eea 0%, #764ba2 100%);color:#ffffff;padding:1rem 1.5rem;border-bottom:none"><h3 style="margin:0;font-size:1.3rem;font-weight:700;display:flex;align-items:center;gap:0.5rem;text-align:center;justify-content:center"><span style="font-size:1.5rem">✨</span>Key Outcomes</h3></div><div class="card__body" style="padding:1.5rem;background-color:#2d3748;color:#e2e8f0;line-height:1.7"><p><strong>Key achievements:</strong></p><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="-self-service-analytics-for-40-business-users">🔍 Self-service analytics for 40+ business users<a href="#-self-service-analytics-for-40-business-users" class="hash-link" aria-label="Direct link to 🔍 Self-service analytics for 40+ business users" title="Direct link to 🔍 Self-service analytics for 40+ business users" translate="no">​</a></h4><p>Democratized data access without requiring SQL knowledge</p><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="-50-reduction-in-ad-hoc-data-request-volume">⚡ 50% reduction in ad-hoc data request volume<a href="#-50-reduction-in-ad-hoc-data-request-volume" class="hash-link" aria-label="Direct link to ⚡ 50% reduction in ad-hoc data request volume" title="Direct link to ⚡ 50% reduction in ad-hoc data request volume" translate="no">​</a></h4><p>Analytics teams can focus on strategic projects instead of routine queries</p><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="-secure-role-based-data-access">🔒 Secure, role-based data access<a href="#-secure-role-based-data-access" class="hash-link" aria-label="Direct link to 🔒 Secure, role-based data access" title="Direct link to 🔒 Secure, role-based data access" translate="no">​</a></h4><p>Maintains enterprise security while improving accessibility</p></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="additional-information">Additional Information<a href="#additional-information" class="hash-link" aria-label="Direct link to Additional Information" title="Direct link to Additional Information" translate="no">​</a></h3>
+<ul>
+<li class=""><a class="" href="/help/connectors/userConnectors/azure_sql">Azure SQL Connector</a></li>
+<li class=""><a class="" href="/help/developer-platform/useCases/CHAT_LLM">Custom Chatbots</a></li>
+</ul></div>
+</section>
+
+<section id="page-7">
+    <div class="page-meta">
+        <strong>Источник:</strong> <a href="https://abacus.ai/help/case-studies/expense-audit-automation" target="_blank">https://abacus.ai/help/case-studies/expense-audit-automation</a>
+    </div>
+    <h1>AI-Powered T&E Expense Audit</h1>
+<div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>AI-Powered T&amp;E Expense Audit</h1></header><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="business-need">Business Need<a href="#business-need" class="hash-link" aria-label="Direct link to Business Need" title="Direct link to Business Need" translate="no">​</a></h3>
+<p>Automate the complex process of auditing travel and entertainment expense reports by matching receipts to expense items, applying company policy rules across 40+ expense categories, and generating approval decisions with clear reasoning for each line item.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="solution-overview">Solution Overview<a href="#solution-overview" class="hash-link" aria-label="Direct link to Solution Overview" title="Direct link to Solution Overview" translate="no">​</a></h3>
+<p>This solution leverages AI Workflows to deliver comprehensive expense audit automation:</p>
+<p><strong>Step 1: Document Ingestion &amp; OCR</strong></p>
+<ul>
+<li class=""><strong>Data Source</strong>: Expense reports submitted through the company's expense management system via the API</li>
+<li class=""><strong>Document Types</strong>: Receipt images (JPEG, PNG), PDF expense forms, and supporting documentation</li>
+<li class=""><strong>Processing</strong>: Advanced OCR extracts text, amounts, dates, merchant names, and line item details from receipts</li>
+</ul>
+<p><strong>Step 2: Receipt Matching &amp; Classification</strong></p>
+<p>The AI Workflow performs intelligent matching and categorization:</p>
+<ul>
+<li class="">Matches individual receipts to specific expense line items using amount, date, and merchant correlation</li>
+<li class="">Classifies expenses into 40+ categories (meals, lodging, airfare, ground transportation, etc.)</li>
+<li class="">Identifies split expenses and handles multi-line receipts</li>
+<li class="">Flags missing or duplicate receipts</li>
+</ul>
+<div class="card item shadow--lg" style="background:#2d3748;border:3px solid #667eea;border-radius:12px;overflow:hidden;margin-top:1.5rem;margin-bottom:1.5rem"><div class="card__body" style="padding:1.5rem"><div style="font-size:1.1rem;font-weight:600;color:#667eea;margin-bottom:0.75rem;display:flex;align-items:center;gap:0.5rem"><span style="font-size:1.3rem">💡</span>Pro Tip</div><div style="color:#e2e8f0;line-height:1.6"><p>Train the system on historical audit decisions for your specific company policies. The AI learns to identify edge cases and gray areas that frequently require human judgment.</p></div></div></div>
+<p><strong>Step 3: Policy Rule Application</strong></p>
+<p>Complex audit rules are applied automatically:</p>
+<ul>
+<li class="">Per diem limits and geographic-specific policies</li>
+<li class="">Itemized receipt requirements based on amount thresholds</li>
+<li class="">Business purpose and attendee requirements for entertainment</li>
+<li class="">Restricted expense categories and prohibited vendors</li>
+</ul>
+<p><strong>Step 4: Decision Generation</strong></p>
+<p>For each line item, the workflow generates:</p>
+<ul>
+<li class=""><strong>Decision</strong>: Approve, Hold (requires clarification), or Reject</li>
+<li class=""><strong>Reasoning</strong>: Clear, human-readable explanation of the decision (using a predefined sets of reasons.)</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="how-its-used-in-practice">How It's Used in Practice<a href="#how-its-used-in-practice" class="hash-link" aria-label="Direct link to How It's Used in Practice" title="Direct link to How It's Used in Practice" translate="no">​</a></h3>
+<p>This solution operates as a real-time API service integrated into the expense management system:</p>
+<p><strong>Automated Audit Pipeline</strong>:</p>
+<ul>
+<li class="">Employee submits expense report through existing system</li>
+<li class="">System calls Abacus AI Workflow API with expense data and receipt images daily</li>
+<li class="">Results are displayed to employee and approving manager with clear reasoning</li>
+</ul>
+<p><strong>Audit Outcomes</strong>:</p>
+<ul>
+<li class=""><strong>Auto-Approved</strong> (65% of line items): Expenses that fully comply with policy</li>
+<li class=""><strong>Hold for Review</strong> (25% of line items): Require clarification or additional documentation</li>
+<li class=""><strong>Auto-Rejected</strong> (10% of line items): Clear policy violations with explanation</li>
+</ul>
+<p>The system processes thousands of expense line items per month with consistent application of company policies.</p>
+<div class="card item shadow--xl" style="border:3px solid #667eea;border-radius:12px;overflow:hidden;margin-top:1.5rem;margin-bottom:1.5rem"><div class="card__header" style="background:linear-gradient(135deg, #667eea 0%, #764ba2 100%);color:#ffffff;padding:1rem 1.5rem;border-bottom:none"><h3 style="margin:0;font-size:1.3rem;font-weight:700;display:flex;align-items:center;gap:0.5rem;text-align:center;justify-content:center"><span style="font-size:1.5rem">✨</span>Key Outcomes</h3></div><div class="card__body" style="padding:1.5rem;background-color:#2d3748;color:#e2e8f0;line-height:1.7"><p><strong>Key achievements:</strong></p><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="-85-reduction-in-audit-processing-time">⚡ 85% reduction in audit processing time<a href="#-85-reduction-in-audit-processing-time" class="hash-link" aria-label="Direct link to ⚡ 85% reduction in audit processing time" title="Direct link to ⚡ 85% reduction in audit processing time" translate="no">​</a></h4><p>Manual audits that took 3-5 days now complete in under 1 minute</p><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="-saved-precious-time-from-the-audit-team">💰 Saved precious time from the audit team<a href="#-saved-precious-time-from-the-audit-team" class="hash-link" aria-label="Direct link to 💰 Saved precious time from the audit team" title="Direct link to 💰 Saved precious time from the audit team" translate="no">​</a></h4><p>Auditors focus on complex cases and policy exceptions</p><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="-100-policy-consistency">📊 100% policy consistency<a href="#-100-policy-consistency" class="hash-link" aria-label="Direct link to 📊 100% policy consistency" title="Direct link to 📊 100% policy consistency" translate="no">​</a></h4><p>Every expense evaluated against all 40+ rule categories without human oversight gaps</p></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="additional-information">Additional Information<a href="#additional-information" class="hash-link" aria-label="Direct link to Additional Information" title="Direct link to Additional Information" translate="no">​</a></h3>
+<ul>
+<li class=""><a class="" href="/help/developer-platform/useCases/AI_AGENTS">AI Workflows</a></li>
+</ul></div>
+</section>
+
+<section id="page-8">
+    <div class="page-meta">
+        <strong>Источник:</strong> <a href="https://abacus.ai/help/case-studies/forecast-analysis-chatbot" target="_blank">https://abacus.ai/help/case-studies/forecast-analysis-chatbot</a>
+    </div>
+    <h1>Forecast Analysis Chatbot</h1>
+<div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Forecast Analysis Chatbot</h1></header><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="business-need">Business Need<a href="#business-need" class="hash-link" aria-label="Direct link to Business Need" title="Direct link to Business Need" translate="no">​</a></h3>
+<p>Enable business users to interactively analyze forecasting model predictions through natural language queries, generating visualizations and comparative analyses to sanity-check predictions and diagnose forecast behavior.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="solution-overview">Solution Overview<a href="#solution-overview" class="hash-link" aria-label="Direct link to Solution Overview" title="Direct link to Solution Overview" translate="no">​</a></h3>
+<p>This solution leverages a Custom Chatbot with feature group integration to deliver conversational forecast analytics:</p>
+<p><strong>Step 1: Feature Group Preparation</strong></p>
+<ul>
+<li class=""><strong>Data Sources</strong>: Combines input feature group (historical data) and output feature group (forecast predictions) from a forecasting batch prediction</li>
+<li class=""><strong>Data Structure</strong>: Merged feature group contains both actual historical values and predicted future values for all forecast entities</li>
+<li class=""><strong>Time Alignment</strong>: Historical data and forecasts aligned by timestamp to enable side-by-side comparison</li>
+<li class=""><strong>Refresh Schedule</strong>: Feature group updates daily as new forecasts are generated</li>
+</ul>
+<p><strong>Step 2: Chatbot Configuration</strong></p>
+<p>The Custom Chatbot is configured with forecasting domain knowledge:</p>
+<ul>
+<li class="">Connected to the merged historical + forecast feature group</li>
+<li class="">Configured with time series analysis capabilities</li>
+<li class="">Understands forecasting terminology (YoY growth, seasonality, trend, forecast horizon)</li>
+<li class="">Equipped with Python visualization libraries for automatic chart generation</li>
+</ul>
+<div class="card item shadow--lg" style="background:#2d3748;border:3px solid #667eea;border-radius:12px;overflow:hidden;margin-top:1.5rem;margin-bottom:1.5rem"><div class="card__body" style="padding:1.5rem"><div style="font-size:1.1rem;font-weight:600;color:#667eea;margin-bottom:0.75rem;display:flex;align-items:center;gap:0.5rem"><span style="font-size:1.3rem">💡</span>Pro Tip</div><div style="color:#e2e8f0;line-height:1.6"><p>Include metadata in the feature group such as forecast confidence intervals, model version, and training date. Users can then ask questions like "Show me predictions where the model had low confidence" to focus review efforts.</p></div></div></div>
+<p><strong>Step 3: Interactive Analysis</strong></p>
+<p>Users interact with the chatbot through natural language queries:</p>
+<ul>
+<li class=""><strong>Trend Analysis</strong>: "Show me next quarter's forecast compared to last year same period"</li>
+<li class=""><strong>Visual Comparison</strong>: "Plot actual vs. forecast for top 10 products"</li>
+<li class=""><strong>Statistical Queries</strong>: "What's the average YoY growth rate in the forecast?"</li>
+<li class=""><strong>Anomaly Detection</strong>: "Which forecasts deviate significantly from historical patterns?"</li>
+</ul>
+<p>The chatbot generates appropriate visualizations automatically:</p>
+<ul>
+<li class="">Time series plots comparing actual vs. forecast</li>
+<li class="">YoY growth comparison charts</li>
+<li class="">Histograms showing forecast distribution</li>
+<li class="">Heatmaps for multi-dimensional forecasts</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="how-its-used-in-practice">How It's Used in Practice<a href="#how-its-used-in-practice" class="hash-link" aria-label="Direct link to How It's Used in Practice" title="Direct link to How It's Used in Practice" translate="no">​</a></h3>
+<p>This solution provides self-service forecast analysis to business stakeholders:</p>
+<p><strong>Daily Forecast Review Workflow</strong>:</p>
+<ul>
+<li class="">Demand planners access the chatbot through ChatLLM UI</li>
+<li class="">Ask exploratory questions about the latest forecast batch</li>
+<li class="">Generate visualizations to spot check predictions</li>
+<li class="">Identify anomalies or unusual patterns requiring investigation</li>
+<li class="">Export charts and analysis for stakeholder presentations</li>
+</ul>
+<p>Users spend 60% less time in BI tools building manual reports, with the chatbot generating analysis on-demand within seconds.</p>
+<div class="card item shadow--xl" style="border:3px solid #667eea;border-radius:12px;overflow:hidden;margin-top:1.5rem;margin-bottom:1.5rem"><div class="card__header" style="background:linear-gradient(135deg, #667eea 0%, #764ba2 100%);color:#ffffff;padding:1rem 1.5rem;border-bottom:none"><h3 style="margin:0;font-size:1.3rem;font-weight:700;display:flex;align-items:center;gap:0.5rem;text-align:center;justify-content:center"><span style="font-size:1.5rem">✨</span>Key Outcomes</h3></div><div class="card__body" style="padding:1.5rem;background-color:#2d3748;color:#e2e8f0;line-height:1.7"><p><strong>Key achievements:</strong></p><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="-self-service-forecast-analysis">📊 Self-service forecast analysis<a href="#-self-service-forecast-analysis" class="hash-link" aria-label="Direct link to 📊 Self-service forecast analysis" title="Direct link to 📊 Self-service forecast analysis" translate="no">​</a></h4><p>Business users explore predictions without requiring data analyst support</p><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="-seconds-to-generate-visualizations">⚡ Seconds to generate visualizations<a href="#-seconds-to-generate-visualizations" class="hash-link" aria-label="Direct link to ⚡ Seconds to generate visualizations" title="Direct link to ⚡ Seconds to generate visualizations" translate="no">​</a></h4><p>What took 15-30 minutes in BI tools now takes 10-20 seconds</p><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="-improved-forecast-validation">🔍 Improved forecast validation<a href="#-improved-forecast-validation" class="hash-link" aria-label="Direct link to 🔍 Improved forecast validation" title="Direct link to 🔍 Improved forecast validation" translate="no">​</a></h4><p>Interactive analysis catches questionable predictions before they impact decisions</p><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="-increased-forecast-model-trust">📈 Increased forecast model trust<a href="#-increased-forecast-model-trust" class="hash-link" aria-label="Direct link to 📈 Increased forecast model trust" title="Direct link to 📈 Increased forecast model trust" translate="no">​</a></h4><p>Transparency and easy validation builds confidence in using model predictions</p></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="additional-information">Additional Information<a href="#additional-information" class="hash-link" aria-label="Direct link to Additional Information" title="Direct link to Additional Information" translate="no">​</a></h3>
+<ul>
+<li class=""><a class="" href="/help/developer-platform/useCases/retail">Forecasting and Planning</a></li>
+<li class=""><a class="" href="/help/developer-platform/useCases/CHAT_LLM">Custom Chatbots</a></li>
+</ul></div>
+</section>
+
+<section id="page-9">
+    <div class="page-meta">
+        <strong>Источник:</strong> <a href="https://abacus.ai/help/case-studies/introduction" target="_blank">https://abacus.ai/help/case-studies/introduction</a>
+    </div>
+    <h1>Case Studies</h1>
+<div class="theme-doc-markdown markdown"><header><h1>Case Studies</h1></header><div style="margin-top:2rem;margin-bottom:2rem"><div style="display:flex;flex-wrap:wrap;gap:0.75rem;justify-content:center"><button style="background-color:rgba(233, 183, 96, 1);color:white;padding:0.5rem 1rem;border-radius:20px;font-size:0.9rem;font-weight:600;border:none;cursor:pointer;transition:all 0.2s ease">All<!-- --> </button><button style="background-color:var(--ifm-color-emphasis-200);color:var(--ifm-color-emphasis-800);padding:0.5rem 1rem;border-radius:20px;font-size:0.9rem;font-weight:600;border:none;cursor:pointer;transition:all 0.2s ease">AI Agents<!-- --> <!-- -->(8)</button><button style="background-color:var(--ifm-color-emphasis-200);color:var(--ifm-color-emphasis-800);padding:0.5rem 1rem;border-radius:20px;font-size:0.9rem;font-weight:600;border:none;cursor:pointer;transition:all 0.2s ease">Custom Chatbots<!-- --> <!-- -->(5)</button><button style="background-color:var(--ifm-color-emphasis-200);color:var(--ifm-color-emphasis-800);padding:0.5rem 1rem;border-radius:20px;font-size:0.9rem;font-weight:600;border:none;cursor:pointer;transition:all 0.2s ease">Predictive Modeling<!-- --> <!-- -->(2)</button><button style="background-color:var(--ifm-color-emphasis-200);color:var(--ifm-color-emphasis-800);padding:0.5rem 1rem;border-radius:20px;font-size:0.9rem;font-weight:600;border:none;cursor:pointer;transition:all 0.2s ease">Time Series Forecasting<!-- --> <!-- -->(3)</button></div></div><div class="row"><div class="col col--4" style="margin-bottom:1rem"><div class="card item shadow--md" style="height:100%;display:flex;flex-direction:column"><div class="card__header"><h3 style="color:rgba(233, 183, 96, 1)">RFP Automation</h3></div><div class="card__body" style="flex:1;display:flex;flex-direction:column"><p style="flex:1">AI-powered RFP response automation using document retrievers and intelligent response generation</p><div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1rem"><span style="background-color:var(--ifm-color-emphasis-200);color:var(--ifm-color-emphasis-800);padding:0.2rem 0.6rem;border-radius:12px;font-size:0.8rem;font-weight:500">AI Agents</span></div></div><div class="card__footer"><a class="button button--primary button--block" href="/help/case-studies/rfp-automation">Learn More</a></div></div></div><div class="col col--4" style="margin-bottom:1rem"><div class="card item shadow--md" style="height:100%;display:flex;flex-direction:column"><div class="card__header"><h3 style="color:rgba(233, 183, 96, 1)">AI-Powered T&amp;E Expense Audit</h3></div><div class="card__body" style="flex:1;display:flex;flex-direction:column"><p style="flex:1">Automated travel and entertainment expense auditing with receipt matching and policy enforcement</p><div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1rem"><span style="background-color:var(--ifm-color-emphasis-200);color:var(--ifm-color-emphasis-800);padding:0.2rem 0.6rem;border-radius:12px;font-size:0.8rem;font-weight:500">AI Agents</span></div></div><div class="card__footer"><a class="button button--primary button--block" href="/help/case-studies/expense-audit-automation">Learn More</a></div></div></div><div class="col col--4" style="margin-bottom:1rem"><div class="card item shadow--md" style="height:100%;display:flex;flex-direction:column"><div class="card__header"><h3 style="color:rgba(233, 183, 96, 1)">Automatic Email Campaign</h3></div><div class="card__body" style="flex:1;display:flex;flex-direction:column"><p style="flex:1">Proactive customer engagement through triggered, personalized email campaigns with intelligent response handling</p><div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1rem"><span style="background-color:var(--ifm-color-emphasis-200);color:var(--ifm-color-emphasis-800);padding:0.2rem 0.6rem;border-radius:12px;font-size:0.8rem;font-weight:500">AI Agents</span></div></div><div class="card__footer"><a class="button button--primary button--block" href="/help/case-studies/automatic-email-campaign">Learn More</a></div></div></div><div class="col col--4" style="margin-bottom:1rem"><div class="card item shadow--md" style="height:100%;display:flex;flex-direction:column"><div class="card__header"><h3 style="color:rgba(233, 183, 96, 1)">Engineering Drawing Extraction</h3></div><div class="card__body" style="flex:1;display:flex;flex-direction:column"><p style="flex:1">Extract structured data from technical drawings and map component dependencies at scale</p><div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1rem"><span style="background-color:var(--ifm-color-emphasis-200);color:var(--ifm-color-emphasis-800);padding:0.2rem 0.6rem;border-radius:12px;font-size:0.8rem;font-weight:500">AI Agents</span></div></div><div class="card__footer"><a class="button button--primary button--block" href="/help/case-studies/engineering-drawing-extraction">Learn More</a></div></div></div><div class="col col--4" style="margin-bottom:1rem"><div class="card item shadow--md" style="height:100%;display:flex;flex-direction:column"><div class="card__header"><h3 style="color:rgba(233, 183, 96, 1)">Content Auditing</h3></div><div class="card__body" style="flex:1;display:flex;flex-direction:column"><p style="flex:1">Automated learning content quality assurance and assessment question generation</p><div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1rem"><span style="background-color:var(--ifm-color-emphasis-200);color:var(--ifm-color-emphasis-800);padding:0.2rem 0.6rem;border-radius:12px;font-size:0.8rem;font-weight:500">AI Agents</span></div></div><div class="card__footer"><a class="button button--primary button--block" href="/help/case-studies/content-auditing-quiz-generation">Learn More</a></div></div></div><div class="col col--4" style="margin-bottom:1rem"><div class="card item shadow--md" style="height:100%;display:flex;flex-direction:column"><div class="card__header"><h3 style="color:rgba(233, 183, 96, 1)">Support Email Automation</h3></div><div class="card__body" style="flex:1;display:flex;flex-direction:column"><p style="flex:1">24/7 autonomous support email responses powered by documentation retrieval</p><div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1rem"><span style="background-color:var(--ifm-color-emphasis-200);color:var(--ifm-color-emphasis-800);padding:0.2rem 0.6rem;border-radius:12px;font-size:0.8rem;font-weight:500">AI Agents</span></div></div><div class="card__footer"><a class="button button--primary button--block" href="/help/case-studies/support-email-automation">Learn More</a></div></div></div><div class="col col--4" style="margin-bottom:1rem"><div class="card item shadow--md" style="height:100%;display:flex;flex-direction:column"><div class="card__header"><h3 style="color:rgba(233, 183, 96, 1)">Jira Automation</h3></div><div class="card__body" style="flex:1;display:flex;flex-direction:column"><p style="flex:1">Automated Jira ticket responses using Confluence documentation and intelligent routing</p><div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1rem"><span style="background-color:var(--ifm-color-emphasis-200);color:var(--ifm-color-emphasis-800);padding:0.2rem 0.6rem;border-radius:12px;font-size:0.8rem;font-weight:500">AI Agents</span></div></div><div class="card__footer"><a class="button button--primary button--block" href="/help/case-studies/jira-automation">Learn More</a></div></div></div><div class="col col--4" style="margin-bottom:1rem"><div class="card item shadow--md" style="height:100%;display:flex;flex-direction:column"><div class="card__header"><h3 style="color:rgba(233, 183, 96, 1)">AI-Powered Job Matching</h3></div><div class="card__body" style="flex:1;display:flex;flex-direction:column"><p style="flex:1">Intelligent resume-to-job matching using document parsing and semantic search</p><div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1rem"><span style="background-color:var(--ifm-color-emphasis-200);color:var(--ifm-color-emphasis-800);padding:0.2rem 0.6rem;border-radius:12px;font-size:0.8rem;font-weight:500">AI Agents</span></div></div><div class="card__footer"><a class="button button--primary button--block" href="/help/case-studies/job-matching">Learn More</a></div></div></div><div class="col col--4" style="margin-bottom:1rem"><div class="card item shadow--md" style="height:100%;display:flex;flex-direction:column"><div class="card__header"><h3 style="color:rgba(233, 183, 96, 1)">Enterprise Search Chatbot on Azure Warehouse</h3></div><div class="card__body" style="flex:1;display:flex;flex-direction:column"><p style="flex:1">Natural language to SQL chatbot with Azure authentication and automatic visualization generation</p><div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1rem"><span style="background-color:var(--ifm-color-emphasis-200);color:var(--ifm-color-emphasis-800);padding:0.2rem 0.6rem;border-radius:12px;font-size:0.8rem;font-weight:500">Custom Chatbots</span></div></div><div class="card__footer"><a class="button button--primary button--block" href="/help/case-studies/enterprise-search-azure">Learn More</a></div></div></div><div class="col col--4" style="margin-bottom:1rem"><div class="card item shadow--md" style="height:100%;display:flex;flex-direction:column"><div class="card__header"><h3 style="color:rgba(233, 183, 96, 1)">Forecast Analysis Chatbot</h3></div><div class="card__body" style="flex:1;display:flex;flex-direction:column"><p style="flex:1">Interactive forecast analysis through natural language queries with automatic visualization generation</p><div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1rem"><span style="background-color:var(--ifm-color-emphasis-200);color:var(--ifm-color-emphasis-800);padding:0.2rem 0.6rem;border-radius:12px;font-size:0.8rem;font-weight:500">Custom Chatbots</span><span style="background-color:var(--ifm-color-emphasis-200);color:var(--ifm-color-emphasis-800);padding:0.2rem 0.6rem;border-radius:12px;font-size:0.8rem;font-weight:500">Time Series Forecasting</span></div></div><div class="card__footer"><a class="button button--primary button--block" href="/help/case-studies/forecast-analysis-chatbot">Learn More</a></div></div></div><div class="col col--4" style="margin-bottom:1rem"><div class="card item shadow--md" style="height:100%;display:flex;flex-direction:column"><div class="card__header"><h3 style="color:rgba(233, 183, 96, 1)">Customer Service Assistant</h3></div><div class="card__body" style="flex:1;display:flex;flex-direction:column"><p style="flex:1">AI-powered support assistant leveraging historical case knowledge from Salesforce</p><div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1rem"><span style="background-color:var(--ifm-color-emphasis-200);color:var(--ifm-color-emphasis-800);padding:0.2rem 0.6rem;border-radius:12px;font-size:0.8rem;font-weight:500">Custom Chatbots</span></div></div><div class="card__footer"><a class="button button--primary button--block" href="/help/case-studies/customer-service-assistant">Learn More</a></div></div></div><div class="col col--4" style="margin-bottom:1rem"><div class="card item shadow--md" style="height:100%;display:flex;flex-direction:column"><div class="card__header"><h3 style="color:rgba(233, 183, 96, 1)">Sales Insights Chatbot</h3></div><div class="card__body" style="flex:1;display:flex;flex-direction:column"><p style="flex:1">Natural language analytics with text-to-SQL and dynamic dashboard generation</p><div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1rem"><span style="background-color:var(--ifm-color-emphasis-200);color:var(--ifm-color-emphasis-800);padding:0.2rem 0.6rem;border-radius:12px;font-size:0.8rem;font-weight:500">Custom Chatbots</span></div></div><div class="card__footer"><a class="button button--primary button--block" href="/help/case-studies/sales-insights-chatbot">Learn More</a></div></div></div><div class="col col--4" style="margin-bottom:1rem"><div class="card item shadow--md" style="height:100%;display:flex;flex-direction:column"><div class="card__header"><h3 style="color:rgba(233, 183, 96, 1)">Enterprise Analytics Assistant</h3></div><div class="card__body" style="flex:1;display:flex;flex-direction:column"><p style="flex:1">Hybrid chatbot combining enterprise document search with text-to-SQL analytics</p><div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1rem"><span style="background-color:var(--ifm-color-emphasis-200);color:var(--ifm-color-emphasis-800);padding:0.2rem 0.6rem;border-radius:12px;font-size:0.8rem;font-weight:500">Custom Chatbots</span></div></div><div class="card__footer"><a class="button button--primary button--block" href="/help/case-studies/enterprise-analytics-assistant">Learn More</a></div></div></div><div class="col col--4" style="margin-bottom:1rem"><div class="card item shadow--md" style="height:100%;display:flex;flex-direction:column"><div class="card__header"><h3 style="color:rgba(233, 183, 96, 1)">Predicting Oil Production</h3></div><div class="card__body" style="flex:1;display:flex;flex-direction:column"><p style="flex:1">Time Series Forecasting on Oil Production Data using an ensemble machine learning model.</p><div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1rem"><span style="background-color:var(--ifm-color-emphasis-200);color:var(--ifm-color-emphasis-800);padding:0.2rem 0.6rem;border-radius:12px;font-size:0.8rem;font-weight:500">Time Series Forecasting</span><span style="background-color:var(--ifm-color-emphasis-200);color:var(--ifm-color-emphasis-800);padding:0.2rem 0.6rem;border-radius:12px;font-size:0.8rem;font-weight:500">Predictive Modeling</span></div></div><div class="card__footer"><a class="button button--primary button--block" href="/help/case-studies/oil-production">Learn More</a></div></div></div><div class="col col--4" style="margin-bottom:1rem"><div class="card item shadow--md" style="height:100%;display:flex;flex-direction:column"><div class="card__header"><h3 style="color:rgba(233, 183, 96, 1)">Retail Demand Forecasting</h3></div><div class="card__body" style="flex:1;display:flex;flex-direction:column"><p style="flex:1">Multi-level time series forecasting for retail inventory optimization across stores and items</p><div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1rem"><span style="background-color:var(--ifm-color-emphasis-200);color:var(--ifm-color-emphasis-800);padding:0.2rem 0.6rem;border-radius:12px;font-size:0.8rem;font-weight:500">Time Series Forecasting</span></div></div><div class="card__footer"><a class="button button--primary button--block" href="/help/case-studies/retail-demand-forecasting">Learn More</a></div></div></div><div class="col col--4" style="margin-bottom:1rem"><div class="card item shadow--md" style="height:100%;display:flex;flex-direction:column"><div class="card__header"><h3 style="color:rgba(233, 183, 96, 1)">Customer Propensity Scoring</h3></div><div class="card__body" style="flex:1;display:flex;flex-direction:column"><p style="flex:1">Predictive modeling to identify customers likely to churn, upgrade, or purchase</p><div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1rem"><span style="background-color:var(--ifm-color-emphasis-200);color:var(--ifm-color-emphasis-800);padding:0.2rem 0.6rem;border-radius:12px;font-size:0.8rem;font-weight:500">Predictive Modeling</span></div></div><div class="card__footer"><a class="button button--primary button--block" href="/help/case-studies/propensity-scoring">Learn More</a></div></div></div></div></div>
+</section>
+
+<section id="page-10">
+    <div class="page-meta">
+        <strong>Источник:</strong> <a href="https://abacus.ai/help/case-studies/jira-automation" target="_blank">https://abacus.ai/help/case-studies/jira-automation</a>
+    </div>
+    <h1>Jira Automation</h1>
+<div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Jira Automation</h1></header><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="business-need">Business Need<a href="#business-need" class="hash-link" aria-label="Direct link to Business Need" title="Direct link to Business Need" translate="no">​</a></h3>
+<p>Automatically respond to Jira tickets by consulting technical documentation in Confluence, providing accurate solutions and reducing the burden on development and support teams while maintaining consistent response quality.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="solution-overview">Solution Overview<a href="#solution-overview" class="hash-link" aria-label="Direct link to Solution Overview" title="Direct link to Solution Overview" translate="no">​</a></h3>
+<p>This solution leverages AI Workflows with Confluence and Jira integration to deliver intelligent ticket automation:</p>
+<p><strong>Step 1: Documentation Knowledge Base</strong></p>
+<ul>
+<li class=""><strong>Data Source</strong>: Technical documentation, API references, troubleshooting guides, and architecture diagrams stored in Confluence</li>
+<li class=""><strong>Document Retriever</strong>: Vector store created from 1,800+ Confluence pages across engineering documentation spaces</li>
+<li class=""><strong>Content Coverage</strong>: System architecture, deployment guides, API documentation, known issues, and troubleshooting runbooks</li>
+<li class=""><strong>Maintenance</strong>: Documentation is continuously synced as engineers update Confluence pages</li>
+</ul>
+<p><strong>Step 2: Jira Integration &amp; Ticket Processing</strong></p>
+<p>The AI Workflow integrates directly with Jira:</p>
+<ul>
+<li class="">We are leveraging Jira Automation to invoke the AI workflow with relevant information about the ticket context and user queries.</li>
+<li class="">AI Workflow responds and this is logged in the ticket</li>
+<li class="">Follow-up questions and conversations on the ticket are also sent to the AI Workflow for further processing.</li>
+</ul>
+<div class="card item shadow--lg" style="background:#2d3748;border:3px solid #667eea;border-radius:12px;overflow:hidden;margin-top:1.5rem;margin-bottom:1.5rem"><div class="card__body" style="padding:1.5rem"><div style="font-size:1.1rem;font-weight:600;color:#667eea;margin-bottom:0.75rem;display:flex;align-items:center;gap:0.5rem"><span style="font-size:1.3rem">💡</span>Pro Tip</div><div style="color:#e2e8f0;line-height:1.6"><p>Create ticket templates that prompt users to include specific information (error messages, steps to reproduce, environment details). The AI Workflow can extract this structured data more accurately, leading to better responses.</p></div></div></div>
+<p><strong>Step 3: Documentation Search &amp; Response Generation</strong></p>
+<p>The workflow performs intelligent documentation retrieval:</p>
+<ul>
+<li class="">Queries the Confluence document retriever using semantic search</li>
+<li class="">Identifies the most relevant documentation sections, code examples, and troubleshooting steps</li>
+<li class="">Synthesizes information into a clear, actionable Jira comment</li>
+<li class="">Includes links to relevant Confluence pages for deeper exploration</li>
+<li class="">Tags ticket with relevant labels (e.g., "auto-resolved", "needs-verification")</li>
+</ul>
+<p><strong>Step 4: Response Posting &amp; Follow-up</strong></p>
+<ul>
+<li class="">Posts detailed response as a Jira comment within 60-90 seconds</li>
+<li class="">Monitors for follow-up comments from ticket creator</li>
+<li class="">Can engage in multi-turn conversation to clarify or provide additional guidance</li>
+<li class="">Escalates to human team if issue remains unresolved after 2-3 interactions</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="how-its-used-in-practice">How It's Used in Practice<a href="#how-its-used-in-practice" class="hash-link" aria-label="Direct link to How It's Used in Practice" title="Direct link to How It's Used in Practice" translate="no">​</a></h3>
+<p>This solution operates as an automated first-line support system for technical tickets.</p>
+<p>The system has processed hundreds of Jira tickets over 9 months, with 40% marked as resolved based on AI-provided documentation references.</p>
+<div class="card item shadow--xl" style="border:3px solid #667eea;border-radius:12px;overflow:hidden;margin-top:1.5rem;margin-bottom:1.5rem"><div class="card__header" style="background:linear-gradient(135deg, #667eea 0%, #764ba2 100%);color:#ffffff;padding:1rem 1.5rem;border-bottom:none"><h3 style="margin:0;font-size:1.3rem;font-weight:700;display:flex;align-items:center;gap:0.5rem;text-align:center;justify-content:center"><span style="font-size:1.5rem">✨</span>Key Outcomes</h3></div><div class="card__body" style="padding:1.5rem;background-color:#2d3748;color:#e2e8f0;line-height:1.7"><p><strong>Key achievements:</strong></p><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="-40-of-tickets-resolved-with-documentation-references">🚀 40% of tickets resolved with documentation references<a href="#-40-of-tickets-resolved-with-documentation-references" class="hash-link" aria-label="Direct link to 🚀 40% of tickets resolved with documentation references" title="Direct link to 🚀 40% of tickets resolved with documentation references" translate="no">​</a></h4><p>Developers and customers find answers without engineering team involvement</p><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="-15-minute-average-response-time">⚡ 1.5-minute average response time<a href="#-15-minute-average-response-time" class="hash-link" aria-label="Direct link to ⚡ 1.5-minute average response time" title="Direct link to ⚡ 1.5-minute average response time" translate="no">​</a></h4><p>Immediate guidance instead of waiting hours or days for engineering response</p><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="-identified-documentation-gaps">📚 Identified documentation gaps<a href="#-identified-documentation-gaps" class="hash-link" aria-label="Direct link to 📚 Identified documentation gaps" title="Direct link to 📚 Identified documentation gaps" translate="no">​</a></h4><p>Recurring questions without good answers highlight areas needing better documentation</p></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="additional-information">Additional Information<a href="#additional-information" class="hash-link" aria-label="Direct link to Additional Information" title="Direct link to Additional Information" translate="no">​</a></h3>
+<ul>
+<li class=""><a class="" href="/help/developer-platform/useCases/AI_AGENTS">AI Workflows</a></li>
+<li class=""><a class="" href="/help/connectors/applicationConnectors/confluence">Confluence Connector</a></li>
+<li class=""><a class="" href="/help/connectors/applicationConnectors/jira">Jira Connector</a></li>
+<li class=""><a class="" href="/help/developer-platform/pipelines/creating-pipelines">Pipelines</a></li>
+</ul></div>
+</section>
+
+<section id="page-11">
+    <div class="page-meta">
+        <strong>Источник:</strong> <a href="https://abacus.ai/help/case-studies/job-matching" target="_blank">https://abacus.ai/help/case-studies/job-matching</a>
+    </div>
+    <h1>AI-Powered Job Matching</h1>
+<div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>AI-Powered Job Matching</h1></header><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="business-need">Business Need<a href="#business-need" class="hash-link" aria-label="Direct link to Business Need" title="Direct link to Business Need" translate="no">​</a></h3>
+<p>Automatically match candidate resumes to open job positions by analyzing skills, experience, and qualifications, reducing manual screening time and improving hiring quality.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="solution-overview">Solution Overview<a href="#solution-overview" class="hash-link" aria-label="Direct link to Solution Overview" title="Direct link to Solution Overview" translate="no">​</a></h3>
+<p>This solution leverages Abacus.AI's AI Workflow capabilities to create an intelligent candidate matching system:</p>
+<p><strong>Step 1: Document Ingestion &amp; Parsing</strong></p>
+<ul>
+<li class=""><strong>Input</strong>: Recruiters upload PDF resumes through a web interface</li>
+<li class=""><strong>PDF Parsing</strong>: AI Workflow automatically extracts text, structure, and metadata from resume PDFs</li>
+<li class=""><strong>Entity Extraction</strong>: Identifies key information including skills, experience, education, certifications, and contact details</li>
+<li class=""><strong>Normalization</strong>: Standardizes extracted data for consistent matching</li>
+</ul>
+<p><strong>Step 2: Job Position Repository</strong></p>
+<ul>
+<li class=""><strong>Job Database</strong>: Existing job descriptions are stored as structured documents</li>
+<li class=""><strong>Document Retriever</strong>: A document retriever is created over the job position database</li>
+<li class=""><strong>Semantic Indexing</strong>: Job requirements are embedded for semantic similarity matching</li>
+<li class=""><strong>Metadata</strong>: Jobs are tagged with required skills, experience levels, and qualifications</li>
+</ul>
+<div class="card item shadow--lg" style="background:#2d3748;border:3px solid #667eea;border-radius:12px;overflow:hidden;margin-top:1.5rem;margin-bottom:1.5rem"><div class="card__body" style="padding:1.5rem"><div style="font-size:1.1rem;font-weight:600;color:#667eea;margin-bottom:0.75rem;display:flex;align-items:center;gap:0.5rem"><span style="font-size:1.3rem">💡</span>Important</div><div style="color:#e2e8f0;line-height:1.6"><p>AI Workflows excel at multi-step document processing tasks like this. The agentic framework can reason about document content, call retrieval tools, and orchestrate complex matching logic that simple chatbots cannot handle.</p></div></div></div>
+<p><strong>Step 3: Intelligent Matching Process</strong></p>
+<p>The AI Workflow orchestrates a sophisticated matching pipeline:</p>
+<ol>
+<li class=""><strong>Initial Retrieval</strong>: Document retriever finds top 20 job matches based on semantic similarity</li>
+<li class=""><strong>Detailed Analysis</strong>: LLM analyzes candidate resume against each job description in detail</li>
+<li class=""><strong>Scoring</strong>: Generates match scores (0-100) based on skills alignment, experience fit, and qualification match</li>
+<li class=""><strong>Ranking</strong>: Reranks candidates using LLM reasoning about nuanced fit factors</li>
+<li class=""><strong>Explanation</strong>: Provides detailed reasoning for each match, highlighting strengths and gaps</li>
+</ol>
+<p><strong>Step 4: Custom UI with Abacus AI Deep Agent</strong></p>
+<p>A custom Abacus AI Deep Agent application is built on top of the AI Workflow API:</p>
+<ul>
+<li class=""><strong>Recruiter Dashboard</strong>: View all candidate matches, scores, and explanations</li>
+<li class=""><strong>Filtering</strong>: Filter by minimum score, required skills, or specific roles</li>
+<li class=""><strong>Feedback Loop</strong>: Recruiters can provide feedback to improve future matches</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="how-its-used-in-practice">How It's Used in Practice<a href="#how-its-used-in-practice" class="hash-link" aria-label="Direct link to How It's Used in Practice" title="Direct link to How It's Used in Practice" translate="no">​</a></h3>
+<p>The job matching system streamlines the entire candidate screening process:</p>
+<p><strong>Recruiter Flow</strong>:</p>
+<ol>
+<li class="">Recruiter reviews new candidate submissions in the dashboard</li>
+<li class="">Views match scores and AI-generated fit assessments</li>
+<li class="">Quickly identifies top candidates for each open position</li>
+<li class="">Downloads shortlists for interview scheduling</li>
+<li class="">Provides feedback on match quality to improve the system</li>
+</ol>
+<p><strong>Hiring Manager Flow</strong>:</p>
+<ul>
+<li class="">Access pre-screened, ranked candidates for their open positions</li>
+<li class="">Review AI explanations of why each candidate is a good fit</li>
+<li class="">Focus time on evaluating top matches rather than manual screening</li>
+</ul>
+<div class="card item shadow--xl" style="border:3px solid #667eea;border-radius:12px;overflow:hidden;margin-top:1.5rem;margin-bottom:1.5rem"><div class="card__header" style="background:linear-gradient(135deg, #667eea 0%, #764ba2 100%);color:#ffffff;padding:1rem 1.5rem;border-bottom:none"><h3 style="margin:0;font-size:1.3rem;font-weight:700;display:flex;align-items:center;gap:0.5rem;text-align:center;justify-content:center"><span style="font-size:1.5rem">✨</span>Key Outcomes</h3></div><div class="card__body" style="padding:1.5rem;background-color:#2d3748;color:#e2e8f0;line-height:1.7"><p><strong>Key achievements:</strong></p><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="️-reduction-in-screening-time">⏱️ Reduction in screening time<a href="#️-reduction-in-screening-time" class="hash-link" aria-label="Direct link to ⏱️ Reduction in screening time" title="Direct link to ⏱️ Reduction in screening time" translate="no">​</a></h4><p>From hours of manual resume review to minutes</p><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="-3x-increase-in-candidate-throughput">📈 3x increase in candidate throughput<a href="#-3x-increase-in-candidate-throughput" class="hash-link" aria-label="Direct link to 📈 3x increase in candidate throughput" title="Direct link to 📈 3x increase in candidate throughput" translate="no">​</a></h4><p>Process more applicants without adding recruiters</p></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="additional-information">Additional Information<a href="#additional-information" class="hash-link" aria-label="Direct link to Additional Information" title="Direct link to Additional Information" translate="no">​</a></h3>
+<ul>
+<li class=""><a class="" href="/help/developer-platform/useCases/AI_AGENTS">AI Workflows</a></li>
+<li class=""><a class="" href="/help/chatllm-ai-super-assistant/introduction">Abacus AI Deep Agent</a></li>
+</ul></div>
+</section>
+
+<section id="page-12">
+    <div class="page-meta">
+        <strong>Источник:</strong> <a href="https://abacus.ai/help/case-studies/oil-production" target="_blank">https://abacus.ai/help/case-studies/oil-production</a>
+    </div>
+    <h1>Predicting Oil Production</h1>
+<div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Predicting Oil Production</h1></header><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="business-need">Business Need<a href="#business-need" class="hash-link" aria-label="Direct link to Business Need" title="Direct link to Business Need" translate="no">​</a></h3>
+<p>Forecast mid term oil and gas production from wells and fit well-known oil-industry curves to extrapolate predictions 30+ years into the future.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="solution-overview">Solution Overview<a href="#solution-overview" class="hash-link" aria-label="Direct link to Solution Overview" title="Direct link to Solution Overview" translate="no">​</a></h3>
+<p>This solution leverages multiple components of the Abacus platform to deliver automated production forecasting:</p>
+<p><strong>Step 1: Connect &amp; Preprocess Data</strong></p>
+<ul>
+<li class=""><strong>Data Source</strong>: Production data is ingested from a Snowflake table using our native connector</li>
+<li class=""><strong>Data Structure</strong>: The raw data contains daily production metrics at the well level</li>
+<li class=""><strong>Preprocessing</strong>: Daily production values are aggregated to monthly intervals, which provides the optimal balance between reducing noise and maintaining actionable granularity for operational decisions</li>
+</ul>
+<p><strong>Step 2: Build Forecasting Model</strong></p>
+<p>A time series forecasting model is developed using the Forecasting and Planning solution, which automatically handles seasonality, trends, and well-specific production patterns to generate monthly production forecasts.
+It predicts 12 months into the future.</p>
+<div class="card item shadow--lg" style="background:#2d3748;border:3px solid #667eea;border-radius:12px;overflow:hidden;margin-top:1.5rem;margin-bottom:1.5rem"><div class="card__body" style="padding:1.5rem"><div style="font-size:1.1rem;font-weight:600;color:#667eea;margin-bottom:0.75rem;display:flex;align-items:center;gap:0.5rem"><span style="font-size:1.3rem">💡</span>Pro Tip</div><div style="color:#e2e8f0;line-height:1.6"><p>During tests, we found using a multi-output regression approach in combination with time series forecasting yielded a better outcome. We used the predictive modeling module to create an ensemble model.</p></div></div></div>
+<p><strong>Step 3: Curve Fitting</strong></p>
+<p>The curve fitting part was written purely in python and the code was hosted within a pipeline. The functions are then used to extrapolate predictions into the future.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="how-its-used-in-practice">How It's Used in Practice<a href="#how-its-used-in-practice" class="hash-link" aria-label="Direct link to How It's Used in Practice" title="Direct link to How It's Used in Practice" translate="no">​</a></h3>
+<p>This solution operates as a fully automated workflow with minimal user intervention:</p>
+<p><strong>Automated Production Pipeline</strong> (runs monthly):</p>
+<ul>
+<li class="">Refreshes production data from Snowflake, executes forecasting models</li>
+<li class="">Executes forecasting models for all active wells</li>
+<li class="">Retrieves predictions from the feature group storage</li>
+<li class="">Applies curve fitting to forecasted values</li>
+<li class="">Writes results back to Snowflake for consumption by analytics tools</li>
+</ul>
+<p><strong>Model Retraining Pipeline</strong> (runs quarterly):</p>
+<ul>
+<li class="">Automatically retrains forecasting models every 3 months to incorporate recent production trends and maintain prediction accuracy</li>
+</ul>
+<p>End users simply consume the forecasts and curve-fitting parameters from their existing BI tools and dashboards without needing to interact with the Abacus platform directly.</p>
+<div class="card item shadow--xl" style="border:3px solid #667eea;border-radius:12px;overflow:hidden;margin-top:1.5rem;margin-bottom:1.5rem"><div class="card__header" style="background:linear-gradient(135deg, #667eea 0%, #764ba2 100%);color:#ffffff;padding:1rem 1.5rem;border-bottom:none"><h3 style="margin:0;font-size:1.3rem;font-weight:700;display:flex;align-items:center;gap:0.5rem;text-align:center;justify-content:center"><span style="font-size:1.5rem">✨</span>Key Outcomes</h3></div><div class="card__body" style="padding:1.5rem;background-color:#2d3748;color:#e2e8f0;line-height:1.7"><p><strong>Key achievements:</strong></p><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="-reduced-forecast-variance-by-15">📉 Reduced forecast variance by 15%<a href="#-reduced-forecast-variance-by-15" class="hash-link" aria-label="Direct link to 📉 Reduced forecast variance by 15%" title="Direct link to 📉 Reduced forecast variance by 15%" translate="no">​</a></h4><p>Improved prediction accuracy and decision-making confidence</p><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="-fully-automated-forecasting">⚡ Fully automated forecasting<a href="#-fully-automated-forecasting" class="hash-link" aria-label="Direct link to ⚡ Fully automated forecasting" title="Direct link to ⚡ Fully automated forecasting" translate="no">​</a></h4><p>Eliminated manual processes</p></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="additional-information">Additional Information<a href="#additional-information" class="hash-link" aria-label="Direct link to Additional Information" title="Direct link to Additional Information" translate="no">​</a></h3>
+<ul>
+<li class=""><a class="" href="/help/developer-platform/useCases/predicting">Predictive Modeling</a></li>
+<li class=""><a class="" href="/help/developer-platform/useCases/retail">Forecasting and Planning</a></li>
+<li class=""><a class="" href="/help/developer-platform/pipelines/creating-pipelines">Pipelines</a></li>
+<li class=""><a class="" href="/help/connectors/databaseConnectors/snowflake">Snowflake Connector</a></li>
+</ul></div>
+</section>
+
+<section id="page-13">
+    <div class="page-meta">
+        <strong>Источник:</strong> <a href="https://abacus.ai/help/case-studies/propensity-scoring" target="_blank">https://abacus.ai/help/case-studies/propensity-scoring</a>
+    </div>
+    <h1>Customer Propensity Scoring</h1>
+<div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Customer Propensity Scoring</h1></header><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="business-need">Business Need<a href="#business-need" class="hash-link" aria-label="Direct link to Business Need" title="Direct link to Business Need" translate="no">​</a></h3>
+<p>Identify customers most likely to churn, upgrade, or make a purchase within the next 30 days to enable targeted marketing campaigns and improve customer retention rates.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="solution-overview">Solution Overview<a href="#solution-overview" class="hash-link" aria-label="Direct link to Solution Overview" title="Direct link to Solution Overview" translate="no">​</a></h3>
+<p>This solution uses Abacus.AI's predictive modeling capabilities to score customer propensity across multiple behavioral dimensions:</p>
+<p><strong>Step 1: Connect to Data Source</strong></p>
+<ul>
+<li class=""><strong>Data Source</strong>: Customer interaction data is ingested from Azure Storage containers using our native connector</li>
+<li class=""><strong>Data Structure</strong>: Raw data includes customer profiles, transaction history, support interactions, product usage metrics, and engagement events</li>
+<li class=""><strong>Update Cadence</strong>: Daily incremental loads capture the most recent customer behaviors</li>
+</ul>
+<p><strong>Step 2: Feature Engineering</strong></p>
+<ul>
+<li class=""><strong>Feature Groups</strong>: Transform raw data into predictive features using Abacus feature groups</li>
+<li class=""><strong>Engineered Features</strong>: Recency-frequency-monetary (RFM) scores, engagement velocity, product adoption rates, support ticket frequency, and behavioral change indicators</li>
+<li class=""><strong>Temporal Features</strong>: Rolling window aggregations (7-day, 30-day, 90-day) capture short and long-term trends</li>
+</ul>
+<div class="card item shadow--lg" style="background:#2d3748;border:3px solid #667eea;border-radius:12px;overflow:hidden;margin-top:1.5rem;margin-bottom:1.5rem"><div class="card__body" style="padding:1.5rem"><div style="font-size:1.1rem;font-weight:600;color:#667eea;margin-bottom:0.75rem;display:flex;align-items:center;gap:0.5rem"><span style="font-size:1.3rem">💡</span>Pro Tip</div><div style="color:#e2e8f0;line-height:1.6"><p>Feature engineering is critical for propensity models. Focus on behavioral change indicators (e.g., declining login frequency, reduced feature usage) rather than just static attributes.</p></div></div></div>
+<p><strong>Step 3: Build Classification Model</strong></p>
+<p>Using the Predictive Modeling use case, a binary classification model is trained to predict customer propensity (e.g., likely to churn: yes/no). The platform automatically:</p>
+<ul>
+<li class="">Handles class imbalance through sampling techniques</li>
+<li class="">Selects optimal algorithms (gradient boosting, neural networks)</li>
+<li class="">Performs hyperparameter tuning</li>
+<li class="">Generates feature importance rankings</li>
+</ul>
+<p><strong>Step 4: Generate Predictions</strong></p>
+<p>Daily batch predictions score the entire customer base, assigning each customer a propensity score (0-100) and risk segment (low, medium, high).</p>
+<p><strong>Step 5: Export Results</strong></p>
+<p>Predictions are written back to Azure Storage in a format compatible with the client's CRM and marketing automation tools.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="how-its-used-in-practice">How It's Used in Practice<a href="#how-its-used-in-practice" class="hash-link" aria-label="Direct link to How It's Used in Practice" title="Direct link to How It's Used in Practice" translate="no">​</a></h3>
+<p>The propensity scoring system integrates seamlessly into existing customer engagement workflows:</p>
+<p><strong>Daily Scoring Pipeline</strong>:</p>
+<ul>
+<li class="">Ingests previous day's customer activity from Azure Storage</li>
+<li class="">Generates propensity scores for all active customers</li>
+<li class="">Segments customers into risk/opportunity tiers</li>
+<li class="">Exports results to Azure Storage for downstream consumption</li>
+</ul>
+<p><strong>Campaign Integration</strong>:</p>
+<ul>
+<li class="">Marketing teams import scores into their campaign management platform</li>
+<li class="">High-propensity customers receive targeted retention offers</li>
+<li class="">Low-engagement customers are enrolled in re-engagement campaigns</li>
+<li class="">Sales teams prioritize outreach based on upgrade propensity scores</li>
+</ul>
+<div class="card item shadow--xl" style="border:3px solid #667eea;border-radius:12px;overflow:hidden;margin-top:1.5rem;margin-bottom:1.5rem"><div class="card__header" style="background:linear-gradient(135deg, #667eea 0%, #764ba2 100%);color:#ffffff;padding:1rem 1.5rem;border-bottom:none"><h3 style="margin:0;font-size:1.3rem;font-weight:700;display:flex;align-items:center;gap:0.5rem;text-align:center;justify-content:center"><span style="font-size:1.5rem">✨</span>Key Outcomes</h3></div><div class="card__body" style="padding:1.5rem;background-color:#2d3748;color:#e2e8f0;line-height:1.7"><p><strong>Key achievements:</strong></p><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="-6-increase-in-retention">📈 6% increase in retention<a href="#-6-increase-in-retention" class="hash-link" aria-label="Direct link to 📈 6% increase in retention" title="Direct link to 📈 6% increase in retention" translate="no">​</a></h4><p>Proactive outreach to high-churn-risk customers</p><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="️-timely-scoring-capability">⏱️ Timely scoring capability<a href="#️-timely-scoring-capability" class="hash-link" aria-label="Direct link to ⏱️ Timely scoring capability" title="Direct link to ⏱️ Timely scoring capability" translate="no">​</a></h4><p>Identify changes in customer patterns fast</p></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="additional-information">Additional Information<a href="#additional-information" class="hash-link" aria-label="Direct link to Additional Information" title="Direct link to Additional Information" translate="no">​</a></h3>
+<ul>
+<li class=""><a class="" href="/help/developer-platform/useCases/predicting">Predictive Modeling</a></li>
+<li class=""><a class="" href="/help/connectors/userConnectors/azure_sql">Azure SQL Connector</a></li>
+<li class=""><a class="" href="/help/developer-platform/feature-groups/feature_groups_advanced">Feature Groups</a></li>
+</ul></div>
+</section>
+
+<section id="page-14">
+    <div class="page-meta">
+        <strong>Источник:</strong> <a href="https://abacus.ai/help/case-studies/retail-demand-forecasting" target="_blank">https://abacus.ai/help/case-studies/retail-demand-forecasting</a>
+    </div>
+    <h1>Retail Demand Forecasting</h1>
+<div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Retail Demand Forecasting</h1></header><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="business-need">Business Need<a href="#business-need" class="hash-link" aria-label="Direct link to Business Need" title="Direct link to Business Need" translate="no">​</a></h3>
+<p>Predict weekly demand at store and item levels for a major retailer to optimize inventory management, reduce stockouts, and minimize excess inventory costs across hundreds of locations.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="solution-overview">Solution Overview<a href="#solution-overview" class="hash-link" aria-label="Direct link to Solution Overview" title="Direct link to Solution Overview" translate="no">​</a></h3>
+<p>This solution leverages Abacus.AI's forecasting capabilities combined with custom aggregation logic to deliver accurate demand predictions:</p>
+<p><strong>Step 1: Connect &amp; Ingest Data</strong></p>
+<ul>
+<li class=""><strong>Data Source</strong>: Historical sales data is ingested from BigQuery using our native database connector</li>
+<li class=""><strong>Data Structure</strong>: Transactional sales data includes timestamps, store IDs, product SKUs, quantities sold, and promotional indicators</li>
+<li class=""><strong>Update Frequency</strong>: Weekly updates ensure the model always has access to the latest sales trends</li>
+</ul>
+<p><strong>Step 2: Multi-Level Aggregations</strong></p>
+<ul>
+<li class=""><strong>Store-Level Weekly</strong>: Weekly transactions are aggregated to weekly store totals to capture overall store performance patterns</li>
+<li class=""><strong>Item-Level Weekly</strong>: Simultaneously, item-level weekly aggregations capture product-specific demand trends</li>
+<li class=""><strong>Feature Engineering</strong>: Additional features include holiday indicators, and promotional flags</li>
+</ul>
+<div class="card item shadow--lg" style="background:#2d3748;border:3px solid #667eea;border-radius:12px;overflow:hidden;margin-top:1.5rem;margin-bottom:1.5rem"><div class="card__body" style="padding:1.5rem"><div style="font-size:1.1rem;font-weight:600;color:#667eea;margin-bottom:0.75rem;display:flex;align-items:center;gap:0.5rem"><span style="font-size:1.3rem">💡</span>Pro Tip</div><div style="color:#e2e8f0;line-height:1.6"><p>Dual-level aggregation allows the model to learn both macro-level store patterns and micro-level product behaviors, significantly improving forecast accuracy for seasonal and promotional events.</p></div></div></div>
+<p><strong>Step 3: Build Forecasting Models</strong></p>
+<p>Using the Forecasting and Planning use case, separate models are trained for store-level and item-level forecasts. The platform automatically handles seasonality detection, trend analysis, and feature engineering.</p>
+<p><strong>Step 4: Normalization &amp; Reconciliation</strong></p>
+<p>A custom feature group normalizes item-level forecasts based on store-level aggregates to ensure consistency. This prevents scenarios where individual item forecasts exceed total store capacity or violate business constraints.</p>
+<p><strong>Step 5: Export Predictions</strong></p>
+<p>Forecasted demand is written back to BigQuery in a structured format, ready for consumption by inventory management systems, supply chain planning tools, and executive dashboards.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="how-its-used-in-practice">How It's Used in Practice<a href="#how-its-used-in-practice" class="hash-link" aria-label="Direct link to How It's Used in Practice" title="Direct link to How It's Used in Practice" translate="no">​</a></h3>
+<p>This forecasting solution operates as a production-grade system supporting weekly operations:</p>
+<p><strong>Weekly Forecast Refresh</strong>:</p>
+<ul>
+<li class="">Ingests the latest week of sales data from BigQuery</li>
+<li class="">Generates 26-week rolling forecasts for all active store-item combinations</li>
+<li class="">Applies normalization logic to ensure forecast consistency</li>
+<li class="">Writes results to dedicated BigQuery tables</li>
+</ul>
+<p><strong>Quarterly Model Retraining</strong>:</p>
+<ul>
+<li class="">Retrains forecasting models to adapt to changing seasonal patterns</li>
+<li class="">Incorporates new promotional strategies and market trends</li>
+<li class="">Validates model performance against held-out test sets</li>
+</ul>
+<p><strong>Real-Time Access</strong>:</p>
+<ul>
+<li class="">Supply chain teams query BigQuery directly for procurement decisions</li>
+</ul>
+<div class="card item shadow--xl" style="border:3px solid #667eea;border-radius:12px;overflow:hidden;margin-top:1.5rem;margin-bottom:1.5rem"><div class="card__header" style="background:linear-gradient(135deg, #667eea 0%, #764ba2 100%);color:#ffffff;padding:1rem 1.5rem;border-bottom:none"><h3 style="margin:0;font-size:1.3rem;font-weight:700;display:flex;align-items:center;gap:0.5rem;text-align:center;justify-content:center"><span style="font-size:1.5rem">✨</span>Key Outcomes</h3></div><div class="card__body" style="padding:1.5rem;background-color:#2d3748;color:#e2e8f0;line-height:1.7"><p><strong>Key achievements:</strong></p><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="-40-reduction-in-error">📊 40% reduction in error<a href="#-40-reduction-in-error" class="hash-link" aria-label="Direct link to 📊 40% reduction in error" title="Direct link to 📊 40% reduction in error" translate="no">​</a></h4><p>Compared to previous solution</p><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="-1m-annual-savings">💰 $1+M annual savings<a href="#-1m-annual-savings" class="hash-link" aria-label="Direct link to 💰 $1+M annual savings" title="Direct link to 💰 $1+M annual savings" translate="no">​</a></h4><p>Reduced excess inventory carrying costs</p></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="additional-information">Additional Information<a href="#additional-information" class="hash-link" aria-label="Direct link to Additional Information" title="Direct link to Additional Information" translate="no">​</a></h3>
+<ul>
+<li class=""><a class="" href="/help/developer-platform/useCases/retail">Forecasting and Planning</a></li>
+<li class=""><a class="" href="/help/connectors/databaseConnectors/bigquery">BigQuery Connector</a></li>
+<li class=""><a class="" href="/help/developer-platform/pipelines/creating-pipelines">Pipelines</a></li>
+</ul></div>
+</section>
+
+<section id="page-15">
+    <div class="page-meta">
+        <strong>Источник:</strong> <a href="https://abacus.ai/help/case-studies/rfp-automation" target="_blank">https://abacus.ai/help/case-studies/rfp-automation</a>
+    </div>
+    <h1>RFP Automation</h1>
+<div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>RFP Automation</h1></header><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="business-need">Business Need<a href="#business-need" class="hash-link" aria-label="Direct link to Business Need" title="Direct link to Business Need" translate="no">​</a></h3>
+<p>Streamline the RFP (Request for Proposal) response process by automatically extracting questions from uploaded RFP documents, retrieving relevant information from company knowledge bases, and generating comprehensive, formatted responses ready for submission.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="solution-overview">Solution Overview<a href="#solution-overview" class="hash-link" aria-label="Direct link to Solution Overview" title="Direct link to Solution Overview" translate="no">​</a></h3>
+<p>This solution leverages Abacus AI Workflows to deliver intelligent RFP automation:</p>
+<p><strong>Step 1: Document Ingestion &amp; Processing</strong></p>
+<ul>
+<li class=""><strong>Data Source</strong>: RFP documents are uploaded directly by users through the ChatLLM interface or via API</li>
+<li class=""><strong>Document Types</strong>: Supports PDF, Word (DOCX), Excel spreadsheets, and other common RFP formats</li>
+<li class=""><strong>Processing</strong>: AI Workflow automatically parses documents to identify questions, sections, and required information fields</li>
+</ul>
+<p><strong>Step 2: Information Retrieval</strong></p>
+<p>Document Retrievers are connected to multiple knowledge sources:</p>
+<ul>
+<li class="">Company capabilities documentation (SharePoint)</li>
+<li class="">Past RFP responses and case studies (Box)</li>
+<li class="">Product specifications and technical documentation (Confluence)</li>
+</ul>
+<p>The AI Workflow uses semantic search to find the most relevant information for each RFP question, ensuring responses are accurate and consistent with company positioning.</p>
+<div class="card item shadow--lg" style="background:#2d3748;border:3px solid #667eea;border-radius:12px;overflow:hidden;margin-top:1.5rem;margin-bottom:1.5rem"><div class="card__body" style="padding:1.5rem"><div style="font-size:1.1rem;font-weight:600;color:#667eea;margin-bottom:0.75rem;display:flex;align-items:center;gap:0.5rem"><span style="font-size:1.3rem">💡</span>Pro Tip</div><div style="color:#e2e8f0;line-height:1.6"><p>Configure multiple document retrievers with different relevance thresholds for technical vs. business questions. This ensures technical specifications are retrieved with high precision while marketing content can cast a wider net.</p></div></div></div>
+<p><strong>Step 3: Response Generation &amp; Formatting</strong></p>
+<ul>
+<li class="">The AI Workflow generates tailored responses for each question</li>
+<li class="">Applies company tone and style guidelines automatically</li>
+<li class="">Formats responses according to RFP requirements (CSV, Word, or custom templates)</li>
+<li class="">Includes citations to source documents for verification</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="how-its-used-in-practice">How It's Used in Practice<a href="#how-its-used-in-practice" class="hash-link" aria-label="Direct link to How It's Used in Practice" title="Direct link to How It's Used in Practice" translate="no">​</a></h3>
+<p>This solution operates in two modes depending on organizational needs:</p>
+<p><strong>Interactive Mode</strong> (via ChatLLM UI):</p>
+<ul>
+<li class="">Users upload RFP documents directly through the interface</li>
+<li class="">AI Workflow processes the document in 15-25 minutes</li>
+<li class="">Users review auto-generated responses and make adjustments</li>
+<li class="">Export final responses in required format with a single click</li>
+</ul>
+<p><strong>API Mode</strong> (for integrated workflows):</p>
+<ul>
+<li class="">Customer's proposal management system calls the AI Workflow API</li>
+<li class="">RFP document is submitted programmatically</li>
+<li class="">Workflow returns structured responses within 5-10 minutes</li>
+<li class="">Responses are automatically populated into the proposal system</li>
+</ul>
+<p>Users report saving 20-30 hours per RFP response, allowing teams to respond to 3x more opportunities with the same resources.</p>
+<div class="card item shadow--xl" style="border:3px solid #667eea;border-radius:12px;overflow:hidden;margin-top:1.5rem;margin-bottom:1.5rem"><div class="card__header" style="background:linear-gradient(135deg, #667eea 0%, #764ba2 100%);color:#ffffff;padding:1rem 1.5rem;border-bottom:none"><h3 style="margin:0;font-size:1.3rem;font-weight:700;display:flex;align-items:center;gap:0.5rem;text-align:center;justify-content:center"><span style="font-size:1.5rem">✨</span>Key Outcomes</h3></div><div class="card__body" style="padding:1.5rem;background-color:#2d3748;color:#e2e8f0;line-height:1.7"><p><strong>Key achievements:</strong></p><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="-85-reduction-in-rfp-response-time">⚡ 85% reduction in RFP response time<a href="#-85-reduction-in-rfp-response-time" class="hash-link" aria-label="Direct link to ⚡ 85% reduction in RFP response time" title="Direct link to ⚡ 85% reduction in RFP response time" translate="no">​</a></h4><p>What took 3 days now takes hours</p><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="-95-consistency-across-responses">✅ 95% consistency across responses<a href="#-95-consistency-across-responses" class="hash-link" aria-label="Direct link to ✅ 95% consistency across responses" title="Direct link to ✅ 95% consistency across responses" translate="no">​</a></h4><p>Ensures all responses align with company positioning and capabilities</p></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="additional-information">Additional Information<a href="#additional-information" class="hash-link" aria-label="Direct link to Additional Information" title="Direct link to Additional Information" translate="no">​</a></h3>
+<ul>
+<li class=""><a class="" href="/help/developer-platform/useCases/AI_AGENTS">AI Workflows</a></li>
+<li class=""><a class="" href="/help/connectors/applicationConnectors/sharepoint">SharePoint Connector</a></li>
+<li class=""><a class="" href="/help/connectors/applicationConnectors/box">Box Connector</a></li>
+<li class=""><a class="" href="/help/connectors/applicationConnectors/confluence">Confluence Connector</a></li>
+</ul></div>
+</section>
+
+<section id="page-16">
+    <div class="page-meta">
+        <strong>Источник:</strong> <a href="https://abacus.ai/help/case-studies/sales-insights-chatbot" target="_blank">https://abacus.ai/help/case-studies/sales-insights-chatbot</a>
+    </div>
+    <h1>Sales Insights Chatbot</h1>
+<div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Sales Insights Chatbot</h1></header><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="business-need">Business Need<a href="#business-need" class="hash-link" aria-label="Direct link to Business Need" title="Direct link to Business Need" translate="no">​</a></h3>
+<p>Enable sales teams and executives to query sales data in natural language and generate custom dashboards on-the-fly, eliminating dependence on data analysts for routine reporting.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="solution-overview">Solution Overview<a href="#solution-overview" class="hash-link" aria-label="Direct link to Solution Overview" title="Direct link to Solution Overview" translate="no">​</a></h3>
+<p>This solution leverages Abacus.AI's text-to-SQL capabilities within a Custom Chatbot to provide conversational analytics:</p>
+<p><strong>Step 1: Connect to Data Warehouse</strong></p>
+<ul>
+<li class=""><strong>Data Source</strong>: Sales data is queried directly from Databricks using our native connector</li>
+<li class=""><strong>Data Structure</strong>: Sales transactions, customer information, product catalog, rep performance, and territory data across multiple tables</li>
+<li class=""><strong>Live Connection</strong>: No data ingestion required; queries execute directly against Databricks in real-time</li>
+</ul>
+<p><strong>Step 2: Configure Custom Chatbot with Text-to-SQL</strong></p>
+<p>A Custom Chatbot is built with:</p>
+<ul>
+<li class=""><strong>Text-to-SQL Engine</strong>: Automatically translates natural language questions into SQL queries</li>
+<li class=""><strong>Schema Awareness</strong>: Understands table relationships, column names, and business logic</li>
+<li class=""><strong>Query Optimization</strong>: Generates efficient SQL that respects performance best practices</li>
+<li class=""><strong>Result Interpretation</strong>: Explains query results in natural language</li>
+</ul>
+<div class="card item shadow--lg" style="background:#2d3748;border:3px solid #667eea;border-radius:12px;overflow:hidden;margin-top:1.5rem;margin-bottom:1.5rem"><div class="card__body" style="padding:1.5rem"><div style="font-size:1.1rem;font-weight:600;color:#667eea;margin-bottom:0.75rem;display:flex;align-items:center;gap:0.5rem"><span style="font-size:1.3rem">💡</span>Pro Tip</div><div style="color:#e2e8f0;line-height:1.6"><p>The text-to-SQL engine learns your database schema automatically. For best results, use clear table and column names, and provide business definitions for key metrics during chatbot configuration.</p></div></div></div>
+<p><strong>Step 3: Dynamic Dashboard Generation</strong></p>
+<p>The chatbot can generate visualizations on-the-fly:</p>
+<ul>
+<li class=""><strong>Chart Types</strong>: Bar charts, line graphs, pie charts, and tables</li>
+<li class=""><strong>Comparisons</strong>: Year-over-year, quarter-over-quarter, and period-to-period analysis</li>
+<li class=""><strong>Export</strong>: Dashboards can be saved, shared, or exported as images</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="how-its-used-in-practice">How It's Used in Practice<a href="#how-its-used-in-practice" class="hash-link" aria-label="Direct link to How It's Used in Practice" title="Direct link to How It's Used in Practice" translate="no">​</a></h3>
+<p>Sales teams and executives interact with the chatbot to get instant answers and create custom reports:</p>
+<p><strong>Common Query Examples</strong>:</p>
+<ul>
+<li class="">"Show me top 10 sales reps by revenue this quarter"</li>
+<li class="">"Compare Q3 sales by region to last year"</li>
+<li class="">"What's our average deal size for enterprise customers?"</li>
+<li class="">"Show me a chart of monthly recurring revenue for the last 12 months"</li>
+<li class="">"List all deals &gt; $100K closed in November"</li>
+</ul>
+<p><strong>Workflow</strong>:</p>
+<ol>
+<li class="">User asks a question in natural language</li>
+<li class="">Chatbot translates the question to SQL</li>
+<li class="">Query executes against Databricks in real-time</li>
+<li class="">Results are returned with visualizations</li>
+<li class="">User can refine query or ask follow-up questions</li>
+</ol>
+<p><strong>Use Cases</strong>:</p>
+<ul>
+<li class=""><strong>Sales Meetings</strong>: Generate reports during meetings without waiting for analysts</li>
+<li class=""><strong>Pipeline Reviews</strong>: Analyze deal progression and forecast accuracy</li>
+<li class=""><strong>Performance Analysis</strong>: Compare rep and territory performance</li>
+<li class=""><strong>Executive Dashboards</strong>: Create custom views for leadership reviews</li>
+</ul>
+<div class="card item shadow--xl" style="border:3px solid #667eea;border-radius:12px;overflow:hidden;margin-top:1.5rem;margin-bottom:1.5rem"><div class="card__header" style="background:linear-gradient(135deg, #667eea 0%, #764ba2 100%);color:#ffffff;padding:1rem 1.5rem;border-bottom:none"><h3 style="margin:0;font-size:1.3rem;font-weight:700;display:flex;align-items:center;gap:0.5rem;text-align:center;justify-content:center"><span style="font-size:1.5rem">✨</span>Key Outcomes</h3></div><div class="card__body" style="padding:1.5rem;background-color:#2d3748;color:#e2e8f0;line-height:1.7"><p><strong>Key achievements:</strong></p><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="-80-reduction-in-report-request-time">🚀 80% reduction in report request time<a href="#-80-reduction-in-report-request-time" class="hash-link" aria-label="Direct link to 🚀 80% reduction in report request time" title="Direct link to 🚀 80% reduction in report request time" translate="no">​</a></h4><p>From days/hours to seconds for custom reports</p><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="-empowered-sales-teams">💼 Empowered sales teams<a href="#-empowered-sales-teams" class="hash-link" aria-label="Direct link to 💼 Empowered sales teams" title="Direct link to 💼 Empowered sales teams" translate="no">​</a></h4><p>No SQL knowledge or analyst support required</p><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="-3x-increase-in-data-driven-decisions">📊 3x increase in data-driven decisions<a href="#-3x-increase-in-data-driven-decisions" class="hash-link" aria-label="Direct link to 📊 3x increase in data-driven decisions" title="Direct link to 📊 3x increase in data-driven decisions" translate="no">​</a></h4><p>Teams explore data more frequently and deeply</p></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="additional-information">Additional Information<a href="#additional-information" class="hash-link" aria-label="Direct link to Additional Information" title="Direct link to Additional Information" translate="no">​</a></h3>
+<ul>
+<li class=""><a class="" href="/help/developer-platform/useCases/CHAT_LLM">Custom Chatbots</a></li>
+<li class=""><a class="" href="/help/connectors/databaseConnectors/dbc">Databricks Connector</a></li>
+</ul></div>
+</section>
+
+<section id="page-17">
+    <div class="page-meta">
+        <strong>Источник:</strong> <a href="https://abacus.ai/help/case-studies/support-email-automation" target="_blank">https://abacus.ai/help/case-studies/support-email-automation</a>
+    </div>
+    <h1>Support Email Automation</h1>
+<div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Support Email Automation</h1></header><h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="business-need">Business Need<a href="#business-need" class="hash-link" aria-label="Direct link to Business Need" title="Direct link to Business Need" translate="no">​</a></h3>
+<p>Automatically respond to customer support emails by retrieving relevant information from company documentation, providing accurate answers 24/7, and reducing support team workload while maintaining response quality.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="solution-overview">Solution Overview<a href="#solution-overview" class="hash-link" aria-label="Direct link to Solution Overview" title="Direct link to Solution Overview" translate="no">​</a></h3>
+<p>This solution leverages AI Workflows in autonomous mode to deliver intelligent email support automation:</p>
+<p><strong>Step 1: Knowledge Base Creation</strong></p>
+<ul>
+<li class=""><strong>Data Source</strong>: Support documentation, product manuals, FAQs, and troubleshooting guides stored in SharePoint</li>
+<li class=""><strong>Document Retriever</strong>: Created vector store indexing 500+ support articles and knowledge base entries</li>
+<li class=""><strong>Content Types</strong>: Technical documentation, how-to guides, known issue resolutions, and policy documents</li>
+<li class=""><strong>Update Frequency</strong>: Vector store refreshes weekly as new documentation is added</li>
+</ul>
+<p><strong>Step 2: Email Integration</strong></p>
+<p>Gmail connector enables bidirectional email communication:</p>
+<ul>
+<li class=""><strong>Inbox Monitoring</strong>: Workflow continuously monitors <a href="mailto:support@company.com" target="_blank" rel="noopener noreferrer" class="">support@company.com</a> inbox</li>
+<li class=""><strong>Email Parsing</strong>: Extracts customer question, relevant context, and priority indicators</li>
+<li class=""><strong>Thread Tracking</strong>: Maintains conversation history for multi-turn support interactions</li>
+</ul>
+<div class="card item shadow--lg" style="background:#2d3748;border:3px solid #667eea;border-radius:12px;overflow:hidden;margin-top:1.5rem;margin-bottom:1.5rem"><div class="card__body" style="padding:1.5rem"><div style="font-size:1.1rem;font-weight:600;color:#667eea;margin-bottom:0.75rem;display:flex;align-items:center;gap:0.5rem"><span style="font-size:1.3rem">💡</span>Pro Tip</div><div style="color:#e2e8f0;line-height:1.6"><p>Use email subject line patterns and sender domain to automatically route priority customers to human agents while handling standard inquiries automatically. This ensures VIP accounts receive immediate human attention.</p></div></div></div>
+<p><strong>Step 3: Autonomous Response Generation</strong></p>
+<p>The AI Workflow operates in fully autonomous mode:</p>
+<ul>
+<li class="">Analyzes incoming support email to understand the customer's issue</li>
+<li class="">Queries the document retriever to find relevant support articles and solutions</li>
+<li class="">Synthesizes information into clear, actionable response</li>
+<li class="">Includes links to relevant documentation for deeper exploration</li>
+<li class="">Sends response automatically without human intervention</li>
+</ul>
+<p><strong>Step 4: Escalation &amp; Learning</strong></p>
+<p>Smart escalation ensures quality:</p>
+<ul>
+<li class="">Low-confidence responses flagged for human review before sending</li>
+<li class="">Complex technical issues automatically escalated to support engineers</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="how-its-used-in-practice">How It's Used in Practice<a href="#how-its-used-in-practice" class="hash-link" aria-label="Direct link to How It's Used in Practice" title="Direct link to How It's Used in Practice" translate="no">​</a></h3>
+<p>This solution operates as a 24/7 autonomous support assistant:</p>
+<p><strong>Fully Automated Operation</strong>:</p>
+<ul>
+<li class="">Workflow runs continuously in autonomous mode</li>
+<li class="">Monitors support inbox in real-time</li>
+<li class="">Responds to standard support inquiries within 2-5 minutes</li>
+</ul>
+<p><strong>Human Team Involvement</strong>:</p>
+<ul>
+<li class="">Support team receives daily summary of automated interactions</li>
+<li class="">Reviews escalated cases and low-confidence responses</li>
+<li class="">Provides feedback to improve future responses</li>
+<li class="">Focuses time on complex issues requiring human judgment</li>
+</ul>
+<p>The system handles 100-200 support emails per week, with 70% fully resolved automatically without human intervention.</p>
+<div class="card item shadow--xl" style="border:3px solid #667eea;border-radius:12px;overflow:hidden;margin-top:1.5rem;margin-bottom:1.5rem"><div class="card__header" style="background:linear-gradient(135deg, #667eea 0%, #764ba2 100%);color:#ffffff;padding:1rem 1.5rem;border-bottom:none"><h3 style="margin:0;font-size:1.3rem;font-weight:700;display:flex;align-items:center;gap:0.5rem;text-align:center;justify-content:center"><span style="font-size:1.5rem">✨</span>Key Outcomes</h3></div><div class="card__body" style="padding:1.5rem;background-color:#2d3748;color:#e2e8f0;line-height:1.7"><p><strong>Key achievements:</strong></p><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="-average-3-minute-response-time">⚡ Average 3-minute response time<a href="#-average-3-minute-response-time" class="hash-link" aria-label="Direct link to ⚡ Average 3-minute response time" title="Direct link to ⚡ Average 3-minute response time" translate="no">​</a></h4><p>24/7 support coverage with immediate responses</p><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="-70-of-emails-handled-autonomously">🤖 70% of emails handled autonomously<a href="#-70-of-emails-handled-autonomously" class="hash-link" aria-label="Direct link to 🤖 70% of emails handled autonomously" title="Direct link to 🤖 70% of emails handled autonomously" translate="no">​</a></h4><p>Support team focuses on complex issues requiring human expertise</p><h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="-improved-customer-satisfaction">😊 Improved customer satisfaction<a href="#-improved-customer-satisfaction" class="hash-link" aria-label="Direct link to 😊 Improved customer satisfaction" title="Direct link to 😊 Improved customer satisfaction" translate="no">​</a></h4><p>Customers receive immediate answers instead of waiting hours or days</p></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="additional-information">Additional Information<a href="#additional-information" class="hash-link" aria-label="Direct link to Additional Information" title="Direct link to Additional Information" translate="no">​</a></h3>
+<ul>
+<li class=""><a class="" href="/help/connectors/applicationConnectors/sharepoint">SharePoint Connector</a></li>
+<li class=""><a class="" href="/help/connectors/userConnectors/gmail_user">Gmail Connector</a></li>
+<li class=""><a class="" href="/help/developer-platform/useCases/AI_AGENTS">AI Workflows</a></li>
+</ul></div>
+</section>
+
+</body>
+</html>
