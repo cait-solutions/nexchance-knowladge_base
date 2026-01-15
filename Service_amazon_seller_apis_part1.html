@@ -1,0 +1,1689 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon SP-API SELLER APIs Documentation</title>
+    <meta name="description" content="Документация Amazon Selling Partner API для RAG обучения базы знаний">
+    <meta name="source" content="https://developer-docs.amazon.com/sp-api/docs/">
+    <meta name="extraction-date" content="2026-01-15">
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; max-width: 1200px; margin: 0 auto; padding: 20px; color: #333; }
+        .header-notice { background: #fff3cd; border: 1px solid #ffc107; padding: 15px; border-radius: 5px; margin-bottom: 30px; }
+        .toc { background: #f8f9fa; padding: 20px; border-radius: 5px; margin-bottom: 30px; }
+        .toc h2 { margin-top: 0; }
+        .toc ul { list-style-type: none; padding-left: 20px; }
+        .toc a { text-decoration: none; color: #0066cc; }
+        .toc a:hover { text-decoration: underline; }
+        section { margin-bottom: 40px; padding: 20px; border: 1px solid #e0e0e0; border-radius: 5px; }
+        h1 { color: #232f3e; border-bottom: 3px solid #ff9900; padding-bottom: 10px; }
+        h2 { color: #232f3e; border-bottom: 1px solid #ddd; padding-bottom: 5px; }
+        h3 { color: #545b64; }
+        h4 { color: #37475a; }
+        table { border-collapse: collapse; width: 100%; margin: 15px 0; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background: #232f3e; color: white; }
+        tr:nth-child(even) { background: #f9f9f9; }
+        code { background: #f4f4f4; padding: 2px 6px; border-radius: 3px; font-family: 'Consolas', monospace; }
+        pre { background: #1e1e1e; color: #d4d4d4; padding: 15px; border-radius: 5px; overflow-x: auto; }
+        .note { background: #e7f3ff; border-left: 4px solid #0066cc; padding: 10px 15px; margin: 15px 0; }
+        .warning { background: #fff3cd; border-left: 4px solid #ffc107; padding: 10px 15px; margin: 15px 0; }
+        .tip { background: #d4edda; border-left: 4px solid #28a745; padding: 10px 15px; margin: 15px 0; }
+        .api-operation { background: #f8f9fa; padding: 15px; margin: 10px 0; border-radius: 5px; }
+        .method-get { color: #28a745; font-weight: bold; }
+        .method-post { color: #007bff; font-weight: bold; }
+        .method-put { color: #ffc107; font-weight: bold; }
+        .method-patch { color: #17a2b8; font-weight: bold; }
+        .method-delete { color: #dc3545; font-weight: bold; }
+        .metadata { font-size: 0.9em; color: #666; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="header-notice">
+    <strong>ДОКУМЕНТ ВНЕШНЕГО СЕРВИСА — НЕ ЯВЛЯЕТСЯ ТРЕБОВАНИЯМИ К ПРОДУКТУ</strong><br>
+    Этот документ описывает внешний сервис / API и т.п. как инструкция. Как использовать:
+    <ul>
+        <li>для определения возможностей и ограничений интеграции</li>
+        <li>для формулирования требований к интеграции (что отправляем/получаем, авторизация, ошибки, лимиты, поведение при недоступности), ответам пользователя по сервису и т.п.</li>
+    </ul>
+</div>
+
+<h1>Amazon Selling Partner API - SELLER APIs Documentation</h1>
+
+<div class="metadata">
+    <strong>Источник:</strong> https://developer-docs.amazon.com/sp-api/docs/<br>
+    <strong>Дата извлечения:</strong> 15 января 2026<br>
+    <strong>Версия документа:</strong> 1.0
+</div>
+
+<nav class="toc">
+    <h2>Оглавление</h2>
+    <ul>
+        <li><a href="#orders-api">1. Orders API</a>
+            <ul>
+                <li><a href="#orders-overview">1.1 Обзор</a></li>
+                <li><a href="#orders-operations">1.2 Операции API</a></li>
+                <li><a href="#orders-use-cases">1.3 Примеры использования</a></li>
+                <li><a href="#orders-roles">1.4 Требуемые роли</a></li>
+            </ul>
+        </li>
+        <li><a href="#catalog-items-api">2. Catalog Items API</a>
+            <ul>
+                <li><a href="#catalog-overview">2.1 Обзор</a></li>
+                <li><a href="#catalog-operations">2.2 Операции API</a></li>
+                <li><a href="#catalog-parameters">2.3 Параметры</a></li>
+                <li><a href="#catalog-models">2.4 Модели данных</a></li>
+            </ul>
+        </li>
+        <li><a href="#listings-items-api">3. Listings Items API</a>
+            <ul>
+                <li><a href="#listings-overview">3.1 Обзор</a></li>
+                <li><a href="#listings-operations">3.2 Операции API</a></li>
+                <li><a href="#listings-use-cases">3.3 Примеры использования</a></li>
+            </ul>
+        </li>
+        <li><a href="#product-pricing-api">4. Product Pricing API</a>
+            <ul>
+                <li><a href="#pricing-overview">4.1 Обзор</a></li>
+                <li><a href="#pricing-operations">4.2 Операции API</a></li>
+                <li><a href="#pricing-use-cases">4.3 Примеры использования</a></li>
+            </ul>
+        </li>
+        <li><a href="#feeds-api">5. Feeds API</a>
+            <ul>
+                <li><a href="#feeds-overview">5.1 Обзор</a></li>
+                <li><a href="#feeds-operations">5.2 Операции API</a></li>
+                <li><a href="#feeds-types">5.3 Типы фидов</a></li>
+            </ul>
+        </li>
+        <li><a href="#reports-api">6. Reports API</a>
+            <ul>
+                <li><a href="#reports-overview">6.1 Обзор</a></li>
+                <li><a href="#reports-operations">6.2 Операции API</a></li>
+                <li><a href="#reports-types">6.3 Типы отчетов</a></li>
+            </ul>
+        </li>
+        <li><a href="#fba-inventory-api">7. FBA Inventory API</a>
+            <ul>
+                <li><a href="#fba-inventory-overview">7.1 Обзор</a></li>
+                <li><a href="#fba-inventory-operations">7.2 Операции API</a></li>
+                <li><a href="#fba-inventory-rate-limits">7.3 Rate Limits</a></li>
+            </ul>
+        </li>
+        <li><a href="#notifications-api">8. Notifications API</a>
+            <ul>
+                <li><a href="#notifications-overview">8.1 Обзор</a></li>
+                <li><a href="#notifications-operations">8.2 Операции API</a></li>
+                <li><a href="#notifications-eventbridge">8.3 EventBridge Workflow</a></li>
+                <li><a href="#notifications-sqs">8.4 SQS Workflow</a></li>
+                <li><a href="#notifications-types">8.5 Типы уведомлений</a></li>
+                <li><a href="#notifications-rate-limits">8.6 Rate Limits</a></li>
+            </ul>
+        </li>
+        <li><a href="#tokens-api">9. Tokens API</a>
+            <ul>
+                <li><a href="#tokens-overview">9.1 Обзор</a></li>
+                <li><a href="#tokens-restricted-operations">9.2 Restricted Operations</a></li>
+                <li><a href="#tokens-rate-limits">9.3 Rate Limits</a></li>
+            </ul>
+        </li>
+        <li><a href="#merchant-fulfillment-api">10. Merchant Fulfillment API</a>
+            <ul>
+                <li><a href="#merchant-fulfillment-overview">10.1 Обзор</a></li>
+                <li><a href="#merchant-fulfillment-operations">10.2 Операции API</a></li>
+                <li><a href="#merchant-fulfillment-errors">10.3 Коды ошибок</a></li>
+            </ul>
+        </li>
+        <li><a href="#shipping-api">11. Shipping API v2</a>
+            <ul>
+                <li><a href="#shipping-overview">11.1 Обзор</a></li>
+                <li><a href="#shipping-operations">11.2 Операции API</a></li>
+                <li><a href="#shipping-schemas">11.3 Схемы данных</a></li>
+            </ul>
+        </li>
+        <li><a href="#uploads-api">12. Uploads API</a>
+            <ul>
+                <li><a href="#uploads-overview">12.1 Обзор</a></li>
+                <li><a href="#uploads-operations">12.2 Операции API</a></li>
+                <li><a href="#uploads-rate-limits">12.3 Rate Limits</a></li>
+            </ul>
+        </li>
+        <li><a href="#rate-limits">13. Rate Limits и Usage Plans</a></li>
+    </ul>
+</nav>
+
+<!-- ==================== ORDERS API ==================== -->
+<section id="orders-api">
+    <h1>1. Orders API</h1>
+    <div class="metadata">
+        <strong>Путь:</strong> SELLER APIs → Orders API<br>
+        <strong>Текущая версия:</strong> v0<br>
+        <strong>Доступность:</strong> Sellers only<br>
+        <strong>Sandbox:</strong> Static
+    </div>
+
+    <h2 id="orders-overview">1.1 Обзор</h2>
+    <p>Orders API позволяет программно получать информацию о заказах. С помощью этого API вы можете разрабатывать быстрые, гибкие и настраиваемые приложения для управления синхронизацией заказов, исследования заказов и создания инструментов поддержки принятия решений на основе спроса.</p>
+    
+    <div class="note">
+        <strong>Примечание:</strong> Для маркетплейсов JP, AU и SG Orders API поддерживает заказы с 2016 года. Для всех остальных маркетплейсов Orders API поддерживает заказы за последние два года (более старые заказы не отображаются в ответе).
+    </div>
+
+    <h3>Ключевые возможности:</h3>
+    <ul>
+        <li>Получение списка заказов с фильтрацией</li>
+        <li>Получение детальной информации о заказе</li>
+        <li>Получение информации о товарах в заказе</li>
+        <li>Подтверждение статуса отправки</li>
+        <li>Работа с регулируемыми заказами (рецептурные товары)</li>
+        <li>Поддержка Amazon Business заказов</li>
+    </ul>
+
+    <h2 id="orders-operations">1.2 Операции API</h2>
+    
+    <div class="api-operation">
+        <h3><span class="method-get">GET</span> getOrders</h3>
+        <p>Возвращает заказы, созданные или обновленные в указанный период времени или по другим критериям фильтрации.</p>
+        <table>
+            <tr><th>Атрибут</th><th>Значение</th></tr>
+            <tr><td>Регионы</td><td>NA, EU, FE</td></tr>
+            <tr><td>Требуемые роли</td><td>Amazon Fulfillment, Buyer Communication, Buyer Solicitation, Direct to Consumer Shipping, Finance and Accounting, Inventory and Order Tracking, Pricing, Product Listing, Professional Services, Selling Partner Insights, Tax Invoicing, Tax Remittance</td></tr>
+        </table>
+    </div>
+
+    <div class="api-operation">
+        <h3><span class="method-get">GET</span> getOrder</h3>
+        <p>Возвращает информацию о заказе по указанному идентификатору.</p>
+        <table>
+            <tr><th>Атрибут</th><th>Значение</th></tr>
+            <tr><td>Регионы</td><td>NA, EU, FE</td></tr>
+            <tr><td>Требуемые роли</td><td>Amazon Fulfillment, Buyer Communication, Buyer Solicitation, Direct to Consumer Shipping, Finance and Accounting, Inventory and Order Tracking, Pricing, Product Listing, Professional Services, Selling Partner Insights, Tax Invoicing, Tax Remittance</td></tr>
+        </table>
+    </div>
+
+    <div class="api-operation">
+        <h3><span class="method-get">GET</span> getOrderItems</h3>
+        <p>Возвращает детальную информацию о товарах в заказе. Используйте NextToken для получения следующей страницы товаров.</p>
+        <table>
+            <tr><th>Атрибут</th><th>Значение</th></tr>
+            <tr><td>Регионы</td><td>NA, EU, FE</td></tr>
+            <tr><td>Требуемые роли</td><td>Amazon Fulfillment, Buyer Communication, Buyer Solicitation, Finance and Accounting, Inventory and Order Tracking, Pricing, Product Listing, Professional Services, Selling Partner Insights, Direct to Consumer Shipping, Tax Invoicing, Tax Remittance</td></tr>
+        </table>
+    </div>
+
+    <div class="api-operation">
+        <h3><span class="method-get">GET</span> getOrderAddress</h3>
+        <p>Возвращает адрес доставки и связанные предпочтения доставки.</p>
+        <table>
+            <tr><th>Атрибут</th><th>Значение</th></tr>
+            <tr><td>Регионы</td><td>NA, EU, FE</td></tr>
+            <tr><td>Требуемые роли</td><td>Amazon Fulfillment, Buyer Communication, Buyer Solicitation, Finance and Accounting, Inventory and Order Tracking, Pricing, Product Listing, Professional Services, Selling Partner Insights, Direct to Consumer Shipping, Tax Invoicing, Tax Remittance</td></tr>
+        </table>
+    </div>
+
+    <div class="api-operation">
+        <h3><span class="method-get">GET</span> getOrderBuyerInfo</h3>
+        <p>Возвращает информацию о покупателе для указанного заказа.</p>
+        <table>
+            <tr><th>Атрибут</th><th>Значение</th></tr>
+            <tr><td>Регионы</td><td>NA, EU, FE</td></tr>
+            <tr><td>Требуемые роли</td><td>Amazon Fulfillment, Buyer Communication, Buyer Solicitation, Finance and Accounting, Inventory and Order Tracking, Pricing, Product Listing, Professional Services, Selling Partner Insights, Direct to Consumer Shipping, Tax Invoicing, Tax Remittance</td></tr>
+        </table>
+    </div>
+
+    <div class="api-operation">
+        <h3><span class="method-get">GET</span> getOrderItemsBuyerInfo</h3>
+        <p>Возвращает информацию о покупателе для товаров в заказе.</p>
+        <table>
+            <tr><th>Атрибут</th><th>Значение</th></tr>
+            <tr><td>Регионы</td><td>NA, EU, FE</td></tr>
+            <tr><td>Требуемые роли</td><td>Amazon Fulfillment, Buyer Communication, Buyer Solicitation, Finance and Accounting, Inventory and Order Tracking, Pricing, Product Listing, Professional Services, Selling Partner Insights, Direct to Consumer Shipping, Tax Invoicing, Tax Remittance</td></tr>
+        </table>
+    </div>
+
+    <div class="api-operation">
+        <h3><span class="method-post">POST</span> confirmShipment</h3>
+        <p>Подтверждает статус отправки для указанного заказа. Также можно использовать для редактирования деталей отправки уже отправленных заказов.</p>
+        <table>
+            <tr><th>Атрибут</th><th>Значение</th></tr>
+            <tr><td>Регионы</td><td>NA, EU, FE</td></tr>
+            <tr><td>Требуемые роли</td><td>Inventory and Order Tracking</td></tr>
+        </table>
+    </div>
+
+    <div class="api-operation">
+        <h3><span class="method-get">GET</span> getOrderRegulatedInfo</h3>
+        <p>Возвращает регулируемую информацию для заказа (для товаров, требующих проверки, например, рецептурных).</p>
+        <table>
+            <tr><th>Атрибут</th><th>Значение</th></tr>
+            <tr><td>Регионы</td><td>NA, EU, FE</td></tr>
+            <tr><td>Требуемые роли</td><td>Direct to Consumer Shipping</td></tr>
+        </table>
+    </div>
+
+    <div class="api-operation">
+        <h3><span class="method-patch">PATCH</span> updateVerificationStatus</h3>
+        <p>Обновляет статус верификации для регулируемого заказа.</p>
+        <table>
+            <tr><th>Атрибут</th><th>Значение</th></tr>
+            <tr><td>Регионы</td><td>NA, EU, FE</td></tr>
+            <tr><td>Требуемые роли</td><td>Direct to Consumer Shipping</td></tr>
+        </table>
+    </div>
+
+    <div class="api-operation">
+        <h3><span class="method-post">POST</span> updateShipmentStatus</h3>
+        <p>Обновляет статус отправки заказа.</p>
+        <table>
+            <tr><th>Атрибут</th><th>Значение</th></tr>
+            <tr><td>Регионы</td><td>NA, EU, FE</td></tr>
+            <tr><td>Требуемые роли</td><td>Inventory and Order Tracking</td></tr>
+        </table>
+    </div>
+
+    <h2 id="orders-use-cases">1.3 Примеры использования</h2>
+    <ul>
+        <li><strong>Получение заказов с фильтрацией:</strong> Операция getOrders возвращает заказы, созданные или обновленные в указанный период времени. NextToken переопределяет другие критерии для получения заказов.</li>
+        <li><strong>Получение информации о заказе:</strong> Операция getOrder возвращает информацию о заказе по указанному идентификатору.</li>
+        <li><strong>Получение информации о товарах:</strong> Операция getOrderItems возвращает детальную информацию о товарах в заказе.</li>
+        <li><strong>Подтверждение статуса отправки:</strong> Операция confirmShipment подтверждает статус отправки для указанного заказа.</li>
+        <li><strong>Работа с регулируемыми заказами:</strong> Получение статуса и регулируемой информации для заказов с рецептурными товарами.</li>
+        <li><strong>Amazon Business заказы:</strong> Идентификация бизнес-заказов по атрибуту isBusinessOrder.</li>
+    </ul>
+
+    <h2 id="orders-roles">1.4 Требуемые роли</h2>
+    <p>Для работы с Orders API требуется как минимум одна из следующих ролей:</p>
+    <ul>
+        <li>Amazon Fulfillment</li>
+        <li>Buyer Communication</li>
+        <li>Buyer Solicitation</li>
+        <li>Direct to Consumer Shipping</li>
+        <li>Finance and Accounting</li>
+        <li>Inventory and Order Tracking</li>
+        <li>Pricing</li>
+        <li>Product Listing</li>
+        <li>Professional Services</li>
+        <li>Selling Partner Insights</li>
+        <li>Tax Invoicing</li>
+        <li>Tax Remittance</li>
+    </ul>
+</section>
+
+<!-- ==================== CATALOG ITEMS API ==================== -->
+<section id="catalog-items-api">
+    <h1>2. Catalog Items API</h1>
+    <div class="metadata">
+        <strong>Путь:</strong> SELLER APIs → Catalog Items API<br>
+        <strong>Текущая версия:</strong> v2022-04-01<br>
+        <strong>Устаревшие версии:</strong> v0, v2020-12-01<br>
+        <strong>Доступность:</strong> Sellers and Vendors<br>
+        <strong>Sandbox:</strong> Static<br>
+        <strong>Host:</strong> sellingpartnerapi-na.amazon.com<br>
+        <strong>Schemes:</strong> HTTPS
+    </div>
+
+    <h2 id="catalog-overview">2.1 Обзор</h2>
+    <p>Catalog Items API предоставляет программный доступ к информации, содержащейся в каталоге Amazon. Используйте этот API для получения информации о товарах в каталоге Amazon.</p>
+
+    <h3>Ключевые возможности:</h3>
+    <ul>
+        <li>Получение детальной информации о товаре</li>
+        <li>Поиск товаров по идентификаторам или ключевым словам</li>
+        <li>Получение сводной информации о товаре</li>
+        <li>Получение атрибутов товара</li>
+        <li>Получение классификаций по категориям</li>
+        <li>Получение размеров и веса</li>
+        <li>Получение идентификаторов продукта (UPC, EAN и т.д.)</li>
+        <li>Получение изображений товара</li>
+        <li>Получение рейтингов продаж</li>
+        <li>Получение связей между товарами (вариации, комплекты)</li>
+    </ul>
+
+    <div class="note">
+        <strong>Примечание:</strong> Вендоры могут получать дополнительную информацию, специфичную для вендоров.
+    </div>
+
+    <h2 id="catalog-operations">2.2 Операции API</h2>
+
+    <div class="api-operation">
+        <h3><span class="method-get">GET</span> searchCatalogItems</h3>
+        <p>Поиск списка товаров в каталоге Amazon и связанной информации. Можно искать по идентификатору или по ключевым словам.</p>
+        <table>
+            <tr><th>Атрибут</th><th>Значение</th></tr>
+            <tr><td>Регионы</td><td>NA, EU, FE</td></tr>
+            <tr><td>Требуемые роли</td><td>Product Listing</td></tr>
+            <tr><td>Rate limit</td><td>5 запросов/сек</td></tr>
+            <tr><td>Burst</td><td>5</td></tr>
+        </table>
+    </div>
+
+    <div class="api-operation">
+        <h3><span class="method-get">GET</span> getCatalogItem</h3>
+        <p>Получение детальной информации о товаре в каталоге Amazon по ASIN.</p>
+        <table>
+            <tr><th>Атрибут</th><th>Значение</th></tr>
+            <tr><td>Регионы</td><td>NA, EU, FE</td></tr>
+            <tr><td>Требуемые роли</td><td>Product Listing</td></tr>
+            <tr><td>Rate limit</td><td>5 запросов/сек</td></tr>
+            <tr><td>Burst</td><td>5</td></tr>
+        </table>
+    </div>
+
+    <h2 id="catalog-parameters">2.3 Параметры</h2>
+
+    <h3>Параметры searchCatalogItems</h3>
+    <table>
+        <tr><th>Тип</th><th>Имя</th><th>Описание</th><th>Схема</th><th>По умолчанию</th></tr>
+        <tr><td>Query</td><td>identifiers</td><td>Список идентификаторов продукта через запятую. Максимум 20.</td><td>string array (CSV)</td><td>-</td></tr>
+        <tr><td>Query</td><td>identifiersType</td><td>Тип идентификаторов (ASIN, UPC, ISBN, SKU). Обязателен при использовании identifiers.</td><td>enum (IdentifiersType)</td><td>-</td></tr>
+        <tr><td>Query</td><td>marketplaceIds</td><td><strong>Обязательный:</strong> ID маркетплейса Amazon. Максимум 1.</td><td>string array (CSV)</td><td>-</td></tr>
+        <tr><td>Query</td><td>includedData</td><td>Наборы данных для включения (summaries, attributes, classifications и т.д.)</td><td>enum (IncludedData) array</td><td>summaries</td></tr>
+        <tr><td>Query</td><td>locale</td><td>Локаль для локализованных сводок.</td><td>string</td><td>-</td></tr>
+        <tr><td>Query</td><td>sellerId</td><td>Обязателен когда identifiersType = SKU.</td><td>string</td><td>-</td></tr>
+        <tr><td>Query</td><td>keywords</td><td>Ключевые слова для поиска через запятую. Максимум 20.</td><td>string array (CSV)</td><td>-</td></tr>
+        <tr><td>Query</td><td>brandNames</td><td>Бренды для ограничения поиска по ключевым словам.</td><td>string array (CSV)</td><td>-</td></tr>
+        <tr><td>Query</td><td>classificationIds</td><td>ID классификаций для ограничения поиска.</td><td>string array (CSV)</td><td>-</td></tr>
+        <tr><td>Query</td><td>pageSize</td><td>Результатов на страницу (1–20).</td><td>integer</td><td>10</td></tr>
+        <tr><td>Query</td><td>pageToken</td><td>Токен для пагинации.</td><td>string</td><td>-</td></tr>
+        <tr><td>Query</td><td>keywordsLocale</td><td>Язык ключевых слов. По умолчанию - локаль маркетплейса.</td><td>string</td><td>-</td></tr>
+    </table>
+
+    <h3>Параметры getCatalogItem</h3>
+    <table>
+        <tr><th>Тип</th><th>Имя</th><th>Описание</th><th>Схема</th><th>По умолчанию</th></tr>
+        <tr><td>Path</td><td>asin</td><td><strong>Обязательный:</strong> Amazon Standard Identification Number (ASIN).</td><td>string</td><td>-</td></tr>
+        <tr><td>Query</td><td>marketplaceIds</td><td><strong>Обязательный:</strong> ID маркетплейсов Amazon.</td><td>string array</td><td>-</td></tr>
+        <tr><td>Query</td><td>includedData</td><td>Наборы данных для включения.</td><td>enum array</td><td>summaries</td></tr>
+        <tr><td>Query</td><td>locale</td><td>Локаль для локализованных сводок.</td><td>string</td><td>-</td></tr>
+    </table>
+
+    <h2 id="catalog-models">2.4 Модели данных</h2>
+
+    <h3>Item (Товар)</h3>
+    <table>
+        <tr><th>Поле</th><th>Описание</th><th>Тип</th></tr>
+        <tr><td>asin</td><td>Amazon Standard Identification Number (ASIN)</td><td>string</td></tr>
+        <tr><td>attributes</td><td>Структурированные атрибуты товара (цвет, размер и т.д.)</td><td>object</td></tr>
+        <tr><td>classifications</td><td>Узлы навигации (категория, подкатегория)</td><td>array&lt;ItemBrowseClassifications&gt;</td></tr>
+        <tr><td>dimensions</td><td>Физические размеры (высота, ширина, вес)</td><td>Dimensions</td></tr>
+        <tr><td>identifiers</td><td>Идентификаторы (UPC, EAN)</td><td>array&lt;ItemIdentifier&gt;</td></tr>
+        <tr><td>images</td><td>Изображения товара (URL, варианты: MAIN, PT01)</td><td>array&lt;ItemImage&gt;</td></tr>
+        <tr><td>productTypes</td><td>Связанные типы продуктов</td><td>array&lt;string&gt;</td></tr>
+        <tr><td>relationships</td><td>Связи (вариации, комплекты)</td><td>array&lt;ItemRelationship&gt;</td></tr>
+        <tr><td>salesRanks</td><td>Данные о рейтинге продаж</td><td>array&lt;ItemSalesRank&gt;</td></tr>
+        <tr><td>summaries</td><td>Сводные данные (бренд, название, цена)</td><td>array&lt;ItemSummary&gt;</td></tr>
+        <tr><td>vendorDetails</td><td>Информация для вендоров (только для вендоров)</td><td>array&lt;ItemVendorDetails&gt;</td></tr>
+    </table>
+
+    <h3>Error (Ошибка)</h3>
+    <table>
+        <tr><th>Поле</th><th>Описание</th><th>Тип</th></tr>
+        <tr><td>code</td><td>Код ошибки</td><td>string</td></tr>
+        <tr><td>message</td><td>Описание ошибки</td><td>string</td></tr>
+        <tr><td>details</td><td>Дополнительные детали (опционально)</td><td>string</td></tr>
+    </table>
+
+    <h3>IdentifiersType (Типы идентификаторов)</h3>
+    <table>
+        <tr><th>Значение</th><th>Описание</th></tr>
+        <tr><td>ASIN</td><td>Amazon Standard Identification Number</td></tr>
+        <tr><td>ISBN</td><td>International Standard Book Number</td></tr>
+        <tr><td>SKU</td><td>Идентификатор продавца (требует sellerId)</td></tr>
+        <tr><td>UPC</td><td>Universal Product Code</td></tr>
+        <tr><td>EAN</td><td>European Article Number</td></tr>
+    </table>
+
+    <h3>IncludedData (Включаемые данные)</h3>
+    <table>
+        <tr><th>Значение</th><th>Описание</th></tr>
+        <tr><td>attributes</td><td>Детальные атрибуты товара</td></tr>
+        <tr><td>classifications</td><td>Классификации по категориям</td></tr>
+        <tr><td>dimensions</td><td>Размеры и вес</td></tr>
+        <tr><td>identifiers</td><td>Идентификаторы продукта</td></tr>
+        <tr><td>images</td><td>Изображения товара</td></tr>
+        <tr><td>productTypes</td><td>Типы продуктов</td></tr>
+        <tr><td>relationships</td><td>Связи между товарами</td></tr>
+        <tr><td>salesRanks</td><td>Данные о рейтинге продаж</td></tr>
+        <tr><td>summaries</td><td>Сводные метаданные (бренд, название, цена)</td></tr>
+        <tr><td>vendorDetails</td><td>Информация для вендоров</td></tr>
+    </table>
+
+    <h3>Коды ответов</h3>
+    <table>
+        <tr><th>Код</th><th>Описание</th></tr>
+        <tr><td>200</td><td>Успешный запрос</td></tr>
+        <tr><td>400</td><td>Отсутствующие/неверные параметры</td></tr>
+        <tr><td>403</td><td>Доступ запрещен</td></tr>
+        <tr><td>404</td><td>Ресурс не найден</td></tr>
+        <tr><td>429</td><td>Слишком много запросов (rate limit)</td></tr>
+        <tr><td>500</td><td>Внутренняя ошибка сервера</td></tr>
+    </table>
+</section>
+
+<!-- ==================== LISTINGS ITEMS API ==================== -->
+<section id="listings-items-api">
+    <h1>3. Listings Items API</h1>
+    <div class="metadata">
+        <strong>Путь:</strong> SELLER APIs → Listings Items API<br>
+        <strong>Текущая версия:</strong> v2021-08-01<br>
+        <strong>Устаревшие версии:</strong> v2020-09-01<br>
+        <strong>Доступность:</strong> Sellers and Vendors<br>
+        <strong>Sandbox:</strong> Static
+    </div>
+
+    <h2 id="listings-overview">3.1 Обзор</h2>
+    <p>Listings Items API предоставляет программный доступ к листингам продавцов на Amazon. Используйте этот API совместно с Product Type Definitions API для получения информации о типах продуктов Amazon.</p>
+
+    <h3>Ключевые возможности:</h3>
+    <ul>
+        <li>Получение детальной информации о листинге</li>
+        <li>Создание и полное обновление листинга</li>
+        <li>Частичное обновление листинга</li>
+        <li>Удаление листинга</li>
+        <li>Поиск листингов по SKU, ASIN или идентификаторам</li>
+        <li>Предварительная проверка ошибок перед созданием/обновлением</li>
+        <li>Отправка медиа-атрибутов (изображения)</li>
+    </ul>
+
+    <div class="tip">
+        <strong>Совет:</strong> Используйте Listings Items API для индивидуальных обновлений (1x1). Для массовых обновлений используйте JSON_LISTINGS_FEED через Feeds API.
+    </div>
+
+    <h2 id="listings-operations">3.2 Операции API</h2>
+
+    <div class="api-operation">
+        <h3><span class="method-get">GET</span> getListingsItem</h3>
+        <p>Возвращает детальную информацию о листинге Amazon для указанного продавца и маркетплейса.</p>
+        <table>
+            <tr><th>Атрибут</th><th>Значение</th></tr>
+            <tr><td>Регионы</td><td>NA, EU, FE</td></tr>
+            <tr><td>Требуемые роли</td><td>Inventory and Order Tracking, Product Listing</td></tr>
+        </table>
+    </div>
+
+    <div class="api-operation">
+        <h3><span class="method-put">PUT</span> putListingsItem</h3>
+        <p>Создает или полностью обновляет листинг Amazon.</p>
+        <table>
+            <tr><th>Атрибут</th><th>Значение</th></tr>
+            <tr><td>Регионы</td><td>NA, EU, FE</td></tr>
+            <tr><td>Требуемые роли</td><td>Inventory and Order Tracking, Product Listing</td></tr>
+        </table>
+    </div>
+
+    <div class="api-operation">
+        <h3><span class="method-patch">PATCH</span> patchListingsItem</h3>
+        <p>Частично обновляет листинг Amazon.</p>
+        <table>
+            <tr><th>Атрибут</th><th>Значение</th></tr>
+            <tr><td>Регионы</td><td>NA, EU, FE</td></tr>
+            <tr><td>Требуемые роли</td><td>Inventory and Order Tracking, Product Listing</td></tr>
+        </table>
+    </div>
+
+    <div class="api-operation">
+        <h3><span class="method-delete">DELETE</span> deleteListingsItem</h3>
+        <p>Удаляет листинг Amazon.</p>
+        <table>
+            <tr><th>Атрибут</th><th>Значение</th></tr>
+            <tr><td>Регионы</td><td>NA, EU, FE</td></tr>
+            <tr><td>Требуемые роли</td><td>Inventory and Order Tracking, Product Listing</td></tr>
+        </table>
+    </div>
+
+    <div class="api-operation">
+        <h3><span class="method-get">GET</span> searchListingsItems</h3>
+        <p>Поиск листингов по SKU, ASIN или идентификаторам.</p>
+        <table>
+            <tr><th>Атрибут</th><th>Значение</th></tr>
+            <tr><td>Регионы</td><td>NA, EU, FE</td></tr>
+            <tr><td>Требуемые роли</td><td>Inventory and Order Tracking, Product Listing</td></tr>
+        </table>
+    </div>
+
+    <h2 id="listings-use-cases">3.3 Примеры использования</h2>
+    <ul>
+        <li><strong>Получение деталей листинга:</strong> Возвращает детальную информацию о листинге Amazon для указанного продавца и маркетплейса.</li>
+        <li><strong>Предварительная проверка ошибок:</strong> Проверка ошибок перед созданием или полным обновлением листинга.</li>
+        <li><strong>Создание или полное обновление:</strong> Создание или полное обновление листинга Amazon.</li>
+        <li><strong>Частичное обновление:</strong> Обновление отдельных атрибутов листинга.</li>
+        <li><strong>Merge листинга:</strong> Обновление поля quantity в fulfillment_availability без указания других атрибутов.</li>
+        <li><strong>Удаление листинга:</strong> Удаление листинга Amazon.</li>
+        <li><strong>Отправка медиа-атрибутов:</strong> Отправка изображений и медиа-атрибутов.</li>
+        <li><strong>Поиск листингов:</strong> Получение листингов по SKU, ASIN или идентификаторам.</li>
+    </ul>
+
+    <h3>Важные замечания</h3>
+    <ul>
+        <li><strong>1x1 обновления:</strong> Используйте Listings Items API для индивидуальных обновлений; для массовых используйте JSON_LISTINGS_FEED.</li>
+        <li><strong>Полностью поддерживаемые типы продуктов:</strong> Проверьте Product Type Definitions для поддерживаемых типов.</li>
+        <li><strong>Частично поддерживаемые типы:</strong> Используйте тип PRODUCT для частичных обновлений.</li>
+        <li><strong>Результаты и проблемы:</strong> Отправки проверяют ошибки до обработки; актуальные данные отображаются в fulfillmentAvailability.</li>
+        <li><strong>Атрибуты:</strong> Секция attributes отражает отправленные данные, а fulfillmentAvailability показывает актуальные данные.</li>
+    </ul>
+</section>
+
+<!-- ==================== PRODUCT PRICING API ==================== -->
+<section id="product-pricing-api">
+    <h1>4. Product Pricing API</h1>
+    <div class="metadata">
+        <strong>Путь:</strong> SELLER APIs → Product Pricing API<br>
+        <strong>Текущая версия:</strong> v2022-05-01<br>
+        <strong>Устаревшие версии:</strong> v0<br>
+        <strong>Доступность:</strong> Sellers only<br>
+        <strong>Sandbox:</strong> Static
+    </div>
+
+    <h2 id="pricing-overview">4.1 Обзор</h2>
+    <p>Product Pricing API помогает программно получать информацию о ценах и предложениях для товаров на маркетплейсе Amazon. API разработан для помощи в создании автоматизированных решений, которые продавцы могут использовать для обновления и управления своими ценами.</p>
+
+    <div class="tip">
+        <strong>Совет:</strong> Product Pricing API поддерживает разработку репрайсеров. Репрайсеры - это автоматизированные инструменты ценообразования, которые могут непрерывно отслеживать ценовые точки, цены конкурентов и другие релевантные факторы для корректировки цен продавца в реальном времени. Репрайсеры используют данные из Product Pricing и Notifications APIs для поддержания конкурентного ценового преимущества.
+    </div>
+
+    <h3>Ключевые возможности:</h3>
+    <ul>
+        <li>Получение информации о ценах товаров</li>
+        <li>Получение конкурентных цен</li>
+        <li>Получение предложений по листингу</li>
+        <li>Получение предложений по товару</li>
+        <li>Пакетные операции для множества товаров</li>
+        <li>Получение данных о Featured Offer Expected Price (FOEP)</li>
+    </ul>
+
+    <h2 id="pricing-operations">4.2 Операции API</h2>
+
+    <div class="api-operation">
+        <h3><span class="method-get">GET</span> getPricing</h3>
+        <p>Получение информации о ценах для товаров.</p>
+        <table>
+            <tr><th>Атрибут</th><th>Значение</th></tr>
+            <tr><td>Регионы</td><td>NA, EU, FE</td></tr>
+            <tr><td>Требуемые роли</td><td>Pricing</td></tr>
+        </table>
+    </div>
+
+    <div class="api-operation">
+        <h3><span class="method-get">GET</span> getCompetitivePricing</h3>
+        <p>Получение конкурентных цен для товаров.</p>
+        <table>
+            <tr><th>Атрибут</th><th>Значение</th></tr>
+            <tr><td>Регионы</td><td>NA, EU, FE</td></tr>
+            <tr><td>Требуемые роли</td><td>Pricing</td></tr>
+        </table>
+    </div>
+
+    <div class="api-operation">
+        <h3><span class="method-get">GET</span> getListingOffers</h3>
+        <p>Получение предложений для листинга по SKU.</p>
+        <table>
+            <tr><th>Атрибут</th><th>Значение</th></tr>
+            <tr><td>Регионы</td><td>NA, EU, FE</td></tr>
+            <tr><td>Требуемые роли</td><td>Pricing</td></tr>
+        </table>
+    </div>
+
+    <div class="api-operation">
+        <h3><span class="method-get">GET</span> getItemOffers</h3>
+        <p>Получение предложений для товара по ASIN.</p>
+        <table>
+            <tr><th>Атрибут</th><th>Значение</th></tr>
+            <tr><td>Регионы</td><td>NA, EU, FE</td></tr>
+            <tr><td>Требуемые роли</td><td>Pricing</td></tr>
+        </table>
+    </div>
+
+    <div class="api-operation">
+        <h3><span class="method-post">POST</span> getItemOffersBatch</h3>
+        <p>Пакетное получение предложений для множества товаров по ASIN (до 20 ASIN).</p>
+        <table>
+            <tr><th>Атрибут</th><th>Значение</th></tr>
+            <tr><td>Регионы</td><td>NA, EU, FE</td></tr>
+            <tr><td>Требуемые роли</td><td>Pricing</td></tr>
+        </table>
+    </div>
+
+    <div class="api-operation">
+        <h3><span class="method-post">POST</span> getListingOffersBatch</h3>
+        <p>Пакетное получение предложений для множества листингов.</p>
+        <table>
+            <tr><th>Атрибут</th><th>Значение</th></tr>
+            <tr><td>Регионы</td><td>NA, EU, FE</td></tr>
+            <tr><td>Требуемые роли</td><td>Pricing</td></tr>
+        </table>
+    </div>
+
+    <div class="api-operation">
+        <h3><span class="method-get">GET</span> getCompetitiveSummary</h3>
+        <p>Получение сводки конкурентной информации.</p>
+        <table>
+            <tr><th>Атрибут</th><th>Значение</th></tr>
+            <tr><td>Регионы</td><td>NA, EU, FE</td></tr>
+            <tr><td>Требуемые роли</td><td>Pricing</td></tr>
+        </table>
+    </div>
+
+    <div class="api-operation">
+        <h3><span class="method-post">POST</span> getFeaturedOfferExpectedPriceBatch</h3>
+        <p>Пакетное получение данных о Featured Offer Expected Price (FOEP) для набора SKU (до 40 запросов).</p>
+        <table>
+            <tr><th>Атрибут</th><th>Значение</th></tr>
+            <tr><td>Регионы</td><td>NA, EU, FE</td></tr>
+            <tr><td>Требуемые роли</td><td>Pricing</td></tr>
+        </table>
+    </div>
+
+    <h2 id="pricing-use-cases">4.3 Примеры использования</h2>
+    <ul>
+        <li><strong>Получение FOEP данных:</strong> Возвращает набор ответов для до 40 запросов данных о Featured Offer Expected Price.</li>
+        <li><strong>Получение Featured Offers:</strong> Получение информации о featured offers по ASIN (до 20 ASIN) с использованием пакетной операции.</li>
+        <li><strong>Разработка репрайсера:</strong> Использование данных API для автоматической корректировки цен в реальном времени.</li>
+    </ul>
+</section>
+
+<!-- ==================== FEEDS API ==================== -->
+<section id="feeds-api">
+    <h1>5. Feeds API</h1>
+    <div class="metadata">
+        <strong>Путь:</strong> SELLER APIs → Feeds API<br>
+        <strong>Текущая версия:</strong> v2021-06-30<br>
+        <strong>Доступность:</strong> Sellers and Vendors<br>
+        <strong>Sandbox:</strong> Static
+    </div>
+
+    <h2 id="feeds-overview">5.1 Обзор</h2>
+    <p>Feeds API позволяет загружать данные в Amazon для управления бизнесом продавца. Существуют фиды для широкого спектра задач: создание листингов, управление запасами и ценами, подтверждение заказов и многое другое.</p>
+
+    <div class="warning">
+        <strong>Важно:</strong> Поддержка Feeds API для XML и flat file product listings feeds устарела. Для получения информации о затронутых фидах и руководства по миграции обратитесь к объявлению об устаревании.
+    </div>
+
+    <div class="note">
+        <strong>Примечание:</strong> Документы результатов фидов хранятся <strong>28 дней</strong>.
+    </div>
+
+    <h2 id="feeds-operations">5.2 Операции API</h2>
+
+    <div class="api-operation">
+        <h3><span class="method-get">GET</span> getFeeds</h3>
+        <p>Возвращает информацию о фидах, соответствующих указанным критериям.</p>
+        <table>
+            <tr><th>Атрибут</th><th>Значение</th></tr>
+            <tr><td>Регионы</td><td>NA, EU, FE</td></tr>
+            <tr><td>Требуемые роли</td><td>Amazon Fulfillment, Brand Analytics, Direct to Consumer Shipping, Inventory and Order Tracking, Payment Initiation Service Provider (EU only), Pricing, Product Listing, Selling Partner Insights, Tax Invoicing</td></tr>
+        </table>
+    </div>
+
+    <div class="api-operation">
+        <h3><span class="method-post">POST</span> createFeed</h3>
+        <p>Создает новый фид для обработки.</p>
+        <table>
+            <tr><th>Атрибут</th><th>Значение</th></tr>
+            <tr><td>Регионы</td><td>NA, EU, FE</td></tr>
+            <tr><td>Требуемые роли</td><td>Amazon Fulfillment, Brand Analytics, Direct to Consumer Shipping, Inventory and Order Tracking, Payment Initiation Service Provider (EU only), Pricing, Product Listing, Tax Invoicing</td></tr>
+        </table>
+    </div>
+
+    <div class="api-operation">
+        <h3><span class="method-get">GET</span> getFeed</h3>
+        <p>Возвращает информацию о фиде по указанному идентификатору.</p>
+        <table>
+            <tr><th>Атрибут</th><th>Значение</th></tr>
+            <tr><td>Регионы</td><td>NA, EU, FE</td></tr>
+            <tr><td>Требуемые роли</td><td>Amazon Fulfillment, Brand Analytics, Direct to Consumer Shipping, Inventory and Order Tracking, Payment Initiation Service Provider (EU only), Pricing, Product Listing, Selling Partner Insights, Tax Invoicing</td></tr>
+        </table>
+    </div>
+
+    <div class="api-operation">
+        <h3><span class="method-delete">DELETE</span> cancelFeed</h3>
+        <p>Отменяет фид по указанному идентификатору.</p>
+        <table>
+            <tr><th>Атрибут</th><th>Значение</th></tr>
+            <tr><td>Регионы</td><td>NA, EU, FE</td></tr>
+            <tr><td>Требуемые роли</td><td>Amazon Fulfillment, Brand Analytics, Direct to Consumer Shipping, Inventory and Order Tracking, Payment Initiation Service Provider (EU only), Pricing, Product Listing, Tax Invoicing</td></tr>
+        </table>
+    </div>
+
+    <div class="api-operation">
+        <h3><span class="method-post">POST</span> createFeedDocument</h3>
+        <p>Создает документ фида для загрузки данных.</p>
+        <table>
+            <tr><th>Атрибут</th><th>Значение</th></tr>
+            <tr><td>Регионы</td><td>NA, EU, FE</td></tr>
+            <tr><td>Требуемые роли</td><td>Amazon Fulfillment, Brand Analytics, Direct to Consumer Shipping, Inventory and Order Tracking, Payment Initiation Service Provider (EU only), Pricing, Product Listing, Tax Invoicing</td></tr>
+        </table>
+    </div>
+
+    <div class="api-operation">
+        <h3><span class="method-get">GET</span> getFeedDocument</h3>
+        <p>Возвращает информацию о документе фида, включая URL для загрузки результатов.</p>
+        <table>
+            <tr><th>Атрибут</th><th>Значение</th></tr>
+            <tr><td>Регионы</td><td>NA, EU, FE</td></tr>
+            <tr><td>Требуемые роли</td><td>Amazon Fulfillment, Brand Analytics, Direct to Consumer Shipping, Inventory and Order Tracking, Payment Initiation Service Provider (EU only), Pricing, Product Listing, Tax Invoicing</td></tr>
+        </table>
+    </div>
+
+    <h2 id="feeds-types">5.3 Типы фидов</h2>
+    
+    <h3>Business Feeds</h3>
+    <table>
+        <tr><th>Feed Type</th><th>Описание</th><th>Доступность</th></tr>
+        <tr><td>RFQ_UPLOAD_FEED</td><td>Загрузка RFQ данных</td><td>Seller only</td></tr>
+    </table>
+
+    <h3>Easy Ship Feeds</h3>
+    <table>
+        <tr><th>Feed Type</th><th>Описание</th><th>Доступность</th></tr>
+        <tr><td>POST_EASYSHIP_DOCUMENTS</td><td>Документы Easy Ship</td><td>Seller only</td></tr>
+    </table>
+
+    <h3>Fulfillment by Amazon Feeds</h3>
+    <table>
+        <tr><th>Feed Type</th><th>Описание</th><th>Доступность</th></tr>
+        <tr><td>POST_FULFILLMENT_ORDER_REQUEST_DATA</td><td>Запрос на выполнение заказа</td><td>Seller only</td></tr>
+        <tr><td>POST_FULFILLMENT_ORDER_CANCELLATION_REQUEST_DATA</td><td>Запрос на отмену выполнения заказа</td><td>Seller only</td></tr>
+        <tr><td>POST_FBA_INBOUND_CARTON_CONTENTS</td><td>Содержимое коробок FBA</td><td>Seller only</td></tr>
+        <tr><td>POST_FLAT_FILE_FBA_CREATE_REMOVAL</td><td>Создание удаления FBA</td><td>Seller only</td></tr>
+        <tr><td>POST_FLAT_FILE_FULFILLMENT_ORDER_REQUEST_DATA</td><td>Flat file запрос на выполнение</td><td>Seller only</td></tr>
+        <tr><td>POST_FLAT_FILE_FULFILLMENT_ORDER_CANCELLATION_REQUEST_DATA</td><td>Flat file запрос на отмену</td><td>Seller only</td></tr>
+    </table>
+
+    <h3>Invoicing Feeds</h3>
+    <table>
+        <tr><th>Feed Type</th><th>Описание</th><th>Доступность</th></tr>
+        <tr><td>UPLOAD_VAT_INVOICE</td><td>Загрузка VAT счета</td><td>Seller only</td></tr>
+    </table>
+
+    <h3>Listings Feeds</h3>
+    <table>
+        <tr><th>Feed Type</th><th>Описание</th><th>Доступность</th></tr>
+        <tr><td>JSON_LISTINGS_FEED</td><td>JSON фид листингов (рекомендуется для массовых обновлений)</td><td>Both</td></tr>
+    </table>
+
+    <h3>Order Feeds</h3>
+    <table>
+        <tr><th>Feed Type</th><th>Описание</th><th>Доступность</th></tr>
+        <tr><td>POST_FLAT_FILE_ORDER_ACKNOWLEDGEMENT_DATA</td><td>Подтверждение заказа (flat file)</td><td>Seller only</td></tr>
+        <tr><td>POST_FLAT_FILE_PAYMENT_ADJUSTMENT_DATA</td><td>Корректировка платежа (flat file)</td><td>Seller only</td></tr>
+        <tr><td>POST_FLAT_FILE_FULFILLMENT_DATA</td><td>Данные выполнения (flat file)</td><td>Seller only</td></tr>
+        <tr><td>POST_EXPECTED_SHIP_DATE_SOD_FLAT_FILE</td><td>Ожидаемая дата отправки (flat file)</td><td>Seller only</td></tr>
+        <tr><td>POST_INVOICE_CONFIRMATION_DATA</td><td>Подтверждение счета</td><td>Seller only</td></tr>
+        <tr><td>POST_ORDER_ACKNOWLEDGEMENT_DATA</td><td>Подтверждение заказа</td><td>Seller only</td></tr>
+        <tr><td>POST_PAYMENT_ADJUSTMENT_DATA</td><td>Корректировка платежа</td><td>Seller only</td></tr>
+        <tr><td>POST_ORDER_FULFILLMENT_DATA</td><td>Данные выполнения заказа</td><td>Seller only</td></tr>
+        <tr><td>POST_EXPECTED_SHIP_DATE_SOD</td><td>Ожидаемая дата отправки</td><td>Seller only</td></tr>
+    </table>
+</section>
+
+<!-- ==================== REPORTS API ==================== -->
+<section id="reports-api">
+    <h1>6. Reports API</h1>
+    <div class="metadata">
+        <strong>Путь:</strong> SELLER APIs → Reports API<br>
+        <strong>Текущая версия:</strong> v2021-06-30<br>
+        <strong>Доступность:</strong> Sellers and Vendors<br>
+        <strong>Sandbox:</strong> Static
+    </div>
+
+    <h2 id="reports-overview">6.1 Обзор</h2>
+    <p>Reports API позволяет получать и управлять различными отчетами, которые помогают продавцам управлять своим бизнесом.</p>
+
+    <div class="note">
+        <strong>Примечание:</strong> Срок хранения сгенерированных отчетов зависит от типа отчета. Если явный срок хранения не указан для типа отчета, отчет будет храниться <strong>90 дней</strong>. Если сгенерированный отчет не загружен в течение срока хранения, вы можете сгенерировать отчет снова.
+    </div>
+
+    <div class="warning">
+        <strong>Важно:</strong> Amazon может добавлять новые поля/значения полей в отчеты и изменять идентификаторы документов. Убедитесь, что парсеры отчетов могут обрабатывать эти обновления.
+    </div>
+
+    <h2 id="reports-operations">6.2 Операции API</h2>
+
+    <div class="api-operation">
+        <h3><span class="method-get">GET</span> getReports</h3>
+        <p>Возвращает информацию об отчетах, соответствующих указанным критериям.</p>
+        <table>
+            <tr><th>Атрибут</th><th>Значение</th></tr>
+            <tr><td>Регионы</td><td>NA, EU, FE</td></tr>
+            <tr><td>Требуемые роли</td><td>Amazon Fulfillment, Buyer Communication, Buyer Solicitation, Finance and Accounting, Inventory and Order Tracking, Pricing, Product Listing, Professional Services, Selling Partner Insights, Direct to Consumer Shipping, Tax Invoicing, Tax Remittance</td></tr>
+        </table>
+    </div>
+
+    <div class="api-operation">
+        <h3><span class="method-post">POST</span> createReport</h3>
+        <p>Создает запрос на генерацию отчета.</p>
+        <table>
+            <tr><th>Атрибут</th><th>Значение</th></tr>
+            <tr><td>Регионы</td><td>NA, EU, FE</td></tr>
+            <tr><td>Требуемые роли</td><td>Amazon Fulfillment, Buyer Communication, Buyer Solicitation, Finance and Accounting, Inventory and Order Tracking, Pricing, Product Listing, Professional Services, Selling Partner Insights, Direct to Consumer Shipping, Tax Invoicing, Tax Remittance</td></tr>
+        </table>
+    </div>
+
+    <div class="api-operation">
+        <h3><span class="method-get">GET</span> getReport</h3>
+        <p>Возвращает информацию об отчете по указанному идентификатору.</p>
+        <table>
+            <tr><th>Атрибут</th><th>Значение</th></tr>
+            <tr><td>Регионы</td><td>NA, EU, FE</td></tr>
+            <tr><td>Требуемые роли</td><td>Amazon Fulfillment, Buyer Communication, Buyer Solicitation, Finance and Accounting, Inventory and Order Tracking, Pricing, Product Listing, Professional Services, Selling Partner Insights, Direct to Consumer Shipping, Tax Invoicing, Tax Remittance</td></tr>
+        </table>
+    </div>
+
+    <div class="api-operation">
+        <h3><span class="method-delete">DELETE</span> cancelReport</h3>
+        <p>Отменяет отчет по указанному идентификатору.</p>
+        <table>
+            <tr><th>Атрибут</th><th>Значение</th></tr>
+            <tr><td>Регионы</td><td>NA, EU, FE</td></tr>
+            <tr><td>Требуемые роли</td><td>Amazon Fulfillment, Buyer Communication, Buyer Solicitation, Finance and Accounting, Inventory and Order Tracking, Pricing, Product Listing, Professional Services, Selling Partner Insights, Direct to Consumer Shipping, Tax Invoicing, Tax Remittance</td></tr>
+        </table>
+    </div>
+
+    <div class="api-operation">
+        <h3><span class="method-get">GET</span> getReportDocument</h3>
+        <p>Возвращает информацию о документе отчета, включая URL для загрузки.</p>
+        <table>
+            <tr><th>Атрибут</th><th>Значение</th></tr>
+            <tr><td>Регионы</td><td>NA, EU, FE</td></tr>
+            <tr><td>Требуемые роли</td><td>Amazon Fulfillment, Buyer Communication, Buyer Solicitation, Finance and Accounting, Inventory and Order Tracking, Pricing, Product Listing, Professional Services, Selling Partner Insights, Direct to Consumer Shipping, Tax Invoicing, Tax Remittance</td></tr>
+        </table>
+    </div>
+
+    <div class="api-operation">
+        <h3><span class="method-post">POST</span> createReportSchedule</h3>
+        <p>Создает расписание для автоматической генерации отчетов.</p>
+        <table>
+            <tr><th>Атрибут</th><th>Значение</th></tr>
+            <tr><td>Регионы</td><td>NA, EU, FE</td></tr>
+            <tr><td>Требуемые роли</td><td>Amazon Fulfillment, Buyer Communication, Buyer Solicitation, Finance and Accounting, Inventory and Order Tracking, Pricing, Product Listing, Professional Services, Selling Partner Insights, Direct to Consumer Shipping, Tax Invoicing, Tax Remittance</td></tr>
+        </table>
+    </div>
+
+    <div class="api-operation">
+        <h3><span class="method-get">GET</span> getReportSchedules</h3>
+        <p>Возвращает информацию о расписаниях отчетов.</p>
+    </div>
+
+    <div class="api-operation">
+        <h3><span class="method-get">GET</span> getReportSchedule</h3>
+        <p>Возвращает информацию о расписании отчета по указанному идентификатору.</p>
+    </div>
+
+    <div class="api-operation">
+        <h3><span class="method-delete">DELETE</span> cancelReportSchedule</h3>
+        <p>Отменяет расписание отчета по указанному идентификатору.</p>
+    </div>
+
+    <h2 id="reports-types">6.3 Типы отчетов</h2>
+
+    <h3>Amazon Business Reports</h3>
+    <table>
+        <tr><th>Report Type</th><th>Описание</th><th>Доступность</th></tr>
+        <tr><td>FEE_DISCOUNTS_REPORT</td><td>Отчет о скидках на комиссии</td><td>Seller only</td></tr>
+    </table>
+
+    <h3>Analytics Reports</h3>
+    <table>
+        <tr><th>Report Type</th><th>Описание</th><th>Доступность</th></tr>
+        <tr><td>GET_BRAND_ANALYTICS_SEARCH_CATALOG_PERFORMANCE_REPORT</td><td>Отчет о производительности каталога поиска</td><td>Seller only</td></tr>
+        <tr><td>GET_BRAND_ANALYTICS_SEARCH_QUERY_PERFORMANCE_REPORT</td><td>Отчет о производительности поисковых запросов</td><td>Seller only</td></tr>
+        <tr><td>GET_BRAND_ANALYTICS_MARKET_BASKET_REPORT</td><td>Отчет о рыночной корзине</td><td>Both</td></tr>
+    </table>
+
+    <h3>FBA Reports</h3>
+    <table>
+        <tr><th>Report Type</th><th>Описание</th><th>Доступность</th></tr>
+        <tr><td>GET_AMAZON_FULFILLED_SHIPMENTS_DATA_GENERAL</td><td>Данные об отправках FBA</td><td>Seller only</td></tr>
+        <tr><td>GET_FLAT_FILE_ALL_ORDERS_DATA_BY_LAST_UPDATE_GENERAL</td><td>Все заказы по последнему обновлению</td><td>Seller only</td></tr>
+    </table>
+
+    <h3>Inventory Reports</h3>
+    <table>
+        <tr><th>Report Type</th><th>Описание</th><th>Доступность</th></tr>
+        <tr><td>GET_FLAT_FILE_OPEN_LISTINGS_DATA</td><td>Открытые листинги (flat file)</td><td>Seller only</td></tr>
+        <tr><td>GET_MERCHANT_LISTINGS_ALL_DATA</td><td>Все листинги продавца</td><td>Seller only</td></tr>
+        <tr><td>GET_MERCHANT_LISTINGS_DATA</td><td>Листинги продавца</td><td>Seller only</td></tr>
+    </table>
+
+    <h3>Order Reports</h3>
+    <table>
+        <tr><th>Report Type</th><th>Описание</th><th>Доступность</th></tr>
+        <tr><td>GET_FLAT_FILE_ACTIONABLE_ORDER_DATA_SHIPPING</td><td>Данные заказов для отправки</td><td>Seller only</td></tr>
+        <tr><td>GET_ORDER_REPORT_DATA_INVOICING</td><td>Данные заказов для выставления счетов</td><td>Seller only</td></tr>
+    </table>
+
+    <h3>Settlement/Payments Reports</h3>
+    <table>
+        <tr><th>Report Type</th><th>Описание</th><th>Доступность</th></tr>
+        <tr><td>GET_V2_SETTLEMENT_REPORT_DATA_FLAT_FILE</td><td>Данные расчетов (flat file)</td><td>Seller only</td></tr>
+        <tr><td>GET_V2_SETTLEMENT_REPORT_DATA_XML</td><td>Данные расчетов (XML)</td><td>Seller only</td></tr>
+    </table>
+</section>
+
+<!-- ==================== FBA INVENTORY API ==================== -->
+<section id="fba-inventory-api">
+    <h1>7. FBA Inventory API</h1>
+    <div class="metadata">
+        <strong>Путь:</strong> SELLER APIs → FBA Inventory API<br>
+        <strong>Текущая версия:</strong> v1<br>
+        <strong>Доступность:</strong> Sellers only<br>
+        <strong>Sandbox:</strong> Dynamic
+    </div>
+    
+    <h2 id="fba-inventory-overview">7.1 Обзор</h2>
+    <p>FBA Inventory API позволяет программно получать информацию об инвентаре в сети выполнения заказов Amazon (Fulfillment by Amazon).</p>
+    
+    <p>Вы можете отслеживать доступность инвентаря в реальном времени на уровне маркетплейса и получать детали, такие как:</p>
+    <ul>
+        <li><strong>Fulfillable:</strong> Инвентарь, который можно собрать, упаковать и отправить</li>
+        <li><strong>Inbound:</strong> Инвентарь, который находится в пути к сети выполнения Amazon</li>
+        <li><strong>Reserved:</strong> Инвентарь в сети выполнения Amazon, который собирается, упаковывается и отправляется; или отложен для измерения, выборки или других внутренних процессов</li>
+        <li><strong>Unfulfillable:</strong> Инвентарь, который нельзя продать</li>
+        <li><strong>Researching:</strong> Потерянные или поврежденные на складе единицы, которые активно подтверждаются в центре выполнения Amazon</li>
+    </ul>
+    
+    <h2 id="fba-inventory-operations">7.2 Операции API</h2>
+    
+    <div class="api-operation">
+        <h3><span class="method-get">GET</span> getInventorySummaries</h3>
+        <p>Получение сводки по инвентарю.</p>
+        <table>
+            <tr><th>Атрибут</th><th>Значение</th></tr>
+            <tr><td>Регионы</td><td>NA, EU, FE</td></tr>
+            <tr><td>Требуемые роли</td><td>Amazon Fulfillment, Product Listing</td></tr>
+        </table>
+    </div>
+    
+    <div class="api-operation">
+        <h3><span class="method-post">POST</span> createInventoryItem</h3>
+        <p>Создание элемента инвентаря.</p>
+        <table>
+            <tr><th>Атрибут</th><th>Значение</th></tr>
+            <tr><td>Регионы</td><td>NA, EU, FE</td></tr>
+            <tr><td>Требуемые роли</td><td>Amazon Fulfillment, Product Listing</td></tr>
+        </table>
+    </div>
+    
+    <div class="api-operation">
+        <h3><span class="method-delete">DELETE</span> deleteInventoryItem</h3>
+        <p>Удаление элемента инвентаря.</p>
+        <table>
+            <tr><th>Атрибут</th><th>Значение</th></tr>
+            <tr><td>Регионы</td><td>NA, EU, FE</td></tr>
+            <tr><td>Требуемые роли</td><td>Amazon Fulfillment, Product Listing</td></tr>
+        </table>
+    </div>
+    
+    <div class="api-operation">
+        <h3><span class="method-post">POST</span> addInventory</h3>
+        <p>Добавление инвентаря.</p>
+        <table>
+            <tr><th>Атрибут</th><th>Значение</th></tr>
+            <tr><td>Регионы</td><td>NA, EU, FE</td></tr>
+            <tr><td>Требуемые роли</td><td>Amazon Fulfillment, Product Listing</td></tr>
+        </table>
+    </div>
+    
+    <h2 id="fba-inventory-rate-limits">7.3 Rate Limits</h2>
+    <table>
+        <tr>
+            <th>Операция</th>
+            <th>Rate limit (запросов/сек)</th>
+            <th>Burst (запросов)</th>
+        </tr>
+        <tr>
+            <td><code>getInventorySummaries</code></td>
+            <td>2</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td><code>createInventoryItem</code></td>
+            <td>2</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td><code>deleteInventoryItem</code></td>
+            <td>2</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td><code>addInventory</code></td>
+            <td>2</td>
+            <td>3</td>
+        </tr>
+    </table>
+</section>
+
+<!-- ==================== NOTIFICATIONS API ==================== -->
+<section id="notifications-api">
+    <h1>8. Notifications API</h1>
+    <div class="metadata">
+        <strong>Путь:</strong> SELLER APIs → Notifications API<br>
+        <strong>Текущая версия:</strong> v1<br>
+        <strong>Доступность:</strong> Sellers and Vendors<br>
+        <strong>Sandbox:</strong> Static
+    </div>
+    
+    <h2 id="notifications-overview">8.1 Обзор</h2>
+    <p>Notifications API позволяет подписываться на уведомления, релевантные для бизнеса продавца. Вместо постоянного опроса информации, ваше приложение может получать данные напрямую от Amazon при возникновении события.</p>
+    
+    <p>Вы можете подписываться на уведомления от имени продавцов или вендоров. API поддерживает несколько подписок с разными версиями payload для каждого приложения, типа уведомления и стороны (продавец/вендор).</p>
+    
+    <div class="warning">
+        <strong>Рекомендация:</strong> Создайте резервный механизм для получения необходимой информации в случае неожиданного сбоя или задержки доставки уведомлений.
+    </div>
+    
+    <h2 id="notifications-operations">8.2 Операции API</h2>
+    
+    <div class="api-operation">
+        <h3><span class="method-post">POST</span> createDestination</h3>
+        <p>Создание destination для получения уведомлений.</p>
+        <table>
+            <tr><th>Атрибут</th><th>Значение</th></tr>
+            <tr><td>Регионы</td><td>NA, EU, FE</td></tr>
+            <tr><td>Требуемые роли</td><td>None (grantless)</td></tr>
+        </table>
+    </div>
+    
+    <div class="api-operation">
+        <h3><span class="method-post">POST</span> createSubscription</h3>
+        <p>Создание подписки на тип уведомления.</p>
+        <table>
+            <tr><th>Атрибут</th><th>Значение</th></tr>
+            <tr><td>Регионы</td><td>NA, EU, FE</td></tr>
+            <tr><td>Требуемые роли</td><td>Роль, связанная с типом уведомления</td></tr>
+        </table>
+    </div>
+    
+    <div class="api-operation">
+        <h3><span class="method-delete">DELETE</span> deleteDestination</h3>
+        <p>Удаление destination.</p>
+        <table>
+            <tr><th>Атрибут</th><th>Значение</th></tr>
+            <tr><td>Регионы</td><td>NA, EU, FE</td></tr>
+            <tr><td>Требуемые роли</td><td>None (grantless)</td></tr>
+        </table>
+    </div>
+    
+    <div class="api-operation">
+        <h3><span class="method-delete">DELETE</span> deleteSubscriptionById</h3>
+        <p>Удаление подписки по ID.</p>
+    </div>
+    
+    <div class="api-operation">
+        <h3><span class="method-get">GET</span> getDestination / getDestinations</h3>
+        <p>Получение информации о destination(s).</p>
+    </div>
+    
+    <div class="api-operation">
+        <h3><span class="method-get">GET</span> getSubscription / getSubscriptionById</h3>
+        <p>Получение информации о подписке.</p>
+    </div>
+    
+    <h2 id="notifications-eventbridge">8.3 Amazon EventBridge Workflow</h2>
+    <p>Настройка системы для получения уведомлений через Amazon EventBridge.</p>
+    
+    <h4>Поддерживаемые типы уведомлений (EventBridge):</h4>
+    <ul>
+        <li><code>BRANDED_ITEM_CONTENT_CHANGE</code> - изменение title, description, bullet points или images для ASIN</li>
+        <li><code>ITEM_PRODUCT_TYPE_CHANGE</code> - изменение типа продукта для ASIN</li>
+        <li><code>LISTINGS_ITEM_STATUS_CHANGE</code> - изменение статуса листинга</li>
+        <li><code>LISTINGS_ITEM_ISSUES_CHANGE</code> - изменение issues для SKU</li>
+        <li><code>LISTINGS_ITEM_MFN_QUANTITY_CHANGE</code> - изменение доступного количества</li>
+        <li><code>PRODUCT_TYPE_DEFINITIONS_CHANGE</code> - новый Product Type или версия</li>
+    </ul>
+    
+    <h4>Шаги настройки:</h4>
+    <ol>
+        <li><strong>Step 1:</strong> Create a destination - вызов <code>createDestination</code></li>
+        <li><strong>Step 2:</strong> Configure Amazon EventBridge в AWS Console</li>
+        <li><strong>Step 3:</strong> Create a rule в EventBridge</li>
+        <li><strong>Step 4:</strong> Create a subscription - вызов <code>createSubscription</code></li>
+    </ol>
+    
+    <h4>Пример Event Pattern:</h4>
+    <pre><code>{
+  "source": [
+    {
+      "prefix": "aws.partner/sellingpartnerapi.amazon.com"
+    }
+  ]
+}</code></pre>
+    
+    <h2 id="notifications-sqs">8.4 Amazon Simple Queue Service (SQS) Workflow</h2>
+    <p>Настройка системы для получения уведомлений через Amazon SQS.</p>
+    
+    <h4>Поддерживаемые типы уведомлений (SQS):</h4>
+    <ul>
+        <li><code>ACCOUNT_STATUS_CHANGED</code></li>
+        <li><code>ANY_OFFER_CHANGED</code></li>
+        <li><code>B2B_ANY_OFFER_CHANGED</code></li>
+        <li><code>FBA_INVENTORY_AVAILABILITY_CHANGES</code></li>
+        <li><code>FBA_OUTBOUND_SHIPMENT_STATUS</code></li>
+        <li><code>FEED_PROCESSING_FINISHED</code></li>
+        <li><code>FULFILLMENT_ORDER_STATUS</code></li>
+        <li><code>ORDER_CHANGE</code></li>
+        <li><code>PRICING_HEALTH</code></li>
+        <li><code>REPORT_PROCESSING_FINISHED</code></li>
+    </ul>
+    
+    <div class="warning">
+        <strong>Важно:</strong> SP-API НЕ поддерживает FIFO очереди. Уведомления могут приходить не по порядку или дублироваться. Используйте <code>NotificationId</code> для обнаружения дубликатов.
+    </div>
+    
+    <h4>Структура уведомления (version 1.0):</h4>
+    <pre><code>{
+  "NotificationVersion": "1.0",
+  "NotificationType": "BRANDED_ITEM_CONTENT_CHANGE",
+  "PayloadVersion": "1.0",
+  "EventTime": "2019-03-20T18:59:30.194Z",
+  "Payload": {
+    "MarketplaceId": "ATVPDKIKX0DER",
+    "BrandName": "Great Brand",
+    "Asin": "B1234567",
+    "AttributesChanged": ["bullet_point", "item_name"]
+  },
+  "NotificationMetadata": {
+    "ApplicationId": "amzn1.sellerapps.app.f1234566-aaec-55a6-b123-bcb752069ec5",
+    "SubscriptionId": "93b098e1-c42-2f45-93a1-78910a6a8369",
+    "PublishTime": "2019-03-20T18:59:48.768Z",
+    "NotificationId": "8e009934-da2c-4f9c-9bc7-93f23b7e1f60"
+  }
+}</code></pre>
+    
+    <h2 id="notifications-types">8.5 Типы уведомлений</h2>
+    
+    <h3>ACCOUNT_STATUS_CHANGED</h3>
+    <p>Отправляется при изменении статуса аккаунта.</p>
+    <pre><code>{
+  "notificationType": "ACCOUNT_STATUS_CHANGED",
+  "payload": {
+    "accountStatusChangeNotification": {
+      "previousAccountStatus": "NORMAL",
+      "currentAccountStatus": "AT_RISK"
+    }
+  }
+}</code></pre>
+    
+    <h3>ANY_OFFER_CHANGED</h3>
+    <p>Отправляется при изменении любого из топ-20 предложений или внешних изменениях цены.</p>
+    
+    <h3>FBA_INVENTORY_AVAILABILITY_CHANGES</h3>
+    <p>Отправляется при изменении количества FBA инвентаря.</p>
+    <pre><code>{
+  "notificationType": "FBA_INVENTORY_AVAILABILITY_CHANGES",
+  "payload": {
+    "summary": {
+      "fulfillable": 50
+    }
+  }
+}</code></pre>
+    
+    <h3>PRICING_HEALTH</h3>
+    <p>Отправляется когда предложение продавца не может быть Featured Offer из-за ценообразования.</p>
+    
+    <h3>REPORT_PROCESSING_FINISHED</h3>
+    <p>Отправляется когда статус обработки отчета достигает DONE, CANCELLED или FATAL.</p>
+    
+    <h2 id="notifications-rate-limits">8.6 Rate Limits</h2>
+    <table>
+        <tr>
+            <th>Операция</th>
+            <th>Rate limit (запросов/сек)</th>
+            <th>Burst (запросов)</th>
+        </tr>
+        <tr><td><code>getSubscription</code></td><td>1</td><td>5</td></tr>
+        <tr><td><code>createSubscription</code></td><td>1</td><td>5</td></tr>
+        <tr><td><code>getSubscriptionById</code></td><td>1</td><td>5</td></tr>
+        <tr><td><code>deleteSubscriptionById</code></td><td>1</td><td>5</td></tr>
+        <tr><td><code>getDestinations</code></td><td>1</td><td>5</td></tr>
+        <tr><td><code>createDestination</code></td><td>1</td><td>5</td></tr>
+        <tr><td><code>getDestination</code></td><td>1</td><td>5</td></tr>
+        <tr><td><code>deleteDestination</code></td><td>1</td><td>5</td></tr>
+    </table>
+</section>
+
+<!-- ==================== TOKENS API ==================== -->
+<section id="tokens-api">
+    <h1>9. Tokens API</h1>
+    <div class="metadata">
+        <strong>Путь:</strong> SELLER APIs → Tokens API<br>
+        <strong>Текущая версия:</strong> v2021-03-01<br>
+        <strong>Sandbox:</strong> Static
+    </div>
+    
+    <h2 id="tokens-overview">9.1 Обзор</h2>
+    <p>Tokens API используется для получения Restricted Data Token (RDT) для доступа к ограниченным ресурсам, содержащим персональную информацию клиентов (PII).</p>
+    
+    <p>Restricted operations возвращают персональную информацию клиентов (PII). Для вызова restricted operation необходим RDT. Вы можете вызвать операцию <code>createRestrictedDataToken</code> для получения RDT для одного или нескольких restricted resources.</p>
+    
+    <h2 id="tokens-restricted-operations">9.2 Restricted Operations</h2>
+    
+    <h3>Orders API</h3>
+    <ul>
+        <li><code>getOrders</code></li>
+        <li><code>getOrder</code></li>
+        <li><code>getOrderItems</code></li>
+        <li><code>getOrderRegulatedInfo</code></li>
+        <li><code>getOrderAddress</code></li>
+        <li><code>getOrderBuyerInfo</code></li>
+        <li><code>getOrderItemsBuyerInfo</code></li>
+    </ul>
+    
+    <h3>Merchant Fulfillment API</h3>
+    <ul>
+        <li><code>getShipment</code></li>
+        <li><code>cancelShipment</code></li>
+        <li><code>createShipment</code></li>
+    </ul>
+    
+    <h3>Reports API</h3>
+    <ul>
+        <li><code>getReportDocument</code></li>
+    </ul>
+    
+    <h3>Shipping API</h3>
+    <ul>
+        <li><code>getShipment</code></li>
+    </ul>
+    
+    <div class="api-operation">
+        <h3><span class="method-post">POST</span> createRestrictedDataToken</h3>
+        <table>
+            <tr><th>Атрибут</th><th>Значение</th></tr>
+            <tr><td>Регионы</td><td>NA, EU, FE</td></tr>
+            <tr><td>Требуемые роли</td><td>Amazon Fulfillment, Buyer Communication, Buyer Solicitation, Finance and Accounting, Inventory and Order Tracking, Pricing, Product Listing, Direct to Consumer Shipping (Restricted), Tax Invoicing (Restricted)</td></tr>
+        </table>
+    </div>
+    
+    <h2 id="tokens-rate-limits">9.3 Rate Limits</h2>
+    <table>
+        <tr>
+            <th>Операция</th>
+            <th>Rate limit (запросов/сек)</th>
+            <th>Burst (запросов)</th>
+        </tr>
+        <tr>
+            <td><code>createRestrictedDataToken</code></td>
+            <td>1</td>
+            <td>10</td>
+        </tr>
+    </table>
+</section>
+
+<!-- ==================== MERCHANT FULFILLMENT API ==================== -->
+<section id="merchant-fulfillment-api">
+    <h1>10. Merchant Fulfillment API</h1>
+    <div class="metadata">
+        <strong>Путь:</strong> SELLER APIs → Merchant Fulfillment API<br>
+        <strong>Текущая версия:</strong> v0<br>
+        <strong>Доступность:</strong> Sellers only<br>
+        <strong>Sandbox:</strong> Static
+    </div>
+    
+    <h2 id="merchant-fulfillment-overview">10.1 Обзор</h2>
+    <p>Merchant Fulfillment API используется для создания приложений, позволяющих продавцам использовать Amazon Buy Shipping services для покупки доставки для non-Prime и Prime заказов.</p>
+    
+    <div class="note">
+        <strong>Примечание:</strong> Для новых интеграций рекомендуется использовать <strong>Shipping API v2</strong>.
+    </div>
+    
+    <h4>Use Cases:</h4>
+    <ul>
+        <li>Fulfill seller-fulfilled Prime and non-Prime orders</li>
+        <li>Cancel a shipment</li>
+        <li>Manipulate shipping labels</li>
+        <li>Include additional seller input data</li>
+        <li>Subscribe to MFN notifications</li>
+    </ul>
+    
+    <h2 id="merchant-fulfillment-operations">10.2 Операции API</h2>
+    
+    <table>
+        <tr>
+            <th>Операция</th>
+            <th>Регионы</th>
+            <th>Требуемые роли</th>
+        </tr>
+        <tr>
+            <td><code>cancelShipment</code></td>
+            <td>NA, EU, FE</td>
+            <td>Direct to Consumer Shipping (Restricted)</td>
+        </tr>
+        <tr>
+            <td><code>createShipment</code></td>
+            <td>NA, EU, FE</td>
+            <td>Direct to Consumer Shipping (Restricted)</td>
+        </tr>
+        <tr>
+            <td><code>getAdditionalSellerInputs</code></td>
+            <td>NA, EU, FE</td>
+            <td>Buyer Communication (NA, FE only), Direct to Consumer Shipping (Restricted)</td>
+        </tr>
+        <tr>
+            <td><code>getEligibleShipmentServices</code></td>
+            <td>NA, EU, FE</td>
+            <td>Direct to Consumer Shipping (Restricted)</td>
+        </tr>
+        <tr>
+            <td><code>getShipment</code></td>
+            <td>NA, EU, FE</td>
+            <td>Direct to Consumer Shipping (Restricted)</td>
+        </tr>
+    </table>
+    
+    <h2 id="merchant-fulfillment-errors">10.3 Коды ошибок</h2>
+    
+    <table>
+        <tr>
+            <th>Код ошибки</th>
+            <th>HTTP Status</th>
+            <th>Описание</th>
+        </tr>
+        <tr>
+            <td><code>InsufficientFunds</code></td>
+            <td>400</td>
+            <td>Недостаточно средств на аккаунте продавца</td>
+        </tr>
+        <tr>
+            <td><code>InvalidRequest</code></td>
+            <td>400</td>
+            <td>Отсутствующие или недопустимые параметры</td>
+        </tr>
+        <tr>
+            <td><code>InvalidShipFromAddress</code></td>
+            <td>400</td>
+            <td>Недопустимый ShipFromAddress</td>
+        </tr>
+        <tr>
+            <td><code>InvalidShippingServiceOfferId</code></td>
+            <td>400</td>
+            <td>Недопустимый ShippingServiceOfferId</td>
+        </tr>
+        <tr>
+            <td><code>LabelCancelWindowExpired</code></td>
+            <td>400</td>
+            <td>Окно возврата этикетки истекло</td>
+        </tr>
+        <tr>
+            <td><code>ShipmentAlreadyExists</code></td>
+            <td>400</td>
+            <td>Товары уже отправлены</td>
+        </tr>
+        <tr>
+            <td><code>ShippingServiceOfferNotAvailable</code></td>
+            <td>400</td>
+            <td>ShippingServiceOfferId устарел</td>
+        </tr>
+        <tr>
+            <td><code>InvalidState</code></td>
+            <td>404</td>
+            <td>Отправка в несовместимом состоянии</td>
+        </tr>
+        <tr>
+            <td><code>ResourceNotFound</code></td>
+            <td>404</td>
+            <td>Недопустимый ShipmentId или AmazonOrderId</td>
+        </tr>
+    </table>
+</section>
+
+<!-- ==================== SHIPPING API ==================== -->
+<section id="shipping-api">
+    <h1>11. Shipping API v2</h1>
+    <div class="metadata">
+        <strong>Путь:</strong> SELLER APIs → Shipping API<br>
+        <strong>Версия:</strong> v2<br>
+        <strong>Scheme:</strong> HTTPS<br>
+        <strong>Content Type:</strong> application/json
+    </div>
+    
+    <h2 id="shipping-overview">11.1 Обзор</h2>
+    <p>Amazon Shipping API v2 поддерживает исходящую доставку для заказов Amazon и не-Amazon. Функции включают:</p>
+    <ul>
+        <li>Запрос тарифов на доставку</li>
+        <li>Создание/отмена отправлений</li>
+        <li>Отслеживание отправлений</li>
+        <li>Отправка NDR (Non-Delivery Report) отчетов</li>
+    </ul>
+    
+    <h4>Поддержка перевозчиков:</h4>
+    <ul>
+        <li><strong>On-Amazon orders:</strong> Amazon Shipping и сторонние перевозчики (UPS, USPS, FedEx, DHL и др.)</li>
+        <li><strong>Off-Amazon orders:</strong> Только Amazon Shipping</li>
+    </ul>
+    
+    <h2 id="shipping-operations">11.2 Операции API</h2>
+    
+    <table>
+        <tr>
+            <th>Операция</th>
+            <th>Регионы</th>
+            <th>Поддержка перевозчиков</th>
+            <th>Rate Limit</th>
+        </tr>
+        <tr>
+            <td><code>getRates</code></td>
+            <td>WorldWide</td>
+            <td>Amazon Shipping + 3rd Party</td>
+            <td>5 RPS</td>
+        </tr>
+        <tr>
+            <td><code>purchaseShipment</code></td>
+            <td>WorldWide</td>
+            <td>Amazon Shipping + 3rd Party</td>
+            <td>5 RPS</td>
+        </tr>
+        <tr>
+            <td><code>oneClickShipment</code></td>
+            <td>WorldWide</td>
+            <td>Amazon Shipping</td>
+            <td>5 RPS</td>
+        </tr>
+        <tr>
+            <td><code>getTracking</code></td>
+            <td>WorldWide</td>
+            <td>Amazon Shipping + 3rd Party</td>
+            <td>5 RPS</td>
+        </tr>
+        <tr>
+            <td><code>getShipmentDocuments</code></td>
+            <td>WorldWide</td>
+            <td>Amazon Shipping + 3rd Party</td>
+            <td>5 RPS</td>
+        </tr>
+        <tr>
+            <td><code>cancelShipment</code></td>
+            <td>WorldWide</td>
+            <td>Amazon Shipping + 3rd Party</td>
+            <td>5 RPS</td>
+        </tr>
+        <tr>
+            <td><code>getAccessPoints</code></td>
+            <td>UK</td>
+            <td>Amazon Shipping</td>
+            <td>5 RPS</td>
+        </tr>
+        <tr>
+            <td><code>submitNdrFeedback</code></td>
+            <td>IN</td>
+            <td>Amazon Shipping</td>
+            <td>5 RPS</td>
+        </tr>
+    </table>
+    
+    <div class="warning">
+        <strong>Важно:</strong> Покупка должна быть завершена в течение 10 минут после создания тарифа, иначе возникнет ошибка "TOKEN_EXPIRED".
+    </div>
+    
+    <h4>Коды ответов:</h4>
+    <table>
+        <tr><th>Status Code</th><th>Описание</th></tr>
+        <tr><td>200</td><td>Success</td></tr>
+        <tr><td>401</td><td>Invalid authorization token</td></tr>
+        <tr><td>413</td><td>Request too large</td></tr>
+        <tr><td>415</td><td>Unsupported format</td></tr>
+        <tr><td>429</td><td>Rate limit exceeded</td></tr>
+        <tr><td>500</td><td>Server error</td></tr>
+    </table>
+    
+    <h2 id="shipping-schemas">11.3 Схемы данных</h2>
+    
+    <h3>Dimensions</h3>
+    <pre><code>{
+  "length": number,
+  "width": number,
+  "height": number,
+  "unit": "INCH|CENTIMETER"
+}</code></pre>
+    
+    <h3>Weight</h3>
+    <pre><code>{
+  "unit": "GRAM|KILOGRAM|OUNCE|POUND",
+  "value": number
+}</code></pre>
+    
+    <h3>Currency</h3>
+    <pre><code>{
+  "value": number,
+  "unit": "USD|EUR|INR|etc."
+}</code></pre>
+    
+    <h3>Address</h3>
+    <pre><code>{
+  "name": string,
+  "addressLine1": string,
+  "city": string,
+  "stateOrRegion": string,
+  "countryCode": string,
+  "postalCode": string
+}</code></pre>
+    
+    <h4>Поддерживаемые x-amzn-shipping-business-id:</h4>
+    <ul>
+        <li>AmazonShipping_US</li>
+        <li>AmazonShipping_IN</li>
+        <li>AmazonShipping_UK</li>
+        <li>AmazonShipping_IT</li>
+        <li>AmazonShipping_ES</li>
+        <li>AmazonShipping_FR</li>
+    </ul>
+</section>
+
+<!-- ==================== UPLOADS API ==================== -->
+<section id="uploads-api">
+    <h1>12. Uploads API</h1>
+    <div class="metadata">
+        <strong>Путь:</strong> SELLER APIs → Uploads API<br>
+        <strong>Текущая версия:</strong> v2020-11-01<br>
+        <strong>Доступность:</strong> Sellers and Vendors<br>
+        <strong>Sandbox:</strong> Dynamic
+    </div>
+    
+    <h2 id="uploads-overview">12.1 Обзор</h2>
+    <p>Uploads API используется для загрузки файлов, к которым можно получить доступ через другие операции SP-API.</p>
+    
+    <h4>Use Case:</h4>
+    <p><strong>Create an upload destination:</strong> Создание destination для загрузки файла и получение идентификатора destination.</p>
+    
+    <h2 id="uploads-operations">12.2 Операции API</h2>
+    
+    <div class="api-operation">
+        <h3><span class="method-post">POST</span> createUploadDestinationForResource</h3>
+        <p>Создание destination для загрузки ресурса.</p>
+        <table>
+            <tr><th>Атрибут</th><th>Значение</th></tr>
+            <tr><td>Регионы</td><td>NA</td></tr>
+            <tr><td>Требуемые роли</td><td>Product Listing</td></tr>
+        </table>
+    </div>
+    
+    <h2 id="uploads-rate-limits">12.3 Rate Limits</h2>
+    <table>
+        <tr>
+            <th>Операция</th>
+            <th>Rate limit (запросов/сек)</th>
+            <th>Burst (запросов)</th>
+        </tr>
+        <tr>
+            <td><code>createUploadDestinationForResource</code></td>
+            <td>5</td>
+            <td>5</td>
+        </tr>
+    </table>
+</section>
+
+<!-- ==================== RATE LIMITS ==================== -->
+<section id="rate-limits">
+    <h1>13. Rate Limits и Usage Plans</h1>
+    <div class="metadata">
+        <strong>Путь:</strong> General → Usage Plans and Rate Limits
+    </div>
+
+    <h2>Обзор</h2>
+    <p>Надежность API зависит от правильного определения емкости и ресурсов для удовлетворения меняющихся потребностей вашего приложения. По этой причине Selling Partner API (SP-API) определяет планы использования для контроля количества запросов, которые вы можете делать к операции в течение определенного периода времени.</p>
+
+    <h2>Алгоритм ограничения скорости</h2>
+    <p>SP-API использует <strong>алгоритм token bucket</strong> для ограничения скорости запросов к API. Алгоритм основан на аналогии с ведром, содержащим токены, где каждый токен можно обменять на запрос к API.</p>
+
+    <h3>Ключевые принципы:</h3>
+    <ul>
+        <li><strong>Токены:</strong> SP-API добавляет токены в ваше ведро с установленной скоростью в секунду до достижения максимального лимита ведра (burst rate).</li>
+        <li><strong>Запросы:</strong> Каждый запрос API вычитает токен из ведра. Throttling происходит, когда токены недоступны.</li>
+    </ul>
+
+    <h2>Факторы, определяющие планы использования</h2>
+    <ul>
+        <li><strong>Операция API:</strong> Каждая операция имеет предопределенные лимиты rate и burst.</li>
+        <li><strong>Пара продавец (аккаунт) и приложение:</strong> Большинство операций ограничены по скорости для пары аккаунт-приложение.</li>
+        <li><strong>Регионы и маркетплейсы:</strong> Аккаунты, специфичные для маркетплейса, имеют отдельные лимиты.</li>
+    </ul>
+
+    <h2>Типы планов использования</h2>
+    <ul>
+        <li><strong>Стандартные планы:</strong> Статические лимиты для всех вызывающих (например, 10 запросов/секунду, burst 20).</li>
+        <li><strong>Динамические планы:</strong> Автоматически корректируются на основе бизнес-метрик.</li>
+    </ul>
+
+    <h2>Как найти ваш план использования</h2>
+    <ul>
+        <li><strong>Документация API reference:</strong> Каждый раздел содержит лимиты скорости.</li>
+        <li><strong>Заголовки ответа:</strong> <code>x-amzn-RateLimit-Limit</code> может указывать лимиты для ответов 20x, 400 или 404.</li>
+    </ul>
+
+    <h2>Обработка ответа 429</h2>
+    <p>Реализуйте стратегии back-off. Используйте заголовок <code>x-amzn-RateLimit-Limit</code>, если он доступен.</p>
+
+    <h2>Сводная таблица Rate Limits для SELLER APIs</h2>
+    <table>
+        <tr><th>API</th><th>Операция</th><th>Rate (запросов/сек)</th><th>Burst</th></tr>
+        <tr><td>Catalog Items API</td><td>searchCatalogItems</td><td>5</td><td>5</td></tr>
+        <tr><td>Catalog Items API</td><td>getCatalogItem</td><td>5</td><td>5</td></tr>
+        <tr><td>Orders API</td><td>getOrders</td><td>0.0167</td><td>20</td></tr>
+        <tr><td>Orders API</td><td>getOrder</td><td>0.0167</td><td>20</td></tr>
+        <tr><td>Listings Items API</td><td>getListingsItem</td><td>5</td><td>10</td></tr>
+        <tr><td>Listings Items API</td><td>putListingsItem</td><td>5</td><td>10</td></tr>
+        <tr><td>Product Pricing API</td><td>getPricing</td><td>0.5</td><td>1</td></tr>
+        <tr><td>Feeds API</td><td>createFeed</td><td>0.0083</td><td>15</td></tr>
+        <tr><td>Reports API</td><td>createReport</td><td>0.0167</td><td>15</td></tr>
+        <tr><td>FBA Inventory API</td><td>getInventorySummaries</td><td>2</td><td>2</td></tr>
+        <tr><td>Notifications API</td><td>createSubscription</td><td>1</td><td>5</td></tr>
+        <tr><td>Tokens API</td><td>createRestrictedDataToken</td><td>1</td><td>10</td></tr>
+        <tr><td>Uploads API</td><td>createUploadDestinationForResource</td><td>5</td><td>5</td></tr>
+    </table>
+
+    <div class="note">
+        <strong>Примечание:</strong> Лимиты могут изменяться. Всегда проверяйте актуальную документацию API для получения точных значений.
+    </div>
+</section>
+
+<footer style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 5px; text-align: center;">
+    <p><strong>Amazon Selling Partner API Documentation</strong></p>
+    <p>Источник: <a href="https://developer-docs.amazon.com/sp-api/docs/">https://developer-docs.amazon.com/sp-api/docs/</a></p>
+    <p>Дата извлечения: 15 января 2026</p>
+    <p>Документ создан для RAG обучения базы знаний</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon SP-API Documentation - Authorization</title>
+    <meta name="description" content="Документация Amazon Selling Partner API - Раздел Authorization">
+    <meta name="source" content="https://developer-docs.amazon.com/sp-api/docs/">
+    <meta name="section" content="AUTHORIZATION">
+    <meta name="generated-date" content="2026-01-15">
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; max-width: 1200px; margin: 0 auto; padding: 20px; color: #333; }
+        .disclaimer { background: #fff3cd; border: 1px solid #ffc107; padding: 15px; margin-bottom: 30px; border-radius: 5px; }
+        .toc { background: #f8f9fa; padding: 20px; margin-bottom: 30px; border-radius: 5px; }
+        .toc h2 { margin-top: 0; }
+        .toc ul { list-style: none; padding-left: 0; }
+        .toc li { margin: 8px 0; }
+        .toc a { color: #0066cc; text-decoration: none; }
+        .toc a:hover { text-decoration: underline; }
+        section { margin-bottom: 40px; padding-bottom: 20px; border-bottom: 1px solid #eee; }
+        h1 { color: #232f3e; border-bottom: 3px solid #ff9900; padding-bottom: 10px; }
+        h2 { color: #232f3e; margin-top: 30px; }
+        h3 { color: #545b64; }
+        pre { background: #f4f4f4; padding: 15px; overflow-x: auto; border-radius: 5px; }
+        code { background: #f4f4f4; padding: 2px 6px; border-radius: 3px; font-family: 'Consolas', monospace; }
+        table { border-collapse: collapse; width: 100%; margin: 15px 0; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background: #232f3e; color: white; }
+        tr:nth-child(even) { background: #f9f9f9; }
+        .note { background: #e7f3ff; border-left: 4px solid #0066cc; padding: 10px 15px; margin: 15px 0; }
+        .warning { background: #fff3cd; border-left: 4px solid #ffc107; padding: 10px 15px; margin: 15px 0; }
+        .important { background: #f8d7da; border-left: 4px solid #dc3545; padding: 10px 15px; margin: 15px 0; }
+        .metadata { font-size: 0.85em; color: #666; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="disclaimer">
+<strong>ДОКУМЕНТ ВНЕШНЕГО СЕРВИСА — НЕ ЯВЛЯЕТСЯ ТРЕБОВАНИЯМИ К ПРОДУКТУ</strong><br>
+Этот документ описывает внешний сервис / API и т.п. как инструкция. Как использовать:
+<ul>
+<li>для определения возможностей и ограничений интеграции</li>
+<li>для формулирования требований к интеграции (что отправляем/получаем, авторизация, ошибки, лимиты, поведение при недоступности), ответам пользователя по сервису и т.п.</li>
+</ul>
+</div>
+
+<h1>Amazon SP-API Documentation: Authorization</h1>
+
+<nav class="toc">
+<h2>Оглавление</h2>
+<ul>
+    <li><a href="#authorize-private-applications">1. Authorize Private Applications (Self-Authorization)</a></li>
+    <li><a href="#authorize-public-applications">2. Authorize Public Applications</a></li>
+    <li><a href="#website-authorization-workflow">3. Website Authorization Workflow</a></li>
+    <li><a href="#selling-partner-appstore-authorization-workflow">4. Selling Partner Appstore Authorization Workflow</a></li>
+    <li><a href="#revoke-authorizations">5. Revoke Authorizations</a></li>
+    <li><a href="#authorization-limits">6. Authorization Limits</a></li>
+    <li><a href="#grantless-operations">7. Grantless Operations</a></li>
+</ul>
+</nav>
+
+<!-- Section 1: Authorize Private Applications -->
+<section id="authorize-private-applications">
+<div class="metadata">Источник: https://developer-docs.amazon.com/sp-api/docs/self-authorization</div>
+<h2>1. Authorize Private Applications (Self-Authorization)</h2>
+
+<p>Self-authorize a private SP-API application. Before your private application can call the Selling Partner API (SP-API) on behalf of your organization, you must authorize the application to access your account information. This process is called <em>self-authorization</em>. You can self-authorize your application in draft status because there is no reason to publish a private application.</p>
+
+<p>If your application is public, a selling partner must authorize your application. In this case, refer to <a href="#authorize-public-applications">Authorize Public Applications</a>.</p>
+
+<h3>Self-authorization workflow</h3>
+
+<table>
+<tr><th>Step</th><th>Actor</th><th>Action</th><th>Additional details</th></tr>
+<tr><td>1</td><td>You</td><td>Review authorization limits. (You can't add authorizations to an application after it reaches the maximum authorization limit.)</td><td><a href="#authorization-limits">Authorization limits</a></td></tr>
+<tr><td>2</td><td>You</td><td>Sign in to Solution Provider Portal, Seller Central, or Vendor Central.</td><td>Tool sign-in details</td></tr>
+<tr><td>3</td><td>You</td><td>Locate your application and choose <strong>Authorize app</strong> for each account that you want to authorize. This process generates a refresh token for each authorized account.</td><td>Generate a refresh token</td></tr>
+<tr><td>4</td><td>You</td><td>Store the refresh tokens securely.</td><td>Token storage details</td></tr>
+<tr><td>5</td><td>Your application</td><td>(During runtime) Exchanges refresh tokens for access tokens to call the SP-API.</td><td>Runtime token exchange</td></tr>
+</table>
+
+<h3>Tool sign-in details</h3>
+<p>To begin the self-authorization process, sign in to one of the following tools:</p>
+<ul>
+<li><strong>Solution Provider Portal</strong>: To authorize a Seller Central account, use the sign-in link on the <strong>Manage Authorizations</strong> page.</li>
+<li><strong>Seller Central</strong>: Choose <strong>Apps and Services</strong>, and then choose <strong>Develop Apps</strong>.</li>
+<li><strong>Vendor Central</strong>: Choose <strong>Integration</strong>, and then choose <strong>API Integration</strong>. Administrators can also authorize apps for each vendor group.</li>
+</ul>
+
+<h3>Generate a refresh token</h3>
+<p>A refresh token is a long-lived credential that your application uses to get new access tokens when you call the SP-API. To generate a refresh token:</p>
+<ol>
+<li>Navigate to the <strong>Authorize application</strong> page of the Solution Provider Portal, Seller Central, or Vendor Central.</li>
+<li>Choose <strong>Authorize app</strong> for each selling partner account that you want your application to access. Each time you choose <strong>Authorize app</strong>, a new refresh token appears. Generating a new refresh token doesn't invalidate previous refresh tokens.</li>
+</ol>
+
+<div class="note">
+<strong>Note:</strong> To self-authorize a Seller Central account, you must be the Primary User of that account.
+</div>
+
+<h3>Token storage details</h3>
+<p>When you store refresh tokens, follow these security best practices:</p>
+<ul>
+<li>Store tokens in a secure, encrypted database.</li>
+<li>Never store tokens in client-side code or logs.</li>
+<li>Never share or expose tokens in URLs.</li>
+<li>Implement secure backup and recovery procedures for your token database.</li>
+<li>Create an access control system that restricts token access to only the necessary parts of your application.</li>
+<li>Implement a process to handle token rotation and revocation.</li>
+</ul>
+
+<h3>Runtime token exchange details</h3>
+<p>During runtime, unless the operation is grantless or accesses restricted data, your application exchanges a refresh token for an access token.</p>
+
+<p><strong>Example request to exchange a refresh token for an access token:</strong></p>
+<pre><code>POST /auth/o2/token HTTP/1.1
+Host: api.amazon.com
+Content-Type: application/x-www-form-urlencoded;charset=UTF-8
+
+grant_type=refresh_token&amp;refresh_token=Atzr|IQEBLzAtAhexample&amp;client_id=foodev&amp;client_secret=EXAMPLESECRET</code></pre>
+
+<p><strong>Example response that contains an access token:</strong></p>
+<pre><code>{
+  "access_token": "Atza|IQEBLjAsAexampleHpi0U-Dme37rR6CuUpSR",
+  "token_type": "bearer",
+  "expires_in": 3600
+}</code></pre>
+
+<p>Use the returned <code>access_token</code> in the authorization header of your SP-API requests.</p>
+</section>
+
+<!-- Section 2: Authorize Public Applications -->
+<section id="authorize-public-applications">
+<div class="metadata">Источник: https://developer-docs.amazon.com/sp-api/docs/authorize-public-applications</div>
+<h2>2. Authorize Public Applications</h2>
+
+<p>Before your public application can call the Selling Partner API (SP-API) on behalf of a selling partner, the selling partner must grant permission to your application.</p>
+
+<p>To grant permission, selling partners follow an authorization flow based on Login with Amazon (LWA), which is Amazon's implementation of OAuth 2.0. In the context of the SP-API, this authorization flow involves the following steps:</p>
+<ol>
+<li>The selling partner grants your application permission by starting from either the Selling Partner Appstore or through an <strong>Authorize</strong> button on your website.</li>
+<li>Amazon provides an authorization code that your application exchanges for refresh tokens.</li>
+<li>During runtime, your application uses these tokens to make SP-API calls on behalf of the selling partner.</li>
+</ol>
+
+<h3>Authorization Workflows</h3>
+<p>Depending on your implementation, selling partners can authorize your public application in two ways:</p>
+<ul>
+<li><strong>Selling Partner Appstore authorization workflow:</strong> Selling partners find your application in the Selling Partner Appstore and choose <strong>Authorize Now</strong> from your application's detail page.</li>
+<li><strong>Website authorization workflow:</strong> Selling partners visit your website and authorize through an <strong>Authorize</strong> button configured by you.</li>
+</ul>
+
+<p>For testing, you can self-authorize via private application authorization.</p>
+
+<h3>About URIs in the Authorization Flow</h3>
+
+<table>
+<tr><th>URI Type</th><th>Owner</th><th>How obtained</th><th>Usage</th><th>Required for</th></tr>
+<tr><td>Log-in URI</td><td>You</td><td>Specified as <strong>OAuth Login URI</strong> during application registration</td><td>Selling partners log in to your website after granting permission. Example: <code>https://example.com/auth/login</code></td><td>Both workflows</td></tr>
+<tr><td>Redirect URI</td><td>You</td><td>Specified as <strong>OAuth Redirect URI</strong> during registration (multiple allowed)</td><td>Amazon redirects selling partners here after authorization. Example: <code>https://example.com/landing.html</code></td><td>Both workflows</td></tr>
+<tr><td>Authorization URI</td><td>Amazon</td><td>Combine Seller/Vendor Central URL + <code>/apps/authorize/consent</code> + application ID</td><td>Redirect selling partners here to show Amazon's consent page.</td><td>Website flow and testing</td></tr>
+<tr><td>Amazon Callback URI</td><td>Amazon</td><td>Passed as <code>amazon_callback_uri</code> when Amazon calls your log-in URI</td><td>Redirect selling partners here to continue Amazon's workflow.</td><td>Appstore workflow only</td></tr>
+</table>
+
+<h3>Authorization Implementation Tips</h3>
+
+<h4>Token Handling</h4>
+<ul>
+<li>Authorization codes expire in 5 minutes; exchange for refresh tokens promptly.</li>
+<li>Access tokens last ~1 hour.</li>
+<li>Refresh tokens last ~365 days; selling partners must re-authorize annually. Amazon sends renewal reminders 30 days before expiration.</li>
+<li>Use refresh tokens for runtime access tokens.</li>
+</ul>
+
+<h4>User Consent</h4>
+<ul>
+<li>Request only necessary permissions.</li>
+<li>Clearly explain why each permission is needed.</li>
+</ul>
+
+<h4>Regional Considerations</h4>
+<ul>
+<li>Use correct regional endpoints and Seller/Vendor Central URLs for authorization and interactions.</li>
+</ul>
+</section>
+
+<!-- Section 3: Website Authorization Workflow -->
+<section id="website-authorization-workflow">
+<div class="metadata">Источник: https://developer-docs.amazon.com/sp-api/docs/website-authorization-workflow</div>
+<h2>3. Website Authorization Workflow</h2>
+
+<p>Authorize a public SP-API application by using a website authorization flow. In the website workflow, selling partners visit your website and authorize your application through an <strong>Authorize</strong> button that you configure.</p>
+
+<h3>Website Authorization Workflow Overview</h3>
+<ol>
+<li>Seller visits your website</li>
+<li>Seller chooses your website's <strong>Authorize</strong> button</li>
+<li>Seller signs in to Amazon and grants permission to your app</li>
+<li>Amazon sends an authorization code to your website's redirect URI</li>
+<li>Your app exchanges the authorization code for a refresh token</li>
+<li>Your app securely stores the refresh token</li>
+<li>During runtime, your app exchanges the refresh token for an access token to call the SP-API</li>
+</ol>
+
+<h3>Detailed Authorization Workflow Steps</h3>
+
+<table>
+<tr><th>Step</th><th>Actor</th><th>Action</th></tr>
+<tr><td>1</td><td>Selling partner</td><td>Visits your website.</td></tr>
+<tr><td>2</td><td>Selling partner</td><td>Chooses your website's <strong>Authorize</strong> button.</td></tr>
+<tr><td>3</td><td>Your application</td><td>Generates a <code>state</code> parameter for security and redirects the selling partner to the Seller Central authorization URI.</td></tr>
+<tr><td>4</td><td>Selling partner</td><td>Signs in to Seller Central and grants permission to your application.</td></tr>
+<tr><td>5</td><td>Amazon</td><td>Sends a request to your application's log-in URI, including query parameters: <code>amazon_callback_uri</code>, <code>amazon_state</code>, and <code>selling_partner_id</code>.</td></tr>
+<tr><td>6</td><td>Selling partner</td><td>Authenticates at your application's log-in URI.</td></tr>
+<tr><td>7</td><td>Your application</td><td>Validates the incoming request and generates a <code>state</code> parameter for security.</td></tr>
+<tr><td>8</td><td>Your application</td><td>Sends a request back to Amazon's callback URI with required parameters.</td></tr>
+<tr><td>9</td><td>Amazon</td><td>Processes the authorization and displays a confirmation message.</td></tr>
+<tr><td>10</td><td>Amazon</td><td>Sends a request to your application's redirect URI with authorization information.</td></tr>
+<tr><td>11</td><td>Your application</td><td>Validates the <code>state</code> parameter.</td></tr>
+<tr><td>12</td><td>Your application</td><td>Sends a request to the LWA authorization server to exchange the authorization code for tokens.</td></tr>
+<tr><td>13</td><td>LWA</td><td>Returns an access token and a refresh token to your application.</td></tr>
+<tr><td>14</td><td>Your application</td><td>Securely stores the refresh token for future use.</td></tr>
+<tr><td>15</td><td>Amazon</td><td>Displays a success message to the selling partner in Seller Central.</td></tr>
+<tr><td>16</td><td>Your application</td><td>(During runtime) Exchanges the refresh token for an access token and uses it to call the SP-API.</td></tr>
+</table>
+
+<h3>Website Configuration Details</h3>
+<p>Before you implement the authorization workflow, configure your website with the following security requirements:</p>
+<ul>
+<li>Set the following HTTP header to prevent cross-site request forgery: <code>Referrer-Policy: no-referrer</code></li>
+<li>Create a dedicated redirect URI page that receives authorization responses from Amazon, handles parameters securely, validates state parameters, and follows your website's security best practices.</li>
+<li>If you support multiple regions, set up regional handling to ensure that selling partners are directed to the correct regional Seller Central or Vendor Central URL.</li>
+</ul>
+
+<div class="important">
+<strong>Important:</strong> Register your redirect URI when you register your application. Amazon will only send authorization responses to registered URIs.
+</div>
+
+<h3>Authorization URI Details</h3>
+<p>Example of a production authorization URI:</p>
+<pre><code>https://sellercentral.amazon.com/apps/authorize/consent?application_id=amzn1.sellerapps.app.2eca283f-9f5a-4d13-b16c-474EXAMPLE57&amp;state=ourStateToken</code></pre>
+
+<p>Example of a test authorization URI for an application that's in <code>Draft</code> state:</p>
+<pre><code>https://sellercentral.amazon.com/apps/authorize/consent?application_id=amzn1.sellerapps.app.2eca283f-9f5a-4d13-b16c-474EXAMPLE57&amp;state=ourStateToken&amp;version=beta</code></pre>
+
+<h3>Authorization Code Exchange Details</h3>
+<p>Example request to exchange an authorization code for tokens:</p>
+<pre><code>POST /auth/o2/token HTTP/1.1
+Host: api.amazon.com
+Content-Type: application/x-www-form-urlencoded;charset=UTF-8
+
+grant_type=authorization_code&amp;code=SplxlOexamplebYS6WxSbIA&amp;redirect_uri=https://example.com/redirect&amp;client_id=foodev&amp;client_secret=EXAMPLESECRET</code></pre>
+
+<p>Example response:</p>
+<pre><code>{
+  "access_token": "Atza|IQEBLjAsAexampleHpi0U-**************",
+  "token_type": "bearer",
+  "expires_in": 3600,
+  "refresh_token": "Atzr|IQEBLzAtAhexamplewVz2Nn6f2y-tpJX2DeX"
+}</code></pre>
+
+<h3>Token Type Details</h3>
+<ul>
+<li><strong>Access token:</strong> A short-lived credential for SP-API calls.</li>
+<li><strong>Refresh token:</strong> A long-lived credential to obtain new access tokens.</li>
+</ul>
+
+<h3>Test Your Authorization Workflow</h3>
+<ol>
+<li>Ensure your application is in <code>Draft</code> state.</li>
+<li>Use the <code>version=beta</code> parameter in the authorization URI during testing.</li>
+<li>Test the <strong>Authorize</strong> button workflow.</li>
+<li>Prepare for production by listing your application in the Selling Partner Appstore and removing <code>version=beta</code>.</li>
+</ol>
+</section>
+
+<!-- Section 4: Selling Partner Appstore Authorization Workflow -->
+<section id="selling-partner-appstore-authorization-workflow">
+<div class="metadata">Источник: https://developer-docs.amazon.com/sp-api/docs/selling-partner-appstore-authorization-workflow</div>
+<h2>4. Selling Partner Appstore Authorization Workflow</h2>
+
+<p>Authorize a public SP-API application by using the Selling Partner Appstore flow. In the Selling Partner Appstore workflow, selling partners use the Selling Partner Appstore to find and authorize applications that help them manage their Amazon selling business.</p>
+
+<h3>Selling Partner Appstore Authorization Workflow Overview</h3>
+<ol>
+<li>Seller finds your app in the Appstore</li>
+<li>Seller chooses "Authorize Now"</li>
+<li>Seller signs in to Amazon and grants permission to your app</li>
+<li>Amazon sends an authorization code to your website's redirect URI</li>
+<li>Your app exchanges the authorization code for a refresh token</li>
+<li>Your app saves the refresh token securely</li>
+<li>During runtime, your app exchanges the refresh token for an access token to call the SP-API</li>
+</ol>
+
+<h3>Authorization Workflow Steps</h3>
+
+<table>
+<tr><th>Step</th><th>Actor</th><th>Action</th></tr>
+<tr><td>1</td><td>Selling partner</td><td>Visits your application's detail page in the Selling Partner Appstore.</td></tr>
+<tr><td>2</td><td>Selling partner</td><td>Chooses <strong>Authorize Now</strong>, reviews the data access request, and grants permission to your application.</td></tr>
+<tr><td>3</td><td>Amazon</td><td>Sends a request to your application's log-in URI with query parameters: <code>amazon_callback_uri</code>, <code>amazon_state</code>, and <code>selling_partner_id</code>.</td></tr>
+<tr><td>4</td><td>Selling partner</td><td>Authenticates at your application's log-in URI.</td></tr>
+<tr><td>5</td><td>Your application</td><td>Validates the incoming request and generates a <code>state</code> parameter for security.</td></tr>
+<tr><td>6</td><td>Your application</td><td>Sends a request back to Amazon's callback URI with parameters: <code>amazon_state</code>, <code>state</code>, and <code>redirect_uri</code>.</td></tr>
+<tr><td>7</td><td>Amazon</td><td>Processes the authorization and displays a confirmation message.</td></tr>
+<tr><td>8</td><td>Amazon</td><td>Sends a request to your application's redirect URI with authorization information.</td></tr>
+<tr><td>9</td><td>Your application</td><td>Validates the <code>state</code> parameter.</td></tr>
+<tr><td>10</td><td>Your application</td><td>Sends a request to the LWA authorization server to exchange the authorization code for tokens.</td></tr>
+<tr><td>11</td><td>LWA</td><td>Returns an access token and a refresh token to your application.</td></tr>
+<tr><td>12</td><td>Your application</td><td>Securely stores the refresh token for future use.</td></tr>
+<tr><td>13</td><td>Amazon</td><td>Displays a success message to the selling partner in Seller Central.</td></tr>
+<tr><td>14</td><td>Your application</td><td>Exchanges the refresh token for an access token to call the SP-API during runtime.</td></tr>
+</table>
+
+<h3>Log-in URI Details</h3>
+<p>Example Log-in URI:</p>
+<pre><code>https://example.com/index.html?amazon_callback_uri=https://amazon.com/apps/authorize/confirm/amzn1.sellerapps.app.2eca283f-9f5a-4d13-b16c-474EXAMPLE57&amp;amazon_state=amazonstateexample&amp;selling_partner_id=A3FHEXAMPLEYWS</code></pre>
+
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>amazon_callback_uri</code>: Redirect URI to continue authorization.</li>
+<li><code>amazon_state</code>: Anti-CSRF token from Amazon.</li>
+<li><code>selling_partner_id</code>: Selling partner's ID.</li>
+<li><code>version</code>: Optional <code>beta</code> for draft applications.</li>
+</ul>
+
+<h3>Amazon Callback URI Details</h3>
+<p>Example Callback URI (Production):</p>
+<pre><code>https://amazon.com/apps/authorize/confirm/amzn1.sellerapps.app.2eca283f-9f5a-4d13-b16c-474EXAMPLE57?redirect_uri=https://example.com/landing.html&amp;amazon_state=amazonstateexample&amp;state=-37131022</code></pre>
+
+<h3>Redirect URI Details</h3>
+<p>Example Redirect URI:</p>
+<pre><code>https://client-example.com?state=state-example&amp;selling_partner_id=sellingpartneridexample&amp;spapi_oauth_code=spapioauthcodeexample</code></pre>
+
+<p><strong>Requirements:</strong></p>
+<ul>
+<li>Validate <code>state</code> parameter.</li>
+<li>Store <code>selling_partner_id</code> for tracking.</li>
+<li>Exchange <code>spapi_oauth_code</code> for refresh token within 5 minutes.</li>
+</ul>
+</section>
+
+<!-- Section 5: Revoke Authorizations -->
+<section id="revoke-authorizations">
+<div class="metadata">Источник: https://developer-docs.amazon.com/sp-api/docs/revoke-authorizations</div>
+<h2>5. Revoke Authorizations</h2>
+
+<p>Learn how to remove authorizations from your SP-API application. This topic explains how to remove different types of authorizations from your Selling Partner API (SP-API) application.</p>
+
+<h3>Revoke Self-Authorizations</h3>
+<p>Self-authorization of an SP-API application occurs in two scenarios:</p>
+<ul>
+<li><strong>For private applications:</strong> You self-authorize your application to access your account information.</li>
+<li><strong>For public applications:</strong> You self-authorize your application during testing, before other selling partners authorize your application through OAuth.</li>
+</ul>
+
+<p>You might need to revoke self-authorizations when:</p>
+<ul>
+<li>You reach your maximum authorization limit.</li>
+<li>You want to authorize different accounts.</li>
+</ul>
+
+<h4>Remove Self-Authorizations from Public and Private Applications</h4>
+<ol>
+<li>Sign in and navigate to the appropriate pages in one of the following tools:
+    <ul>
+    <li><strong>Solution Provider Portal:</strong> From the top navigation, choose <strong>Develop Apps</strong>.</li>
+    <li><strong>Seller Central:</strong> Navigate to <strong>Apps and Services</strong>, and then choose <strong>Develop Apps</strong>.</li>
+    <li><strong>Vendor Central:</strong> Navigate to <strong>Integration</strong>, and then choose <strong>API Integration</strong>.</li>
+    </ul>
+</li>
+<li>Find the application for which you want to revoke an authorization, and then choose <strong>Edit app</strong>.</li>
+<li>For the application, expand the drop down next to <strong>Edit</strong>, and then choose <strong>Authorize</strong>. You are taken to the <strong>Manage Authorizations</strong> page.</li>
+<li>In the <strong>Revoke Authorization</strong> section, expand <strong>Self-Authorizations</strong>. On this page, you can view all active self-authorizations.</li>
+<li>Choose <strong>Revoke</strong> for any authorization that you want to remove.</li>
+</ol>
+
+<h3>OAuth Revocation for Selling Partners</h3>
+<p>If your application is public, selling partners can authorize it through Login with Amazon (LWA), Amazon's implementation of OAuth 2.0. Selling partners may need to revoke these OAuth authorizations in certain situations, such as:</p>
+<ul>
+<li>When they want to develop their own private application after previously authorizing your public application.</li>
+<li>When they incorrectly used OAuth to authorize related accounts.</li>
+</ul>
+
+<div class="important">
+<strong>Important:</strong> Selling partners cannot revoke developer account OAuth authorizations. Desktop applications use the developer's own account authorization.
+</div>
+
+<h4>Instructions for Selling Partners</h4>
+<p>For selling partners who need to revoke OAuth authorizations, direct them to the following steps:</p>
+<ol>
+<li>Sign in to Seller Central.</li>
+<li>Navigate to <strong>Apps and Services</strong>, and then choose <strong>Manage Your Apps</strong>.</li>
+<li>Find the application for which they want to revoke an authorization, and then choose <strong>Disable authorization</strong>.</li>
+<li>In the confirmation pop-up window, select <strong>OK</strong>.</li>
+</ol>
+</section>
+
+<!-- Section 6: Authorization Limits -->
+<section id="authorization-limits">
+<div class="metadata">Источник: https://developer-docs.amazon.com/sp-api/docs/application-authorization-limits</div>
+<h2>6. Authorization Limits</h2>
+
+<p>Describes application-level authorization limits for public and private applications. All Selling Partner API (SP-API) applications are subject to authorization limits determined by the type of selling partner that your application supports. After your application reaches its authorization limit, you can't add additional authorizations. To maintain flexibility, perform regular audits of your authorizations.</p>
+
+<h3>Authorization Limit Summary</h3>
+<p>There are two types of authorization: self-authorization (where you authorize your own application) and OAuth authorization (where other selling partners authorize your application).</p>
+
+<table>
+<tr><th>Application type</th><th>Self-authorization</th><th>OAuth</th></tr>
+<tr><td>Private</td><td>10</td><td>Not available</td></tr>
+<tr><td>Public (not listed on Selling Partner Appstore)</td><td>10</td><td>Seller: 25<br>Vendor: Unlimited</td></tr>
+<tr><td>Public (listed on Selling Partner Appstore)</td><td>10</td><td>Unlimited</td></tr>
+</table>
+
+<h3>Application Types and Limits</h3>
+
+<h4>Private Applications</h4>
+<p>Private applications are available only to your organization. The following authorization limits apply:</p>
+<ul>
+<li><strong>Available authorization types:</strong> Self-authorization only.</li>
+<li><strong>Authorization limits:</strong> Maximum of 10 self-authorizations. To add more authorizations, either update the application to be public or remove existing self-authorizations.</li>
+</ul>
+
+<h4>Public Applications for Sellers</h4>
+<p>These applications are publicly available to other organizations and are authorized by sellers. The following authorization limits apply:</p>
+<ul>
+<li><strong>Available authorization types:</strong> Selling Partner Appstore Authorization Flow or Website Authorization Flow. For testing purposes, you can also self-authorize your public application through the private application authorization workflow.</li>
+<li><strong>Authorization limits:</strong>
+    <ul>
+    <li>Listed applications: Unlimited OAuth authorizations.</li>
+    <li>Unlisted applications: Maximum of 25 OAuth authorizations.</li>
+    <li>Self-authorizations: Maximum of 10 self-authorizations for internal testing.</li>
+    </ul>
+</li>
+</ul>
+
+<h4>Public Applications for Vendors</h4>
+<p>These applications are publicly available to other organizations and are authorized by vendors. The following authorization limits apply:</p>
+<ul>
+<li><strong>Available authorization types:</strong> Selling Partner Appstore Authorization Flow or Website Authorization Flow.</li>
+<li><strong>Authorization limits:</strong>
+    <ul>
+    <li>Listed applications: Unlimited OAuth authorizations.</li>
+    <li>Unlisted applications: Unlimited OAuth authorizations.</li>
+    <li>Self-authorizations: Maximum of 10 self-authorizations for internal testing.</li>
+    </ul>
+</li>
+</ul>
+
+<h3>View Authorization Limits and Usage</h3>
+<p>The following steps show how to track authorization usage and limits for your application:</p>
+<ol>
+<li>Sign in and navigate to the usage pages in one of the following tools:
+    <ul>
+    <li><strong>Solution Provider Portal:</strong> From the top navigation, choose <strong>Develop Apps</strong>.</li>
+    <li><strong>Seller Central:</strong> Navigate to <strong>Apps and Services</strong>, and then choose <strong>Develop Apps</strong>.</li>
+    <li><strong>Vendor Central:</strong> Navigate to <strong>Integration</strong>, and then choose <strong>API Integration</strong>.</li>
+    </ul>
+</li>
+<li>From the <strong>Authorizations remaining</strong> table column, choose <strong>View</strong>.</li>
+</ol>
+</section>
+
+<!-- Section 7: Grantless Operations -->
+<section id="grantless-operations">
+<div class="metadata">Источник: https://developer-docs.amazon.com/sp-api/docs/grantless-operations</div>
+<h2>7. Grantless Operations</h2>
+
+<div class="note">
+<strong>Note:</strong> Grantless operations apply only to seller applications.
+</div>
+
+<p>A <strong>grantless operation</strong> is an operation that you can call without explicit authorization from a selling partner. When requesting a Login with Amazon access token for a grantless operation, you <strong>do not need a refresh token</strong>. Instead, use the <code>scope</code> parameter to define the LWA authorization grant scope.</p>
+
+<p><strong>Example:</strong> Using a Java SDK to call grantless operations, set one or more scopes via the <code>withScopes</code> parameter when configuring LWA credentials.</p>
+
+<h3>List of Grantless Operations</h3>
+
+<table>
+<tr><th>Operation Name</th><th>HTTP Method and Path</th></tr>
+<tr><td><code>createDestination</code></td><td>POST <code>/notifications/v1/destinations</code></td></tr>
+<tr><td><code>deleteDestination</code></td><td>DELETE <code>/notifications/v1/destinations/{destinationId}</code></td></tr>
+<tr><td><code>deleteSubscriptionById</code></td><td>DELETE <code>/notifications/v2/subscriptions/{notificationType}/{subscriptionId}</code></td></tr>
+<tr><td><code>getDestination</code></td><td>GET <code>/notifications/v1/destinations/{destinationId}</code></td></tr>
+<tr><td><code>getDestinations</code></td><td>GET <code>/notifications/v1/destinations</code></td></tr>
+<tr><td><code>getSubscriptionById</code></td><td>GET <code>/notifications/v1/subscriptions/{notificationType}/{subscriptionId}</code></td></tr>
+<tr><td><code>getAuthorizationCode</code></td><td>GET <code>/authorization/v1/authorizationCode</code></td></tr>
+<tr><td><code>rotateApplicationClientSecret</code></td><td>POST <code>/applications/2023-11-30/clientSecret</code></td></tr>
+</table>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon SP-API Vendor APIs Documentation</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        .disclaimer {
+            background-color: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+        h1 { color: #232f3e; border-bottom: 3px solid #ff9900; padding-bottom: 10px; }
+        h2 { color: #232f3e; border-bottom: 2px solid #ddd; padding-bottom: 8px; margin-top: 40px; }
+        h3 { color: #37475a; margin-top: 25px; }
+        h4 { color: #545b64; }
+        table { border-collapse: collapse; width: 100%; margin: 15px 0; }
+        th, td { border: 1px solid #ddd; padding: 10px 12px; text-align: left; }
+        th { background-color: #232f3e; color: white; }
+        tr:nth-child(even) { background-color: #f9f9f9; }
+        code { background-color: #f4f4f4; padding: 2px 6px; border-radius: 3px; font-family: 'Consolas', monospace; }
+        pre { background-color: #1e1e1e; color: #d4d4d4; padding: 15px; border-radius: 5px; overflow-x: auto; }
+        pre code { background: none; color: inherit; padding: 0; }
+        .note { background-color: #e7f3ff; border-left: 4px solid #2196f3; padding: 12px 15px; margin: 15px 0; }
+        .warning { background-color: #fff3e0; border-left: 4px solid #ff9800; padding: 12px 15px; margin: 15px 0; }
+        .important { background-color: #ffebee; border-left: 4px solid #f44336; padding: 12px 15px; margin: 15px 0; }
+        .tip { background-color: #e8f5e9; border-left: 4px solid #4caf50; padding: 12px 15px; margin: 15px 0; }
+        #toc { background-color: #f5f5f5; padding: 20px; border-radius: 8px; margin-bottom: 30px; }
+        #toc ul { list-style-type: none; padding-left: 20px; }
+        #toc > ul { padding-left: 0; }
+        #toc a { color: #0066c0; text-decoration: none; }
+        #toc a:hover { text-decoration: underline; }
+        section { margin-bottom: 40px; padding-top: 20px; }
+        .metadata { font-size: 0.85em; color: #666; margin-bottom: 15px; }
+        a { color: #0066c0; }
+    </style>
+</head>
+<body>
+
+<div class="disclaimer">
+ДОКУМЕНТ ВНЕШНЕГО СЕРВИСА — НЕ ЯВЛЯЕТСЯ ТРЕБОВАНИЯМИ К ПРОДУКТУ Этот документ описывает внешний сервис / API и т.п. как инструкция. Как использовать: - для определения возможностей и ограничений интеграции - для формулирования требований к интеграции (что отправляем/получаем, авторизация, ошибки, лимиты, поведение при недоступности), ответам пользователя по сервису и т.п.
+</div>
+
+<h1>Amazon SP-API Vendor APIs Documentation</h1>
+<p class="metadata">Источник: <a href="https://developer-docs.amazon.com/sp-api/docs/">https://developer-docs.amazon.com/sp-api/docs/</a> | Дата создания: 15 января 2026</p>
+
+<nav id="toc">
+<h2>Оглавление</h2>
+<ul>
+    <li><a href="#vendor-use-cases">SP-API Vendor Use Cases</a></li>
+    <li><a href="#vendor-central-urls">Vendor Central URLs</a></li>
+    <li><a href="#registration">Регистрация и авторизация</a>
+        <ul>
+            <li><a href="#register-private-vendor">Register as a Private SP-API Vendor</a></li>
+            <li><a href="#authorize-vendor-groups">Authorize your Application to Access Vendor Groups</a></li>
+            <li><a href="#tutorial-multiple-accounts">Tutorial: Authorize Multiple Vendor Central Accounts</a></li>
+        </ul>
+    </li>
+    <li><a href="#vendor-direct-fulfillment">Vendor Direct Fulfillment APIs</a>
+        <ul>
+            <li><a href="#vdf-workflow">Vendor Direct Fulfillment Workflow Guide</a></li>
+            <li><a href="#vdf-sandbox">Vendor Direct Fulfillment Dynamic Sandbox Guide</a></li>
+            <li><a href="#vdf-orders-api">Vendor Direct Fulfillment Orders API</a></li>
+            <li><a href="#vdf-shipping-api">Vendor Direct Fulfillment Shipping API</a></li>
+            <li><a href="#vdf-inventory-api">Vendor Direct Fulfillment Inventory API</a></li>
+            <li><a href="#vdf-payments-api">Vendor Direct Fulfillment Payments API</a></li>
+            <li><a href="#vdf-transaction-api">Vendor Direct Fulfillment Transaction Status API</a></li>
+        </ul>
+    </li>
+    <li><a href="#vendor-retail-procurement">Vendor Retail Procurement APIs</a>
+        <ul>
+            <li><a href="#vrp-orders-api">Vendor Retail Procurement Orders API</a></li>
+            <li><a href="#vrp-shipments-api">Vendor Retail Procurement Shipments API</a></li>
+            <li><a href="#vrp-invoices-api">Vendor Retail Procurement Invoices API</a></li>
+            <li><a href="#vrp-transaction-api">Vendor Retail Procurement Transaction Status API</a></li>
+        </ul>
+    </li>
+    <li><a href="#vendor-analytics">Vendor Analytics Dataset Use Case Guide</a></li>
+    <li><a href="#rate-limits">Rate Limits Summary</a></li>
+</ul>
+</nav>
+
+<!-- SP-API Vendor Use Cases -->
+<section id="vendor-use-cases">
+<h2>SP-API Vendor Use Cases</h2>
+<p class="metadata">Путь: /sp-api/docs/sp-api-vendor-use-cases</p>
+
+<p>Directory for vendor use cases. Use this directory to identify the APIs, notifications, and reports that you'll need for general SP-API vendor use cases.</p>
+
+<h3>Direct fulfillment operations</h3>
+<p><strong>Category</strong>: How to help vendors in the direct fulfillment (DF) program manage their direct fulfillment operations programmatically through web service integration</p>
+<table>
+<tr><th>Category</th><th>Items</th></tr>
+<tr><td>APIs</td><td>
+    <ul>
+        <li>Vendor Direct Fulfillment Inventory API v1</li>
+        <li>Vendor Direct Fulfillment Orders API v2021-12-28</li>
+        <li>Vendor Direct Fulfillment Shipping API v2021-12-28</li>
+        <li>Vendor Direct Fulfillment Payments API v1</li>
+        <li>Vendor Direct Fulfillment Transactions API v2021-12-28</li>
+    </ul>
+</td></tr>
+<tr><td>Notifications (Events)</td><td>Not applicable</td></tr>
+<tr><td>Reports</td><td>None</td></tr>
+</table>
+
+<h3>Marketing content management</h3>
+<p><strong>Category</strong>: Add rich marketing content to a selling partner's Amazon product detail pages, share brand, and product stories</p>
+<table>
+<tr><th>Category</th><th>Items</th></tr>
+<tr><td>APIs</td><td>A+ Content, Catalog Items</td></tr>
+<tr><td>Notifications (Events)</td><td>Not applicable</td></tr>
+<tr><td>Reports</td><td>Not applicable</td></tr>
+</table>
+
+<h3>Retail analytics</h3>
+<p><strong>Category</strong>: Analyze your profitability and cost-per-product so that you can better direct your business strategy and focus on what's working</p>
+<table>
+<tr><th>Category</th><th>Items</th></tr>
+<tr><td>APIs</td><td>Not applicable</td></tr>
+<tr><td>Notifications (Events)</td><td>DETAIL_PAGE_TRAFFIC_EVENT, ITEM_INVENTORY_EVENT_CHANGE, ITEM_SALES_EVENT_CHANGE</td></tr>
+<tr><td>Reports</td><td>GET_VENDOR_SALES_REPORT, GET_VENDOR_NET_PURE_PRODUCT_MARGIN_REPORT, GET_VENDOR_TRAFFIC_REPORT, GET_VENDOR_FORECASTING_REPORT, GET_VENDOR_INVENTORY_REPORT, GET_VENDOR_REAL_TIME_SALES_REPORT, GET_VENDOR_REAL_TIME_TRAFFIC_REPORT, GET_VENDOR_REAL_TIME_INVENTORY_REPORT</td></tr>
+</table>
+
+<h3>Brand analytics</h3>
+<p><strong>Category</strong>: Make data-driven decisions to increase sales and customer loyalty</p>
+<table>
+<tr><th>Category</th><th>Items</th></tr>
+<tr><td>APIs</td><td>Not applicable</td></tr>
+<tr><td>Notifications (Events)</td><td>Not applicable</td></tr>
+<tr><td>Reports</td><td>GET_BRAND_ANALYTICS_MARKET_BASKET_REPORT, GET_BRAND_ANALYTICS_SEARCH_TERMS_REPORT, GET_BRAND_ANALYTICS_REPEAT_PURCHASE_REPORT</td></tr>
+</table>
+
+<h3>Performance</h3>
+<p><strong>Category</strong>: Get selling partner coupon and promotion performance data</p>
+<table>
+<tr><th>Category</th><th>Items</th></tr>
+<tr><td>APIs</td><td>Not applicable</td></tr>
+<tr><td>Notifications (Events)</td><td>Not applicable</td></tr>
+<tr><td>Reports</td><td>GET_PROMOTION_PERFORMANCE_REPORT, GET_COUPON_PERFORMANCE_REPORT</td></tr>
+</table>
+
+<h3>Catalog management</h3>
+<p><strong>Category</strong>: Manage Amazon listings with tools that help list new products or offers, optimize your catalog, and reduce errors</p>
+<table>
+<tr><th>Category</th><th>Items</th></tr>
+<tr><td>APIs</td><td>Catalog Items, Listing Items, Product Type Definitions</td></tr>
+<tr><td>Notifications (Events)</td><td>LISTINGS_ITEM_ISSUES_CHANGE, PRODUCT_TYPE_DEFINITIONS_CHANGE</td></tr>
+<tr><td>Reports</td><td>Not applicable</td></tr>
+</table>
+
+<h3>Vendor retail procurement</h3>
+<p><strong>Category</strong>: Programmatically manage vendor retail business operations</p>
+<table>
+<tr><th>Category</th><th>Items</th></tr>
+<tr><td>APIs</td><td>Vendor Transaction Status, Vendor Orders, Vendor Shipments, Vendor Invoices</td></tr>
+<tr><td>Notifications (Events)</td><td>Not applicable</td></tr>
+<tr><td>Reports</td><td>Not applicable</td></tr>
+</table>
+</section>
+
+<!-- Vendor Central URLs -->
+<section id="vendor-central-urls">
+<h2>Vendor Central URLs</h2>
+<p class="metadata">Путь: /sp-api/docs/vendor-central-urls | <strong>For vendor applications only</strong></p>
+
+<p>Vendor Central URLs by marketplace.</p>
+
+<h3>North America</h3>
+<table>
+<tr><th>Marketplace</th><th>Vendor Central URL</th></tr>
+<tr><td>Canada</td><td>https://vendorcentral.amazon.ca</td></tr>
+<tr><td>US</td><td>https://vendorcentral.amazon.com</td></tr>
+<tr><td>Mexico</td><td>https://vendorcentral.amazon.com.mx</td></tr>
+<tr><td>Brazil</td><td>https://vendorcentral.amazon.com.br</td></tr>
+</table>
+
+<h3>Europe</h3>
+<table>
+<tr><th>Marketplace</th><th>Vendor Central URL</th></tr>
+<tr><td>Ireland</td><td>https://vendorcentral.amazon.ie</td></tr>
+<tr><td>Spain</td><td>https://vendorcentral.amazon.es</td></tr>
+<tr><td>UK</td><td>https://vendorcentral.amazon.co.uk</td></tr>
+<tr><td>France</td><td>https://vendorcentral.amazon.fr</td></tr>
+<tr><td>Belgium</td><td>https://vendorcentral.amazon.com.be</td></tr>
+<tr><td>Netherlands</td><td>https://vendorcentral.amazon.nl</td></tr>
+<tr><td>Germany</td><td>https://vendorcentral.amazon.de</td></tr>
+<tr><td>Italy</td><td>https://vendorcentral.amazon.it</td></tr>
+<tr><td>Sweden</td><td>https://vendorcentral.amazon.se</td></tr>
+<tr><td>South Africa</td><td>https://vendorcentral.amazon.co.za</td></tr>
+<tr><td>Poland</td><td>https://vendorcentral.amazon.pl</td></tr>
+<tr><td>Egypt</td><td>https://vendorcentral.amazon.me</td></tr>
+<tr><td>Saudi Arabia</td><td>https://vendorcentral.amazon.me</td></tr>
+<tr><td>Turkey</td><td>https://vendorcentral.amazon.com.tr</td></tr>
+<tr><td>U.A.E.</td><td>https://vendorcentral.amazon.me</td></tr>
+<tr><td>India</td><td>https://www.vendorcentral.in</td></tr>
+</table>
+
+<h3>Far East</h3>
+<table>
+<tr><th>Marketplace</th><th>Vendor Central URL</th></tr>
+<tr><td>Singapore</td><td>https://vendorcentral.amazon.com.sg</td></tr>
+<tr><td>Australia</td><td>https://vendorcentral.amazon.com.au</td></tr>
+<tr><td>Japan</td><td>https://vendorcentral.amazon.co.jp</td></tr>
+</table>
+</section>
+
+<!-- Registration Section -->
+<section id="registration">
+<h2>Регистрация и авторизация</h2>
+
+<article id="register-private-vendor">
+<h3>Register as a Private SP-API Vendor</h3>
+<p class="metadata">Путь: /sp-api/docs/register-as-a-private-vendor</p>
+
+<p>Complete the SP-API Developer Profile as a private vendor. This topic provides a registration overview for SP-API <strong>private vendor</strong> applications.</p>
+
+<p><strong>Private vendor applications</strong>: Private vendor applications are available only to your organization and are self-authorized. An example use case is creating an application through in-house IT resources, or a third-party IT company or agency creating an app for you.</p>
+
+<div class="important">
+<strong>Important</strong>: Private vendor developers can authorize other vendor groups if they have admin permissions on both accounts, up to a maximum number. For more information, refer to Application authorization limits and Using Multiple Vendor Groups. If a private vendor developer exceeds their authorization limits, then they must either remove an existing self-authorization or contact Vendor Central Support to increase your quota.
+</div>
+
+<h4>The Developer Profile</h4>
+<p>The Developer Profile collects your organization's contact information, information about the data you require in Amazon Services APIs, and security and use information to ensure your compliance with Amazon's Acceptable Use Policy, Data Protection Policy, Solution Provider Agreement, and access requirements.</p>
+
+<p>After you complete the Developer Profile, Amazon will evaluate your information and create a case with next steps. You might be asked to provide additional information or documentation, so you must complete all fields truthfully and accurately.</p>
+
+<h4>Steps to complete the Developer Profile:</h4>
+<ol>
+    <li>Go to Vendor Central for your marketplace. Refer to Vendor Central URLs for a list of URLs by marketplace.</li>
+    <li>Sign in using the credentials for the Vendor Central account with the vendor group that you want your application to access.</li>
+    <li>From the <strong>Integration</strong> menu, choose <strong>API Integration</strong>.</li>
+    <li>If you have not yet completed a Developer Profile for your selling account, choose <strong>Proceed to Developer Profile</strong>. Otherwise, choose <strong>View profile</strong>.</li>
+    <li>Complete the developer registration form:
+        <ul>
+            <li>Enter your <strong>Contact Information</strong>.</li>
+            <li>Enter <strong>Data Access</strong> details. From the Data Access dropdown, choose <strong>Private Developer: I build application(s) that integrate my own company with Amazon Services APIs</strong>.</li>
+            <li>Select the <strong>Roles</strong> that apply to your organization.</li>
+        </ul>
+    </li>
+    <li>Enter your <strong>Use Cases</strong>.</li>
+    <li>Enter your <strong>Security Controls</strong>.</li>
+    <li>Check the box confirming that you have read and agreed to the Solution Provider Agreement, Acceptable Use Policy, and the Data Protection Policy.</li>
+    <li>Choose <strong>Register</strong>.</li>
+    <li>Wait for next steps. Case updates will be sent to the admin email address on file. If you are contacted for more information, you must <strong>respond within five days</strong> to prevent case closure.</li>
+</ol>
+
+<div class="note">
+<strong>Note</strong>: Vendors using Direct Fulfillment need additional restricted roles. Restricted roles contain personally identifiable information (PII). Vendors are required to provide additional information about data use and security controls when integrating.
+</div>
+</article>
+
+<article id="authorize-vendor-groups">
+<h3>Authorize your Application to Access Vendor Groups</h3>
+<p class="metadata">Путь: /sp-api/docs/authorize-your-application-to-access-vendor-groups</p>
+
+<p>Learn how to authorize your SP-API application to access vendor groups.</p>
+
+<p>Before your vendor application can access data through the Selling Partner API (SP-API), you must authorize your application. For vendor applications, the authorization process has some unique aspects related to vendor groups.</p>
+
+<h4>Key Information</h4>
+<p>When you authorize a vendor application, you grant it permission to access data for:</p>
+<ul>
+    <li>The vendor group associated with your Vendor Central sign-in credentials.</li>
+    <li>All vendor codes within that vendor group.</li>
+</ul>
+
+<p>A vendor group is the account you log in to, which can include multiple vendor codes. Vendor codes allow you to:</p>
+<ul>
+    <li>List products in specific categories.</li>
+    <li>Include different business agreements.</li>
+    <li>Manage different brands.</li>
+</ul>
+
+<h4>Authorize Multiple Vendor Groups</h4>
+<p>You can use the Vendor Central self-authorization page to authorize multiple vendor groups for a single application using one developer account. You don't need to apply for a developer account for each vendor group.</p>
+
+<div class="important">
+<strong>Important</strong>: You can authorize a maximum of 10 vendor groups per application. When you reach this limit, you must revoke a self-authorization or contact Vendor Central Support to request a quota increase.
+</div>
+
+<p><strong>Steps to authorize multiple vendor groups:</strong></p>
+<ol>
+    <li>Self-authorize your vendor application in Vendor Central.</li>
+    <li>Choose <strong>Authorize app</strong> for each vendor group that you want to authorize.</li>
+    <li>Use the generated refresh token to get access tokens, which you can use to call the SP-API.</li>
+</ol>
+
+<div class="warning">
+<strong>Important</strong>: Use the refresh token assigned to the vendor group you want to access in your API call. Calls to a different vendor group will fail due to authorization errors.
+</div>
+</article>
+
+<article id="tutorial-multiple-accounts">
+<h3>Tutorial: Authorize Multiple Vendor Central Accounts with a Single SP-API Application</h3>
+<p class="metadata">Путь: /sp-api/docs/tutorial-use-a-single-sp-api-application-to-authorize-multiple-vendor-central-accounts</p>
+
+<p>Use the self-authorization page in Vendor Central to authorize multiple vendor groups or Vendor Central accounts to a single application. When you authorize multiple vendor groups to a single application, you avoid creating identical applications for each individual vendor group for authorization.</p>
+
+<h4>Prerequisites:</h4>
+<ol>
+    <li>Register as a developer on Vendor Central</li>
+    <li>A private SP-API Vendor Central application in draft status</li>
+    <li>A Vendor Central account that is an administrator of other Vendor Central accounts</li>
+</ol>
+
+<h4>Self-Authorize Your Application</h4>
+<ol>
+    <li>Sign in to Vendor Central with your developer registration credentials</li>
+    <li>Navigate to <strong>Integration > API Integration</strong></li>
+    <li>In Developer Central, for the target application, choose <strong>Edit App > Authorize</strong></li>
+    <li>On the <strong>Manage Authorizations</strong> page, click <strong>Authorize app</strong> for each Vendor Central account you want your application to access</li>
+</ol>
+
+<p>A Login with Amazon (LWA) refresh token will be generated for each application. Generating a new token does not invalidate existing tokens. Store these tokens securely and use them to obtain access tokens for SP-API calls.</p>
+
+<h4>Authorization Limits</h4>
+<ul>
+    <li>Maximum 10 self-authorizations per application</li>
+</ul>
+
+<p>To remove authorizations:</p>
+<ol>
+    <li>Sign in to Vendor Central with developer credentials</li>
+    <li>Navigate to <strong>Integration > API Integration</strong></li>
+    <li>For the application, choose <strong>Edit App > Authorize</strong></li>
+    <li>Expand <strong>Self-Authorizations</strong> in <strong>Revoke Authorization</strong></li>
+    <li>Select <strong>Revoke</strong> for any authorization to remove</li>
+</ol>
+</article>
+</section>
+
+<!-- Vendor Direct Fulfillment APIs -->
+<section id="vendor-direct-fulfillment">
+<h2>Vendor Direct Fulfillment APIs</h2>
+
+<article id="vdf-workflow">
+<h3>Vendor Direct Fulfillment Workflow Guide</h3>
+<p class="metadata">Путь: /sp-api/docs/vendor-df-workflow-guide</p>
+
+<p>Integrate and use APIs supporting the Direct Fulfillment Program. Amazon provides vendors with several APIs for the Direct Fulfillment business program. This guide summarizes the steps you can take to integrate with these Selling Partner APIs (SP-APIs).</p>
+
+<h4>Integrating with Direct Fulfillment APIs</h4>
+<p>Integrating with the Direct Fulfillment APIs starts with the vendor pulling the orders for fulfillment using the Vendor Direct Fulfillment Orders API v1, then sending an acknowledgement for the order.</p>
+
+<p>After the order is packed and ready to be shipped, the vendor uses the synchronous <code>createShippingLabels</code> operation to print a shipping label, and ships the order. After the order is shipped, a shipment confirmation is sent from the vendor to Amazon.</p>
+
+<div class="note">
+<strong>Note</strong>: You must acknowledge an order before you submit a shipping label request.
+</div>
+
+<p>To release payment for the shipped items, the vendor sends the invoice using the <code>submitInvoice</code> operation.</p>
+
+<h4>API Reference</h4>
+<table>
+<tr><th>API</th><th>Version</th></tr>
+<tr><td>Vendor Direct Fulfillment Orders API</td><td>v2021-12-28</td></tr>
+<tr><td>Vendor Direct Fulfillment Shipping API</td><td>v2021-12-28</td></tr>
+<tr><td>Vendor Direct Fulfillment Payments API</td><td>v1</td></tr>
+<tr><td>Vendor Direct Fulfillment Transaction Status API</td><td>v2021-12-28</td></tr>
+</table>
+
+<h4>Prerequisites</h4>
+<p>To complete the following tutorials, you must:</p>
+<ul>
+    <li>Register yourself as a developer with the <strong>Direct-to-Consumer Shipping</strong> role.</li>
+    <li>Register your application.</li>
+    <li>Authorize your SP-API application.</li>
+    <li>Test your application with sandbox endpoints.</li>
+</ul>
+
+<h4>Workflow Steps</h4>
+<ol>
+    <li><strong>Retrieve Orders</strong>: Call the <code>getOrders</code> operation to retrieve a list of new Direct Fulfillment purchase orders yet to be fulfilled. Use the parameters <code>createdBefore</code> and <code>createdAfter</code> to get orders created within the last 24 hours. The order status should be <code>NEW</code> to fetch unacknowledged items.</li>
+    <li><strong>Acknowledge Orders</strong>: Use the <code>submitAcknowledgement</code> operation to acknowledge the orders. The purchase order can be accepted or rejected, but must include all line items.</li>
+    <li><strong>Generate Shipping Labels</strong>: Use the <code>createShippingLabel</code> operation to generate labels. This is a synchronous operation and must include all items in the order.</li>
+    <li><strong>Confirm Shipment</strong>: Use the <code>submitShipmentConfirmations</code> operation to confirm the shipment with shipping information.</li>
+    <li><strong>Request Payment</strong>: Use the <code>submitInvoice</code> operation to release payment for shipped items.</li>
+</ol>
+
+<div class="important">
+<strong>Important</strong>: Invoices must be submitted only after shipment confirmation. Unshipped items will trigger rejection.
+</div>
+
+<div class="note">
+<strong>Note</strong>: This operation requires a <strong>Restricted Data Token</strong> (RDT) for authorization.
+</div>
+</article>
+
+<article id="vdf-sandbox">
+<h3>Vendor Direct Fulfillment Dynamic Sandbox Guide</h3>
+<p class="metadata">Путь: /sp-api/docs/vendor-direct-fulfillment-dynamic-sandbox-guide</p>
+
+<p>Use the Selling Partner API dynamic sandbox to test vendor direct fulfillment operations. The dynamic sandbox environment allows testing without affecting production data or triggering real-world events.</p>
+
+<h4>Supported Marketplaces</h4>
+<p>The dynamic sandbox is available in these marketplaces: Canada (CA), United States of America (US), Mexico (MX), Spain (ES), United Kingdom (UK), France (FR), Netherlands (NL), Germany (DE), Italy (IT), Australia (AU), Japan (JP)</p>
+
+<h4>Supported APIs</h4>
+<ol>
+    <li><strong>Orders API v2021-12-28</strong>: Supports all equivalent V1 production operations.</li>
+    <li><strong>Shipping API v2021-12-28</strong>: Supports all equivalent V1 operations, but returns static responses for certain operations like <code>submitShipmentStatusUpdates</code>.</li>
+    <li><strong>Transactions API v2021-12-28</strong>: Supports all equivalent V1 operations.</li>
+</ol>
+
+<h4>Supported Scenarios</h4>
+<table>
+<tr><th>Scenario</th><th>Description</th></tr>
+<tr><td>LIFECYCLE</td><td>Order lifecycle testing with variable responses (e.g., multi-box label generation)</td></tr>
+<tr><td>LABEL_CASE-SHIP_METHOD_UNASSIGNABLE</td><td>Simulates error when Amazon cannot assign a ship method</td></tr>
+<tr><td>LABEL_CASE-INCONSISTENT_METHODS</td><td>Simulates error when different ship methods are assigned to multi-box orders</td></tr>
+<tr><td>LABEL_CASE-CARRIER_INTERNAL_FAILURE</td><td>Simulates carrier system errors</td></tr>
+<tr><td>LABEL_CASE-SYS_INTERNAL_FAILURE</td><td>Simulates internal Amazon system errors</td></tr>
+<tr><td>LABEL_CASE-DEST_ADDRESS_WRONG</td><td>Simulates invalid customer addresses</td></tr>
+<tr><td>LABEL_CASE-SERVICE_NOT_AVAILABLE</td><td>Simulates unavailable carrier services</td></tr>
+<tr><td>SHIP_CONFIRM_CASE-SHIP_METHOD_UNASSIGNABLE</td><td>Simulates failures for vendor-owned label shipments</td></tr>
+<tr><td>SHIP_CONFIRM_CASE-SYS_INTERNAL_FAILURE</td><td>Simulates system failures for vendor-owned label shipments</td></tr>
+</table>
+
+<h4>Test Order ASINs and Parcel Types</h4>
+<table>
+<tr><th>Parcel Type</th><th>ASIN</th><th>Package Characteristics</th></tr>
+<tr><td>Small parcel</td><td>TESTASIN001</td><td>Dimensions: 1in x 1in x 2in. Weight: 1lb.</td></tr>
+<tr><td>Small parcel</td><td>TESTASIN004</td><td>Dimensions: 5in x 2in x 8in. Weight: 3lb.</td></tr>
+<tr><td>Heavy-bulky</td><td>TESTASIN002</td><td>Dimensions: 50in x 50in x 30in. Weight: 100lb.</td></tr>
+<tr><td>Multi-piece</td><td>TESTASIN003</td><td>Package1: 36in x 37in x 24in (7lb). Package2: 10in x 30in x 40in (3lb).</td></tr>
+</table>
+
+<h4>Tutorial: Generating Fictional Orders</h4>
+<p><strong>Prerequisites:</strong></p>
+<ul>
+    <li>Authorization from the selling partner.</li>
+    <li>Approval for the <strong>Direct-to-Consumer Shipping</strong> role in your developer profile.</li>
+    <li>Role selected in App registration.</li>
+</ul>
+
+<p><strong>Steps:</strong></p>
+<ol>
+    <li><strong>Call <code>generateOrderScenarios</code></strong>: Specify party identifiers. Wait 30–40 minutes after receiving a successful <code>transactionId</code>.</li>
+    <li><strong>Call <code>getOrderScenarios</code></strong>: Use the <code>transactionId</code> until processing status is <code>SUCCESS</code> or <code>FAILURE</code>.</li>
+</ol>
+
+<h4>Example Success Response:</h4>
+<pre><code>{
+  "transactionStatus": {
+    "transactionId": "ff35f39e-e69f-499e-903e-6c4f6c32609f-20210827003315",
+    "status": "Success",
+    "testCaseData": {
+      "scenarios": [
+        { "scenarioId": "LIFECYCLE", "orders": [{"orderId": "T1111N"}, {"orderId": "T1111P"}] },
+        { "scenarioId": "LABEL_CASE-SHIP_METHOD_UNASSIGNABLE", "orders": [{"orderId": "T5555N"}, {"orderId": "T5555P"}] }
+      ]
+    }
+  }
+}</code></pre>
+</article>
+
+<article id="vdf-orders-api">
+<h3>Vendor Direct Fulfillment Orders API</h3>
+<p class="metadata">Путь: /sp-api/docs/vendor-direct-fulfillment-orders-api | Version: v2021-12-28 | Availability: Vendors only | Sandbox: Dynamic</p>
+
+<p>Learn how to use the Vendor Direct Fulfillment Orders API. You use the Vendor Direct Fulfillment Orders API to access your direct fulfillment vendor order data. You can receive purchase orders and send order acknowledgments.</p>
+
+<div class="note">
+<strong>Note</strong>: You use the <code>getOrders</code> operation with <code>includeDetails=false</code> as a query parameter to retrieve order numbers without complete order details. The default value for this parameter is <code>true</code>.
+</div>
+
+<p>Amazon label only vendors do not receive customer data such as name, address, or phone number for some orders returned using the <code>getOrder</code> and <code>getOrders</code> operations. Direct Fulfillment shares customer information directly on Amazon provided shipping labels.</p>
+
+<div class="tip">
+<strong>Tip</strong>: If you use AMXL and AT shipping methods for the same warehouse, the <code>AMXL Oversize</code> and <code>XL</code> markers on the label help differentiate between AMXL and AT labels.
+</div>
+
+<h4>Use Cases</h4>
+<ul>
+    <li><strong>Get a list of orders</strong>: Get a list of order references or complete order details.</li>
+    <li><strong>Get an order</strong>: Get purchase order information, including line item details, quantity, and cost.</li>
+    <li><strong>Submit an acknowledgement</strong>: Submits acknowledgments for one or more purchase orders.</li>
+</ul>
+
+<h4>Operations</h4>
+<table>
+<tr><th>Operation</th><th>Regions</th><th>Required Roles</th></tr>
+<tr><td>getOrder</td><td>NA, EU, FE</td><td>Direct to Consumer Shipping (Restricted)</td></tr>
+<tr><td>getOrders</td><td>NA, EU, FE</td><td>Direct to Consumer Shipping (Restricted)</td></tr>
+<tr><td>submitAcknowledgement</td><td>NA, EU, FE</td><td>Direct to Consumer Shipping (Restricted)</td></tr>
+</table>
+
+<h4>Rate Limits</h4>
+<table>
+<tr><th>Operation</th><th>Rate limit (requests/second)</th><th>Burst (requests)</th></tr>
+<tr><td>getOrders</td><td>10</td><td>10</td></tr>
+<tr><td>getOrder</td><td>10</td><td>10</td></tr>
+<tr><td>submitAcknowledgement</td><td>10</td><td>10</td></tr>
+</table>
+</article>
+
+<article id="vdf-shipping-api">
+<h3>Vendor Direct Fulfillment Shipping API</h3>
+<p class="metadata">Путь: /sp-api/docs/vendor-direct-fulfillment-shipping-api | Version: v2021-12-28 | Availability: Vendors only | Sandbox: Dynamic</p>
+
+<p>Learn how to use the Vendor Direct Fulfillment Shipping API. You use the Vendor Direct Fulfillment Shipping API to access your direct fulfillment vendor shipping data.</p>
+
+<h4>Use Cases</h4>
+<ul>
+    <li>Submit shipping label requests: Send multiple shipping label requests in one API call.</li>
+    <li>Get shipping labels: Get one or more shipping labels.</li>
+    <li>Create shipping labels: Creates shipping labels for a purchase order.</li>
+    <li>Submit shipment confirmations: Submit shipment confirmations to Amazon.</li>
+    <li>Submit shipment status updates: Update the transportation status for shipments.</li>
+    <li>Get packing slips: Get a list of packing slips for purchase orders.</li>
+    <li>Get a packing slip: Get a packing slip for a purchase order.</li>
+    <li>Get customer invoices: Get a list of packing slips for purchase orders (India only).</li>
+    <li>Get a customer invoice: Get a packing slip for a purchase order (India only).</li>
+    <li>Create a container label: Get a pallet label from Amazon for each palletized load.</li>
+</ul>
+
+<h4>Operations</h4>
+<table>
+<tr><th>Operation</th><th>Regions</th><th>Required Roles</th></tr>
+<tr><td>createContainerLabel</td><td>NA, EU, FE</td><td>Direct to Consumer Shipping (Restricted)</td></tr>
+<tr><td>createShippingLabels</td><td>NA, EU, FE</td><td>Direct to Consumer Shipping (Restricted)</td></tr>
+<tr><td>getCustomerInvoice</td><td>NA, EU, FE</td><td>Direct to Consumer Shipping (Restricted)</td></tr>
+<tr><td>getCustomerInvoices</td><td>NA, EU, FE</td><td>Direct to Consumer Shipping (Restricted)</td></tr>
+<tr><td>getPackingSlip</td><td>NA, EU, FE</td><td>Direct to Consumer Shipping (Restricted)</td></tr>
+<tr><td>getPackingSlips</td><td>NA, EU, FE</td><td>Direct to Consumer Shipping (Restricted)</td></tr>
+<tr><td>getShippingLabel</td><td>NA, EU, FE</td><td>Direct to Consumer Shipping (Restricted)</td></tr>
+<tr><td>getShippingLabels</td><td>NA, EU, FE</td><td>Direct to Consumer Shipping (Restricted)</td></tr>
+<tr><td>submitShipmentConfirmations</td><td>NA, EU, FE</td><td>Amazon Fulfillment, Direct to Consumer Shipping (Restricted)</td></tr>
+<tr><td>submitShipmentStatusUpdates</td><td>NA, EU, FE</td><td>Direct to Consumer Shipping (Restricted)</td></tr>
+<tr><td>submitShippingLabelRequest</td><td>NA, EU, FE</td><td>Direct to Consumer Shipping (Restricted)</td></tr>
+</table>
+
+<h4>Rate Limits</h4>
+<table>
+<tr><th>Operation</th><th>Rate limit (requests/second)</th><th>Burst (requests)</th></tr>
+<tr><td>getShippingLabels</td><td>10</td><td>10</td></tr>
+<tr><td>submitShippingLabelRequest</td><td>10</td><td>10</td></tr>
+<tr><td>getShippingLabel</td><td>10</td><td>10</td></tr>
+<tr><td>createShippingLabels</td><td>10</td><td>10</td></tr>
+<tr><td>submitShipmentConfirmations</td><td>10</td><td>10</td></tr>
+<tr><td>submitShipmentStatusUpdates</td><td>10</td><td>10</td></tr>
+<tr><td>getCustomerInvoices</td><td>10</td><td>10</td></tr>
+<tr><td>getCustomerInvoice</td><td>10</td><td>10</td></tr>
+<tr><td>getPackingSlips</td><td>10</td><td>10</td></tr>
+<tr><td>getPackingSlip</td><td>10</td><td>10</td></tr>
+<tr><td>createContainerLabel</td><td>10</td><td>10</td></tr>
+</table>
+</article>
+
+<article id="vdf-inventory-api">
+<h3>Vendor Direct Fulfillment Inventory API</h3>
+<p class="metadata">Путь: /sp-api/docs/vendor-direct-fulfillment-inventory-api | Version: v1 | Availability: Vendors only | Sandbox: Static</p>
+
+<p>Learn how to use the Vendor Direct Fulfillment Inventory API. Use this API to exchange inventory stock levels with Amazon.</p>
+
+<h4>Use Cases</h4>
+<ul>
+    <li><strong>Submit an inventory update</strong>: Submit partial or full feeds of inventory details to Amazon.</li>
+</ul>
+
+<h4>Operations</h4>
+<table>
+<tr><th>Operation</th><th>Regions</th><th>Required Roles</th></tr>
+<tr><td>submitInventoryUpdate</td><td>NA, EU, FE</td><td>Direct to Consumer Shipping (Restricted)</td></tr>
+</table>
+
+<h4>Rate Limits</h4>
+<table>
+<tr><th>Operation</th><th>Rate limit (requests/second)</th><th>Burst (requests)</th></tr>
+<tr><td>submitInventoryUpdate</td><td>10</td><td>10</td></tr>
+</table>
+</article>
+
+<article id="vdf-payments-api">
+<h3>Vendor Direct Fulfillment Payments API</h3>
+<p class="metadata">Путь: /sp-api/docs/vendor-direct-fulfillment-payments-api | Version: v1 | Availability: Vendors only | Sandbox: Static</p>
+
+<p>Learn how to use the Vendor Direct Fulfillment Payments API. You use the Vendor Direct Fulfillment Payments API to exchange payment related documents with Amazon.</p>
+
+<h4>Use Cases</h4>
+<ul>
+    <li><strong>Submit an Invoice</strong>: Submit one or more invoices for a vendor's direct fulfillment orders.</li>
+</ul>
+
+<h4>Operations</h4>
+<table>
+<tr><th>Operation</th><th>Regions</th><th>Required Roles</th></tr>
+<tr><td>submitInvoice</td><td>NA, EU, FE</td><td>Direct to Consumer Shipping (Restricted)</td></tr>
+</table>
+
+<h4>Rate Limits</h4>
+<table>
+<tr><th>Operation</th><th>Rate limit (requests/second)</th><th>Burst (requests)</th></tr>
+<tr><td>submitInvoice</td><td>10</td><td>10</td></tr>
+</table>
+</article>
+
+<article id="vdf-transaction-api">
+<h3>Vendor Direct Fulfillment Transaction Status API</h3>
+<p class="metadata">Путь: /sp-api/docs/vendor-direct-fulfillment-transaction-status-api | Version: v2021-12-28 | Availability: Vendors only | Sandbox: Dynamic</p>
+
+<p>Learn how to use the Vendor Direct Fulfillment Transaction Status API. You use the Vendor Direct Fulfillment Transaction Status API to access your direct fulfillment vendor transaction status.</p>
+
+<h4>Use Cases</h4>
+<ul>
+    <li><strong>Get the transaction status</strong>: Check the status of a POST transaction.</li>
+</ul>
+
+<h4>Operations</h4>
+<table>
+<tr><th>Operation</th><th>Regions</th><th>Required Roles</th></tr>
+<tr><td>getTransactionStatus</td><td>NA, EU, FE</td><td>Direct to Consumer Shipping (Restricted)</td></tr>
+</table>
+
+<h4>Rate Limits</h4>
+<table>
+<tr><th>Operation</th><th>Rate limit (requests/second)</th><th>Burst (requests)</th></tr>
+<tr><td>getTransactionStatus</td><td>10</td><td>10</td></tr>
+</table>
+</article>
+</section>
+
+<!-- Vendor Retail Procurement APIs -->
+<section id="vendor-retail-procurement">
+<h2>Vendor Retail Procurement APIs</h2>
+
+<article id="vrp-orders-api">
+<h3>Vendor Retail Procurement Orders API</h3>
+<p class="metadata">Путь: /sp-api/docs/vendor-retail-procurement-orders-api | Version: v1 | Availability: Vendors only | Sandbox: Static</p>
+
+<p>Help vendors manage purchase orders programmatically through web service integration. You can use the Vendor Orders API to receive purchase orders and to send order acknowledgments to accept or reject order fulfillment.</p>
+
+<h4>Use Cases</h4>
+<ul>
+    <li><strong>Cancel and change orders</strong>: Returns order changes and cancellations.</li>
+    <li><strong>Get purchase order status</strong>: Get the status for the purchase orders.</li>
+    <li><strong>Retrieve purchase orders</strong>: Get complete purchase order details.</li>
+    <li><strong>Submit order acknowledgement</strong>: Accept or reject a purchase order for fulfillment.</li>
+</ul>
+
+<h4>Operations</h4>
+<table>
+<tr><th>Operation</th><th>Regions</th><th>Required Roles</th></tr>
+<tr><td>getPurchaseOrder</td><td>NA, EU, FE</td><td>Amazon Fulfillment, Inventory and Order Tracking</td></tr>
+<tr><td>getPurchaseOrders</td><td>NA, EU, FE</td><td>Amazon Fulfillment, Inventory and Order Tracking</td></tr>
+<tr><td>getPurchaseOrdersStatus</td><td>NA, EU, FE</td><td>Amazon Fulfillment, Inventory and Order Tracking</td></tr>
+<tr><td>submitAcknowledgement</td><td>NA, EU, FE</td><td>Amazon Fulfillment, Inventory and Order Tracking</td></tr>
+</table>
+
+<h4>Rate Limits</h4>
+<table>
+<tr><th>Operation</th><th>Rate limit (requests/second)</th><th>Burst (requests)</th></tr>
+<tr><td>getPurchaseOrders</td><td>10</td><td>10</td></tr>
+<tr><td>getPurchaseOrder</td><td>10</td><td>10</td></tr>
+<tr><td>submitAcknowledgement</td><td>10</td><td>10</td></tr>
+<tr><td>getPurchaseOrdersStatus</td><td>10</td><td>10</td></tr>
+</table>
+</article>
+
+<article id="vrp-shipments-api">
+<h3>Vendor Retail Procurement Shipments API</h3>
+<p class="metadata">Путь: /sp-api/docs/vendor-retail-procurement-shipments-api | Version: v1 | Availability: Vendors only | Sandbox: Static</p>
+
+<p>Help vendors exchange shipment-related documents programmatically through web service integration. You can use the Vendor Shipments API (Shipments API) to exchange shipment-related documents with Amazon.</p>
+
+<h4>Use Cases</h4>
+<ul>
+    <li><strong>Retrieve shipment details</strong>: Get shipment status and pickup details.</li>
+    <li><strong>Retrieve shipment labels</strong>: Generate shipping labels from Amazon.</li>
+    <li><strong>Submit shipment confirmation</strong>: Submit shipment confirmations to Amazon.</li>
+    <li><strong>Update or cancel shipments</strong>: Update or cancel submitted shipment requests.</li>
+</ul>
+
+<h4>Operations</h4>
+<table>
+<tr><th>Operation</th><th>Regions</th><th>Required Roles</th></tr>
+<tr><td>GetShipmentDetails</td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+<tr><td>GetShipmentLabels</td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+<tr><td>SubmitShipmentConfirmations</td><td>NA, EU, FE</td><td>Amazon Fulfillment, Inventory and Order Tracking (NA, FE only)</td></tr>
+<tr><td>SubmitShipments</td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+</table>
+
+<h4>Rate Limits</h4>
+<table>
+<tr><th>Operation</th><th>Rate limit (requests/second)</th><th>Burst (requests)</th></tr>
+<tr><td>SubmitShipmentConfirmations</td><td>10</td><td>10</td></tr>
+<tr><td>SubmitShipments</td><td>10</td><td>10</td></tr>
+<tr><td>GetShipmentDetails</td><td>10</td><td>10</td></tr>
+<tr><td>GetShipmentLabels</td><td>10</td><td>10</td></tr>
+</table>
+</article>
+
+<article id="vrp-invoices-api">
+<h3>Vendor Retail Procurement Invoices API</h3>
+<p class="metadata">Путь: /sp-api/docs/vendor-retail-procurement-invoices-api | Version: v1 | Availability: Vendors only | Sandbox: Static</p>
+
+<p>Help vendors exchange payment-related documents programmatically through web service integration. You can use the Vendor Invoices API to exchange payment-related documents with Amazon.</p>
+
+<h4>Use Cases</h4>
+<ul>
+    <li><strong>Submit credit notes</strong>: Submit credit notes to Amazon for returns, pricing corrections, and allowances.</li>
+    <li><strong>Submit invoices</strong>: Submit invoices to Amazon for shipped items.</li>
+</ul>
+
+<h4>Operations</h4>
+<table>
+<tr><th>Operation</th><th>Regions</th><th>Required Roles</th></tr>
+<tr><td>submitInvoices</td><td>NA, EU, FE</td><td>Amazon Fulfillment, Inventory and Order Tracking</td></tr>
+</table>
+
+<h4>Rate Limits</h4>
+<table>
+<tr><th>Operation</th><th>Rate limit (requests/second)</th><th>Burst (requests)</th></tr>
+<tr><td>submitInvoices</td><td>10</td><td>10</td></tr>
+</table>
+</article>
+
+<article id="vrp-transaction-api">
+<h3>Vendor Retail Procurement Transaction Status API</h3>
+<p class="metadata">Путь: /sp-api/docs/vendor-retail-procurement-transaction-status-api | Version: v1 | Availability: Vendors only | Sandbox: Dynamic</p>
+
+<p>Help vendors check the transaction status programmatically through web service integrations. You can use the Vendor Transaction Status API to check the transaction status of your POST transactions.</p>
+
+<h4>Use Cases</h4>
+<ul>
+    <li><strong>Get transaction status</strong>: Get the transaction status of an order.</li>
+</ul>
+
+<h4>Operations</h4>
+<table>
+<tr><th>Operation</th><th>Regions</th><th>Required Roles</th></tr>
+<tr><td>getTransaction</td><td>NA, EU, FE</td><td>Amazon Fulfillment, Inventory and Order Tracking (NA/EU only)</td></tr>
+</table>
+
+<h4>Rate Limits</h4>
+<table>
+<tr><th>Operation</th><th>Rate limit (requests/second)</th><th>Burst (requests)</th></tr>
+<tr><td>getTransaction</td><td>10</td><td>10</td></tr>
+</table>
+</article>
+</section>
+
+<!-- Vendor Analytics -->
+<section id="vendor-analytics">
+<h2>Vendor Analytics Dataset Use Case Guide</h2>
+<p class="metadata">Путь: /sp-api/docs/vendor-analytics-dataset-guide</p>
+
+<p>Vendor Analytics Dataset Use Case Guide provides information about using Data Kiosk for vendor analytics data. This guide helps vendors understand how to access and use analytics datasets through the Data Kiosk API.</p>
+
+<div class="note">
+<strong>Note</strong>: For detailed information about available vendor analytics datasets and their schemas, refer to the Data Kiosk documentation section.
+</div>
+</section>
+
+<!-- Rate Limits Summary -->
+<section id="rate-limits">
+<h2>Rate Limits Summary</h2>
+
+<p>All Vendor APIs have consistent rate limits across operations. The following table summarizes the default rate limits:</p>
+
+<div class="note">
+<strong>Note</strong>: The <code>x-amzn-RateLimit-Limit</code> response header, if available, specifies the operation's rate limits per account-application pair. Rate limits depend on multiple factors including selling partner account and application identity. Requests are rate-limited by whichever threshold you reach first.
+</div>
+
+<h3>Vendor Direct Fulfillment APIs</h3>
+<table>
+<tr><th>API</th><th>All Operations Rate Limit</th><th>Burst</th></tr>
+<tr><td>Vendor Direct Fulfillment Orders API</td><td>10 req/sec</td><td>10</td></tr>
+<tr><td>Vendor Direct Fulfillment Shipping API</td><td>10 req/sec</td><td>10</td></tr>
+<tr><td>Vendor Direct Fulfillment Inventory API</td><td>10 req/sec</td><td>10</td></tr>
+<tr><td>Vendor Direct Fulfillment Payments API</td><td>10 req/sec</td><td>10</td></tr>
+<tr><td>Vendor Direct Fulfillment Transaction Status API</td><td>10 req/sec</td><td>10</td></tr>
+</table>
+
+<h3>Vendor Retail Procurement APIs</h3>
+<table>
+<tr><th>API</th><th>All Operations Rate Limit</th><th>Burst</th></tr>
+<tr><td>Vendor Retail Procurement Orders API</td><td>10 req/sec</td><td>10</td></tr>
+<tr><td>Vendor Retail Procurement Shipments API</td><td>10 req/sec</td><td>10</td></tr>
+<tr><td>Vendor Retail Procurement Invoices API</td><td>10 req/sec</td><td>10</td></tr>
+<tr><td>Vendor Retail Procurement Transaction Status API</td><td>10 req/sec</td><td>10</td></tr>
+</table>
+
+<p>For information about the rate-limiting algorithm, factors that determine rate limits, and how to find your rate limits, refer to <a href="https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits">Usage Plans and Rate Limits</a>. For information about how to optimize your application for rate limits, refer to <a href="https://developer-docs.amazon.com/sp-api/docs/optimize-rate-limits-for-application-workloads">Optimize Rate Limits for Application Workloads</a>.</p>
+</section>
+
+<footer style="margin-top: 50px; padding-top: 20px; border-top: 1px solid #ddd; color: #666; font-size: 0.9em;">
+<p>Документация собрана из <a href="https://developer-docs.amazon.com/sp-api/docs/">Amazon SP-API Documentation</a></p>
+<p>Дата создания: 15 января 2026</p>
+</footer>
+
+</body>
+</html>
