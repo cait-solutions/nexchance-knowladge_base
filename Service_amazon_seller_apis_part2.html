@@ -1,0 +1,1475 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Amazon SP-API Seller APIs Documentation - Part 2: FBA Inbound, FBA Outbound, Product Fees, Finances, Transfers, Messaging, Solicitations, Sales, Sellers, Services, Supply Sources, Data Kiosk, Application Management APIs">
+    <meta name="source" content="https://developer-docs.amazon.com/sp-api/docs/">
+    <meta name="date-extracted" content="2026-01-15">
+    <title>Amazon SP-API Seller APIs Documentation - Part 2</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .disclaimer { background: #fff3cd; border: 1px solid #ffc107; padding: 15px; margin-bottom: 30px; border-radius: 5px; }
+        nav#toc { background: #f8f9fa; padding: 20px; margin-bottom: 30px; border-radius: 5px; }
+        nav#toc ul { list-style: none; padding-left: 20px; }
+        nav#toc > ul { padding-left: 0; }
+        section { margin-bottom: 40px; padding-bottom: 20px; border-bottom: 1px solid #eee; }
+        h1 { color: #232f3e; border-bottom: 3px solid #ff9900; padding-bottom: 10px; }
+        h2 { color: #232f3e; margin-top: 30px; }
+        h3 { color: #545b64; }
+        h4 { color: #545b64; }
+        table { border-collapse: collapse; width: 100%; margin: 15px 0; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background: #232f3e; color: white; }
+        tr:nth-child(even) { background: #f9f9f9; }
+        code { background: #f4f4f4; padding: 2px 6px; border-radius: 3px; font-family: 'Consolas', monospace; }
+        pre { background: #1e1e1e; color: #d4d4d4; padding: 15px; border-radius: 5px; overflow-x: auto; }
+        pre code { background: none; color: inherit; }
+        .note { background: #e7f3ff; border-left: 4px solid #2196f3; padding: 10px 15px; margin: 15px 0; }
+        .warning { background: #fff3e0; border-left: 4px solid #ff9800; padding: 10px 15px; margin: 15px 0; }
+        .important { background: #ffebee; border-left: 4px solid #f44336; padding: 10px 15px; margin: 15px 0; }
+        .tip { background: #e8f5e9; border-left: 4px solid #4caf50; padding: 10px 15px; margin: 15px 0; }
+        .metadata { font-size: 0.9em; color: #666; margin-bottom: 20px; }
+        .api-operation { background: white; padding: 15px; margin: 10px 0; border-radius: 5px; border: 1px solid #ddd; }
+    </style>
+</head>
+<body>
+
+<div class="disclaimer">
+    <strong>ДОКУМЕНТ ВНЕШНЕГО СЕРВИСА — НЕ ЯВЛЯЕТСЯ ТРЕБОВАНИЯМИ К ПРОДУКТУ</strong><br>
+    Этот документ описывает внешний сервис / API и т.п. как инструкция. Как использовать:
+    <ul>
+        <li>для определения возможностей и ограничений интеграции</li>
+        <li>для формулирования требований к интеграции (что отправляем/получаем, авторизация, ошибки, лимиты, поведение при недоступности), ответам пользователя по сервису и т.п.</li>
+    </ul>
+</div>
+
+<h1>Amazon SP-API Seller APIs Documentation - Part 2</h1>
+
+<div class="metadata">
+    <strong>Источник:</strong> https://developer-docs.amazon.com/sp-api/docs/<br>
+    <strong>Дата извлечения:</strong> 15 января 2026
+</div>
+
+<nav id="toc">
+    <h2>Оглавление</h2>
+    <ul>
+        <li><a href="#fulfillment-inbound-api">1. FBA Inbound API (Fulfillment Inbound)</a>
+            <ul>
+                <li><a href="#fulfillment-inbound-overview">1.1 Обзор API</a></li>
+                <li><a href="#fulfillment-inbound-operations">1.2 Операции API</a></li>
+                <li><a href="#fulfillment-inbound-additional">1.3 Дополнительная функциональность</a></li>
+                <li><a href="#fulfillment-inbound-migration">1.4 Миграция с v0 на v2024-03-20</a></li>
+                <li><a href="#fulfillment-inbound-rate-limits">1.5 Rate Limits</a></li>
+            </ul>
+        </li>
+        <li><a href="#fulfillment-outbound-api">2. FBA Outbound API (Fulfillment Outbound)</a>
+            <ul>
+                <li><a href="#fulfillment-outbound-overview">2.1 Обзор API</a></li>
+                <li><a href="#fulfillment-outbound-sandbox">2.2 Dynamic Sandbox Guide</a></li>
+                <li><a href="#fulfillment-outbound-rate-limits">2.3 Rate Limits</a></li>
+            </ul>
+        </li>
+        <li><a href="#product-fees-api">3. Product Fees API</a>
+            <ul>
+                <li><a href="#product-fees-overview">3.1 Обзор API</a></li>
+                <li><a href="#product-fees-batch">3.2 Batch запросы</a></li>
+                <li><a href="#product-fees-rate-limits">3.3 Rate Limits</a></li>
+            </ul>
+        </li>
+        <li><a href="#finances-api">4. Finances API</a>
+            <ul>
+                <li><a href="#finances-overview">4.1 Обзор API</a></li>
+                <li><a href="#finances-reference">4.2 API Reference v2024-06-19</a></li>
+                <li><a href="#finances-rate-limits">4.3 Rate Limits</a></li>
+            </ul>
+        </li>
+        <li><a href="#transfers-api">5. Transfers API</a>
+            <ul>
+                <li><a href="#transfers-overview">5.1 Обзор API</a></li>
+                <li><a href="#transfers-rate-limits">5.2 Rate Limits</a></li>
+            </ul>
+        </li>
+        <li><a href="#messaging-api">6. Messaging API</a>
+            <ul>
+                <li><a href="#messaging-overview">6.1 Обзор API</a></li>
+                <li><a href="#messaging-rate-limits">6.2 Rate Limits</a></li>
+            </ul>
+        </li>
+        <li><a href="#solicitations-api">7. Solicitations API</a>
+            <ul>
+                <li><a href="#solicitations-overview">7.1 Обзор API</a></li>
+                <li><a href="#solicitations-setup">7.2 Настройка API</a></li>
+                <li><a href="#solicitations-rate-limits">7.3 Rate Limits</a></li>
+            </ul>
+        </li>
+        <li><a href="#sales-api">8. Sales API</a>
+            <ul>
+                <li><a href="#sales-api-overview">8.1 Обзор</a></li>
+                <li><a href="#sales-api-operations">8.2 Операции</a></li>
+                <li><a href="#sales-api-rate-limits">8.3 Rate Limits</a></li>
+            </ul>
+        </li>
+        <li><a href="#sellers-api">9. Sellers API</a>
+            <ul>
+                <li><a href="#sellers-api-overview">9.1 Обзор</a></li>
+                <li><a href="#sellers-api-operations">9.2 Операции</a></li>
+                <li><a href="#sellers-api-rate-limits">9.3 Rate Limits</a></li>
+            </ul>
+        </li>
+        <li><a href="#services-api">10. Services API</a>
+            <ul>
+                <li><a href="#services-api-overview">10.1 Обзор</a></li>
+                <li><a href="#services-api-operations">10.2 Операции</a></li>
+                <li><a href="#services-api-rate-limits">10.3 Rate Limits</a></li>
+            </ul>
+        </li>
+        <li><a href="#supply-sources-api">11. Supply Sources API</a>
+            <ul>
+                <li><a href="#supply-sources-api-overview">11.1 Обзор</a></li>
+                <li><a href="#supply-sources-api-operations">11.2 Операции</a></li>
+                <li><a href="#supply-sources-api-rate-limits">11.3 Rate Limits</a></li>
+            </ul>
+        </li>
+        <li><a href="#data-kiosk-api">12. Data Kiosk API</a>
+            <ul>
+                <li><a href="#data-kiosk-api-overview">12.1 Обзор</a></li>
+                <li><a href="#data-kiosk-api-operations">12.2 Операции</a></li>
+                <li><a href="#data-kiosk-api-scheduling">12.3 Планирование запросов</a></li>
+                <li><a href="#data-kiosk-api-rate-limits">12.4 Rate Limits</a></li>
+            </ul>
+        </li>
+        <li><a href="#application-management-api">13. Application Management API</a>
+            <ul>
+                <li><a href="#application-management-api-overview">13.1 Обзор</a></li>
+                <li><a href="#application-management-api-operations">13.2 Операции</a></li>
+                <li><a href="#application-management-api-rate-limits">13.3 Rate Limits</a></li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+
+<!-- ==================== FULFILLMENT INBOUND API ==================== -->
+<section id="fulfillment-inbound-api">
+    <h1>1. FBA Inbound API (Fulfillment Inbound)</h1>
+    <div class="metadata">
+        <strong>Путь:</strong> SELLER APIs → FULFILLMENT INBOUND API<br>
+        <strong>URL:</strong> https://developer-docs.amazon.com/sp-api/docs/fulfillment-inbound-api
+    </div>
+
+    <section id="fulfillment-inbound-overview">
+        <h2>1.1 Обзор API</h2>
+        <p>Fulfillment Inbound API используется для создания и обновления входящих запасов в сеть выполнения заказов Amazon, где Amazon может выполнять заказы ваших клиентов. Вы также можете запрашивать списки входящих отправок или товаров на основе указанных критериев.</p>
+
+        <table>
+            <tr><th>Параметр</th><th>Значение</th></tr>
+            <tr><td>Текущая версия</td><td>v2024-03-20</td></tr>
+            <tr><td>Legacy версии</td><td>v0</td></tr>
+            <tr><td>Доступность</td><td>Sellers only</td></tr>
+            <tr><td>Sandbox</td><td>Static</td></tr>
+        </table>
+
+        <div class="important">
+            <strong>❗ Важно:</strong> Начиная с <strong>1 января 2026</strong>, услуги подготовки и маркировки товаров больше не будут доступны для FBA на рынке США. Продавцы должны подготовить и промаркировать товары перед отправкой в центры выполнения Amazon в США.
+        </div>
+
+        <h3>Ключевые возможности Fulfillment Inbound API:</h3>
+        <ol>
+            <li><strong>Создание входящей отправки:</strong> Используйте POST операции для определения новых планов и вариантов доставки.</li>
+            <li><strong>Получение деталей отправки:</strong> Используйте GET операции для доступа к информации об отправке.</li>
+            <li><strong>Обновление планов:</strong> Используйте POST для изменения атрибутов, таких как названия или tracking ID.</li>
+            <li><strong>Удаление планов:</strong> Используйте PUT для удаления существующих планов.</li>
+            <li><strong>Интероперабельность:</strong> Планы, созданные через API, могут быть доступны/редактированы в UI Amazon (Send to Amazon) после подтверждения размещения и транспортных опций.</li>
+        </ol>
+
+        <div class="tip">
+            <strong>💡 Совет:</strong> Используйте <code>generatePlacementOptions</code> и <code>generateTransportationOptions</code> для создания новых опций. Переключение на STA (Send to Amazon) до подтверждения отменит ранее сгенерированные API опции.
+        </div>
+
+        <h3>Примеры использования:</h3>
+        <ol>
+            <li>Создание отправки с известной информацией о коробках</li>
+            <li>Создание отправки без известной информации о коробках (только LTL)</li>
+            <li>Создание отправки с партнерским перевозчиком Amazon (PCP) для SPD/LTL/FTL</li>
+            <li>Создание отправки с не-партнерским перевозчиком для SPD/LTL/FTL</li>
+            <li>Отправка запасов в центры выполнения Amazon в Индии</li>
+        </ol>
+
+        <div class="warning">
+            <strong>⚠️ Ограничение для Бразилии:</strong> Нельзя использовать API для создания отправок в Бразилии.
+        </div>
+
+        <h3>Не устаревшие операции Legacy v0:</h3>
+        <ul>
+            <li><code>getLabels</code></li>
+            <li><code>getBillOfLading</code></li>
+            <li><code>getPrepInstructions</code></li>
+            <li><code>getShipments</code></li>
+            <li><code>getShipmentItemsByShipmentId</code></li>
+            <li><code>getShipmentItems</code></li>
+        </ul>
+        <p>Эти операции необходимы для задач создания отправки, таких как печать этикеток коробок и накладных.</p>
+    </section>
+
+    <section id="fulfillment-inbound-operations">
+        <h2>1.2 Операции API</h2>
+        <table>
+            <tr><th>Операция</th><th>Регионы</th><th>Требуемые роли</th></tr>
+            <tr><td><code>cancelInboundPlan</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+            <tr><td><code>cancelSelfShipAppointment</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+            <tr><td><code>confirmDeliveryWindowOptions</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+            <tr><td><code>confirmPackingOption</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+            <tr><td><code>confirmPlacementOption</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+            <tr><td><code>confirmShipmentContentUpdatePreview</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+            <tr><td><code>confirmTransportationOptions</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+            <tr><td><code>createInboundPlan</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+            <tr><td><code>createMarketplaceItemLabels</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+            <tr><td><code>generateDeliveryWindowOptions</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+            <tr><td><code>generatePackingOptions</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+            <tr><td><code>generatePlacementOptions</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+            <tr><td><code>generateSelfShipAppointmentSlots</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+            <tr><td><code>generateShipmentContentUpdatePreviews</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+            <tr><td><code>generateTransportationOptions</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+            <tr><td><code>getDeliveryChallanDocument</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+            <tr><td><code>getInboundOperationStatus</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+            <tr><td><code>getInboundPlan</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+            <tr><td><code>getSelfShipAppointmentSlots</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+            <tr><td><code>getShipment</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+            <tr><td><code>getShipmentContentUpdatePreview</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+            <tr><td><code>listDeliveryWindowOptions</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+            <tr><td><code>listInboundPlanBoxes</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+            <tr><td><code>listInboundPlanItems</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+            <tr><td><code>listInboundPlanPallets</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+            <tr><td><code>listInboundPlans</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+            <tr><td><code>listItemComplianceDetails</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+            <tr><td><code>listPackingGroupBoxes</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+            <tr><td><code>listPackingGroupItems</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+            <tr><td><code>listPackingOptions</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+            <tr><td><code>listPlacementOptions</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+            <tr><td><code>listPrepDetails</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+            <tr><td><code>listShipmentBoxes</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+            <tr><td><code>listShipmentContentUpdatePreviews</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+            <tr><td><code>listShipmentItems</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+            <tr><td><code>listShipmentPallets</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+            <tr><td><code>listTransportationOptions</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+            <tr><td><code>scheduleSelfShipAppointment</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+            <tr><td><code>setPackingInformation</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+            <tr><td><code>setPrepDetails</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+            <tr><td><code>updateInboundPlanName</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+            <tr><td><code>updateItemComplianceDetails</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+            <tr><td><code>updateShipmentName</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+            <tr><td><code>updateShipmentSourceAddress</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+            <tr><td><code>updateShipmentTrackingDetails</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+        </table>
+    </section>
+
+    <section id="fulfillment-inbound-additional">
+        <h2>1.3 Дополнительная функциональность</h2>
+        
+        <h3>Получение списка существующих планов</h3>
+        <p>Используйте операцию <code>listInboundPlans</code> для получения информации о планах на основе критериев продавца. Опции фильтрации включают состояние (например, <code>ACTIVE</code>, <code>SHIPPED</code>, <code>VOIDED</code>), дату создания/обновления и параметры пагинации.</p>
+        <div class="important">
+            <strong>Важно:</strong> <code>listInboundPlans</code> использует пагинацию. Последующие вызовы должны использовать те же фильтры, что и исходный запрос.
+        </div>
+
+        <h3>Получение списка товаров в плане</h3>
+        <p>Используйте <code>listInboundPlanItems</code> для получения деталей товаров для конкретного плана. Фильтруйте по <code>ShipmentID</code> или <code>PackingGroupId</code>. Ответ включает: MSKU, ASIN, FNSKU, владельца этикетки, количество, срок годности, код производственной партии, инструкции по подготовке, группу упаковки.</p>
+
+        <h3>Получение списка паллет</h3>
+        <p>Используйте <code>listInboundPlanPallets</code> для получения деталей паллет (вес, размеры, возможность штабелирования, ID упаковки), отфильтрованных по <code>ShipmentID</code> или <code>PackingGroupId</code>.</p>
+
+        <h3>Отмена плана</h3>
+        <p>Отмените план и связанные отправки через <code>cancelInboundPlan</code>. Окно отмены:</p>
+        <ul>
+            <li>24 часа для Small Parcel отправок</li>
+            <li>1 час для LTL/FTL отправок</li>
+        </ul>
+
+        <h3>Обновление информации в отправке</h3>
+        <h4>Шаг 1: Обновление содержимого отправки</h4>
+        <p>Вызовите <code>generateShipmentContentUpdatePreviews</code> с измененными данными коробок/товаров.</p>
+        
+        <h4>Шаг 2: Просмотр изменений и расценок</h4>
+        <p>Используйте <code>listShipmentContentUpdatePreview</code> для оценки предложенных изменений и обновленных транспортных расценок.</p>
+        
+        <h4>Шаг 3: Подтверждение обновлений</h4>
+        <p>Вызовите <code>confirmShipmentContentUpdatePreview</code> с <code>inboundPlanID</code>, <code>shipmentID</code>, <code>contentUpdatePreviewId</code>.</p>
+
+        <h3>Создание листинга и конвертация в FBA</h3>
+        <h4>Создание листинга с Listings Items API:</h4>
+        <pre><code>{
+  "fulfillment_availability": [
+    {
+      "fulfillment_channel_code": "AMAZON_NA"
+    }
+  ]
+}</code></pre>
+
+        <h4>Конвертация FBM в FBA через Listings Items API:</h4>
+        <pre><code>PATCH https://sellingpartnerapi-na.amazon.com/listings/2021-08-01/items/AXXXXXXXXXXXXX/ABC123
+?marketplaceIds=ATVPDKIKX0DER
+&issueLocale=en_US
+{
+  "productType": "PRODUCT",
+  "patches": [
+    {
+      "op": "add",
+      "path": "/attributes/fulfillment_availability",
+      "value": [
+        {
+          "fulfillment_channel_code": "AMAZON_NA"
+        }
+      ]
+    },
+    {
+      "op": "delete",
+      "path": "/attributes/fulfillment_availability",
+      "value": [
+        {
+          "fulfillment_channel_code": "DEFAULT"
+        }
+      ]
+    }
+  ]
+}</code></pre>
+    </section>
+
+    <section id="fulfillment-inbound-migration">
+        <h2>1.4 Миграция с v0 на v2024-03-20</h2>
+        
+        <h3>Создание планов входящих отправок</h3>
+        <p>Операция v0 <code>createInboundShipmentPlan</code> заменена несколькими операциями в v2024-03-20:</p>
+        <ul>
+            <li><code>createInboundPlan</code> - создает план</li>
+            <li><code>generatePackingOptions</code>, <code>listPackingOptions</code>, <code>listPackingGroupItems</code>, <code>confirmPackingOption</code> - определяют какие SKU можно упаковать вместе</li>
+            <li><code>setPackingInformation</code> - предоставляет детали содержимого коробок</li>
+            <li><code>generatePlacementOptions</code>, <code>listPlacementOptions</code>, <code>getShipment</code> - просмотр разделения отправок и центров выполнения</li>
+        </ul>
+
+        <h3>Ключевые отличия:</h3>
+        <ul>
+            <li><code>destinationMarketplaces</code> заменен на <code>shipToCountryCode</code> и <code>ShipToCountrySubdivisionCode</code></li>
+            <li><code>PrepDetailList</code> больше не является входным параметром; категории подготовки должны быть установлены в Seller Central для каждого SKU</li>
+            <li>Сборы и скидки получаются через ответы <code>listPackingOptions</code> и <code>listPlacementOptions</code></li>
+        </ul>
+
+        <h3>Транспортные опции и стоимость</h3>
+        <table>
+            <tr><th>Операции v0</th><th>Операции v2024-03-20</th></tr>
+            <tr><td><code>putTransportDetails</code></td><td><code>generateTransportationOptions</code></td></tr>
+            <tr><td><code>estimateTransport</code></td><td><code>generateDeliveryWindowOptions</code></td></tr>
+            <tr><td><code>getTransportDetails</code></td><td><code>listTransportationOptions</code>, <code>listDeliveryWindowOptions</code></td></tr>
+        </table>
+
+        <h3>Подтверждение транспортных запросов</h3>
+        <ul>
+            <li>Используйте <code>confirmDeliveryWindowOptions</code> и <code>confirmTransportationOptions</code></li>
+            <li>Окна доставки должны быть подтверждены для опций с программой <code>DELIVERY_WINDOW_REQUIRED</code></li>
+            <li>Статус транспорта отслеживается автоматически; не нужно отмечать отправки как "shipped"</li>
+        </ul>
+
+        <h3>Отмена транспортных запросов</h3>
+        <ul>
+            <li>Используйте <code>cancelInboundPlan</code> вместо <code>voidTransport</code></li>
+            <li>Сборы отменяются при вызове в пределах окна отмены (24 часа для small parcels, 1 час для LTL/FTL)</li>
+        </ul>
+    </section>
+
+    <section id="fulfillment-inbound-rate-limits">
+        <h2>1.5 Rate Limits</h2>
+        <p>Лимиты указаны в запросах в секунду.</p>
+        
+        <h3>Операции v2024-03-20</h3>
+        <table>
+            <tr><th>Операция</th><th>Rate limit</th><th>Burst</th></tr>
+            <tr><td><code>listInboundPlans</code></td><td>2</td><td>6</td></tr>
+            <tr><td><code>createInboundPlan</code></td><td>2</td><td>2</td></tr>
+            <tr><td><code>getInboundPlan</code></td><td>2</td><td>6</td></tr>
+            <tr><td><code>listInboundPlanBoxes</code></td><td>2</td><td>6</td></tr>
+            <tr><td><code>cancelInboundPlan</code></td><td>2</td><td>2</td></tr>
+            <tr><td><code>listInboundPlanItems</code></td><td>2</td><td>6</td></tr>
+            <tr><td><code>updateInboundPlanName</code></td><td>2</td><td>30</td></tr>
+            <tr><td><code>listPackingGroupBoxes</code></td><td>2</td><td>30</td></tr>
+            <tr><td><code>listPackingGroupItems</code></td><td>2</td><td>30</td></tr>
+            <tr><td><code>setPackingInformation</code></td><td>2</td><td>2</td></tr>
+            <tr><td><code>listPackingOptions</code></td><td>2</td><td>6</td></tr>
+            <tr><td><code>generatePackingOptions</code></td><td>2</td><td>2</td></tr>
+            <tr><td><code>confirmPackingOption</code></td><td>2</td><td>2</td></tr>
+            <tr><td><code>listInboundPlanPallets</code></td><td>2</td><td>6</td></tr>
+            <tr><td><code>listPlacementOptions</code></td><td>2</td><td>6</td></tr>
+            <tr><td><code>generatePlacementOptions</code></td><td>2</td><td>2</td></tr>
+            <tr><td><code>confirmPlacementOption</code></td><td>2</td><td>2</td></tr>
+            <tr><td><code>getShipment</code></td><td>5</td><td>6</td></tr>
+            <tr><td><code>listShipmentBoxes</code></td><td>5</td><td>30</td></tr>
+            <tr><td><code>listShipmentContentUpdatePreviews</code></td><td>2</td><td>30</td></tr>
+            <tr><td><code>generateShipmentContentUpdatePreviews</code></td><td>2</td><td>30</td></tr>
+            <tr><td><code>getShipmentContentUpdatePreview</code></td><td>2</td><td>30</td></tr>
+            <tr><td><code>confirmShipmentContentUpdatePreview</code></td><td>2</td><td>30</td></tr>
+            <tr><td><code>getDeliveryChallanDocument</code></td><td>2</td><td>6</td></tr>
+            <tr><td><code>listDeliveryWindowOptions</code></td><td>5</td><td>30</td></tr>
+            <tr><td><code>generateDeliveryWindowOptions</code></td><td>2</td><td>30</td></tr>
+            <tr><td><code>confirmDeliveryWindowOptions</code></td><td>2</td><td>30</td></tr>
+            <tr><td><code>listShipmentItems</code></td><td>2</td><td>30</td></tr>
+            <tr><td><code>updateShipmentName</code></td><td>2</td><td>30</td></tr>
+            <tr><td><code>listShipmentPallets</code></td><td>2</td><td>30</td></tr>
+            <tr><td><code>cancelSelfShipAppointment</code></td><td>2</td><td>30</td></tr>
+            <tr><td><code>getSelfShipAppointmentSlots</code></td><td>2</td><td>6</td></tr>
+            <tr><td><code>generateSelfShipAppointmentSlots</code></td><td>2</td><td>2</td></tr>
+            <tr><td><code>scheduleSelfShipAppointment</code></td><td>2</td><td>2</td></tr>
+            <tr><td><code>updateShipmentSourceAddress</code></td><td>2</td><td>30</td></tr>
+            <tr><td><code>updateShipmentTrackingDetails</code></td><td>2</td><td>2</td></tr>
+            <tr><td><code>listTransportationOptions</code></td><td>5</td><td>6</td></tr>
+            <tr><td><code>generateTransportationOptions</code></td><td>2</td><td>2</td></tr>
+            <tr><td><code>confirmTransportationOptions</code></td><td>2</td><td>2</td></tr>
+            <tr><td><code>listItemComplianceDetails</code></td><td>2</td><td>6</td></tr>
+            <tr><td><code>updateItemComplianceDetails</code></td><td>2</td><td>2</td></tr>
+            <tr><td><code>createMarketplaceItemLabels</code></td><td>2</td><td>30</td></tr>
+            <tr><td><code>listPrepDetails</code></td><td>2</td><td>30</td></tr>
+            <tr><td><code>setPrepDetails</code></td><td>2</td><td>30</td></tr>
+            <tr><td><code>getInboundOperationStatus</code></td><td>5</td><td>6</td></tr>
+        </table>
+
+        <h3>Операции Legacy v0 (не устаревшие)</h3>
+        <table>
+            <tr><th>Операция</th><th>Rate limit</th><th>Burst</th></tr>
+            <tr><td><code>getPrepInstructions</code></td><td>2</td><td>30</td></tr>
+            <tr><td><code>getLabels</code></td><td>5</td><td>30</td></tr>
+            <tr><td><code>getBillOfLading</code></td><td>2</td><td>30</td></tr>
+            <tr><td><code>getShipments</code></td><td>2</td><td>30</td></tr>
+            <tr><td><code>getShipmentItemsByShipmentId</code></td><td>2</td><td>30</td></tr>
+            <tr><td><code>getShipmentItems</code></td><td>2</td><td>30</td></tr>
+        </table>
+    </section>
+</section>
+
+<!-- ==================== FULFILLMENT OUTBOUND API ==================== -->
+<section id="fulfillment-outbound-api">
+    <h1>2. FBA Outbound API (Fulfillment Outbound)</h1>
+    <div class="metadata">
+        <strong>Путь:</strong> SELLER APIs → FULFILLMENT OUTBOUND API<br>
+        <strong>URL:</strong> https://developer-docs.amazon.com/sp-api/docs/fulfillment-outbound-api
+    </div>
+
+    <section id="fulfillment-outbound-overview">
+        <h2>2.1 Обзор API</h2>
+        <p>Fulfillment Outbound API используется для получения информации о заказах Multi-Channel Fulfillment (MCF) в сети выполнения Amazon. Вы можете создавать приложения, которые помогают продавцу выполнять заказы MCF, используя их запасы в сети выполнения Amazon.</p>
+
+        <table>
+            <tr><th>Параметр</th><th>Значение</th></tr>
+            <tr><td>Текущая версия</td><td>v2020-07-01</td></tr>
+            <tr><td>Legacy версии</td><td>Нет</td></tr>
+            <tr><td>Доступность</td><td>Sellers only</td></tr>
+            <tr><td>Sandbox</td><td>Dynamic</td></tr>
+        </table>
+
+        <h3>Примеры использования:</h3>
+        <ol>
+            <li><strong>Получение подтверждения доставки</strong> для доставленной посылки</li>
+            <li><strong>Получение списка заказов на выполнение</strong> после определенной даты-времени</li>
+            <li><strong>Получение информации о трекинге доставки</strong> для посылки</li>
+            <li><strong>Отмена заказа на выполнение</strong></li>
+            <li><strong>Получение списка функций</strong>, доступных для MCF заказов</li>
+            <li><strong>Получение запасов, подходящих для Blank Box</strong></li>
+            <li><strong>Создание заказа для Японии</strong> с запланированной доставкой</li>
+            <li><strong>Создание MCF заказа для Индии</strong></li>
+            <li><strong>Отслеживание частично выполненного заказа</strong></li>
+            <li><strong>Создание заказа в статусе HOLD</strong> и перевод в shipped</li>
+            <li><strong>Отслеживание заказа с серийным номером товара</strong></li>
+            <li><strong>Создание заказа с кросс-граничным выполнением</strong></li>
+            <li><strong>Создание заказов с Blank Box и Block AMZL</strong></li>
+            <li><strong>Просмотр деталей всех скоростей доставки</strong></li>
+            <li><strong>Просмотр уведомлений о заказах</strong> через Notifications API</li>
+            <li><strong>Создание возврата для MCF заказа</strong></li>
+            <li><strong>Получение динамических предложений доставки</strong></li>
+            <li><strong>Создание заказа для Японии с предпочтениями доставки</strong></li>
+            <li><strong>Получение деталей локера</strong> для посылок в Японии</li>
+        </ol>
+
+        <h3>Операции API</h3>
+        <table>
+            <tr><th>Операция</th><th>Регионы</th><th>Требуемые роли</th></tr>
+            <tr><td><code>cancelFulfillmentOrder</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+            <tr><td><code>createFulfillmentOrder</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+            <tr><td><code>createFulfillmentReturn</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+            <tr><td><code>deliveryOffers</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+            <tr><td><code>getFeatureInventory</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+            <tr><td><code>getFeatures</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+            <tr><td><code>getFeatureSKU</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+            <tr><td><code>getFulfillmentOrder</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+            <tr><td><code>getFulfillmentPreview</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+            <tr><td><code>getPackageTrackingDetails</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+            <tr><td><code>listAllFulfillmentOrders</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+            <tr><td><code>listReturnReasonCodes</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+            <tr><td><code>submitFulfillmentOrderStatusUpdate</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+            <tr><td><code>updateFulfillmentOrder</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment</td></tr>
+        </table>
+    </section>
+
+    <section id="fulfillment-outbound-sandbox">
+        <h2>2.2 Dynamic Sandbox Guide</h2>
+        <p>Динамическая песочница SP-API позволяет тестировать приложения без влияния на производственные данные или инициирования реальных событий.</p>
+
+        <h3>Операции с динамическими ответами:</h3>
+        <ul>
+            <li><code>cancelFulfillmentOrder</code></li>
+            <li><code>createFulfillmentOrder</code></li>
+            <li><code>getFulfillmentOrder</code></li>
+            <li><code>getFulfillmentPreview</code></li>
+            <li><code>getPackageTrackingDetails</code></li>
+            <li><code>listAllFulfillmentOrders</code></li>
+            <li><code>updateFulfillmentOrder</code></li>
+            <li><code>deliveryOffers</code></li>
+        </ul>
+
+        <h3>Операции со статическими ответами:</h3>
+        <ul>
+            <li><code>createFulfillmentReturn</code></li>
+            <li><code>getFeatureInventory</code></li>
+            <li><code>getFeatures</code></li>
+            <li><code>getFeatureSKU</code></li>
+            <li><code>listReturnReasonCodes</code></li>
+        </ul>
+
+        <h3>Тестовые сценарии</h3>
+        <p>Последовательность изменений <code>fulfillmentOrderStatus</code>:</p>
+        <ul>
+            <li><strong>Заказ полностью или частично выполнен:</strong> <code>Received</code> → <code>Planning</code> → <code>Processing</code> → <code>Complete</code> или <code>CompletePartialled</code></li>
+            <li><strong>Заказ невыполним:</strong> <code>Received</code> → <code>Planning</code> → <code>Unfulfillable</code></li>
+            <li><strong>Заказ отменен:</strong> <code>Received</code> → <code>Planning</code> → <code>Cancelled</code></li>
+        </ul>
+
+        <div class="note">
+            <strong>📘 Примечание:</strong> Операция <code>submitFulfillmentOrderStatusUpdate</code> предназначена только для тестирования. При использовании в production вы получите HTTP 403 ошибку.
+        </div>
+
+        <h3>Бизнес-сценарии для тестирования</h3>
+        <table>
+            <tr><th>Use case</th><th>API</th><th>Примечания</th></tr>
+            <tr><td>Preview заказа</td><td>POST .../fulfillmentOrders/preview</td><td>Показывает сборы и обещанные скорости</td></tr>
+            <tr><td>Создание заказа в HOLD или SHIP статусе</td><td>POST .../fulfillmentOrders</td><td>HOLD - резервирование до 14 дней; SHIP - отправка на обработку</td></tr>
+            <tr><td>Список деталей заказов (до 50)</td><td>GET .../fulfillmentOrders</td><td>Возвращает seller order ID</td></tr>
+            <tr><td>Детали заказа</td><td>GET .../fulfillmentOrders/{sellerFulfillmentOrderId}</td><td>Включает серийный номер, package ID, детали отправки</td></tr>
+            <tr><td>Трекинг посылки</td><td>GET .../tracking?packageNumber={packageNumber}</td><td>Номер трекинга фиктивный</td></tr>
+            <tr><td>Обновление заказа</td><td>PUT .../fulfillmentOrders/{sellerFulfillmentOrderId}</td><td>Для заказов в HOLD статусе</td></tr>
+            <tr><td>Отмена заказа</td><td>PUT .../fulfillmentOrders/{sellerFulfillmentOrderId}/cancel</td><td>Можно отменить в статусе Planning или Received</td></tr>
+        </table>
+
+        <h3>FAQ</h3>
+        <ul>
+            <li><strong>Нужны ли новые credentials для sandbox?</strong> Нет, используйте существующие production credentials.</li>
+            <li><strong>Можно ли использовать sandbox для нагрузочного тестирования?</strong> Нет, сервис предназначен для интеграционного тестирования.</li>
+            <li><strong>Можно ли просматривать sandbox заказы в Seller Central?</strong> Нет, sandbox заказы - тестовые и не видны в Seller Central.</li>
+            <li><strong>Поддерживает ли sandbox уведомления?</strong> Нет, уведомления не отправляются для sandbox заказов.</li>
+        </ul>
+    </section>
+
+    <section id="fulfillment-outbound-rate-limits">
+        <h2>2.3 Rate Limits</h2>
+        <table>
+            <tr><th>Операция</th><th>Rate limit</th><th>Burst</th></tr>
+            <tr><td><code>getFulfillmentPreview</code></td><td>2</td><td>30</td></tr>
+            <tr><td><code>deliveryOffers</code></td><td>10</td><td>30</td></tr>
+            <tr><td><code>listAllFulfillmentOrders</code></td><td>2</td><td>30</td></tr>
+            <tr><td><code>createFulfillmentOrder</code></td><td>2</td><td>30</td></tr>
+            <tr><td><code>getPackageTrackingDetails</code></td><td>2</td><td>30</td></tr>
+            <tr><td><code>listReturnReasonCodes</code></td><td>2</td><td>30</td></tr>
+            <tr><td><code>createFulfillmentReturn</code></td><td>2</td><td>30</td></tr>
+            <tr><td><code>getFulfillmentOrder</code></td><td>2</td><td>30</td></tr>
+            <tr><td><code>updateFulfillmentOrder</code></td><td>2</td><td>30</td></tr>
+            <tr><td><code>cancelFulfillmentOrder</code></td><td>2</td><td>30</td></tr>
+            <tr><td><code>getFeatures</code></td><td>2</td><td>30</td></tr>
+            <tr><td><code>getFeatureInventory</code></td><td>2</td><td>30</td></tr>
+            <tr><td><code>getFeatureSKU</code></td><td>2</td><td>30</td></tr>
+        </table>
+        <div class="note">
+            <code>submitFulfillmentOrderStatusUpdate</code> - только для sandbox, должен направляться на sandbox endpoint.
+        </div>
+    </section>
+</section>
+
+<!-- ==================== PRODUCT FEES API ==================== -->
+<section id="product-fees-api">
+    <h1>3. Product Fees API</h1>
+    <div class="metadata">
+        <strong>Путь:</strong> SELLER APIs → PRODUCT FEES API<br>
+        <strong>URL:</strong> https://developer-docs.amazon.com/sp-api/docs/product-fees-api
+    </div>
+
+    <section id="product-fees-overview">
+        <h2>3.1 Обзор API</h2>
+        <p>Product Fees API используется для получения оценочных сборов за продукт. Вы можете учитывать эти сборы при ценообразовании. Используйте операцию <code>getMyFeesEstimates</code> для получения оценок сборов для списка продуктов и маркетплейсов. Указывайте продукты по ASIN или SKU.</p>
+
+        <div class="important">
+            <strong>❗ Важно:</strong> Оценочные сборы, возвращаемые этим API, не гарантированы. Фактические сборы могут отличаться.
+        </div>
+
+        <table>
+            <tr><th>Параметр</th><th>Значение</th></tr>
+            <tr><td>Текущая версия</td><td>v0</td></tr>
+            <tr><td>Legacy версии</td><td>Нет</td></tr>
+            <tr><td>Доступность</td><td>Sellers only</td></tr>
+            <tr><td>Sandbox</td><td>Static</td></tr>
+        </table>
+
+        <h3>Примеры использования:</h3>
+        <ol>
+            <li>Получение оценки сборов для конкретного SKU</li>
+            <li>Получение оценки сборов для конкретного ASIN</li>
+            <li>Получение сборов для пакета до 20 товаров</li>
+        </ol>
+
+        <h3>Операции API</h3>
+        <table>
+            <tr><th>Операция</th><th>Регионы</th><th>Требуемые роли (минимум одна)</th></tr>
+            <tr><td><code>getMyFeesEstimateForASIN</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment, Buyer Communication, Buyer Solicitation, Finance and Accounting, Inventory and Order Tracking, Pricing, Product Listing, Professional Services, Selling Partner Insights, Direct to Consumer Shipping, Tax Invoicing, Tax Remittance</td></tr>
+            <tr><td><code>getMyFeesEstimateForSKU</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment, Buyer Communication, Buyer Solicitation, Finance and Accounting, Inventory and Order Tracking, Pricing, Product Listing, Professional Services, Selling Partner Insights, Direct to Consumer Shipping, Tax Invoicing, Tax Remittance</td></tr>
+            <tr><td><code>getMyFeesEstimates</code></td><td>NA, EU, FE</td><td>Pricing, Product Listing</td></tr>
+        </table>
+    </section>
+
+    <section id="product-fees-batch">
+        <h2>3.2 Batch запросы</h2>
+        <p>Операция <code>getMyFeesEstimates</code> позволяет отправить до 20 запросов продуктов в одном пакете.</p>
+
+        <h3>Предварительные требования:</h3>
+        <ul>
+            <li>Авторизация от продавца</li>
+            <li>Роль <strong>Pricing and Product Listing</strong> в профиле разработчика</li>
+            <li>Роль <strong>Pricing and Product Listing</strong> выбрана на странице регистрации приложения</li>
+        </ul>
+
+        <h3>Объекты FeesEstimateByIdRequest</h3>
+        <p>Для отправки 20 запросов в одном API вызове создайте массив с до 20 объектами <code>FeesEstimateByIdRequest</code>.</p>
+    </section>
+
+    <section id="product-fees-rate-limits">
+        <h2>3.3 Rate Limits</h2>
+        <table>
+            <tr><th>Операция</th><th>Rate limit</th><th>Burst</th></tr>
+            <tr><td><code>getMyFeesEstimateForSKU</code></td><td>1</td><td>2</td></tr>
+            <tr><td><code>getMyFeesEstimateForASIN</code></td><td>1</td><td>2</td></tr>
+            <tr><td><code>getMyFeesEstimates</code></td><td>0.5</td><td>1</td></tr>
+        </table>
+    </section>
+</section>
+
+<!-- ==================== FINANCES API ==================== -->
+<section id="finances-api">
+    <h1>4. Finances API</h1>
+    <div class="metadata">
+        <strong>Путь:</strong> SELLER APIs → FINANCES<br>
+        <strong>URL:</strong> https://developer-docs.amazon.com/sp-api/docs/finances-api
+    </div>
+
+    <section id="finances-overview">
+        <h2>4.1 Обзор API</h2>
+        <p>Finances API используется для получения финансовой информации, релевантной для бизнеса продавца. Вы можете получать финансовые события для указанного заказа или диапазона дат без необходимости ждать закрытия периода выписки.</p>
+
+        <table>
+            <tr><th>Параметр</th><th>Значение</th></tr>
+            <tr><td>Текущая версия</td><td>v2024-06-19</td></tr>
+            <tr><td>Legacy версии</td><td>v0</td></tr>
+            <tr><td>Доступность</td><td>Sellers only</td></tr>
+            <tr><td>Sandbox</td><td>Static</td></tr>
+        </table>
+
+        <h3>Примеры использования:</h3>
+        <ul>
+            <li>Получение последних транзакций</li>
+            <li>Определение транзакций, составляющих платеж</li>
+            <li>Получение суммы и статуса платежа</li>
+            <li>Получение текущего баланса</li>
+            <li>Получение финансовых событий группы</li>
+        </ul>
+
+        <h3>Операции API</h3>
+        <table>
+            <tr><th>Операция</th><th>Регионы</th><th>Требуемые роли</th></tr>
+            <tr><td><code>listTransactions</code></td><td>NA, EU, FE</td><td>Finance and Accounting</td></tr>
+            <tr><td><code>listFinancialEventGroups</code></td><td>NA, EU, FE</td><td>Account Information Service Provider (EU only), Finance and Accounting</td></tr>
+            <tr><td><code>listFinancialEvents</code></td><td>NA, EU, FE</td><td>Account Information Service Provider (EU only), Amazon Fulfillment (NA, FE only), Finance and Accounting</td></tr>
+            <tr><td><code>listFinancialEventsByGroupId</code></td><td>NA, EU, FE</td><td>Account Information Service Provider (EU only), Finance and Accounting</td></tr>
+            <tr><td><code>listFinancialEventsByOrderId</code></td><td>NA, EU, FE</td><td>Finance and Accounting</td></tr>
+        </table>
+    </section>
+
+    <section id="finances-reference">
+        <h2>4.2 API Reference v2024-06-19</h2>
+        
+        <h3>Информация о версии</h3>
+        <ul>
+            <li><strong>Версия:</strong> 2024-06-19</li>
+            <li><strong>Host:</strong> sellingpartnerapi-na.amazon.com</li>
+            <li><strong>Schemes:</strong> HTTPS</li>
+            <li><strong>Consumes/Produces:</strong> application/json</li>
+            <li><strong>License:</strong> Apache License 2.0</li>
+        </ul>
+
+        <h3>Операция listTransactions</h3>
+        <p>Возвращает транзакции для заданных параметров. Финансовые события могут не включать заказы за последние 48 часов.</p>
+
+        <h4>Usage Plan:</h4>
+        <ul>
+            <li>Rate: 0.5 запросов/секунду</li>
+            <li>Burst: 10</li>
+        </ul>
+
+        <h4>Query Parameters:</h4>
+        <table>
+            <tr><th>Параметр</th><th>Описание</th><th>Тип</th></tr>
+            <tr><td><code>postedAfter</code></td><td>Дата для событий, опубликованных после (ISO 8601). Должна быть >2 минут до запроса.</td><td>string (date-time)</td></tr>
+            <tr><td><code>postedBefore</code></td><td>Дата для транзакций до указанного времени. Макс. 180 дней от postedAfter.</td><td>string (date-time)</td></tr>
+            <tr><td><code>marketplaceId</code></td><td>ID маркетплейса</td><td>string</td></tr>
+            <tr><td><code>transactionStatus</code></td><td>Статус транзакции</td><td>string</td></tr>
+            <tr><td><code>relatedIdentifierName</code></td><td>Имя связанного идентификатора</td><td>enum</td></tr>
+            <tr><td><code>relatedIdentifierValue</code></td><td>Значение связанного идентификатора</td><td>string</td></tr>
+            <tr><td><code>nextToken</code></td><td>Токен для пагинации</td><td>string</td></tr>
+        </table>
+
+        <h4>Допустимые значения transactionStatus:</h4>
+        <ul>
+            <li><code>DEFERRED</code> - Транзакция отложена</li>
+            <li><code>RELEASED</code> - Транзакция выпущена</li>
+            <li><code>DEFERRED_RELEASED</code> - Была отложена, теперь выпущена</li>
+        </ul>
+
+        <h4>Коды ошибок:</h4>
+        <table>
+            <tr><th>HTTP Code</th><th>Описание</th></tr>
+            <tr><td>200</td><td>Успех</td></tr>
+            <tr><td>400</td><td>Неверные/отсутствующие параметры</td></tr>
+            <tr><td>403</td><td>Доступ запрещен</td></tr>
+            <tr><td>404</td><td>Ресурс не найден</td></tr>
+            <tr><td>413</td><td>Превышен размер запроса</td></tr>
+            <tr><td>415</td><td>Неподдерживаемый формат</td></tr>
+            <tr><td>429</td><td>Превышен rate limit</td></tr>
+            <tr><td>500</td><td>Ошибка сервера</td></tr>
+            <tr><td>503</td><td>Временные проблемы сервера</td></tr>
+        </table>
+
+        <h3>Структуры ответа</h3>
+        
+        <h4>Transaction:</h4>
+        <ul>
+            <li><code>sellingPartnerMetadata</code> - Метаданные продавца (ID, тип аккаунта, marketplace ID)</li>
+            <li><code>relatedIdentifiers</code> - Бизнес-идентификаторы (ORDER_ID, FINANCIAL_EVENT_GROUP_ID)</li>
+            <li><code>transactionType</code> - Тип (например, "Shipment")</li>
+            <li><code>transactionId</code> - Уникальный идентификатор</li>
+            <li><code>transactionStatus</code> - DEFERRED, RELEASED, DEFERRED_RELEASED</li>
+            <li><code>description</code> - Причина (например, "Order Payment")</li>
+            <li><code>postedDate</code> - ISO 8601 timestamp</li>
+            <li><code>totalAmount</code> - Объект Currency (сумма, код валюты)</li>
+            <li><code>marketplaceDetails</code> - Информация о маркетплейсе</li>
+            <li><code>items</code> - Массив Item</li>
+            <li><code>breakdowns</code> - Массив Breakdown</li>
+        </ul>
+
+        <h4>RelatedIdentifierName (enum):</h4>
+        <ul>
+            <li><code>ORDER_ID</code></li>
+            <li><code>FINANCIAL_EVENT_GROUP_ID</code></li>
+            <li><code>REFUND_ID</code></li>
+            <li><code>TRANSFER_ID</code></li>
+            <li>и другие транзакционные идентификаторы</li>
+        </ul>
+    </section>
+
+    <section id="finances-rate-limits">
+        <h2>4.3 Rate Limits</h2>
+        
+        <h3>v2024-06-19</h3>
+        <table>
+            <tr><th>Операция</th><th>Rate limit</th><th>Burst</th></tr>
+            <tr><td><code>listTransactions</code></td><td>0.5</td><td>10</td></tr>
+        </table>
+
+        <h3>Legacy v0</h3>
+        <table>
+            <tr><th>Операция</th><th>Rate limit</th><th>Burst</th></tr>
+            <tr><td><code>listFinancialEventGroups</code></td><td>0.5</td><td>30</td></tr>
+            <tr><td><code>listFinancialEventsByGroupId</code></td><td>0.5</td><td>30</td></tr>
+            <tr><td><code>listFinancialEventsByOrderId</code></td><td>0.5</td><td>30</td></tr>
+            <tr><td><code>listFinancialEvents</code></td><td>0.5</td><td>30</td></tr>
+        </table>
+    </section>
+</section>
+
+<!-- ==================== TRANSFERS API ==================== -->
+<section id="transfers-api">
+    <h1>5. Transfers API</h1>
+    <div class="metadata">
+        <strong>Путь:</strong> SELLER APIs → FINANCES → TRANSFERS API<br>
+        <strong>URL:</strong> https://developer-docs.amazon.com/sp-api/docs/transfers-api
+    </div>
+
+    <section id="transfers-overview">
+        <h2>5.1 Обзор API</h2>
+        <p>Transfers API используется для инициирования выплат на метод депозита продавца и получения информации о платежных инструментах, связанных с продавцом.</p>
+
+        <h3>Поддерживаемые маркетплейсы:</h3>
+        <ul>
+            <li>Испания</li>
+            <li>Франция</li>
+            <li>Бельгия</li>
+            <li>Нидерланды</li>
+            <li>Германия</li>
+            <li>Италия</li>
+            <li>Швеция</li>
+            <li>Польша</li>
+        </ul>
+
+        <table>
+            <tr><th>Параметр</th><th>Значение</th></tr>
+            <tr><td>Текущая версия</td><td>v2024-06-01</td></tr>
+            <tr><td>Legacy версии</td><td>Нет</td></tr>
+            <tr><td>Доступность</td><td>Sellers only</td></tr>
+            <tr><td>Sandbox</td><td>Static</td></tr>
+        </table>
+
+        <h3>Операции API</h3>
+        <table>
+            <tr><th>Операция</th><th>Регионы</th><th>Требуемые роли</th></tr>
+            <tr><td><code>getPaymentMethods</code></td><td>EU</td><td>Account Information Service Provider, Finance and Accounting, Payment Initiation Service Provider</td></tr>
+            <tr><td><code>initiatePayout</code></td><td>EU</td><td>Finance and Accounting, Payment Initiation Service Provider</td></tr>
+        </table>
+    </section>
+
+    <section id="transfers-rate-limits">
+        <h2>5.2 Rate Limits</h2>
+        <table>
+            <tr><th>Операция</th><th>Rate limit</th><th>Burst</th></tr>
+            <tr><td><code>initiatePayout</code></td><td>0.017</td><td>2</td></tr>
+            <tr><td><code>getPaymentMethods</code></td><td>0.5</td><td>30</td></tr>
+        </table>
+    </section>
+</section>
+
+<!-- ==================== MESSAGING API ==================== -->
+<section id="messaging-api">
+    <h1>6. Messaging API</h1>
+    <div class="metadata">
+        <strong>Путь:</strong> SELLER APIs → MESSAGING API<br>
+        <strong>URL:</strong> https://developer-docs.amazon.com/sp-api/docs/messaging-api
+    </div>
+
+    <section id="messaging-overview">
+        <h2>6.1 Обзор API</h2>
+        <p>Messaging API используется для отправки сообщений покупателям.</p>
+
+        <table>
+            <tr><th>Параметр</th><th>Значение</th></tr>
+            <tr><td>Текущая версия</td><td>v1</td></tr>
+            <tr><td>Legacy версии</td><td>Нет</td></tr>
+            <tr><td>Доступность</td><td>Sellers only</td></tr>
+            <tr><td>Sandbox</td><td>Static</td></tr>
+        </table>
+
+        <h3>Доступность сообщений</h3>
+        <p>Не все типы сообщений доступны во всех обстоятельствах. Доступность зависит от:</p>
+        <ul>
+            <li>Выполнен ли заказ</li>
+            <li>Тип продавца</li>
+            <li>Количество уже отправленных сообщений для заказа</li>
+        </ul>
+
+        <h3>Workflow отправки сообщения</h3>
+        <ol>
+            <li><strong>Отображение недавних заказов:</strong> Приложение показывает недавние заказы продавца</li>
+            <li><strong>Получение доступных типов сообщений:</strong> Вызов <code>getMessagingActionsForOrder</code></li>
+            <li><strong>Выбор типа сообщения:</strong> Продавец выбирает тип</li>
+            <li><strong>Ввод пользовательского сообщения:</strong> Если поддерживается</li>
+            <li><strong>Обработка вложений:</strong>
+                <ul>
+                    <li>Вычисление Content-MD5 хеша</li>
+                    <li>Использование <code>createUploadDestination</code> (Uploads API)</li>
+                    <li>Загрузка файла в сгенерированное место назначения</li>
+                </ul>
+            </li>
+            <li><strong>Запрос доставки сообщения:</strong> Вызов соответствующей операции</li>
+            <li><strong>Доставка сообщения:</strong> Amazon отправляет email покупателю</li>
+        </ol>
+
+        <h3>Типы сообщений и операции</h3>
+        <table>
+            <tr><th>Операция</th><th>Регионы</th><th>Требуемые роли</th></tr>
+            <tr><td><code>confirmCustomizationDetails</code></td><td>NA, EU, FE</td><td>Buyer Communication</td></tr>
+            <tr><td><code>CreateAmazonMotors</code></td><td>NA, EU, FE</td><td>Amazon Fulfillment, Buyer Communication</td></tr>
+            <tr><td><code>createConfirmDeliveryDetails</code></td><td>NA, EU, FE</td><td>Buyer Communication</td></tr>
+            <tr><td><code>createConfirmOrderDetails</code></td><td>NA, EU, FE</td><td>Buyer Communication</td></tr>
+            <tr><td><code>createConfirmServiceDetails</code></td><td>NA, EU, FE</td><td>Buyer Communication</td></tr>
+            <tr><td><code>createDigitalAccessKey</code></td><td>NA, EU, FE</td><td>Buyer Communication</td></tr>
+            <tr><td><code>createLegalDisclosure</code></td><td>NA, EU, FE</td><td>Buyer Communication</td></tr>
+            <tr><td><code>createUnexpectedProblem</code></td><td>NA, FE</td><td>Buyer Communication</td></tr>
+            <tr><td><code>createWarranty</code></td><td>NA, EU, FE</td><td>Buyer Communication</td></tr>
+            <tr><td><code>GetAttributes</code></td><td>NA, EU, FE</td><td>Buyer Communication</td></tr>
+            <tr><td><code>getMessagingActionsForOrder</code></td><td>NA, EU, FE</td><td>Buyer Communication</td></tr>
+            <tr><td><code>sendInvoice</code></td><td>NA, EU, FE</td><td>Buyer Communication</td></tr>
+        </table>
+    </section>
+
+    <section id="messaging-rate-limits">
+        <h2>6.2 Rate Limits</h2>
+        <table>
+            <tr><th>Операция</th><th>Rate limit</th><th>Burst</th></tr>
+            <tr><td><code>getMessagingActionsForOrder</code></td><td>1</td><td>5</td></tr>
+            <tr><td><code>confirmCustomizationDetails</code></td><td>1</td><td>5</td></tr>
+            <tr><td><code>createConfirmDeliveryDetails</code></td><td>1</td><td>5</td></tr>
+            <tr><td><code>createLegalDisclosure</code></td><td>1</td><td>5</td></tr>
+            <tr><td><code>createNegativeFeedbackRemoval</code></td><td>1</td><td>5</td></tr>
+            <tr><td><code>createConfirmOrderDetails</code></td><td>1</td><td>5</td></tr>
+            <tr><td><code>createConfirmServiceDetails</code></td><td>1</td><td>5</td></tr>
+            <tr><td><code>CreateAmazonMotors</code></td><td>1</td><td>5</td></tr>
+            <tr><td><code>CreateWarranty</code></td><td>1</td><td>5</td></tr>
+            <tr><td><code>GetAttributes</code></td><td>1</td><td>5</td></tr>
+            <tr><td><code>createDigitalAccessKey</code></td><td>1</td><td>5</td></tr>
+            <tr><td><code>createUnexpectedProblem</code></td><td>1</td><td>5</td></tr>
+            <tr><td><code>sendInvoice</code></td><td>1</td><td>5</td></tr>
+        </table>
+    </section>
+</section>
+
+<!-- ==================== SOLICITATIONS API ==================== -->
+<section id="solicitations-api">
+    <h1>7. Solicitations API</h1>
+    <div class="metadata">
+        <strong>Путь:</strong> SELLER APIs → SOLICITATIONS API<br>
+        <strong>URL:</strong> https://developer-docs.amazon.com/sp-api/docs/solicitations-api
+    </div>
+
+    <section id="solicitations-overview">
+        <h2>7.1 Обзор API</h2>
+        <p>Solicitations API используется для отправки некритичных запросов покупателям. Вы можете запросить отзыв о продукте и обратную связь о продавце, отправив одно шаблонное письмо.</p>
+
+        <table>
+            <tr><th>Параметр</th><th>Значение</th></tr>
+            <tr><td>Текущая версия</td><td>v1</td></tr>
+            <tr><td>Legacy версии</td><td>Нет</td></tr>
+            <tr><td>Доступность</td><td>Sellers only</td></tr>
+            <tr><td>Sandbox</td><td>Static</td></tr>
+        </table>
+
+        <h3>Примеры использования:</h3>
+        <ul>
+            <li>Настройка Solicitations API перед запросом обратной связи</li>
+            <li>Запрос отзыва о продукте и обратной связи о продавце для заказа</li>
+        </ul>
+
+        <h3>Операции API</h3>
+        <table>
+            <tr><th>Операция</th><th>Регионы</th><th>Требуемые роли</th></tr>
+            <tr><td><code>createProductReviewAndSellerFeedbackSolicitation</code></td><td>NA, EU, FE</td><td>Buyer Solicitation, Product Listing</td></tr>
+            <tr><td><code>getSolicitationActionsForOrder</code></td><td>NA, EU, FE</td><td>Buyer Solicitation, Product Listing</td></tr>
+        </table>
+    </section>
+
+    <section id="solicitations-setup">
+        <h2>7.2 Настройка API</h2>
+        
+        <h3>Предварительные требования:</h3>
+        <ul>
+            <li>Авторизация от продавца</li>
+            <li>Роль <strong>Buyer Solicitation</strong> или <strong>Product Listing</strong> в профиле разработчика</li>
+            <li>Роль <strong>Buyer Solicitation</strong> или <strong>Product Listing</strong> выбрана на странице регистрации приложения</li>
+        </ul>
+
+        <h3>ORDER_CHANGE Notification</h3>
+        <p>Подпишитесь на уведомление ORDER_CHANGE для отслеживания изменений статуса заказа.</p>
+
+        <h3>Параметр OrderStatus</h3>
+        <p>Используйте Amazon SQS для валидации параметра <code>OrderStatus</code>. Проверьте, что значение изменилось на <strong>Shipped</strong>.</p>
+
+        <h3>Параметры EarliestDeliveryDate и LatestDeliveryDate</h3>
+        <div class="important">
+            <strong>Важно:</strong> Вы можете запросить отзыв в временном окне от <strong>5 дней после EarliestDeliveryDate</strong> до <strong>30 дней после LatestDeliveryDate</strong>. Вызов API вне этого окна может привести к неожиданным ошибкам.
+        </div>
+
+        <h3>Хранение ключевых идентификаторов</h3>
+        <p>Архивируйте или кэшируйте параметры <code>amazonOrderId</code> и <code>MarketplaceId</code>. Эти идентификаторы необходимы для запроса отзывов в будущем.</p>
+
+        <h3>Краткое описание workflow:</h3>
+        <ol>
+            <li>Подписка на уведомление ORDER_CHANGE</li>
+            <li>Валидация параметра OrderStatus</li>
+            <li>Проверка параметров EarliestDeliveryDate и LatestDeliveryDate</li>
+            <li>Хранение ключевых идентификаторов (amazonOrderId, MarketplaceId)</li>
+        </ol>
+    </section>
+
+    <section id="solicitations-rate-limits">
+        <h2>7.3 Rate Limits</h2>
+        <table>
+            <tr><th>Операция</th><th>Rate limit</th><th>Burst</th></tr>
+            <tr><td><code>getSolicitationActionsForOrder</code></td><td>1</td><td>5</td></tr>
+            <tr><td><code>createProductReviewAndSellerFeedbackSolicitation</code></td><td>1</td><td>5</td></tr>
+        </table>
+    </section>
+</section>
+
+<!-- ==================== SALES API ==================== -->
+<section id="sales-api">
+    <h1>8. Sales API</h1>
+    <div class="metadata">
+        <strong>Путь:</strong> SELLER APIs → Sales API<br>
+        <strong>Версия:</strong> v1<br>
+        <strong>Доступность:</strong> Sellers only<br>
+        <strong>Sandbox:</strong> Static
+    </div>
+
+    <section id="sales-api-overview">
+        <h2>8.1 Обзор</h2>
+        <p>Sales API используется для получения информации о показателях продаж. Вы можете получить агрегированные метрики заказов за определенный период времени с разбивкой по гранулярности и типу покупателя.</p>
+        
+        <h3>Основные возможности</h3>
+        <ul>
+            <li>Получение агрегированных метрик заказов за заданный интервал</li>
+            <li>Разбивка данных по гранулярности (день, неделя, месяц)</li>
+            <li>Фильтрация по типу покупателя</li>
+        </ul>
+
+        <h3>Use Case</h3>
+        <p><strong>Receive sales performance information:</strong> Вызовите операцию <code>getOrderMetrics</code> для получения агрегированных метрик заказов за заданный интервал.</p>
+    </section>
+
+    <section id="sales-api-operations">
+        <h2>8.2 Операции</h2>
+        
+        <div class="api-operation">
+            <h3>getOrderMetrics</h3>
+            <p>Получение агрегированных метрик заказов.</p>
+            <table>
+                <tr><th>Атрибут</th><th>Значение</th></tr>
+                <tr><td>Регионы</td><td>NA, EU, FE (кроме отмеченных)</td></tr>
+                <tr><td>Требуемые роли (минимум одна)</td><td>
+                    Amazon Fulfillment (FE only), Buyer Communication (FE only), Buyer Solicitation (FE only), 
+                    Finance and Accounting (FE only), Inventory and Order Tracking, Pricing (FE only), 
+                    Product Listing, Professional Services (Restricted) (FE only), Selling Partner Insights (FE only), 
+                    Direct to Consumer Shipping (Restricted) (FE only), Tax Invoicing (Restricted) (FE only), 
+                    Tax Remittance (Restricted) (FE only)
+                </td></tr>
+            </table>
+        </div>
+    </section>
+
+    <section id="sales-api-rate-limits">
+        <h2>8.3 Rate Limits</h2>
+        <p>Лимиты запросов зависят от нескольких факторов. Отдельная операция может иметь несколько лимитов. Запросы ограничиваются по первому достигнутому порогу.</p>
+        
+        <div class="note">
+            <strong>📘 Примечание:</strong> Заголовок ответа <code>x-amzn-RateLimit-Limit</code>, если доступен, указывает лимиты операции для пары аккаунт-приложение.
+        </div>
+
+        <table>
+            <tr><th>Операция</th><th>Rate limit (запросов/сек)</th><th>Burst (запросов)</th></tr>
+            <tr><td><code>getOrderMetrics</code></td><td>0.5</td><td>15</td></tr>
+        </table>
+    </section>
+</section>
+
+<!-- ==================== SELLERS API ==================== -->
+<section id="sellers-api">
+    <h1>9. Sellers API</h1>
+    <div class="metadata">
+        <strong>Путь:</strong> SELLER APIs → Sellers API<br>
+        <strong>Версия:</strong> v1<br>
+        <strong>Доступность:</strong> Sellers only<br>
+        <strong>Sandbox:</strong> Static
+    </div>
+
+    <section id="sellers-api-overview">
+        <h2>9.1 Обзор</h2>
+        <p>Sellers API используется для получения важной информации об аккаунтах продавцов и маркетплейсах. Возвращаемая информация включает:</p>
+        <ul>
+            <li>Маркетплейсы, на которых продавец может размещать товары</li>
+            <li>Язык и валюта маркетплейса по умолчанию</li>
+            <li>Информация о приостановленных листингах</li>
+            <li>Бизнес-информация продавца</li>
+        </ul>
+
+        <h3>Use Cases</h3>
+        <ul>
+            <li><strong>Get the account information of a seller:</strong> Получение информации об аккаунте продавца на маркетплейсе EU, включая участие в маркетплейсах, бизнес-информацию и детали плана продаж.</li>
+            <li><strong>Get the market participation of a seller:</strong> Получение списка маркетплейсов Amazon, на которых продавец может размещать товары.</li>
+        </ul>
+    </section>
+
+    <section id="sellers-api-operations">
+        <h2>9.2 Операции</h2>
+        
+        <div class="api-operation">
+            <h3>getAccount</h3>
+            <p>Получение информации об аккаунте продавца.</p>
+            <table>
+                <tr><th>Атрибут</th><th>Значение</th></tr>
+                <tr><td>Регионы</td><td>EU</td></tr>
+                <tr><td>Требуемые роли</td><td>Account Information Service Provider, Finance and Accounting</td></tr>
+            </table>
+        </div>
+
+        <div class="api-operation">
+            <h3>getMarketplaceParticipations</h3>
+            <p>Получение списка маркетплейсов, в которых участвует продавец.</p>
+            <table>
+                <tr><th>Атрибут</th><th>Значение</th></tr>
+                <tr><td>Регионы</td><td>NA, EU, FE (кроме отмеченных)</td></tr>
+                <tr><td>Требуемые роли</td><td>
+                    Amazon Fulfillment (FE only), Buyer Communication (FE only), Finance and Accounting (FE only), 
+                    Inventory and Order Tracking (FE only), Pricing (FE only), Product Listing, 
+                    Selling Partner Insights, Direct to Consumer Shipping (Restricted) (FE only)
+                </td></tr>
+            </table>
+        </div>
+    </section>
+
+    <section id="sellers-api-rate-limits">
+        <h2>9.3 Rate Limits</h2>
+        <table>
+            <tr><th>Операция</th><th>Rate limit (запросов/сек)</th><th>Burst (запросов)</th></tr>
+            <tr><td><code>getMarketplaceParticipations</code></td><td>0.016</td><td>15</td></tr>
+            <tr><td><code>getAccount</code></td><td>0.5</td><td>30</td></tr>
+        </table>
+    </section>
+</section>
+
+<!-- ==================== SERVICES API ==================== -->
+<section id="services-api">
+    <h1>10. Services API</h1>
+    <div class="metadata">
+        <strong>Путь:</strong> SELLER APIs → Services API<br>
+        <strong>Версия:</strong> v1<br>
+        <strong>Доступность:</strong> Sellers only<br>
+        <strong>Sandbox:</strong> Static
+    </div>
+
+    <section id="services-api-overview">
+        <h2>10.1 Обзор</h2>
+        <p>Services API используется для получения и изменения сервисных заказов и управления ресурсами. Возможности:</p>
+        <ul>
+            <li>Доступ к деталям сервисных заданий</li>
+            <li>Подтверждение или перенос встреч</li>
+            <li>Назначение ресурсов для встреч</li>
+            <li>Установка данных выполнения заданий</li>
+            <li>Управление расписаниями ресурсов для доступности встреч</li>
+            <li>Интеграция данных сервисов для планирования маршрутов и выполнения</li>
+        </ul>
+
+        <h3>Категории операций</h3>
+        
+        <h4>1. Получение данных сервисных заданий</h4>
+        <ul>
+            <li><code>getServiceJobs</code></li>
+            <li><code>getServiceJobByServiceJobId</code></li>
+        </ul>
+
+        <h4>2. Установка встреч и назначение ресурсов</h4>
+        <ul>
+            <li><code>addAppointmentForServiceJobByServiceJobId</code></li>
+            <li><code>rescheduleAppointmentForServiceJobByServiceJobId</code></li>
+            <li><code>assignAppointmentResources</code></li>
+        </ul>
+
+        <h4>3. Закрытие сервисных заданий</h4>
+        <ul>
+            <li><code>setAppointmentFulfillmentData</code></li>
+            <li><code>createServiceDocumentUploadDestination</code></li>
+            <li><code>completeServiceJobByServiceJobId</code></li>
+            <li><code>cancelServiceJobByServiceJobId</code></li>
+        </ul>
+
+        <h4>4. Управление расписаниями ресурсов</h4>
+        <ul>
+            <li><code>updateSchedule</code></li>
+            <li><code>createReservation</code></li>
+            <li><code>updateReservation</code></li>
+            <li><code>cancelReservation</code></li>
+        </ul>
+    </section>
+
+    <section id="services-api-operations">
+        <h2>10.2 Операции</h2>
+        
+        <table>
+            <tr><th>Операция</th><th>Регионы</th><th>Требуемые роли</th></tr>
+            <tr><td><code>getServiceJobByServiceJobId</code></td><td>NA, EU, FE</td><td>Professional Services (Restricted)</td></tr>
+            <tr><td><code>cancelServiceJobByServiceJobId</code></td><td>NA, EU, FE</td><td>Professional Services (Restricted)</td></tr>
+            <tr><td><code>completeServiceJobByServiceJobId</code></td><td>NA, EU, FE</td><td>Professional Services (Restricted)</td></tr>
+            <tr><td><code>getServiceJobs</code></td><td>NA, EU, FE</td><td>Professional Services (Restricted)</td></tr>
+            <tr><td><code>addAppointmentForServiceJobByServiceJobId</code></td><td>NA, EU, FE</td><td>Professional Services (Restricted)</td></tr>
+            <tr><td><code>rescheduleAppointmentForServiceJobByServiceJobId</code></td><td>NA, EU, FE</td><td>Professional Services (Restricted)</td></tr>
+            <tr><td><code>assignAppointmentResources</code></td><td>NA, EU, FE</td><td>Professional Services (Restricted)</td></tr>
+            <tr><td><code>setAppointmentFulfillmentData</code></td><td>NA, EU, FE</td><td>Professional Services (Restricted)</td></tr>
+            <tr><td><code>getRangeSlotCapacity</code></td><td>NA, EU, FE</td><td>Professional Services (Restricted)</td></tr>
+            <tr><td><code>getFixedSlotCapacity</code></td><td>NA, EU, FE</td><td>Professional Services (Restricted)</td></tr>
+            <tr><td><code>updateSchedule</code></td><td>NA, EU, FE</td><td>Professional Services (Restricted)</td></tr>
+            <tr><td><code>createReservation</code></td><td>NA, EU, FE</td><td>Professional Services (Restricted)</td></tr>
+            <tr><td><code>updateReservation</code></td><td>NA, EU, FE</td><td>Professional Services (Restricted)</td></tr>
+            <tr><td><code>cancelReservation</code></td><td>NA, EU, FE</td><td>Professional Services (Restricted)</td></tr>
+            <tr><td><code>getAppointmmentSlotsByJobId</code></td><td>NA, EU, FE</td><td>Professional Services (Restricted)</td></tr>
+            <tr><td><code>getAppointmentSlots</code></td><td>NA, EU, FE</td><td>Professional Services (Restricted)</td></tr>
+            <tr><td><code>createServiceDocumentUploadDestination</code></td><td>NA, EU, FE</td><td>Professional Services (Restricted)</td></tr>
+        </table>
+    </section>
+
+    <section id="services-api-rate-limits">
+        <h2>10.3 Rate Limits</h2>
+        <table>
+            <tr><th>Операция</th><th>Rate limit (запросов/сек)</th><th>Burst (запросов)</th></tr>
+            <tr><td><code>getServiceJobByServiceJobId</code></td><td>20</td><td>40</td></tr>
+            <tr><td><code>cancelServiceJobByServiceJobId</code></td><td>5</td><td>20</td></tr>
+            <tr><td><code>completeServiceJobByServiceJobId</code></td><td>5</td><td>20</td></tr>
+            <tr><td><code>getServiceJobs</code></td><td>10</td><td>40</td></tr>
+            <tr><td><code>addAppointmentForServiceJobByServiceJobId</code></td><td>5</td><td>20</td></tr>
+            <tr><td><code>rescheduleAppointmentForServiceJobByServiceJobId</code></td><td>5</td><td>20</td></tr>
+            <tr><td><code>assignAppointmentResources</code></td><td>5</td><td>20</td></tr>
+            <tr><td><code>setAppointmentFulfillmentData</code></td><td>5</td><td>20</td></tr>
+            <tr><td><code>getRangeSlotCapacity</code></td><td>5</td><td>20</td></tr>
+            <tr><td><code>getFixedSlotCapacity</code></td><td>5</td><td>20</td></tr>
+            <tr><td><code>updateSchedule</code></td><td>5</td><td>20</td></tr>
+            <tr><td><code>createReservation</code></td><td>5</td><td>20</td></tr>
+            <tr><td><code>updateReservation</code></td><td>5</td><td>20</td></tr>
+            <tr><td><code>cancelReservation</code></td><td>5</td><td>20</td></tr>
+            <tr><td><code>getAppointmmentSlotsByJobId</code></td><td>5</td><td>20</td></tr>
+            <tr><td><code>getAppointmentSlots</code></td><td>5</td><td>20</td></tr>
+            <tr><td><code>createServiceDocumentUploadDestination</code></td><td>5</td><td>20</td></tr>
+        </table>
+    </section>
+</section>
+
+<!-- ==================== SUPPLY SOURCES API ==================== -->
+<section id="supply-sources-api">
+    <h1>11. Supply Sources API</h1>
+    <div class="metadata">
+        <strong>Путь:</strong> SELLER APIs → Supply Sources API<br>
+        <strong>Версия:</strong> v2020-07-01<br>
+        <strong>Доступность:</strong> Sellers only<br>
+        <strong>Sandbox:</strong> Static
+    </div>
+
+    <section id="supply-sources-api-overview">
+        <h2>11.1 Обзор</h2>
+        <p>Supply Sources API используется для управления конфигурациями и возможностями источников поставок продавца. С помощью этого API продавцы могут обновлять информацию о существующих источниках поставок и предоставлять инвентарь на уровне локации.</p>
+
+        <div class="warning">
+            <strong>🚧 Внимание:</strong> Перед использованием Supply Sources API аккаунт продавца должен быть подключен к <strong>Multi-Location Inventory (MLI)</strong>.
+        </div>
+
+        <h3>Ограничения MLI</h3>
+        <p>MLI в настоящее время недоступен для:</p>
+        <ul>
+            <li>Продавцов, участвующих в программе Buy Online Pickup in Store (BOPIS)</li>
+            <li>Продавцов, использующих FBA inventory</li>
+            <li>Продавцов, управляющих инвентарем через Seller Central</li>
+        </ul>
+
+        <h3>Шаги использования Supply Sources API</h3>
+        <ol>
+            <li>Создайте новые или обновите существующие источники поставок через Supply Sources API или Seller Central UI</li>
+            <li>Предоставьте инвентарь для конкретной локации через API</li>
+            <li>Создайте или определите существующие шаблоны, разрешенные Shipping Settings Automation (SSA)</li>
+            <li>Назначьте шаблон доставки SKU, для которых добавлен инвентарь по локации</li>
+            <li>Установите DEFAULT inventory channel в 0</li>
+            <li>Добавьте роль Selling Partner Insights в профиль разработчика</li>
+        </ol>
+
+        <h3>Use Cases</h3>
+        <ul>
+            <li><strong>Configure a new supply source:</strong> Добавление нового источника поставок</li>
+            <li><strong>Configure the status of an existing supply source:</strong> Установка статуса магазина</li>
+            <li><strong>Retrieve the details of a configured supply source:</strong> Получение источника поставок</li>
+            <li><strong>Update an existing supply source:</strong> Обновление источника поставок</li>
+        </ul>
+    </section>
+
+    <section id="supply-sources-api-operations">
+        <h2>11.2 Операции</h2>
+        
+        <table>
+            <tr><th>Операция</th><th>Метод</th><th>Описание</th><th>Регионы</th><th>Требуемые роли</th></tr>
+            <tr><td><code>getSupplySources</code></td><td>GET</td><td>Получение списка источников поставок</td><td>NA, EU, FE</td><td>Selling Partner Insights</td></tr>
+            <tr><td><code>createSupplySource</code></td><td>POST</td><td>Создание нового источника поставок</td><td>NA, EU, FE</td><td>Selling Partner Insights</td></tr>
+            <tr><td><code>getSupplySource</code></td><td>GET</td><td>Получение конкретного источника поставок</td><td>NA, EU, FE</td><td>Selling Partner Insights</td></tr>
+            <tr><td><code>updateSupplySource</code></td><td>PUT</td><td>Обновление источника поставок</td><td>NA, EU, FE</td><td>Selling Partner Insights</td></tr>
+            <tr><td><code>archiveSupplySource</code></td><td>DELETE</td><td>Архивирование источника поставок</td><td>NA, EU, FE</td><td>Selling Partner Insights</td></tr>
+            <tr><td><code>updateSupplySourceStatus</code></td><td>PUT</td><td>Обновление статуса источника поставок</td><td>NA, EU, FE</td><td>Selling Partner Insights</td></tr>
+        </table>
+    </section>
+
+    <section id="supply-sources-api-rate-limits">
+        <h2>11.3 Rate Limits</h2>
+        <div class="note">
+            <strong>📘 Примечание:</strong> Информация о rate limits для Supply Sources API доступна в документации Usage Plans and Rate Limits.
+        </div>
+    </section>
+</section>
+
+<!-- ==================== DATA KIOSK API ==================== -->
+<section id="data-kiosk-api">
+    <h1>12. Data Kiosk API</h1>
+    <div class="metadata">
+        <strong>Путь:</strong> SELLER APIs → Data Kiosk<br>
+        <strong>Версия:</strong> v2023-11-15<br>
+        <strong>Доступность:</strong> Sellers and Vendors<br>
+        <strong>Sandbox:</strong> Static
+    </div>
+
+    <section id="data-kiosk-api-overview">
+        <h2>12.1 Обзор</h2>
+        <p>Data Kiosk API используется для отправки GraphQL запросов для получения данных из различных схем, помогающих продавцам управлять бизнесом.</p>
+        
+        <p>Data Kiosk в настоящее время содержит <strong>Seller Sales and Traffic Data</strong>. Data Kiosk доступен глобально во всех регионах SP-API: NA, EU и FE.</p>
+
+        <h3>Ключевые особенности</h3>
+        <ul>
+            <li><strong>Детальная интерактивная документация:</strong> Все схемы данных публично доступны с интерактивным Schema Explorer</li>
+            <li><strong>Domain-based datasets:</strong> Использует GraphQL для динамической фильтрации и расширенных запросов</li>
+            <li><strong>Обновления схем:</strong> Schema-first подход с непрерывными обновлениями</li>
+            <li><strong>Формат отчетов:</strong> Вывод в формате JSONL для упрощенного парсинга</li>
+            <li><strong>Пагинация:</strong> Поддержка <code>nextToken</code> для получения больших наборов результатов</li>
+            <li><strong>Безопасность:</strong> Видимость запросов ограничена запрашивающим приложением</li>
+        </ul>
+
+        <h3>Data Kiosk vs Reports API</h3>
+        <ul>
+            <li><strong>Документация:</strong> Data Kiosk предоставляет интерактивные конструкторы запросов</li>
+            <li><strong>Функциональность:</strong> Data Kiosk позволяет динамическую эволюцию схем и расширенную фильтрацию</li>
+            <li><strong>Deprecation:</strong> Reports API будет устаревшим после миграции на Data Kiosk</li>
+        </ul>
+
+        <h3>Обработка запросов</h3>
+        <ul>
+            <li>Ответы включают <strong>data documents</strong> (JSONL) для статуса <code>DONE</code> или <strong>error documents</strong> (JSON) для статуса <code>FATAL</code></li>
+            <li>Статус <code>DONE</code> без <code>dataDocumentId</code> означает отсутствие данных для параметров запроса</li>
+            <li>Планирование или очередь запросов не поддерживается</li>
+            <li>Применяются лимиты на одновременные запросы для пары продавец/приложение</li>
+        </ul>
+    </section>
+
+    <section id="data-kiosk-api-operations">
+        <h2>12.2 Операции</h2>
+        
+        <table>
+            <tr><th>Операция</th><th>Метод</th><th>Описание</th><th>Регионы</th><th>Требуемые роли</th></tr>
+            <tr><td><code>getQueries</code></td><td>GET</td><td>Получение списка запросов</td><td>NA, EU, FE</td><td>Brand Analytics</td></tr>
+            <tr><td><code>createQuery</code></td><td>POST</td><td>Создание нового запроса</td><td>NA, EU, FE</td><td>Brand Analytics</td></tr>
+            <tr><td><code>getQuery</code></td><td>GET</td><td>Получение конкретного запроса</td><td>NA, EU, FE</td><td>Brand Analytics</td></tr>
+            <tr><td><code>cancelQuery</code></td><td>DELETE</td><td>Отмена запроса</td><td>NA, EU, FE</td><td>Brand Analytics</td></tr>
+            <tr><td><code>getDocument</code></td><td>GET</td><td>Получение документа с результатами</td><td>NA, EU, FE</td><td>Brand Analytics</td></tr>
+        </table>
+    </section>
+
+    <section id="data-kiosk-api-scheduling">
+        <h2>12.3 Планирование запросов</h2>
+        
+        <h3>Основной процесс</h3>
+        <ol>
+            <li><strong>Подписка на уведомления:</strong> Подпишите SQS очередь на <code>DATA_KIOSK_QUERY_PROCESSING_FINISHED</code> для получения уведомлений о завершении обработки данных</li>
+            <li><strong>Создание запросов:</strong> Отправляйте GraphQL запросы с помощью операции <code>createQuery</code></li>
+            <li><strong>Получение данных:</strong> Используйте <code>dataDocumentId</code> или <code>errorDocumentId</code> (из payload уведомления) с <code>getDocument</code> для доступа к результатам</li>
+            <li><strong>Хранение данных:</strong> Скачайте и сохраните JSONL файл из <code>documentUrl</code> для анализа</li>
+        </ol>
+
+        <h3>Механизм планирования</h3>
+        <h4>Определение параметров</h4>
+        <ul>
+            <li><strong>Start date:</strong> Установите на настоящее или будущее, чтобы избежать backfilling. Для исторических данных используйте ежедневные запросы</li>
+            <li><strong>Frequency:</strong> Согласуйте с частотой обновления данных (ежедневно, еженедельно, ежемесячно). Избегайте избыточных запросов</li>
+        </ul>
+
+        <h4>Автоматизация</h4>
+        <p>Используйте AWS EventBridge для планирования повторяющихся задач через cron/rate выражения:</p>
+        <ul>
+            <li>Автоматический сдвиг дат</li>
+            <li>Выполнение <code>createQuery</code> по расписанию</li>
+            <li>Непрерывный сбор данных</li>
+        </ul>
+
+        <h3>Обработка ошибок и лучшие практики</h3>
+        <ul>
+            <li><strong>Избегайте избыточности:</strong> Проверяйте уникальность запросов для предотвращения дублирования данных</li>
+            <li><strong>Логирование ошибок:</strong> Фиксируйте ошибки при отправке запросов/получении данных. Используйте <code>errorDocumentId</code> для изоляции проблем</li>
+            <li><strong>Retry logic:</strong> Реализуйте exponential backoff для throttled запросов</li>
+            <li><strong>Мониторинг:</strong> Настройте real-time алерты для сбоев запросов, превышения rate limits, чрезмерных задержек обработки</li>
+        </ul>
+    </section>
+
+    <section id="data-kiosk-api-rate-limits">
+        <h2>12.4 Rate Limits</h2>
+        <table>
+            <tr><th>Операция</th><th>Rate limit (запросов/сек)</th><th>Burst (запросов)</th></tr>
+            <tr><td><code>getQueries</code></td><td>0.0167</td><td>15</td></tr>
+            <tr><td><code>createQuery</code></td><td>0.0167</td><td>15</td></tr>
+            <tr><td><code>getQuery</code></td><td>2</td><td>15</td></tr>
+            <tr><td><code>cancelQuery</code></td><td>2</td><td>15</td></tr>
+            <tr><td><code>getDocument</code></td><td>0.0167</td><td>15</td></tr>
+        </table>
+    </section>
+</section>
+
+<!-- ==================== APPLICATION MANAGEMENT API ==================== -->
+<section id="application-management-api">
+    <h1>13. Application Management API</h1>
+    <div class="metadata">
+        <strong>Путь:</strong> SELLER APIs → Application Management API<br>
+        <strong>Версия:</strong> v2023-11-30<br>
+        <strong>Доступность:</strong> Sellers and Vendors<br>
+        <strong>Sandbox:</strong> Static
+    </div>
+
+    <section id="application-management-api-overview">
+        <h2>13.1 Обзор</h2>
+        <p>Application Management API используется для программной ротации client secret на зарегистрированных приложениях.</p>
+
+        <h3>Use Cases</h3>
+        <ul>
+            <li><strong>Set up credential rotation notifications:</strong> Настройка уведомлений о ротации учетных данных в Amazon SQS очереди</li>
+            <li><strong>Rotate your application's client secret:</strong> Вызов операции <code>rotateApplicationClientSecret</code> для ротации client secrets</li>
+        </ul>
+
+        <h3>Ключевые требования рабочего процесса</h3>
+        <p>Необходимо зарегистрировать Amazon SQS очередь для получения учетных данных перед вызовом API:</p>
+        <ul>
+            <li>Новый client secret создается при вызове API и отправляется в SQS очередь с временем истечения старых учетных данных</li>
+            <li>Обновите приложение для использования новых учетных данных <strong>до истечения срока действия старых</strong></li>
+        </ul>
+
+        <h3>Лучшие практики</h3>
+        <ol>
+            <li><strong>Используйте уведомления об истечении</strong> для инициации ротации на основе предоставленного времени истечения</li>
+            <li><strong>Включите server-side encryption для SQS</strong> и предоставьте Amazon доступ на запись в очередь</li>
+            <li><strong>Храните учетные данные</strong> в vault (например, KMS custom keys) и избегайте незашифрованной передачи</li>
+            <li><strong>Тестируйте интеграцию</strong> на draft приложении перед production deployment</li>
+        </ol>
+    </section>
+
+    <section id="application-management-api-operations">
+        <h2>13.2 Операции</h2>
+        
+        <div class="api-operation">
+            <h3>rotateApplicationClientSecret</h3>
+            <p>Ротация client secret приложения.</p>
+            <table>
+                <tr><th>Атрибут</th><th>Значение</th></tr>
+                <tr><td>Регионы</td><td>N/A (grantless operation)</td></tr>
+                <tr><td>Требуемые роли</td><td>None (grantless)</td></tr>
+            </table>
+        </div>
+    </section>
+
+    <section id="application-management-api-rate-limits">
+        <h2>13.3 Rate Limits</h2>
+        <table>
+            <tr><th>Операция</th><th>Rate limit (запросов/сек)</th><th>Burst (запросов)</th></tr>
+            <tr><td><code>rotateApplicationClientSecret</code></td><td>0.0167</td><td>1</td></tr>
+        </table>
+    </section>
+</section>
+
+<footer style="margin-top: 50px; padding: 20px; background: #f5f5f5; border-radius: 8px; text-align: center;">
+    <p><strong>Amazon SP-API Seller APIs Documentation - Part 2</strong></p>
+    <p>Источник: <a href="https://developer-docs.amazon.com/sp-api/docs/">https://developer-docs.amazon.com/sp-api/docs/</a></p>
+    <p>Дата создания: 15 января 2026</p>
+    <p>Содержит: FBA Inbound API, FBA Outbound API, Product Fees API, Finances API, Transfers API, Messaging API, Solicitations API, Sales API, Sellers API, Services API, Supply Sources API, Data Kiosk API, Application Management API</p>
+    <p>Лицензия: Apache License 2.0</p>
+</footer>
+
+</body>
+</html>
