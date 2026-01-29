@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon SP-API: Configuration & Tools</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .disclaimer { background: #fff3cd; border: 1px solid #ffc107; padding: 15px; margin-bottom: 30px; border-radius: 5px; }
+        nav { background: #f8f9fa; padding: 20px; margin-bottom: 30px; border-radius: 5px; }
+        nav ul { list-style: none; padding-left: 20px; }
+        nav > ul { padding-left: 0; }
+        nav a { color: #0066cc; text-decoration: none; }
+        nav a:hover { text-decoration: underline; }
+        section { margin-bottom: 40px; padding-bottom: 20px; border-bottom: 1px solid #eee; }
+        h1 { color: #232f3e; border-bottom: 3px solid #ff9900; padding-bottom: 10px; }
+        h2 { color: #232f3e; margin-top: 30px; }
+        h3 { color: #37475a; }
+        table { border-collapse: collapse; width: 100%; margin: 15px 0; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background: #232f3e; color: white; }
+        tr:nth-child(even) { background: #f9f9f9; }
+        code { background: #f4f4f4; padding: 2px 6px; border-radius: 3px; font-family: 'Consolas', monospace; }
+        pre { background: #1e1e1e; color: #d4d4d4; padding: 15px; border-radius: 5px; overflow-x: auto; }
+        pre code { background: none; color: inherit; }
+        .note { background: #e7f3ff; border-left: 4px solid #0066cc; padding: 10px 15px; margin: 15px 0; }
+        .tip { background: #e6f9e6; border-left: 4px solid #28a745; padding: 10px 15px; margin: 15px 0; }
+        .warning { background: #fff3cd; border-left: 4px solid #ffc107; padding: 10px 15px; margin: 15px 0; }
+        .metadata { font-size: 0.9em; color: #666; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="disclaimer">
+<strong>ДОКУМЕНТ ВНЕШНЕГО СЕРВИСА — НЕ ЯВЛЯЕТСЯ ТРЕБОВАНИЯМИ К ПРОДУКТУ</strong><br>
+Этот документ описывает внешний сервис / API и т.п. как инструкция. Как использовать:
+<ul>
+<li>для определения возможностей и ограничений интеграции</li>
+<li>для формулирования требований к интеграции (что отправляем/получаем, авторизация, ошибки, лимиты, поведение при недоступности), ответам пользователя по сервису и т.п.</li>
+</ul>
+</div>
+
+<h1>Amazon SP-API: Configuration & Tools</h1>
+<p class="metadata">Раздел: CALLING THE SP-API | Источник: developer-docs.amazon.com/sp-api/docs/</p>
+
+<nav>
+<h2>Оглавление</h2>
+<ul>
+    <li><a href="#configuration-details">1. Configuration Details</a>
+        <ul>
+            <li><a href="#sp-api-endpoints">1.1 SP-API Endpoints</a></li>
+            <li><a href="#marketplace-ids">1.2 Marketplace IDs</a></li>
+            <li><a href="#date-time-formatting">1.3 Date and Time Formatting</a></li>
+            <li><a href="#grantless-operations">1.4 Grantless Operations</a></li>
+        </ul>
+    </li>
+    <li><a href="#call-structure">2. Call Structure</a>
+        <ul>
+            <li><a href="#connect-to-sp-api">2.1 Connect to the SP-API</a></li>
+            <li><a href="#parse-sp-api-responses">2.2 Parse SP-API Responses</a></li>
+        </ul>
+    </li>
+    <li><a href="#development-tools">3. Development Tools</a>
+        <ul>
+            <li><a href="#sp-api-sandbox">3.1 Selling Partner API Sandbox</a></li>
+            <li><a href="#using-postman">3.2 Using Postman for SP-API Models</a></li>
+        </ul>
+    </li>
+</ul>
+</nav>
+
+<!-- SECTION: Configuration Details -->
+<section id="configuration-details">
+<h2>1. Configuration Details</h2>
+<p class="metadata">Путь: CALLING THE SP-API > Configuration Details</p>
+
+<p>Configuration for calls to the SP-API. This section covers details that help you format calls to the Selling Partner API (SP-API). To make valid SP-API requests, you need to:</p>
+<ul>
+    <li>Direct your calls to the correct regional endpoint.</li>
+    <li>Specify the appropriate marketplace for your request.</li>
+    <li>Format the date and time data correctly.</li>
+    <li>Know which operations require seller authorization.</li>
+</ul>
+</section>
+
+<!-- SECTION: SP-API Endpoints -->
+<section id="sp-api-endpoints">
+<h3>1.1 SP-API Endpoints</h3>
+<p class="metadata">Путь: CALLING THE SP-API > Configuration Details > SP-API Endpoints</p>
+
+<p>A list of SP-API endpoints. When you call the Selling Partner API (SP-API), you must direct your requests to the correct endpoint based on your target marketplace.</p>
+
+<table>
+<thead>
+<tr><th>Selling Region</th><th>Endpoint</th><th>AWS Region</th></tr>
+</thead>
+<tbody>
+<tr><td>North America (Canada, US, Mexico, and Brazil marketplaces)</td><td><code>https://sellingpartnerapi-na.amazon.com</code></td><td>us-east-1</td></tr>
+<tr><td>Europe (Ireland, Spain, UK, France, Belgium, Netherlands, Germany, Italy, Sweden, South Africa, Poland, Saudi Arabia, Egypt, Turkey, United Arab Emirates, and India marketplaces)</td><td><code>https://sellingpartnerapi-eu.amazon.com</code></td><td>eu-west-1</td></tr>
+<tr><td>Far East (Singapore, Australia, and Japan marketplaces)</td><td><code>https://sellingpartnerapi-fe.amazon.com</code></td><td>us-west-2</td></tr>
+</tbody>
+</table>
+</section>
+
+<!-- SECTION: Marketplace IDs -->
+<section id="marketplace-ids">
+<h3>1.2 Marketplace IDs</h3>
+<p class="metadata">Путь: CALLING THE SP-API > Configuration Details > Marketplace IDs</p>
+
+<p>A list of identifiers that represent each marketplace. Many SP-API operations require a marketplace ID to identify which marketplace the request targets. Each marketplace ID is a unique identifier that represents a specific country where Amazon customers can shop.</p>
+
+<h4>North America</h4>
+<table>
+<thead>
+<tr><th>Country</th><th>Marketplace ID</th><th>Country Code</th></tr>
+</thead>
+<tbody>
+<tr><td>Canada</td><td>A2EUQ1WTGCTBG2</td><td>CA</td></tr>
+<tr><td>United States of America</td><td>ATVPDKIKX0DER</td><td>US</td></tr>
+<tr><td>Mexico</td><td>A1AM78C64UM0Y8</td><td>MX</td></tr>
+<tr><td>Brazil</td><td>A2Q3Y263D00KWC</td><td>BR</td></tr>
+</tbody>
+</table>
+
+<h4>Europe</h4>
+<table>
+<thead>
+<tr><th>Country</th><th>Marketplace ID</th><th>Country Code</th></tr>
+</thead>
+<tbody>
+<tr><td>Ireland</td><td>A28R8C7NBKEWEA</td><td>IE</td></tr>
+<tr><td>Spain</td><td>A1RKKUPIHCS9HS</td><td>ES</td></tr>
+<tr><td>United Kingdom</td><td>A1F83G8C2ARO7P</td><td>UK</td></tr>
+<tr><td>France</td><td>A13V1IB3VIYZZH</td><td>FR</td></tr>
+<tr><td>Belgium</td><td>AMEN7PMS3EDWL</td><td>BE</td></tr>
+<tr><td>Netherlands</td><td>A1805IZSGTT6HS</td><td>NL</td></tr>
+<tr><td>Germany</td><td>A1PA6795UKMFR9</td><td>DE</td></tr>
+<tr><td>Italy</td><td>APJ6JRA9NG5V4</td><td>IT</td></tr>
+<tr><td>Sweden</td><td>A2NODRKZP88ZB9</td><td>SE</td></tr>
+<tr><td>South Africa</td><td>AE08WJ6YKNBMC</td><td>ZA</td></tr>
+<tr><td>Poland</td><td>A1C3SOZRARQ6R3</td><td>PL</td></tr>
+<tr><td>Egypt</td><td>ARBP9OOSHTCHU</td><td>EG</td></tr>
+<tr><td>Turkey</td><td>A33AVAJ2PDY3EV</td><td>TR</td></tr>
+<tr><td>Saudi Arabia</td><td>A17E79C6D8DWNP</td><td>SA</td></tr>
+<tr><td>United Arab Emirates</td><td>A2VIGQ35RCS4UG</td><td>AE</td></tr>
+<tr><td>India</td><td>A21TJRUUN4KGV</td><td>IN</td></tr>
+</tbody>
+</table>
+
+<h4>Far East</h4>
+<table>
+<thead>
+<tr><th>Country</th><th>Marketplace ID</th><th>Country Code</th></tr>
+</thead>
+<tbody>
+<tr><td>Singapore</td><td>A19VAU5U5O7RUS</td><td>SG</td></tr>
+<tr><td>Australia</td><td>A39IBJ37TRP1C6</td><td>AU</td></tr>
+<tr><td>Japan</td><td>A1VC38T7YXB528</td><td>JP</td></tr>
+</tbody>
+</table>
+</section>
+
+<!-- SECTION: Date and Time Formatting -->
+<section id="date-time-formatting">
+<h3>1.3 Date and Time Formatting</h3>
+<p class="metadata">Путь: CALLING THE SP-API > Configuration Details > Date and Time Formatting</p>
+
+<p>Format dates and times for the SP-API. The Selling Partner API (SP-API) formats dates and times similarly to the RFC 3339 standard, which defines a subset profile of ISO 8601 for use in internet protocols and standards.</p>
+
+<h4>DateTime</h4>
+<p>Date and time data is expressed as Gregorian calendar dates (year, month, day) <strong>and</strong> 24-hour time. No truncated formats are allowed. All date and time data is expressed numerically with leading zeros preserved.</p>
+
+<p><code>DateTime</code> string patterns are:</p>
+<ul>
+    <li><code>yyyy-MM-ddTHH:mm:ss.sssZ</code> (for UTC)</li>
+    <li><code>yyyy-MM-ddTHH:mm:ss.sss±hh:mm</code> (for a local time offset)</li>
+</ul>
+
+<p>The character <code>T</code> is a required delimiter between the date and time sections. The colon (<code>:</code>) is used as a delimiter between hours, minutes, and seconds. Fractional seconds are expressed with a decimal mark (<code>.</code> or <code>,</code>) when needed.</p>
+
+<p>All use of date and time data in SP-API should be expressed as type <code>DateTime</code>. However, there are a few parameters that express date or time as a simple string. Check the parameter type definition to be sure of which type to use. Using the wrong type will generate an error.</p>
+
+<p><strong>Example:</strong></p>
+<pre><code>2016-03-16T14:32:16.50-07</code></pre>
+<p>This example is read as the 16th day of March in 2016 at 14 hours, 32 minutes, and 16.50 seconds local time. The local time is seven hours behind UTC.</p>
+</section>
+
+<!-- SECTION: Grantless Operations -->
+<section id="grantless-operations">
+<h3>1.4 Grantless Operations</h3>
+<p class="metadata">Путь: CALLING THE SP-API > Configuration Details > Grantless Operations</p>
+
+<p>A grantless operation is an operation that you can call without explicit authorization from a selling partner. This means that when you request a Login with Amazon access token prior to calling a grantless operation, you don't need to provide a refresh token. Instead, you use the <code>scope</code> parameter to provide the scope of the LWA authorization grant.</p>
+
+<p>For example, if you use a generated Java SDK to call grantless operations, use the <code>withScopes</code> parameter to set one or more scopes for the LWA authorization grant when you configure your LWA credentials.</p>
+
+<h4>List of Grantless Operations</h4>
+<table>
+<thead>
+<tr><th>Operation Name</th><th>HTTP Method and Path</th></tr>
+</thead>
+<tbody>
+<tr><td><code>createDestination</code></td><td>POST <code>/notifications/v1/destinations</code></td></tr>
+<tr><td><code>deleteDestination</code></td><td>DELETE <code>/notifications/v1/destinations/{destinationId}</code></td></tr>
+<tr><td><code>deleteSubscriptionById</code></td><td>DELETE <code>/notifications/v2/subscriptions/{notificationType}/{subscriptionId}</code></td></tr>
+<tr><td><code>getDestination</code></td><td>GET <code>/notifications/v1/destinations/{destinationId}</code></td></tr>
+<tr><td><code>getDestinations</code></td><td>GET <code>/notifications/v1/destinations</code></td></tr>
+<tr><td><code>getSubscriptionById</code></td><td>GET <code>/notifications/v1/subscriptions/{notificationType}/{subscriptionId}</code></td></tr>
+<tr><td><code>getAuthorizationCode</code></td><td>GET <code>/authorization/v1/authorizationCode</code></td></tr>
+<tr><td><code>rotateApplicationClientSecret</code></td><td>POST <code>/applications/2023-11-30/clientSecret</code></td></tr>
+</tbody>
+</table>
+</section>
+
+<!-- SECTION: Call Structure -->
+<section id="call-structure">
+<h2>2. Call Structure</h2>
+<p class="metadata">Путь: CALLING THE SP-API > Call Structure</p>
+
+<p>Learn how to send requests and handle responses. When you call the Selling Partner API (SP-API), you must:</p>
+<ul>
+    <li>Structure your request correctly, including all required parameters and headers.</li>
+    <li>Send the request to the appropriate endpoint.</li>
+    <li>Process the response headers and messages, and take appropriate action.</li>
+</ul>
+</section>
+
+<!-- SECTION: Connect to the SP-API -->
+<section id="connect-to-sp-api">
+<h3>2.1 Connect to the SP-API</h3>
+<p class="metadata">Путь: CALLING THE SP-API > Call Structure > Connect to the SP-API</p>
+
+<p>How to connect to the SP-API. Before your application can connect to SP-API, you must:</p>
+<ul>
+    <li>Register the application.</li>
+    <li>Get the application authorized by a selling partner or, if you're a private developer, authorize it yourself.</li>
+</ul>
+
+<p>An <strong>Login with Amazon (LWA) access token</strong> authorizes your application to take certain actions on behalf of a selling partner. An LWA access token expires one hour after it is issued.</p>
+
+<div class="note">
+<strong>Note:</strong> An LWA access token must be included in calls to all operations <em>except</em> restricted operations, which return Personally Identifiable Information (PII). When calling restricted operations, replace the LWA access token with a <strong>Restricted Data Token (RDT)</strong>.
+</div>
+
+<h4>Request an LWA Access Token</h4>
+<p>To request an LWA access token, make a secure HTTP POST to the LWA authentication server (<code>https://api.amazon.com/auth/o2/token</code>) with the following parameters:</p>
+
+<table>
+<thead>
+<tr><th>Name</th><th>Description</th><th>Required</th></tr>
+</thead>
+<tbody>
+<tr><td><code>grant_type</code></td><td>The type of access grant requested. Use <code>refresh_token</code> for authorized operations or <code>client_credentials</code> for grantless operations.</td><td>Yes</td></tr>
+<tr><td><code>refresh_token</code></td><td>Required for authorized operations.</td><td>No</td></tr>
+<tr><td><code>scope</code></td><td>Required for grantless operations (e.g., <code>sellingpartnerapi::notifications</code>).</td><td>No</td></tr>
+<tr><td><code>client_id</code></td><td>Provided during application registration.</td><td>Yes</td></tr>
+<tr><td><code>client_secret</code></td><td>Provided during application registration.</td><td>Yes</td></tr>
+</tbody>
+</table>
+
+<h4>Example for operations requiring selling partner authorization:</h4>
+<pre><code>POST /auth/o2/token HTTP/1.1
+Host: api.amazon.com
+Content-Type: application/x-www-form-urlencoded;charset=UTF-8
+grant_type=refresh_token
+&amp;refresh_token=Aztr|...
+&amp;client_id=foodev
+&amp;client_secret=Y76SDl2F</code></pre>
+
+<h4>Example for grantless operations:</h4>
+<pre><code>POST /auth/o2/token HTTP/1.1
+Host: api.amazon.com
+Content-Type: application/x-www-form-urlencoded;charset=UTF-8
+grant_type=client_credentials
+&amp;scope=sellingpartnerapi::notifications
+&amp;client_id=foodev
+&amp;client_secret=Y76SDl2F</code></pre>
+
+<h4>Successful Response</h4>
+<table>
+<thead>
+<tr><th>Name</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td><code>access_token</code></td><td>The LWA access token (max 2048 bytes).</td></tr>
+<tr><td><code>token_type</code></td><td>Must be <code>bearer</code>.</td></tr>
+<tr><td><code>expires_in</code></td><td>Seconds until token expiration (typically 3600).</td></tr>
+<tr><td><code>refresh_token</code></td><td>The LWA refresh token (max 2048 bytes).</td></tr>
+</tbody>
+</table>
+
+<h4>Example response:</h4>
+<pre><code>HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+{
+  "access_token":"Atza|IQEBLjAsAhRmHjNgHpi0U-Dme37rR6CuUpSREXAMPLE",
+  "token_type":"bearer",
+  "expires_in":3600,
+  "refresh_token":"Atzr|IQEBLzAtAhRPpMJxdwVz2Nn6f2y-tpJX2DeXEXAMPLE"
+}</code></pre>
+
+<h4>SP-API URI Components</h4>
+<table>
+<thead>
+<tr><th>Name</th><th>Description</th><th>Example</th></tr>
+</thead>
+<tbody>
+<tr><td>HTTP method</td><td>E.g., <code>GET</code></td><td></td></tr>
+<tr><td>Endpoint</td><td>E.g., <code>https://sellingpartnerapi-na.amazon.com</code></td><td></td></tr>
+<tr><td>Path</td><td>Resource location</td><td><code>/catalog/2022-04-01/items/{asin}</code></td></tr>
+<tr><td>Query string</td><td>Query parameters</td><td><code>?marketplaceIds=ATVPDKIKX0DER</code></td></tr>
+<tr><td>Path parameter</td><td>Variable in path</td><td><code>EXAMPLEASIN</code></td></tr>
+</tbody>
+</table>
+
+<h4>Required Headers</h4>
+<table>
+<thead>
+<tr><th>Name</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td><code>host</code></td><td>SP-API endpoint.</td></tr>
+<tr><td><code>x-amz-access-token</code></td><td>LWA access token (use RDT for restricted operations).</td></tr>
+<tr><td><code>x-amz-date</code></td><td>ISO 8601 timestamp (e.g., <code>20190430T123600Z</code>).</td></tr>
+<tr><td><code>user-agent</code></td><td>Required. Format: <code>AppId/AppVersion (Language=LanguageInfo; Platform=PlatformInfo)</code> (max 500 characters).</td></tr>
+</tbody>
+</table>
+
+<h4>Example request:</h4>
+<pre><code>GET /catalog/2022-04-01/items/EXAMPLEASIN?marketplaceIds=ATVPDKIKX0DER HTTP/1.1
+Host: sellingpartnerapi-na.amazon.com
+User-Agent: MySellingTool/2.0 (Language=Java/1.8.0.221; Platform=Windows/10)
+x-amz-access-token=Atza|IQEBLjAsAhRmHjNgHpi0U-Dme37rR6CuUpSREXAMPLE
+x-amz-date: 20190430T123600Z</code></pre>
+</section>
+
+<!-- SECTION: Parse SP-API Responses -->
+<section id="parse-sp-api-responses">
+<h3>2.2 Parse SP-API Responses</h3>
+<p class="metadata">Путь: CALLING THE SP-API > Call Structure > Parse SP-API Responses</p>
+
+<p>How SP-API returns response headers and messages. In response to an HTTP request, the Selling Partner API (SP-API) returns response headers and a JSON response message.</p>
+
+<h4>Response Headers</h4>
+<table>
+<thead>
+<tr><th>Name</th><th>Description</th><th>Example</th></tr>
+</thead>
+<tbody>
+<tr><td><code>Connection</code></td><td>Default value keep-alive for a persistent connection with the client.</td><td><code>Connection: keep-alive</code></td></tr>
+<tr><td><code>Content-Length</code></td><td>Standard HTTP response header.</td><td><code>Content-Length: 624</code></td></tr>
+<tr><td><code>Content-Type</code></td><td>Standard HTTP response header.</td><td><code>Content-Type: application/json</code></td></tr>
+<tr><td><code>Date</code></td><td>Standard HTTP response header.</td><td><code>Date: Fri, 17 Feb 2023 20:13:55 GMT</code></td></tr>
+<tr><td><code>x-amz-apigw-id</code></td><td>Extended request ID created by the SP-API gateway (optional).</td><td><code>x-amz-apigw-id: Ac1E1EycvHcFyNw=</code></td></tr>
+<tr><td><code>x-amzn-ErrorType</code></td><td>Error type if status code is 4xx or 5xx (optional).</td><td><code>x-amzn-ErrorType: AccessDeniedException</code></td></tr>
+<tr><td><code>x-amzn-RateLimit-Limit</code></td><td>Rate limit applied to the request (best-effort basis).</td><td><code>x-amzn-RateLimit-Limit: 2.0</code></td></tr>
+<tr><td><code>x-amzn-RequestId</code></td><td>Request identifier for support.</td><td><code>x-amzn-RequestId: 6875f61f-6aa1-11e8-98c6-9bExample</code></td></tr>
+<tr><td><code>X-Amzn-Trace-Id</code></td><td>Trace identifier generated by the SP-API gateway (optional).</td><td><code>X-Amzn-Trace-Id: Root=1-63ee9bb8-52ea8e6d108209842abc2a4d</code></td></tr>
+</tbody>
+</table>
+
+<h4>Successful Response Example</h4>
+<pre><code>HTTP/1.1 200 OK
+Content-Length: 368
+Content-Type: application/json
+Date: Thu, 01 Jun 2020 22:23:31 GMT
+x-amzn-RequestId: 6875f61f-6aa1-11e8-98c6-9bExample
+{
+  "payload": {
+    "ConfirmedNeedByDate": "2020-04-23",
+    "ConfirmedFulfillableDate": "2020-04-23"
+  }
+}</code></pre>
+
+<h4>Error Response Elements</h4>
+<table>
+<thead>
+<tr><th>Element</th><th>Description</th><th>Required</th></tr>
+</thead>
+<tbody>
+<tr><td><code>code</code></td><td>HTTP status code</td><td>Yes</td></tr>
+<tr><td><code>message</code></td><td>Explanation of the error</td><td>Yes</td></tr>
+<tr><td><code>details</code></td><td>Link to additional information</td><td>No</td></tr>
+</tbody>
+</table>
+
+<h4>Error Response Example</h4>
+<pre><code>HTTP/1.1 400 Bad Request
+Content-Length: 117
+Content-Type: application/json
+Date: Fri, 01 Jun 2020 21:48:02 GMT
+x-amzn-ErrorType: ValidationException
+x-amzn-RequestId: a8c8d99a-6ab5-11e8-b0f8-19363980175b
+{
+  "errors": [
+    {
+      "message": "Access to requested resource is denied.",
+      "code": "Unauthorized",
+      "details": "Access token is missing in the request header."
+    }
+  ]
+}</code></pre>
+</section>
+
+<!-- SECTION: Development Tools -->
+<section id="development-tools">
+<h2>3. Development Tools</h2>
+<p class="metadata">Путь: CALLING THE SP-API > Development Tools</p>
+
+<p>Tools and environments for testing SP-API calls. Before you deploy your SP-API integration to production, you can test and validate your implementation by using dedicated testing tools and environments.</p>
+</section>
+
+<!-- SECTION: SP-API Sandbox -->
+<section id="sp-api-sandbox">
+<h3>3.1 Selling Partner API Sandbox</h3>
+<p class="metadata">Путь: CALLING THE SP-API > Development Tools > Selling Partner API Sandbox</p>
+
+<p>Use the SP-API sandbox to make test calls. The SP-API provides two sandbox environments to test your applications without affecting production data:</p>
+<ul>
+    <li><strong>Static sandbox</strong>: Returns pattern-matching mock responses for all SP-APIs.</li>
+    <li><strong>Dynamic sandbox</strong>: Routes requests to a sandbox backend that returns realistic, stateful responses.</li>
+</ul>
+
+<div class="warning">
+<strong>Important Notes:</strong>
+<ul>
+    <li><strong>Throttling limits</strong>: 5 requests per second (rate), 15 burst.</li>
+    <li><strong>Restricted Data Token (RDT)</strong>: If a sandbox call requires RDT, it must be obtained from the production environment and passed to the sandbox.</li>
+</ul>
+</div>
+
+<h4>Static Sandbox</h4>
+<p>Procedure for Static Sandbox Call:</p>
+<ol>
+    <li>Locate the API's Swagger model JSON file.</li>
+    <li>Identify the <code>x-amzn-api-sandbox</code> object with <code>"static"</code> arrays.</li>
+    <li>Use the example parameters from the JSON to construct your request.</li>
+    <li>Direct your call to the <strong>sandbox endpoint</strong> (e.g., <code>sandbox.sellingpartnerapi-na.amazon.com</code>).</li>
+</ol>
+
+<h4>Dynamic Sandbox</h4>
+<p><strong>Support Requirement</strong>: Must include the <code>x-amzn-api-sandbox: {"dynamic": {}}</code> object in the Swagger model (at the operation or path level).</p>
+<p><strong>Procedure</strong>: Direct valid API requests to the <strong>sandbox endpoint</strong>, as in production calling.</p>
+
+<h4>Sandbox-Only Operations</h4>
+<p><strong>Definition</strong>: Operations with <code>"x-amzn-api-sandbox-only": true</code> in the Swagger model.</p>
+<p><strong>Purpose</strong>: Enable test workflows not possible in production (e.g., creating data items only available via UI).</p>
+
+<h4>SP-API Sandbox Endpoints</h4>
+<table>
+<thead>
+<tr><th>Selling Region</th><th>Endpoint</th><th>AWS Region</th></tr>
+</thead>
+<tbody>
+<tr><td>North America</td><td><code>https://sandbox.sellingpartnerapi-na.amazon.com</code></td><td>us-east-1</td></tr>
+<tr><td>Europe</td><td><code>https://sandbox.sellingpartnerapi-eu.amazon.com</code></td><td>eu-west-1</td></tr>
+<tr><td>Far East</td><td><code>https://sandbox.sellingpartnerapi-fe.amazon.com</code></td><td>us-west-2</td></tr>
+</tbody>
+</table>
+</section>
+
+<!-- SECTION: Using Postman -->
+<section id="using-postman">
+<h3>3.2 Using Postman for Selling Partner API Models</h3>
+<p class="metadata">Путь: CALLING THE SP-API > Development Tools > Using Postman for Selling Partner API Models</p>
+
+<p>This document explains how to set up and use Postman for Selling Partner API (SP-API) models. You can use Postman to generate Login with Amazon (LWA) access tokens, import SP-API models, make calls to SP-API endpoints, and make calls to SP-API sandbox endpoints.</p>
+
+<div class="tip">
+<strong>Tip:</strong> The Amazon Selling Partner API Postman workspace provides ready-to-use collections and flows for multiple use cases and workflows.
+<ul>
+    <li>Getting Started with SP-API for Sellers</li>
+    <li>Getting Started with SP-API for Vendors</li>
+</ul>
+</div>
+
+<h4>Prerequisites</h4>
+<ul>
+    <li><strong>LWA <code>client_id</code> and <code>client_secret</code></strong>: Obtained after registering your application.</li>
+    <li><strong>LWA refresh token</strong>: Generated after authorizing your application.</li>
+    <li><strong>SP-API endpoint</strong>: Refer to SP-API Endpoints documentation.</li>
+</ul>
+
+<h4>Generate an LWA Access Token</h4>
+<ol>
+    <li>Open Postman and sign in to your account.</li>
+    <li>Select your workspace and create a new <strong>HTTP Request</strong> (POST method).</li>
+    <li>Use the URL: <code>https://api.amazon.com/auth/o2/token</code></li>
+    <li>Set the <strong>Body</strong> to <code>x-www-form-urlencoded</code> with these parameters:</li>
+</ol>
+
+<table>
+<thead>
+<tr><th>Key</th><th>Value</th></tr>
+</thead>
+<tbody>
+<tr><td><code>grant_type</code></td><td><code>refresh_token</code></td></tr>
+<tr><td><code>refresh_token</code></td><td>[your refresh token]</td></tr>
+<tr><td><code>client_id</code></td><td>[your client ID]</td></tr>
+<tr><td><code>client_secret</code></td><td>[your client secret]</td></tr>
+</tbody>
+</table>
+
+<h4>Response:</h4>
+<pre><code>{
+  "access_token": "Atza|*****",
+  "refresh_token": "Atzr|*****",
+  "token_type": "bearer",
+  "expires_in": 3600
+}</code></pre>
+
+<h4>Import an SP-API Model</h4>
+<ol>
+    <li>Navigate to the selling-partner-api-models GitHub folder.</li>
+    <li>Download the desired API model JSON file.</li>
+    <li>In Postman, <strong>Import</strong> the JSON file as a <strong>Postman Collection</strong>.</li>
+</ol>
+
+<h4>Call an SP-API Endpoint</h4>
+<ol>
+    <li>Select your Postman workspace and open the imported collection.</li>
+    <li>Choose a <code>GET</code> operation.</li>
+    <li>Add the authorization header: <code>x-amz-access-token: [your access token]</code></li>
+    <li>Send the request.</li>
+</ol>
+
+<h4>Call an SP-API Sandbox Endpoint</h4>
+<ol>
+    <li>Follow import steps above using the <strong>SP-API Sandbox</strong> endpoint URL.</li>
+    <li>Set <code>{{baseUrl}}</code> to the SP-API Sandbox.</li>
+    <li>Include required parameters from the model.</li>
+    <li>Add the authorization header: <code>x-amzn-access-token: [your access token]</code></li>
+    <li>Send the request and validate the response matches the model.</li>
+</ol>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon SP-API Documentation - Building Applications & Tutorials</title>
+    <meta name="description" content="Документация Amazon Selling Partner API - Разделы Building Applications и Tutorials">
+    <meta name="source" content="https://developer-docs.amazon.com/sp-api/docs/">
+    <meta name="section" content="BUILDING APPLICATIONS & TUTORIALS">
+    <meta name="generated-date" content="2026-01-15">
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; max-width: 1200px; margin: 0 auto; padding: 20px; color: #333; }
+        .disclaimer { background: #fff3cd; border: 1px solid #ffc107; padding: 15px; margin-bottom: 30px; border-radius: 5px; }
+        .toc { background: #f8f9fa; padding: 20px; margin-bottom: 30px; border-radius: 5px; }
+        .toc h2 { margin-top: 0; }
+        .toc ul { list-style: none; padding-left: 0; }
+        .toc li { margin: 8px 0; }
+        .toc a { color: #0066cc; text-decoration: none; }
+        .toc a:hover { text-decoration: underline; }
+        .toc ul ul { padding-left: 20px; }
+        section { margin-bottom: 40px; padding-bottom: 20px; border-bottom: 1px solid #eee; }
+        h1 { color: #232f3e; border-bottom: 3px solid #ff9900; padding-bottom: 10px; }
+        h2 { color: #232f3e; margin-top: 30px; }
+        h3 { color: #545b64; }
+        h4 { color: #687078; }
+        pre { background: #f4f4f4; padding: 15px; overflow-x: auto; border-radius: 5px; }
+        code { background: #f4f4f4; padding: 2px 6px; border-radius: 3px; font-family: 'Consolas', monospace; }
+        table { border-collapse: collapse; width: 100%; margin: 15px 0; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background: #232f3e; color: white; }
+        tr:nth-child(even) { background: #f9f9f9; }
+        .note { background: #e7f3ff; border-left: 4px solid #0066cc; padding: 10px 15px; margin: 15px 0; }
+        .warning { background: #fff3cd; border-left: 4px solid #ffc107; padding: 10px 15px; margin: 15px 0; }
+        .important { background: #f8d7da; border-left: 4px solid #dc3545; padding: 10px 15px; margin: 15px 0; }
+        .metadata { font-size: 0.85em; color: #666; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="disclaimer">
+<strong>ДОКУМЕНТ ВНЕШНЕГО СЕРВИСА — НЕ ЯВЛЯЕТСЯ ТРЕБОВАНИЯМИ К ПРОДУКТУ</strong><br>
+Этот документ описывает внешний сервис / API и т.п. как инструкция. Как использовать:
+<ul>
+<li>для определения возможностей и ограничений интеграции</li>
+<li>для формулирования требований к интеграции (что отправляем/получаем, авторизация, ошибки, лимиты, поведение при недоступности), ответам пользователя по сервису и т.п.</li>
+</ul>
+</div>
+
+<h1>Amazon SP-API Documentation: Building Applications & Tutorials</h1>
+
+<nav class="toc">
+<h2>Оглавление</h2>
+<ul>
+    <li><strong>INTEGRATION (Building Applications)</strong>
+        <ul>
+            <li><a href="#sp-api-sdks">1. SP-API SDKs Overview</a></li>
+            <li><a href="#delete-application">2. Delete an Application From Your Developer Account</a></li>
+        </ul>
+    </li>
+    <li><strong>TUTORIALS</strong>
+        <ul>
+            <li><a href="#tutorial-test-endpoints">3. Tutorial: Test Selling Partner API Endpoints</a></li>
+            <li><a href="#tutorial-csharp-sdk">4. Tutorial: Automate SP-API Calls Using C# SDK</a></li>
+            <li><a href="#tutorial-java-sdk">5. Tutorial: Automate SP-API Calls Using Java SDK</a></li>
+            <li><a href="#tutorial-javascript-sdk">6. Tutorial: Automate SP-API Calls Using JavaScript SDK for Node.js</a></li>
+            <li><a href="#tutorial-python-sdk">7. Tutorial: Automate SP-API Calls Using Python SDK</a></li>
+            <li><a href="#tutorial-prebuilt-csharp-sdk">8. Tutorial: Prebuilt C# SDK</a></li>
+            <li><a href="#tutorial-prebuilt-java-sdk">9. Tutorial: Prebuilt Java SDK</a></li>
+            <li><a href="#tutorial-prebuilt-javascript-sdk">10. Tutorial: Prebuilt JavaScript SDK</a></li>
+            <li><a href="#tutorial-prebuilt-php-sdk">11. Tutorial: Prebuilt PHP SDK</a></li>
+            <li><a href="#tutorial-prebuilt-python-sdk">12. Tutorial: Prebuilt Python SDK</a></li>
+            <li><a href="#tutorial-merchant-shipping-templates">13. Tutorial: Retrieve Merchant Shipping Templates</a></li>
+            <li><a href="#tutorial-po-number">14. Tutorial: Retrieve and Pass a Purchase Order Number to a Carrier</a></li>
+        </ul>
+    </li>
+</ul>
+</nav>
+
+<!-- ==================== INTEGRATION SECTION ==================== -->
+
+<!-- Section 1: SP-API SDKs -->
+<section id="sp-api-sdks">
+<div class="metadata">Источник: https://developer-docs.amazon.com/sp-api/docs/sp-api-sdks</div>
+<h2>1. SP-API SDKs Overview</h2>
+
+<p>Build SP-API applications with pre-built and generated SDKs. SP-API offers a collection of software development kits (SDKs) to connect with our APIs. Depending on your preference, you can choose to use a prebuilt or custom SDK:</p>
+
+<h3>Prebuilt SDKs</h3>
+<p>Prebuilt SDKs are maintained by Amazon and can be added to your application with fewer lines of code. SP-API supports prebuilt SDKs for:</p>
+<ul>
+<li>C#</li>
+<li>Java</li>
+<li>JavaScript</li>
+<li>PHP</li>
+<li>Python</li>
+</ul>
+
+<h3>Custom SDKs</h3>
+<p>Custom SDKs use a self-service model, where you manually generate an SDK to suit your specific needs. SP-API supports custom SDKs for:</p>
+<ul>
+<li>C#</li>
+<li>Java</li>
+<li>Node.js</li>
+<li>Python</li>
+</ul>
+
+<p>SP-API SDK tutorials include information about how to automate your SP-API calls with Login with Amazon (LWA) token exchange and authentication.</p>
+
+<h3>Available SDK Tutorials</h3>
+<table>
+<tr><th>SDK Type</th><th>Language</th></tr>
+<tr><td>Custom SDK</td><td>C# SDK</td></tr>
+<tr><td>Custom SDK</td><td>Java SDK</td></tr>
+<tr><td>Custom SDK</td><td>JavaScript SDK</td></tr>
+<tr><td>Custom SDK</td><td>Python SDK</td></tr>
+<tr><td>Prebuilt SDK</td><td>Prebuilt C# SDK</td></tr>
+<tr><td>Prebuilt SDK</td><td>Prebuilt Java SDK</td></tr>
+<tr><td>Prebuilt SDK</td><td>Prebuilt JavaScript SDK</td></tr>
+<tr><td>Prebuilt SDK</td><td>Prebuilt PHP SDK</td></tr>
+<tr><td>Prebuilt SDK</td><td>Prebuilt Python SDK</td></tr>
+</table>
+</section>
+
+<!-- Section 2: Delete Application -->
+<section id="delete-application">
+<div class="metadata">Источник: https://developer-docs.amazon.com/sp-api/docs/delete-an-application-from-your-developer-account</div>
+<h2>2. Delete an Application From Your Developer Account</h2>
+
+<p>Learn how to delete an app from your developer account. Your existing application can be deleted from your developer account if it meets all of the following conditions:</p>
+<ul>
+<li>Application is not a sandbox application</li>
+<li>Application is in draft state and is not published</li>
+<li>Application is only used on SP-API</li>
+<li>Application does not have an Amazon Business role</li>
+<li>Application does not have any existing active OAuth or self-authorizations</li>
+</ul>
+
+<div class="important">
+<strong>Important:</strong> If you delete an app or revoke a self-authorization, you cannot undo this action. Refer to the self-authorization workflow to create a new self-authorization.
+</div>
+
+<p>If your application doesn't meet these conditions, contact the SP-API Developer Support team with the Application ID and the authorization. For sellers, the authorization is the Merchant Customer ID. For vendors, the authorization is the Vendor Group ID.</p>
+
+<h3>Delete public and private applications</h3>
+<ol>
+<li>Sign in to the Solution Provider Portal using your developer credentials.</li>
+<li>On the top navigation, select <strong>Develop Apps</strong>.</li>
+<li>For any application, expand the dropdown next to <strong>Edit</strong> and choose <strong>Authorize</strong> to navigate to the <strong>Manage Authorizations</strong> page.</li>
+<li>In the <strong>Revoke Authorization</strong> section, expand <strong>Self-Authorizations</strong> to view all active self-authorizations.</li>
+<li>Choose <strong>Revoke</strong> for any authorization that you want to remove.</li>
+<li>Navigate back to the Solution Provider Portal homepage.</li>
+<li>Choose <strong>Edit</strong> for the application from which you removed self-authorizations in the previous step.</li>
+<li>Scroll to the bottom of the page and choose <strong>Delete app</strong>.</li>
+<li>To confirm that you want to proceed, paste the <strong>app ID</strong> from the confirmation message to the text box.</li>
+<li>Choose <strong>Delete app</strong>.</li>
+</ol>
+
+<div class="warning">
+<strong>Warning:</strong> You cannot revoke OAuth from your application using this self-service workflow.
+</div>
+
+<div class="note">
+<strong>Note:</strong> To locate <strong>Edit app</strong> in Seller Central or Vendor Central:
+<ul>
+<li><strong>Seller Central:</strong> Sign in to Seller Central for your marketplace and navigate to <strong>Apps and Services</strong>, then <strong>Develop Apps</strong>.</li>
+<li><strong>Vendor Central:</strong> Sign in to Vendor Central for your marketplace and navigate to <strong>Integration</strong>, then <strong>API Integration</strong>.</li>
+</ul>
+</div>
+</section>
+
+<!-- ==================== TUTORIALS SECTION ==================== -->
+
+<!-- Section 3: Tutorial Test Endpoints -->
+<section id="tutorial-test-endpoints">
+<div class="metadata">Источник: https://developer-docs.amazon.com/sp-api/docs/tutorial-test-selling-partner-api-endpoints</div>
+<h2>3. Tutorial: Test Selling Partner API Endpoints</h2>
+
+<p>Use the sandbox to make test calls without impacting production data. Selling Partner API (SP-API) provides sandbox environments where you can test the SP-API endpoints without affecting production data. You can direct calls to the SP-API sandbox endpoints to make static requests that return mock responses.</p>
+
+<h3>Prerequisites</h3>
+<ul>
+<li>A Postman account and workspace.</li>
+<li>If you have your own selling partner account, you can self authorize your application to access your account information.</li>
+<li>If you don't have your own selling partner account, you can:
+    <ul>
+    <li>Use the Solution Provider Portal to register a sandbox application.</li>
+    <li>Use a third-party OAuth workflow.</li>
+    </ul>
+</li>
+</ul>
+
+<h3>Variables Needed to Perform Testing with Postman</h3>
+<ul>
+<li><strong><code>client_id</code>:</strong> You must have the client_id to request an LWA access token. The client_id appears after you register your app.</li>
+<li><strong><code>client_secret</code>:</strong> You must have the client_secret to request an LWA access token.</li>
+<li><strong><code>refresh_token</code>:</strong> The LWA refresh token, get this value when the selling partner authorizes your application.</li>
+<li><strong><code>base_url_sandbox</code>:</strong> To get Selling Partner API sandbox endpoints for each region.</li>
+</ul>
+
+<h3>Step-by-Step Workflow</h3>
+
+<h4>Step 1. Generate a Login with Amazon (LWA) access token</h4>
+<p>First you need to authorize your application to access selling data on behalf of a selling partner. When you generate a Login with Amazon (LWA) access token, it can be used for multiple SP-API calls until it expires.</p>
+
+<p>The response returns an LWA access token that you can use to authenticate your SP-API call. An LWA access token must be included in calls to all operations (except restricted operations) that return Personally Identifiable Information (PII). When calling restricted operations, you include a Restricted Access Token (RDT) instead of an LWA access token.</p>
+
+<h4>Step 2. Make a call to the SP-API sandbox endpoint</h4>
+<ol>
+<li>Import the Orders API Swagger model to your Postman workspace.</li>
+<li>Search the code for an <code>x-amzn-api-sandbox</code> object that contains a static array of request and response examples.</li>
+<li>Set the request parameters with the same values that the Orders API Swagger model defines.</li>
+<li>Check that your request includes all required parameters as defined in the corresponding Swagger model.</li>
+<li>Make a <code>GET</code> Call to <code>/orders/v0/orders</code>.</li>
+<li>Set the <strong><code>baseUrl</code></strong> as Selling Partner API sandbox.</li>
+<li>Under the <strong>Params</strong> tab, pass the static request values from the Orders API model.</li>
+<li>Under the <strong>Headers</strong> tab, pass the <strong><code>access_token</code></strong> using the key value pair <code>x-amz-access-token</code>:<code>Atc|********************</code>.</li>
+<li>For restricted operations, pass the Restricted Data Token (RDT) using the key value pair <code>x-amz-access-token</code>:<code>Atz.sprdt|********************</code>.</li>
+</ol>
+
+<div class="important">
+<strong>Important:</strong> If calling a restricted operation (e.g., accessing PII), use a <strong>Restricted Data Token (RDT)</strong> instead of an LWA access token. Use the <code>createRestrictedDataToken</code> operation to obtain it.
+</div>
+
+<p>Example RDT response:</p>
+<pre><code>{
+  "restrictedDataToken": "Atz.sprdt|IQEBLjAsAhRmHjNgHpi0U-Dme37rR6CuUpSR",
+  "expiresIn": 3600
+}</code></pre>
+
+<h3>Use the Selling Partner API Dynamic Sandbox</h3>
+<p>The SP-API dynamic sandbox supports stateful, variable responses. Operations supporting dynamic sandbox calls are marked in the Swagger model with:</p>
+<pre><code>"x-amzn-api-sandbox": { "dynamic": {} }</code></pre>
+</section>
+
+<!-- Section 4: Tutorial C# SDK -->
+<section id="tutorial-csharp-sdk">
+<div class="metadata">Источник: https://developer-docs.amazon.com/sp-api/docs/automate-your-sp-api-calls-using-the-c-sdk</div>
+<h2>4. Tutorial: Automate your SP-API Calls Using a C# SDK</h2>
+
+<p>Automate your SP-API calls with Login with Amazon (LWA) token exchange and authentication. This tutorial provides you with all the required information to generate a C# SDK with Login with Amazon (LWA) token exchange and an authentication to build your application.</p>
+
+<h3>Prerequisites</h3>
+<ul>
+<li>A hybrid or SP-API app in draft or published state</li>
+<li>Integrated development environment (IDE) software (e.g., Visual Studio IDE on Windows OS)</li>
+</ul>
+
+<h3>Step 1. Set Up Your Workspace</h3>
+<ol>
+<li>Create a directory named <strong><code>SwaggerToCL</code></strong>.</li>
+<li>Download: IDE (e.g., Visual Studio), GNU Wget, Java 8+</li>
+<li>Run:
+<pre><code>wget https://repo1.maven.org/maven2/io/swagger/swagger-codegen-cli/2.4.13/swagger-codegen-cli-2.4.13.jar -O swagger-codegen-cli.jar</code></pre>
+</li>
+<li>Copy <code>swagger-codegen-cli.jar</code> into <strong><code>C:\SwaggerToCL</code></strong>.</li>
+<li>Clone models:
+<pre><code>git clone https://github.com/amzn/selling-partner-api-models</code></pre>
+</li>
+<li>Copy a JSON file (e.g., <code>Sellers.json</code>) into <strong><code>C:\SwaggerToCL</code></strong>.</li>
+<li>Download the <code>sellingpartner-api-aa-csharp</code> folder from GitHub.</li>
+</ol>
+
+<h3>Step 2. Generate a C# SDK with LWA Token Exchange and Authentication</h3>
+<ol>
+<li>Open Visual Studio.</li>
+<li>Build <code>SellingPartnerAPIAuthAndAuthCSharp.sln</code> to generate <code>Amazon.SellingPartnerAPIAA.dll</code>.</li>
+<li>Create <code>csharpConfig.json</code>:
+<pre><code>{"packageName":"SellingPartnerAPI.SellerAPI","targetFramework":"v4.7.2"}</code></pre>
+</li>
+<li>Generate code:
+<pre><code>java -jar C:\SwaggerToCL\swagger-codegen-cli.jar generate -i C:\SwaggerToCL\Sellers.json -l csharp -t [path]\templates\ -o C:\SwaggerToCL\Sellers_CsharpCL -c C:\SwaggerToCL\csharpConfig.json</code></pre>
+</li>
+</ol>
+
+<h3>Step 3. Connect to the Selling Partner API Using the Generated C# SDK</h3>
+<ol>
+<li>Open the generated <code>.sln</code> file in Visual Studio.</li>
+<li>Add references:
+    <ul>
+    <li><code>Amazon.SellingPartnerAPIAA.dll</code></li>
+    <li>NuGet packages: JsonSubTypes 1.2.0+, Newtonsoft.Json 12.0.3+, RestSharp 106.12.0, RateLimiter 2.2.0+</li>
+    </ul>
+</li>
+<li>Modify <code>SellersApiTests.cs</code>:
+<pre><code>LWAAuthorizationCredentials lwaAuthorizationCredentials = new LWAAuthorizationCredentials
+{
+    ClientId = "amzn1.application-oa2-client.******************",
+    ClientSecret = "***********************************",
+    RefreshToken = "Atzr|***********************************",
+    Endpoint = new Uri("https://api.amazon.com/auth/o2/token")
+};
+SellersApi sellersApi = new SellersApi.Builder()
+    .SetLWAAuthorizationCredentials(lwaAuthorizationCredentials)
+    .Build();
+
+GetMarketplaceParticipationsResponse result = sellersApi.GetMarketplaceParticipations();
+Console.WriteLine(result.ToJson());</code></pre>
+</li>
+</ol>
+
+<h3>Troubleshooting</h3>
+<ul>
+<li><strong>RestSharp Errors:</strong> Update RestSharp to 106.12.0 and verify references.</li>
+<li><strong>"Newtonsoft could not be found":</strong> Manually add <code>Newtonsoft.Json</code> from the packages folder.</li>
+<li><strong>"ComposableAsync.Core" Error:</strong> Add <code>ComposableAsync.Core.dll</code> as a reference.</li>
+<li><strong>"ToJson() no suitable method found...":</strong> Change <code>override</code> to <code>virtual</code>.</li>
+</ul>
+</section>
+
+<!-- Section 5: Tutorial Java SDK -->
+<section id="tutorial-java-sdk">
+<div class="metadata">Источник: https://developer-docs.amazon.com/sp-api/docs/automate-your-sp-api-calls-using-java-sdk</div>
+<h2>5. Tutorial: Automate your SP-API Calls Using a Java SDK</h2>
+
+<p>Automate your SP-API calls with Login with Amazon (LWA) token exchange and authentication. This tutorial describes how to generate a Java SDK with LWA token exchange and authentication to build your application seamlessly.</p>
+
+<h3>Prerequisites</h3>
+<ul>
+<li>A hybrid or SP-API app in draft or published state</li>
+<li>An IDE (e.g., Eclipse IDE on Windows OS)</li>
+</ul>
+
+<h3>Step 1: Set Up Your Workspace</h3>
+<ol>
+<li>Create a directory named <code>SwaggerToCL</code>.</li>
+<li>Install: Java 17 or newer, Apache Maven 3.9 or greater, GNU Wget 1.20 or greater</li>
+<li>Download Swagger Code Generator:
+<pre><code>wget https://repo1.maven.org/maven2/io/swagger/codegen/v3/swagger-codegen-cli/3.0.61/swagger-codegen-cli-3.0.61.jar</code></pre>
+</li>
+<li>Clone the SP-API models repository:
+<pre><code>git clone https://github.com/amzn/selling-partner-api-models</code></pre>
+</li>
+<li>Copy JSON files from <code>selling-partner-api-models/models</code> to <code>SwaggerToCL</code>.</li>
+</ol>
+
+<h3>Step 2: Generate Java SDK for SP-APIs</h3>
+<p>Run for each JSON file:</p>
+<pre><code>java -jar C:\SwaggerToCL\swagger-codegen-cli.jar generate \
+-i [MODEL FILE] \
+-l java \
+-t [PATH TO TEMPLATES] \
+-o [OUTPUT DIRECTORY] \
+-c [PATH TO CONFIG.JSON]</code></pre>
+
+<h3>Step 3: Build the Authentication/Authorization Library (AA)</h3>
+<ol>
+<li>Navigate to <code>selling-partner-api-models/clients/sellingpartner-api-aa-java</code> and run:
+<pre><code>mvn package</code></pre>
+</li>
+<li>Install the JAR in your local Maven repository:
+<pre><code>mvn install:install-file \
+-Dfile=[JAR PATH] \
+-DgroupId=com.amazon.sellingpartnerapi \
+-DartifactId=sellingpartnerapi-aa-java \
+-Dversion=x.x \
+-Dpackaging=jar</code></pre>
+</li>
+</ol>
+
+<h3>Step 4: Add the Library as a Dependency</h3>
+<p>Edit the generated SDK's <code>pom.xml</code>:</p>
+<pre><code>&lt;dependency&gt;
+  &lt;groupId&gt;com.amazon.sellingpartnerapi&lt;/groupId&gt;
+  &lt;artifactId&gt;sellingpartnerapi-aa-java&lt;/artifactId&gt;
+  &lt;version&gt;x.x&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+
+<h3>Step 5: Connect to the Selling Partner API</h3>
+<p>Example code using the Sellers API SDK:</p>
+<pre><code>import com.amazon.SellingPartnerAPIAA.LWAAuthorizationCredentials;
+import io.swagger.client.api.SellersApi;
+
+public class SellersApiDemo {
+    public static void main(String[] args) {
+        LWAAuthorizationCredentials lwaAuth = LWAAuthorizationCredentials.builder()
+            .clientId("amzn1.application-...")
+            .clientSecret("...")
+            .refreshToken("Atzr|...")
+            .endpoint("https://api.amazon.com/auth/o2/token")
+            .build();
+
+        SellersApi sellersApi = new SellersApi.Builder()
+            .lwaAuthorizationCredentials(lwaAuth)
+            .endpoint("https://sellingpartnerapi-na.amazon.com")
+            .build();
+
+        try {
+            GetMarketplaceParticipationsResponse result = sellersApi.getMarketplaceParticipations();
+            System.out.println(result);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+
+<p>For Grantless operations (e.g., Notifications API): Use <code>withScopes(...)</code> to include required OAuth scopes.</p>
+</section>
+
+<!-- Section 6: Tutorial JavaScript SDK -->
+<section id="tutorial-javascript-sdk">
+<div class="metadata">Источник: https://developer-docs.amazon.com/sp-api/docs/tutorial-automate-your-sp-api-calls-using-javascript-sdk-for-node-js</div>
+<h2>6. Tutorial: Automate your SP-API Calls Using a JavaScript SDK for Node.js</h2>
+
+<p>Automate your SP-API calls with Login with Amazon (LWA) token exchange and authentication. This tutorial provides all required details to generate a JavaScript SDK for Node.js with LWA integration.</p>
+
+<h3>Prerequisites</h3>
+<ul>
+<li>A hybrid or SP-API application (draft or published)</li>
+<li>Integrated Development Environment (IDE) software</li>
+<li>Java version 7 or higher</li>
+<li><code>swagger-codegen-cli-2.4.29</code></li>
+<li>Node.js v18 or higher</li>
+</ul>
+
+<div class="warning">
+<strong>Warning:</strong> You <strong>must</strong> use <code>swagger-codegen-cli-2.4.29</code>. Other versions will cause SDK generation to fail.
+</div>
+
+<h3>Step 1: Set Up Your Workspace</h3>
+<pre><code>mkdir SPAPI_JavaScript_SDK
+cd SPAPI_JavaScript_SDK
+
+wget https://repo1.maven.org/maven2/io/swagger/swagger-codegen-cli/2.4.29/swagger-codegen-cli-2.4.29.jar
+chmod 744 swagger-codegen-cli-2.4.29.jar
+
+git clone https://github.com/amzn/selling-partner-api-models</code></pre>
+
+<h3>Step 2: Generate a JavaScript SDK for Node.js</h3>
+<pre><code>cd selling-partner-api-models/clients/sellingpartner-api-aa-javascript/Src
+./generate-js-sdk.sh -j ../../swagger-codegen-cli-2.4.29.jar</code></pre>
+
+<h3>Step 3: Create a Local NPM Package</h3>
+<pre><code>cd SellingPartnerAPISdkJavaScriptNode
+npm pack</code></pre>
+
+<h3>Step 4: Create a New Project Using the SDK</h3>
+<pre><code>mkdir MyNewSPAPIProject
+cd MyNewSPAPIProject
+npm init -y
+npm install ../SellingPartnerAPISdkJavaScriptNode/amzn-testsellingpartnerjavascriptapilwalib-1.0.0.tgz</code></pre>
+
+<h3>Step 5: Connect to the Selling Partner API</h3>
+<p>Create <code>app.config.mjs</code> for credentials (never commit this file):</p>
+<pre><code>export const AppConfig = {
+    lwaClientId: "&lt;LWA_CLIENT_ID&gt;",
+    lwaClientSecret: "&lt;LWA_CLIENT_SECRET&gt;",
+    lwaRefreshToken: "&lt;LWA_REFRESH_TOKEN&gt;"
+};</code></pre>
+
+<p>Create <code>index.js</code> to execute an API call:</p>
+<pre><code>import { AppConfig } from './app.config.mjs';
+import { LwaAuthClient } from '@amzn/testsellingpartnerjavascriptapilwalib/src/helper/LwaAuthClient.mjs';
+import { SellersApi, ApiClient as SellersApiClient } from '@amzn/testsellingpartnerjavascriptapilwalib/sdk/src/sellers/index.js';
+
+(async () => {
+    const lwaClient = new LwaAuthClient(
+        AppConfig.lwaClientId,
+        AppConfig.lwaClientSecret,
+        AppConfig.lwaRefreshToken
+    );
+    const sellerApiClient = new SellersApiClient('https://sellingpartnerapi-fe.amazon.com');
+
+    const sellerApi = new SellersApi(sellerApiClient);
+    sellerApiClient.applyXAmzAccessTokenToRequest(await lwaClient.getAccessToken());
+
+    const participations = await sellerApi.getMarketplaceParticipations();
+    console.log(JSON.stringify(participations, null, '  ') + '\n**********************************');
+})();</code></pre>
+
+<p>Run the script:</p>
+<pre><code>node index.js</code></pre>
+</section>
+
+<!-- Section 7: Tutorial Python SDK -->
+<section id="tutorial-python-sdk">
+<div class="metadata">Источник: https://developer-docs.amazon.com/sp-api/docs/tutorial-automate-your-sp-api-calls-using-python-sdk</div>
+<h2>7. Tutorial: Automate your SP-API Calls Using a Python SDK</h2>
+
+<p>Automate your SP-API calls with Login with Amazon (LWA) token exchange and authentication. This tutorial provides you with all the required details to generate a Python SDK with Login with Amazon (LWA) token exchange and authentication.</p>
+
+<h3>Prerequisites</h3>
+<ul>
+<li>A hybrid or SP-API app in draft or published state</li>
+<li>Integrated development environment (IDE) software</li>
+<li>Python (version 3.6 or later)</li>
+<li><code>swagger-codegen-cli-2.3</code> (or later)</li>
+</ul>
+
+<h3>Step 1. Set up your workspace</h3>
+<ol>
+<li>Create a directory named <code>SPAPI_Python_SDK</code>.</li>
+<li>Clone the client repo.</li>
+<li>Download Python (version 3.6 or later).</li>
+<li>Run:
+<pre><code>wget https://repo1.maven.org/maven2/io/swagger/swagger-codegen-cli/2.4.13/swagger-codegen-cli-2.4.13.jar -O swagger-codegen-cli.jar</code></pre>
+</li>
+<li>Install the Python <code>backoff</code> library:
+<pre><code>pip install backoff</code></pre>
+</li>
+<li>Clone the <code>selling-partner-api-models</code> repository:
+<pre><code>git clone https://github.com/amzn/selling-partner-api-models</code></pre>
+</li>
+</ol>
+
+<h3>Step 2. Generate a Python client from Swagger definitions</h3>
+<pre><code>java -jar /[path_to_swagger_jar]/swagger-codegen-cli.jar generate -l python -t /[path_to_mustach_resources]/resources/ -D packageName=swagger_client -o /[path_to_client_folder]/client/[SP-API_NAME] -i /[path_to_model_folder]/models/[SP-API_NAME]/SP-API.json</code></pre>
+
+<h3>Step 3. Integrate the authentication module</h3>
+<p>Locate the <code>auth</code> and <code>spapi</code> client code folders and update the paths in the following Python files: <code>spapiclient.py</code> and <code>LwaRequest.py</code>.</p>
+
+<h3>Step 4. Set up the Python SDK package</h3>
+<p>Create a <code>setup.py</code> file:</p>
+<pre><code>from setuptools import setup, find_packages
+
+setup(
+    name='SellingPartnerAPIAuthAndAuthPython',
+    version='1.0.0',
+    package_dir={'': 'src'},
+    packages=find_packages(where='src'),
+    install_requires=[line.strip() for line in open("requirements.txt", "r")],
+    description='A Python SDK for Amazon Selling Partner API',
+    long_description=open('README.md').read(),
+    long_description_content_type='text/markdown',
+    url='TBD'
+)</code></pre>
+
+<h3>Step 5. Create an instance of the Orders API and invoke an operation</h3>
+<div class="note">
+<strong>Note:</strong> This is a restricted operation and requires a Restricted Data Token (RDT) for authorization.
+</div>
+
+<pre><code>if __name__ == "__main__":
+
+    from auth.credentials import SPAPIConfig
+    config = SPAPIConfig(
+        client_id="Your client-id",
+        client_secret="Your client-secret",
+        refresh_token="Your refresh-token",
+        region="NA",  # Possible values NA, EU, FE, and SANDBOX
+        scope = None # Required for grant_type='client_credentials'
+    )
+
+    from spapi.spapiclient import SPAPIClient
+
+    # Create the API Client
+    print("Config and client initialized...")
+    api_client = SPAPIClient(config)
+
+    marketplace_ids = ["ATVPDKIKX0DER"]
+    created_after = "2024-01-19T00:00:00"
+
+    orders_api = api_client.get_api_client('OrdersV0Api')
+    orders_response = orders_api.get_orders(marketplace_ids=marketplace_ids, created_after=created_after)
+    print("Orders API Response:")
+    print(orders_response)</code></pre>
+
+<div class="warning">
+<strong>Caution:</strong> Never commit this file to your version control system as it contains sensitive information. Ensure these LWA credentials are stored securely in an encrypted format.
+</div>
+
+<h3>Step 6. Connect to the Selling Partner API using the generated Python SDK</h3>
+<pre><code>python3 setup.py sdist bdist_wheel
+pip install dist/{YourPackageName}-1.0.0-py3-none-any.whl
+python test.py</code></pre>
+<p>A status code of 200 means the API call was successful.</p>
+</section>
+
+<!-- Section 8: Tutorial Prebuilt C# SDK -->
+<section id="tutorial-prebuilt-csharp-sdk">
+<div class="metadata">Источник: https://developer-docs.amazon.com/sp-api/docs/automate-your-sp-api-calls-using-a-prebuilt-csharp-sdk</div>
+<h2>8. Tutorial: Automate your SP-API Calls using a prebuilt C# SDK</h2>
+
+<p>Automate your SP-API calls using a prebuilt C# SDK. This tutorial shows you how to install and integrate a prebuilt C# SDK.</p>
+
+<h3>Prerequisites</h3>
+<ul>
+<li>Integrated development environment (IDE) software</li>
+<li>Dotnet 7.0 or higher</li>
+</ul>
+
+<h3>Step 1: Add the C# SDK dependency to your application</h3>
+<p>Get the latest SDK version from the release version or NuGet, then add the C# SDK dependency to your application library config (.csproj) file:</p>
+<pre><code>&lt;ItemGroup&gt;
+  &lt;PackageReference Include="software.amzn.spapi" Version="1.1.1" /&gt;
+&lt;/ItemGroup&gt;</code></pre>
+
+<h3>Step 2: Connect the C# SDK to SP-API</h3>
+<pre><code>using RestSharp;
+using software.amzn.spapi;
+using software.amzn.spapi.Client;
+using software.amzn.spapi.Api;
+using software.amzn.spapi.Model;
+using Amazon.SellingPartnerAPIAA;
+using software.amzn.spapi.Api.sellers.v1;
+using software.amzn.spapi.Model.sellers.v1;
+using System.Threading;
+
+// Configure your LWA credentials
+LWAAuthorizationCredentials lwaAuthorizationCredentials = new LWAAuthorizationCredentials
+{
+    ClientId = "yourClientId",
+    ClientSecret = "YourClientSecret",
+    RefreshToken = "YourRefreshToken",
+    Endpoint = new Uri("https://api.amazon.com/auth/o2/token")
+};
+
+// Create an instance of the Sellers API
+SellersApi sellersApi = new SellersApi.Builder()
+    .SetLWAAuthorizationCredentials(lwaAuthorizationCredentials)
+    .Build();
+
+// Call an operation
+GetMarketplaceParticipationsResponse result = sellersApi.GetMarketplaceParticipations();
+Console.WriteLine(result.ToJson());</code></pre>
+
+<p>Report issues on GitHub: https://github.com/amzn/selling-partner-api-sdk/issues</p>
+</section>
+
+<!-- Section 9: Tutorial Prebuilt Java SDK -->
+<section id="tutorial-prebuilt-java-sdk">
+<div class="metadata">Источник: https://developer-docs.amazon.com/sp-api/docs/automate-your-sp-api-calls-using-prebuilt-java-sdk</div>
+<h2>9. Tutorial: Automate your SP-API Calls using prebuilt Java SDK</h2>
+
+<p>Automate your SP-API calls using prebuilt Java SDK. The Java SDK is published on Maven Central and supports Java 11 or higher.</p>
+
+<h3>Step 1: Add the Java SDK dependency to your application</h3>
+
+<p><strong>Maven:</strong></p>
+<pre><code>&lt;dependency&gt;
+  &lt;groupId&gt;software.amazon.spapi&lt;/groupId&gt;
+  &lt;artifactId&gt;spapi-sdk&lt;/artifactId&gt;
+  &lt;version&gt;1.0.0&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+
+<p><strong>Gradle:</strong></p>
+<pre><code>implementation 'software.amazon.spapi:spapi-sdk:0.1.0'</code></pre>
+
+<h3>Step 2: Connect the Java SDK to SP-API</h3>
+<pre><code>// Configure LWA credentials
+LWAAuthorizationCredentials credentials = LWAAuthorizationCredentials.builder()
+      .clientId("amzn1.application-*********************")
+      .clientSecret("***********************************")
+      .refreshToken("Atzr|******************************")
+      .endpoint("https://api.amazon.com/auth/o2/token")
+      .build();
+
+// Create an instance of Sellers API
+SellersApi api = new SellersApi.Builder()
+        .lwaAuthorizationCredentials(credentials)
+        .endpoint("https://sellingpartnerapi-na.amazon.com")
+        .build();
+
+// Call an operation from Sellers API
+GetMarketplaceParticipationsResponse response = api.getMarketplaceParticipations();</code></pre>
+
+<p>Report issues on GitHub: https://github.com/amzn/selling-partner-api-sdk/issues</p>
+</section>
+
+<!-- Section 10: Tutorial Prebuilt JavaScript SDK -->
+<section id="tutorial-prebuilt-javascript-sdk">
+<div class="metadata">Источник: https://developer-docs.amazon.com/sp-api/docs/automate-your-sp-api-calls-using-a-prebuilt-javascript-sdk</div>
+<h2>10. Tutorial: Automate your SP-API Calls using a prebuilt JavaScript SDK</h2>
+
+<p>Automate your SP-API calls using a prebuilt JavaScript SDK.</p>
+
+<h3>Prerequisites</h3>
+<ul>
+<li>Integrated development environment (IDE) software</li>
+<li>Node v14 or higher</li>
+</ul>
+
+<h3>Step 1. Add the JavaScript SDK dependency to your application</h3>
+
+<p><strong>npm:</strong></p>
+<pre><code>npm install @amazon-sp-api-release/amazon-sp-api-sdk-js</code></pre>
+
+<p><strong>yarn:</strong></p>
+<pre><code>yarn add @amazon-sp-api-release/amazon-sp-api-sdk-js</code></pre>
+
+<p><strong>Add package dependency:</strong></p>
+<pre><code>"@amazon-sp-api-release/amazon-sp-api-sdk-js": "^1.0.0"</code></pre>
+
+<h3>Step 2. Connect the JavaScript SDK to SP-API</h3>
+<pre><code>import { SellersSpApi } from '@amazon-sp-api-release/amazon-sp-api-sdk-js';
+
+async function getMarketplaceParticipations() {
+  try {
+    // Configure the Sellers ApiClient
+    const sellersApiClient = new SellersSpApi.ApiClient(AppConfig.spApiNAEndpoint);
+    sellersApiClient.enableAutoRetrievalAccessToken('&lt;YOUR_CLIENT_ID&gt;', '&lt;YOUR_CLIENT_SECRET&gt;', '&lt;YOUR_REFRESH_TOKEN&gt;', null);
+    const sellersApi = new SellersSpApi.SellersApi(sellersApiClient);
+    
+    // Call the GetMarketplaceParticipations operation
+    const participations = await sellersApi.getMarketplaceParticipations();
+    console.log(
+      JSON.stringify(participations, null, ' ') + 
+        '\n**********************************'
+    );
+  } catch (error) {
+    console.error('Exception when calling getMarketplaceParticipations API', error.message);
+  }
+}
+
+getMarketplaceParticipations();</code></pre>
+
+<p>Report issues on GitHub: https://github.com/amzn/selling-partner-api-sdk/issues</p>
+</section>
+
+<!-- Section 11: Tutorial Prebuilt PHP SDK -->
+<section id="tutorial-prebuilt-php-sdk">
+<div class="metadata">Источник: https://developer-docs.amazon.com/sp-api/docs/automate-your-sp-api-calls-using-prebuilt-php-sdk</div>
+<h2>11. Tutorial: Automate your SP-API Calls using prebuilt PHP SDK</h2>
+
+<p>Automate your SP-API calls using prebuilt PHP SDK. The PHP SDK is published on Packagist and supports PHP 8.3 or higher.</p>
+
+<h3>Step 1: Add the PHP SDK dependency to your application</h3>
+<pre><code>composer require amzn-spapi/sdk</code></pre>
+
+<h3>Step 2: Connect the PHP SDK to SP-API</h3>
+<pre><code>// Configure LWA credentials
+$lwaAuthorizationCredentials = new LWAAuthorizationCredentials([
+    "clientId" =&gt; "amzn1.application-*********************",
+    "clientSecret" =&gt; "***********************************",
+    "refreshToken" =&gt; "Atzr|******************************",
+    "endpoint" =&gt; "https://api.amazon.com/auth/o2/token"
+]);
+
+$config = new Configuration([], $lwaAuthorizationCredentials);
+$config-&gt;setHost("https://sellingpartnerapi-na.amazon.com");
+
+// Create a new HTTP client
+$client = new GuzzleHttp\Client();
+
+// Create an instance of Orders API
+$api = new OrdersApi($config, null, $client);
+
+// Call an operation from Orders API
+$result = $api-&gt;getOrders($marketplace_ids = ['ATVPDKIKX0DER'],$created_after = '2024-01-01');</code></pre>
+
+<p>Report issues on GitHub: https://github.com/amzn/selling-partner-api-sdk/issues</p>
+</section>
+
+<!-- Section 12: Tutorial Prebuilt Python SDK -->
+<section id="tutorial-prebuilt-python-sdk">
+<div class="metadata">Источник: https://developer-docs.amazon.com/sp-api/docs/automate-your-sp-api-calls-using-a-prebuilt-python-sdk</div>
+<h2>12. Tutorial: Automate your SP-API calls using a prebuilt Python SDK</h2>
+
+<p>Automate your SP-API calls using a prebuilt Python SDK.</p>
+
+<h3>Prerequisites</h3>
+<ul>
+<li>Integrated development environment (IDE) software</li>
+<li>Python 3.9 or higher</li>
+</ul>
+
+<h3>Step 1. Add the Python SDK dependency to your application</h3>
+<p>The Python SDK is published on PyPI.</p>
+
+<p><strong>requirements.txt:</strong></p>
+<pre><code>amzn-sp-api &gt;= 1.0.0</code></pre>
+
+<p><strong>Poetry:</strong></p>
+<pre><code>poetry add amzn-sp-api</code></pre>
+
+<h3>Step 2. Connect the Python SDK to SP-API</h3>
+<pre><code># LWA credentials configuration
+config = SPAPIConfig(
+    client_id="",
+    client_secret="",
+    refresh_token="",
+    region="NA",
+    scope = None
+)
+
+# Create the API client with configuration
+client = SPAPIClient(config)
+sellers_api = SellersApi(client.api_client)
+
+# Call the API operation
+response = None
+try:
+    response = sellers_api.get_marketplace_participations()
+except ApiException as e:
+    print(f"API Exception occurred: {str(e)}")
+if response is not None:
+    print("Sellers API Response:")
+    get_marketplace_participations_response = GetMarketplaceParticipationsResponse(response.payload)
+    for marketplaceParticipation in get_marketplace_participations_response.payload:
+        print(marketplaceParticipation.marketplace.id)</code></pre>
+
+<p>Report issues on GitHub: https://github.com/amzn/selling-partner-api-sdk/issues</p>
+</section>
+
+<!-- Section 13: Tutorial Merchant Shipping Templates -->
+<section id="tutorial-merchant-shipping-templates">
+<div class="metadata">Источник: https://developer-docs.amazon.com/sp-api/docs/tutorial-retrieve-merchant-shipping-templates</div>
+<h2>13. Tutorial: Retrieve Merchant Shipping Templates</h2>
+
+<p>Learn how to use the Product Type Definitions API to view Selling Partner Merchant Shipping Templates and enhance listing quality. This tutorial explains how to retrieve Merchant Shipping Templates using the Product Type Definitions API.</p>
+
+<p>The <strong>Merchant Shipping Template</strong> is a table in Seller Central used to create freight rules. It maps SKUs to shipping templates and calculates freight costs based on location, weight, and size. This workflow does not apply to Fulfillment by Amazon (FBA) items.</p>
+
+<h3>Key Workflow</h3>
+<p>Use the <code>merchant_shipping_group</code> attribute to retrieve Merchant Shipping Template names. This attribute contains shipping template information configured by the merchant in their Seller Central account.</p>
+
+<h3>Step 1: Set Up Your Workspace</h3>
+<ol>
+<li>Import the Product Type Definitions API Model.</li>
+<li>Set up the workspace with <code>SellerId</code> credentials.</li>
+</ol>
+
+<h3>Step 2: Use Product Type Definitions to Set API Call Parameters</h3>
+<p>Call the <code>getDefinitionsProductType</code> operation with these parameters:</p>
+<pre><code>{
+  "sellerId": "{{sellerId}}",
+  "marketplaceIds": "{{marketplaceId}}",
+  "productTypeVersion": "LATEST",
+  "requirements": "LISTING",
+  "locale": "DEFAULT",
+  "version": "LATEST",
+  "productType": "PRODUCT"
+}</code></pre>
+
+<p>The response includes:</p>
+<pre><code>{
+  "metaSchema": {
+    "link": {
+      "resource": "https://selling-partner-definitions-prod-iad.s3.amazonaws.com/schema/amazon-product-type-definition-meta-schema-v1.json/....... ",
+      "verb": "GET"
+    },
+    "checksum": "rZ/2Yep0np022S38ZdEiNQ=="
+  },
+  "schema": {
+    "link": {
+      "resource": "https://selling-partner-definitions-prod-iad.s3.amazonaws.com/schema/PRODUCT.json/........",
+      "verb": "GET"
+    },
+    "checksum": "Hi42HJFOEDKOSFYO9SSje+Ibq5Xg=="
+  }
+}</code></pre>
+
+<h3>Step 3: Explore the Schema Usage</h3>
+<p>Search for the <code>merchant_shipping_group</code> attribute requirements:</p>
+<pre><code>{
+  "merchant_shipping_group": {
+    "title": "Merchant Shipping Group",
+    "description": "The ship configuration group for an offer.",
+    "type": "array",
+    "items": {
+      "type": "object",
+      "required": ["marketplace_id", "value"],
+      "properties": {
+        "value": {
+          "title": "Merchant Shipping Group",
+          "editable": true,
+          "type": "string",
+          "enum": [
+            "legacy-template-id",
+            "9bc08e3b-0e9f-40c3-96c7-0098525b901b",
+            "a5a0d872-be8c-4f0c-a51a-3647ae4bedf5",
+            "64c92253-d0bf-4970-897c-98ba16eca63a"
+          ],
+          "enumNames": [
+            "Migrated Template",
+            "Modelo dos EUA",
+            "US Template",
+            "US Template-16"
+          ],
+          "maxLength": 100
+        }
+      }
+    }
+  }
+}</code></pre>
+
+<h3>Mapping Table</h3>
+<table>
+<tr><th>Index</th><th>Enum</th><th>EnumNames</th></tr>
+<tr><td>0</td><td><code>legacy-template-id</code></td><td>"Migrated Template"</td></tr>
+<tr><td>1</td><td><code>9bc08e3b-0e9f-40c3-96c7-0098525b901b</code></td><td>"Modelo dos EUA"</td></tr>
+<tr><td>2</td><td><code>a5a0d872-be8c-4f0c-a51a-3647ae4bedf5</code></td><td>"US Template"</td></tr>
+<tr><td>3</td><td><code>64c92253-d0bf-4970-897c-98ba16eca63a</code></td><td>"US Template-16"</td></tr>
+</table>
+
+<div class="note">
+<strong>Key Note:</strong> Pass the <strong><code>enum</code> key</strong> (not <code>enumNames</code>) into API calls like <code>PUT</code>, <code>PATCH</code>, or JSON feeds for accurate template mapping.
+</div>
+</section>
+
+<!-- Section 14: Tutorial PO Number -->
+<section id="tutorial-po-number">
+<div class="metadata">Источник: https://developer-docs.amazon.com/sp-api/docs/tutorial-retrieve-and-pass-a-purchase-order-number-to-a-carrier</div>
+<h2>14. Tutorial: Retrieve and Pass a Purchase Order Number to a Carrier</h2>
+
+<p>Use the Selling Partner API to retrieve and pass a purchase order (PO) number to UPS, FedEx, or USPS. Business-to-business (B2B/Amazon Business) orders typically include PO numbers on shipping labels. If labels are sourced outside Amazon, the PO number must be retrieved via the Selling Partner API and passed to the carrier.</p>
+
+<h3>What is an Amazon Business PO Number?</h3>
+<p>An Amazon Business PO number is a unique identifier for orders placed by business customers. It is used for:</p>
+<ul>
+<li>Tracking and reference</li>
+<li>Billing and accounting</li>
+<li>Internal management</li>
+<li>Communication</li>
+</ul>
+
+<h3>Tutorial: Retrieve a PO Number Using the Orders API</h3>
+
+<h4>Prerequisites</h4>
+<ul>
+<li>Authorization from the selling partner</li>
+<li>The <strong>Direct to Consumer Shipping (Restricted)</strong> role assigned</li>
+</ul>
+
+<h4>Steps</h4>
+<ol>
+<li><strong>Call the <code>getOrder</code> operation</strong> with the <code>orderId</code> path parameter. This is a restricted operation requiring a Restricted Data Token (RDT).</li>
+<li><strong>Check the <code>IsBusinessOrder</code> field</strong> in the response. If <code>true</code>, the <code>BuyerInfo.PurchaseOrderNumber</code> field will exist.</li>
+<li><strong>Retrieve the PO number</strong> from the <code>PurchaseOrderNumber</code> field.</li>
+</ol>
+
+<p>Example JSON response:</p>
+<pre><code>{
+  "payload": {
+    "PurchaseOrderNumber": "1234567890123"
+  }
+}</code></pre>
+
+<h3>Tutorial: Retrieve a PO Number Using the Reports API</h3>
+<ol>
+<li><strong>Call the <code>createReport</code> operation</strong> with an order report type.</li>
+<li><strong>Poll for <code>REPORT_PROCESSING_FINISHED</code></strong> to get the <code>reportDocumentId</code>.</li>
+<li><strong>Call <code>getReportDocument</code></strong> using the <code>reportDocumentId</code>. Requires RDT for restricted report types.</li>
+<li><strong>Download the report</strong> from the provided URL.</li>
+<li><strong>Check the <code>IsBusinessOrder</code> field</strong> in the report. If <code>true</code>, the <code>PurchaseOrderNumber</code> field will exist.</li>
+</ol>
+
+<p>Example XML report snippet:</p>
+<pre><code>&lt;PurchaseOrderNumber&gt;PO12345&lt;/PurchaseOrderNumber&gt;</code></pre>
+
+<h3>Tutorial: Pass a PO Number to Carriers</h3>
+
+<h4>UPS</h4>
+<p>Use the <code>Shipment</code> operation with <code>ReferenceNumber.Code = "PO"</code>:</p>
+<pre><code>{
+  "ReferenceNumber": [
+    {
+      "Code": "PO",
+      "Value": "CustomerPONum"
+    }
+  ]
+}</code></pre>
+
+<h4>FedEx</h4>
+<p>Use the <code>CreateShipment</code> operation with <code>customerReferenceType = "P_O_NUMBER"</code>:</p>
+<pre><code>{
+  "customerReferences": [
+    {
+      "customerReferenceType": "P_O_NUMBER",
+      "value": "23456764"
+    }
+  ]
+}</code></pre>
+
+<h4>USPS</h4>
+<p>Use the <code>eVS Label</code> API with <code>CustomerRefNo</code> and <code>PrintCustomerRefNo = "true"</code>:</p>
+<pre><code>&lt;CustomerRefNo&gt;PO: CustomerPONum&lt;/CustomerRefNo&gt;
+&lt;PrintCustomerRefNo&gt;true&lt;/PrintCustomerRefNo&gt;</code></pre>
+
+<h4>Auctane (Stamps.com)</h4>
+<p>Use the <code>CreateIndicium</code> operation with the <code>memo</code> field:</p>
+<pre><code>&lt;memo&gt;PO: CustomerPONum&lt;/memo&gt;</code></pre>
+
+<h4>EasyPost</h4>
+<p>Use the <code>Shipments</code> operation with <code>print_custom_1</code> and <code>print_custom_1_code = "PO"</code>:</p>
+<pre><code>{
+  "options": {
+    "print_custom_1": "CustomerPONum",
+    "print_custom_1_code": "PO"
+  }
+}</code></pre>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solution Provider Portal Management - Amazon SP-API Documentation</title>
+    <meta name="source" content="https://developer-docs.amazon.com/sp-api/docs/">
+    <meta name="section" content="SOLUTION PROVIDER PORTAL">
+    <meta name="extracted_date" content="2026-01-15">
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .disclaimer { background: #fff3cd; border: 1px solid #ffc107; padding: 15px; margin-bottom: 30px; border-radius: 5px; }
+        .toc { background: #f8f9fa; padding: 20px; margin-bottom: 30px; border-radius: 5px; }
+        .toc ul { list-style-type: none; padding-left: 20px; }
+        .toc a { text-decoration: none; color: #0066c0; }
+        .toc a:hover { text-decoration: underline; }
+        section { margin-bottom: 40px; padding-bottom: 20px; border-bottom: 1px solid #eee; }
+        h1 { color: #232f3e; border-bottom: 3px solid #ff9900; padding-bottom: 10px; }
+        h2 { color: #232f3e; margin-top: 30px; }
+        h3 { color: #545b64; }
+        .important { background: #fef3f3; border-left: 4px solid #d13212; padding: 15px; margin: 15px 0; }
+        .note { background: #f0f8ff; border-left: 4px solid #0073bb; padding: 15px; margin: 15px 0; }
+        .warning { background: #fff8e1; border-left: 4px solid #ff9900; padding: 15px; margin: 15px 0; }
+        code { background: #f4f4f4; padding: 2px 6px; border-radius: 3px; font-family: monospace; }
+        pre { background: #f4f4f4; padding: 15px; border-radius: 5px; overflow-x: auto; }
+        ol, ul { margin: 10px 0; padding-left: 30px; }
+        li { margin: 5px 0; }
+        .metadata { font-size: 0.9em; color: #666; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="disclaimer">
+    <strong>ДОКУМЕНТ ВНЕШНЕГО СЕРВИСА — НЕ ЯВЛЯЕТСЯ ТРЕБОВАНИЯМИ К ПРОДУКТУ</strong><br>
+    Этот документ описывает внешний сервис / API и т.п. как инструкция. Как использовать:
+    <ul>
+        <li>для определения возможностей и ограничений интеграции</li>
+        <li>для формулирования требований к интеграции (что отправляем/получаем, авторизация, ошибки, лимиты, поведение при недоступности), ответам пользователя по сервису и т.п.</li>
+    </ul>
+</div>
+
+<h1>Solution Provider Portal Management</h1>
+<p>Документация по управлению Solution Provider Portal для Amazon SP-API.</p>
+
+<nav class="toc">
+    <h2>Оглавление</h2>
+    <ul>
+        <li><a href="#manage-users">1. Manage Users in Solution Provider Portal</a></li>
+        <li><a href="#business-contact-info">2. Manage Your Business And Contact Information</a></li>
+        <li><a href="#billing-info">3. Manage Billing Information</a></li>
+        <li><a href="#tax-registration">4. Manage Tax Registration Information</a></li>
+        <li><a href="#developer-profile">5. Update Your Developer Profile</a></li>
+        <li><a href="#account-unification">6. Unify Your Developer Accounts</a></li>
+        <li><a href="#verify-identity">7. Verify Your Identity</a></li>
+        <li><a href="#api-usage-metrics">8. API Usage Metrics</a></li>
+    </ul>
+</nav>
+
+<!-- Section 1: Manage Users -->
+<section id="manage-users">
+    <h2>1. Manage Users in Solution Provider Portal</h2>
+    <p class="metadata">Источник: <a href="https://developer-docs.amazon.com/sp-api/docs/manage-users-in-spp">manage-users-in-spp</a></p>
+    
+    <p>Learn how to add employees to your Solution Provider Portal account, manage permissions, delegate client access, and remove users when needed.</p>
+    
+    <p>As an SP-API developer or service provider, you might need to give multiple employees access to your company's Solution Provider Portal account so that your employees can help manage your SP-API applications and client relationships. Multi-user access is particularly common for service provider companies.</p>
+
+    <h3>Add Employees to Your Account</h3>
+    <p>To add an employee to your Solution Provider Portal account:</p>
+    <ol>
+        <li>Sign in as an admin.</li>
+        <li>Choose <strong>Services</strong> &gt; <strong>Permissions Management</strong>.</li>
+        <li>Choose <strong>Global Account Permissions</strong> &gt; <strong>Add User</strong>.</li>
+        <li>Enter the user's name and email.</li>
+        <li>Choose <strong>Send Invite</strong>.</li>
+    </ol>
+    <div class="important">
+        <strong>Important:</strong> Use the employee's Seller Central email address, if available, or request their preferred email address. This will be their sign-in email for Solution Provider Portal and future Seller Central access.
+    </div>
+
+    <h3>Manage Employee Permissions</h3>
+    <p>To grant permissions:</p>
+    <ol>
+        <li>Sign in as an admin.</li>
+        <li>Choose <strong>Services</strong> &gt; <strong>Permissions Management</strong> &gt; <strong>Global Account Permissions</strong>.</li>
+        <li>Next to the employee's name, choose <strong>Manage Rights</strong>.</li>
+        <li>Select permissions to grant. Ensure <strong>Global Account</strong> is selected.</li>
+        <li>Save changes.</li>
+    </ol>
+
+    <h3>Grant Admin Permissions</h3>
+    <p>To grant admin-level permissions:</p>
+    <ol>
+        <li>Sign in as an admin.</li>
+        <li>Choose <strong>Settings</strong> &gt; <strong>User Permissions</strong> &gt; <strong>Global User Permissions</strong>.</li>
+        <li>Next to the employee's name, choose <strong>Manage Rights</strong>.</li>
+        <li>Select <strong>Global Account</strong>.</li>
+        <li>Grant admin permissions (e.g., <strong>Manage Clients</strong>, <strong>Manage Global User Permissions</strong>).</li>
+        <li>Save changes.</li>
+    </ol>
+
+    <h3>Delegate Client Access</h3>
+    <p>To assign seller accounts to employees:</p>
+    <ol>
+        <li>Sign in as an admin or primary user.</li>
+        <li>Choose <strong>Services</strong> &gt; <strong>Permissions Management</strong> &gt; <strong>Global Account Permissions</strong>.</li>
+        <li>Search for the employee.</li>
+        <li>Choose <strong>Add user to client</strong>, select the seller account, and submit.</li>
+        <li>Assign permissions via <strong>Manage Rights</strong> for the client.</li>
+    </ol>
+
+    <h3>View Access and Assignments</h3>
+    <ul>
+        <li>To review users with access to a seller account: Navigate to <strong>Global Account Permissions</strong> &gt; <strong>Clients</strong> &gt; search the seller.</li>
+        <li>To view a user's assigned sellers: Go to <strong>User Permissions</strong> &gt; <strong>Global User Permissions</strong> &gt; <strong>Manage Rights</strong> for the user.</li>
+    </ul>
+
+    <h3>Manage Client Access</h3>
+    <ul>
+        <li><strong>Remove client access from an employee:</strong> Use <strong>Remove Access From Account</strong> in <strong>User Permissions</strong>.</li>
+        <li><strong>Remove a seller from your account:</strong> Navigate to <strong>Clients</strong> &gt; <strong>Remove from this account</strong>.</li>
+    </ul>
+
+    <h3>Remove Employees</h3>
+    <p>To remove an employee:</p>
+    <ol>
+        <li>Sign in as an admin.</li>
+        <li>Choose <strong>Settings</strong> &gt; <strong>User Permissions</strong> &gt; <strong>Global User Permissions</strong>.</li>
+        <li>Select the employee and choose <strong>Remove User</strong>.</li>
+    </ol>
+
+    <h3>Accept Invitations (For Employees)</h3>
+    <ol>
+        <li>Use the email in the invitation to sign in or create a new account in Solution Provider Portal.</li>
+        <li>Choose <strong>Accept Invitation</strong>.</li>
+    </ol>
+
+    <h3>Access Assigned Sellers</h3>
+    <p>To access seller accounts:</p>
+    <ol>
+        <li>Sign in to Seller Central using the email registered with Solution Provider Portal.</li>
+        <li>Select your service provider's global account to view assigned sellers.</li>
+        <li>Choose the seller to access their account with granted permissions.</li>
+    </ol>
+
+    <h3>Troubleshooting Invitation Issues</h3>
+    <p>If an employee uses a different email:</p>
+    <ol>
+        <li>The admin receives a notification and must approve the registration.</li>
+        <li>Admin selects <strong>Confirm Invitation</strong> in <strong>Open Invitations</strong> to finalize.</li>
+    </ol>
+</section>
+
+<!-- Section 2: Business and Contact Information -->
+<section id="business-contact-info">
+    <h2>2. Manage Your Business And Contact Information in Solution Provider Portal</h2>
+    <p class="metadata">Источник: <a href="https://developer-docs.amazon.com/sp-api/docs/update-business-contact-information-in-spp">update-business-contact-information-in-spp</a></p>
+    
+    <p>Learn how to manage your business and contact information in Solution Provider Portal.</p>
+    
+    <p>This guide shows you how to update business and contact information. Required after identity verification is complete.</p>
+    
+    <div class="important">
+        <strong>Important:</strong> Only the administrator of the Solution Provider Portal account can perform these steps.
+    </div>
+
+    <h3>Prerequisites</h3>
+    <ul>
+        <li>Solution Provider Portal account established</li>
+        <li>Identity verification completed</li>
+    </ul>
+
+    <h3>Update Your Business Information</h3>
+    <ol>
+        <li>Sign in to Solution Provider Portal.</li>
+        <li>Select your account and choose <strong>Select Account</strong>.</li>
+        <li>Click the gear icon at the top.</li>
+        <li>Choose <strong>Account Info</strong> → <strong>Business information</strong>.</li>
+        <li>Business Name Format Requirements: Complete legal name, include DBAs/trade names, original language spelling if applicable.</li>
+        <li>Enter Company Registration Number.</li>
+        <li>Provide Registered Business Address.</li>
+        <li>Verify and complete phone number authentication.</li>
+    </ol>
+
+    <h3>Update Your Business Contact Information</h3>
+    <ol>
+        <li>Sign in to Solution Provider Portal.</li>
+        <li>Select your account and choose <strong>Select Account</strong>.</li>
+        <li>Navigate to <strong>Business &amp; Contact Info</strong> section.</li>
+        <li>Business Name Requirements: Complete legal name with DBAs/trade names.</li>
+        <li>Website URL Requirements: Complete address; verify website is live.</li>
+        <li>Home Country: Enter legal registration country.</li>
+        <li>Primary Contact Name: Full first and last name with optional language spelling.</li>
+        <li>Email Address: Use business email, ensure active monitoring, verify correctness.</li>
+        <li>Phone Number: Include complete business phone with area code.</li>
+        <li>Select <strong>Save</strong>.</li>
+    </ol>
+</section>
+
+<!-- Section 3: Billing Information -->
+<section id="billing-info">
+    <h2>3. Manage Billing Information in Solution Provider Portal</h2>
+    <p class="metadata">Источник: <a href="https://developer-docs.amazon.com/sp-api/docs/manage-billing-information-in-solution-provider-portal">manage-billing-information-in-solution-provider-portal</a></p>
+    
+    <p>Add, edit, and manage credit card and debit card billing information in Solution Provider Portal.</p>
+    
+    <p>This guide shows you how to add and manage credit cards and debit cards in Solution Provider Portal. Learn how to add new cards, view your existing cards, edit card details, switch cards, and remove cards from your account.</p>
+    
+    <p>For information about SP-API fees, refer to <em>An Update on SP-API Fees</em> and <em>Understanding SP-API Metered and Unmetered Calls</em>.</p>
+    
+    <div class="warning">
+        <strong>Note:</strong> You must retain at least one valid credit card or debit card on file to maintain SP-API access and to continue offering apps in the Solution Provider Appstore.
+    </div>
+    
+    <div class="important">
+        <strong>Important:</strong> Only the administrator of the Solution Provider Portal account can perform these steps.
+    </div>
+
+    <h3>Prerequisites</h3>
+    <ul>
+        <li>A Solution Provider Portal account</li>
+        <li>Valid credit card or debit card information</li>
+    </ul>
+
+    <h3>Add a New Credit Card or Debit Card</h3>
+    <ol>
+        <li>Sign in to Solution Provider Portal.</li>
+        <li>Choose your account, and then choose <strong>Select Account</strong>.</li>
+        <li>At the top, choose the gear icon, choose <strong>Payments</strong>, and then choose <strong>Charge Methods</strong>.</li>
+        <li>Choose <strong>Add new charge method</strong>.</li>
+        <li>Enter the following information:
+            <ul>
+                <li>Card number</li>
+                <li>Cardholder name</li>
+                <li>Expiration date</li>
+                <li>Business address</li>
+            </ul>
+        </li>
+        <li>Choose <strong>Set Charge Method</strong>.</li>
+    </ol>
+    <p>After registering your payment method, the homepage displays your API usage summary.</p>
+
+    <h3>View Existing Credit Cards and Debit Cards</h3>
+    <ol>
+        <li>Sign in to Solution Provider Portal.</li>
+        <li>Choose your account, and then choose <strong>Select Account</strong>.</li>
+        <li>At the top, choose the gear icon, choose <strong>Payments</strong>, and then choose <strong>Charge Methods</strong>.</li>
+        <li>Choose <strong>Manage Charge Method</strong>.</li>
+    </ol>
+    <p>For each card, you see the following information:</p>
+    <ul>
+        <li>Masked card number (ending in the last four digits)</li>
+        <li>Cardholder name</li>
+        <li>Expiration date</li>
+    </ul>
+
+    <h3>Edit Credit Card or Debit Card Information</h3>
+    <ol>
+        <li>Sign in to Solution Provider Portal.</li>
+        <li>Choose your account, and then choose <strong>Select Account</strong>.</li>
+        <li>At the top, choose the gear icon, choose <strong>Payments</strong>, and then choose <strong>Charge Methods</strong>.</li>
+        <li>Choose <strong>Manage Charge Method</strong>.</li>
+        <li>Select the card to edit.</li>
+        <li>Update any of the following information:
+            <ul>
+                <li>Cardholder name</li>
+                <li>Business address</li>
+            </ul>
+        </li>
+        <li>Choose <strong>Submit</strong>.</li>
+    </ol>
+
+    <h3>Switch Credit Cards or Debit Cards</h3>
+    <ol>
+        <li>Sign in to Solution Provider Portal.</li>
+        <li>Choose your account, and then choose <strong>Select Account</strong>.</li>
+        <li>At the top, choose the gear icon, choose <strong>Payments</strong>, and then choose <strong>Charge Methods</strong>.</li>
+        <li>Choose <strong>Replace Card</strong>.</li>
+        <li>Select the card to use.</li>
+        <li>Verify that the selected card is now active.</li>
+    </ol>
+    <div class="warning">
+        <strong>Note:</strong> You must have at least one valid credit card or debit card in your account.
+    </div>
+
+    <h3>Delete a Credit Card or Debit Card</h3>
+    <ol>
+        <li>Sign in to Solution Provider Portal.</li>
+        <li>Choose your account, and then choose <strong>Select Account</strong>.</li>
+        <li>At the top, choose the gear icon, choose <strong>Payments</strong>, and then choose <strong>Charge Methods</strong>.</li>
+        <li>Select the card to delete.</li>
+        <li>Choose <strong>Delete</strong>.</li>
+        <li>Confirm the deletion.</li>
+    </ol>
+</section>
+
+<!-- Section 4: Tax Registration Information -->
+<section id="tax-registration">
+    <h2>4. Manage Tax Registration Information in Solution Provider Portal</h2>
+    <p class="metadata">Источник: <a href="https://developer-docs.amazon.com/sp-api/docs/manage-tax-registration-information-in-solution-provider-portal">manage-tax-registration-information-in-solution-provider-portal</a></p>
+    
+    <p>Add and manage tax registration information in Solution Provider Portal.</p>
+    
+    <p>This guide shows you how to add and update tax registration information in Solution Provider Portal. Learn how to add new tax registration numbers, edit your existing information, add or update addresses, and remove registrations from your account.</p>
+    
+    <p>Tax registration requirements vary by country. For details, refer to <em>Tax Registration Agreement</em>.</p>
+    <p>For information about SP-API fees, refer to <em>An Update on SP-API Fees</em> and <em>Understanding SP-API Metered and Unmetered Calls</em>.</p>
+    
+    <div class="important">
+        <strong>Important:</strong> Only the administrator of the Solution Provider Portal account can perform these steps.
+    </div>
+
+    <h3>Prerequisites</h3>
+    <ul>
+        <li>A Solution Provider Portal account</li>
+        <li>Valid tax registration information for your country</li>
+    </ul>
+
+    <h3>Add a Tax Registration Number</h3>
+    <ol>
+        <li>Sign in to Solution Provider Portal.</li>
+        <li>Choose your account, then select <strong>Select Account</strong>.</li>
+        <li>Navigate to the tax registration information.</li>
+        <li>Choose <strong>Add a VAT/GST registration number</strong>.</li>
+        <li>Select your country from the dropdown list:
+            <ul>
+                <li><strong>United States or Mexico:</strong> No additional information required.</li>
+                <li><strong>Other countries:</strong> Complete the tax registration form with your details.</li>
+            </ul>
+        </li>
+        <li>Choose <strong>Add number</strong>.</li>
+    </ol>
+
+    <h3>Edit Tax Registration Information</h3>
+    <ol>
+        <li>Sign in to Solution Provider Portal.</li>
+        <li>Choose your account, then select <strong>Select Account</strong>.</li>
+        <li>Navigate to the tax registration information.</li>
+        <li>Locate the tax registration to edit.</li>
+        <li>Choose <strong>Edit</strong>.</li>
+        <li>Update the registration details.</li>
+        <li>Choose <strong>Edit</strong> to save changes.</li>
+    </ol>
+
+    <h3>Add a Tax Registration Address</h3>
+    <ol>
+        <li>Sign in to Solution Provider Portal.</li>
+        <li>Choose your account, then select <strong>Select Account</strong>.</li>
+        <li>Navigate to the tax registration information.</li>
+        <li>Choose <strong>Edit</strong> for the relevant tax registration.</li>
+        <li>Choose <strong>Add a new address</strong>.</li>
+        <li>Enter the new address details.</li>
+        <li>Choose <strong>Edit</strong> to save.</li>
+    </ol>
+
+    <h3>Update a Tax Registration Address</h3>
+    <ol>
+        <li>Sign in to Solution Provider Portal.</li>
+        <li>Choose your account, then select <strong>Select Account</strong>.</li>
+        <li>Navigate to the tax registration information.</li>
+        <li>Choose <strong>Edit</strong> for the relevant tax registration.</li>
+        <li>Select a different address from available options.</li>
+        <li>Choose <strong>Edit</strong> to save.</li>
+    </ol>
+
+    <h3>Remove a Tax Registration Number</h3>
+    <ol>
+        <li>Sign in to Solution Provider Portal.</li>
+        <li>Choose your account, then select <strong>Select Account</strong>.</li>
+        <li>Navigate to the tax registration information.</li>
+        <li>Choose <strong>Edit</strong> for the registration to remove.</li>
+        <li>Choose <strong>Delete</strong>.</li>
+        <li>Confirm the deletion.</li>
+    </ol>
+
+    <h3>Troubleshooting: Invalid VAT/GST Registration Number</h3>
+    <ul>
+        <li><strong>Validate your number:</strong> Use the VIES VAT validation tool or Check a UK VAT number site.</li>
+        <li><strong>Check for errors:</strong> Look for typos, extra spaces, or missing characters.</li>
+        <li><strong>Use the country prefix:</strong> Example: <code>GB123456789</code></li>
+        <li><strong>Japanese developers:</strong> Use your Japanese Consumption Tax ID with a <code>T</code> prefix (e.g., <code>T1234567890123</code>).</li>
+    </ul>
+    <p>For more information, contact your tax advisor.</p>
+</section>
+
+<!-- Section 5: Update Developer Profile -->
+<section id="developer-profile">
+    <h2>5. Update Your Developer Profile in Solution Provider Portal</h2>
+    <p class="metadata">Источник: <a href="https://developer-docs.amazon.com/sp-api/docs/update-developer-profile-in-spp">update-developer-profile-in-spp</a></p>
+    
+    <p>Learn how to update your developer profile in Solution Provider Portal.</p>
+    
+    <p>This guide shows you how to update your developer profile in Solution Provider Portal.</p>
+
+    <h3>Update Your Developer Profile</h3>
+    <p>To update your developer profile, take the following steps:</p>
+    <ol>
+        <li>Sign in to Solution Provider Portal.</li>
+        <li>At the top, choose <strong>Settings</strong> (the gear icon), choose <strong>Account Info</strong>, and then choose <strong>Developer Profile</strong>.</li>
+        <li>On the <strong>Developer Profile</strong> page, update the information as needed.</li>
+        <li>Choose <strong>Register</strong>.</li>
+        <li>Wait for next steps, which will be sent to the administrator email address on file. If you're contacted for more information, you must respond within five days to prevent case closure.</li>
+    </ol>
+</section>
+
+<!-- Section 6: Unify Developer Accounts -->
+<section id="account-unification">
+    <h2>6. Unify Your Developer Accounts</h2>
+    <p class="metadata">Источник: <a href="https://developer-docs.amazon.com/sp-api/docs/spp-account-unification">spp-account-unification</a></p>
+    
+    <p>Learn how to unify all of your developer accounts in Solution Provider Portal.</p>
+    
+    <p>Solution Provider Portal is replacing Developer Central as the central gateway for managing your Amazon developer offerings. This guide explains how to merge your existing developer accounts into Solution Provider Portal.</p>
+    
+    <p>For a video about account unification, refer to <em>How to Migrate and Unify Your Amazon Developer Accounts to Solution Provider Portal</em>.</p>
+
+    <h3>Key Points About Account Unification</h3>
+    <ul>
+        <li>Your existing developer profiles are located in Developer Central, Seller Central, or Vendor Central.</li>
+        <li>Solution Provider Portal replaces Developer Central. Seller Central and Vendor Central remain active.</li>
+        <li><strong>Account unification is irreversible.</strong></li>
+        <li>The account unification process takes up to 10 minutes.</li>
+    </ul>
+
+    <h3>Single Profile Migration</h3>
+    <p><strong>Scenario:</strong> You use one email address to sign in to Seller Central, Vendor Central, or Developer Central. Your account has one active developer profile.</p>
+    <p><strong>Steps:</strong></p>
+    <ol>
+        <li>Sign in to Solution Provider Portal with your existing email and password.</li>
+        <li>Review your developer profile information (apps, contact info, permissions, etc.). Contact Developer Support if data is incorrect.</li>
+        <li>Choose <strong>Confirm &amp; Continue</strong>. Verify if additional accounts exist and choose <strong>Continue</strong>.</li>
+        <li>Wait 10 minutes for profile creation and choose <strong>Proceed now</strong>.</li>
+    </ol>
+
+    <h3>Profile Consolidation</h3>
+    <p><strong>Scenario:</strong> You have one email address with two or more active profiles.</p>
+    <p><strong>Steps:</strong></p>
+    <ol>
+        <li>Sign in to Solution Provider Portal. Review your profile data.</li>
+        <li>Choose <strong>Authenticate another email</strong> to add an additional account.</li>
+        <li>Confirm profiles to merge and specify a new profile name/email.</li>
+        <li>Wait 10 minutes and choose <strong>Proceed now</strong>.</li>
+    </ol>
+
+    <h3>Profile Distribution</h3>
+    <p><strong>Scenario:</strong> You use multiple emails for Seller/Vendor Central and want multiple Solution Provider Portal profiles.</p>
+    <p><strong>Steps:</strong></p>
+    <ol>
+        <li>Sign in and authenticate additional emails.</li>
+        <li>Name your new profile and choose <strong>I'd like to create multiple profiles</strong>.</li>
+        <li>Create profiles using <strong>Create another new SPP profile</strong> and assign existing profiles.</li>
+        <li>Confirm all active profiles are assigned and wait 10 minutes.</li>
+    </ol>
+
+    <h3>Large-Scale Unification (15+ Profiles)</h3>
+    <p><strong>Scenario:</strong> You have more than 15 active profiles.</p>
+    <p><strong>Steps:</strong></p>
+    <ol>
+        <li>Sign in. If prompted, request support via Seller/Vendor Central help pages for assistance with merging.</li>
+        <li>If choosing self-service, follow steps from <strong>Profile Distribution</strong>.</li>
+    </ol>
+
+    <h3>Troubleshooting</h3>
+    <ul>
+        <li><strong>Publishing pipeline issues:</strong> Profile creation delays may occur. Amazon will handle merges manually if needed.</li>
+        <li><strong>Failed merge:</strong> Retrying is allowed. Contact support for persistent issues.</li>
+        <li><strong>Failed unification:</strong> Look for errors in your Solution Provider Portal homepage.</li>
+    </ul>
+</section>
+
+<!-- Section 7: Verify Identity -->
+<section id="verify-identity">
+    <h2>7. Verify Your Identity in Solution Provider Portal</h2>
+    <p class="metadata">Источник: <a href="https://developer-docs.amazon.com/sp-api/docs/verify-identity-in-spp">verify-identity-in-spp</a></p>
+    
+    <p>Learn how to verify your identity in Solution Provider Portal.</p>
+    
+    <p>All Solution Provider Portal users, including developers, service providers, and invited employees, must verify their identity regardless of their role or access level within the organization. This guide shows you how to complete the identity verification process in Solution Provider Portal.</p>
+    
+    <p>Amazon requires at least two documents: an identity document and a proof of address document.</p>
+
+    <h3>Identity Document Requirements</h3>
+    <ul>
+        <li>Government-issued photo ID (passport, national ID, driver's license)</li>
+        <li>Recognized by the country of citizenship/residence</li>
+        <li>Includes full name, date of birth, unique ID number</li>
+        <li>Expiration date (or 3-month future date if absent)</li>
+        <li>Signature if applicable</li>
+        <li>Full information from both sides of the ID (e.g., signature, barcodes)</li>
+        <li>Color scan/photograph</li>
+    </ul>
+
+    <h3>Proof of Address Requirements</h3>
+    <ul>
+        <li>Valid for 180 days with issuing date</li>
+        <li>Includes financial institution details (bank name/logo/signature)</li>
+        <li>Account holder's name and address</li>
+    </ul>
+    <p><strong>Accepted types:</strong> Bank statements, credit card statements, e-commerce payment service provider (Payoneer/Hyperwallet/World First/Alipay) account statements</p>
+
+    <h3>Steps to Verify Identity</h3>
+    <ol>
+        <li>Sign in to Solution Provider Portal.</li>
+        <li>Select <strong>Get Started</strong> and complete the business information form.</li>
+        <li>Choose <strong>SMS</strong> or <strong>Phone</strong> for <strong>Receive PIN Through</strong>, validate with CAPTCHA and phone number.</li>
+        <li>Enter the received PIN and select <strong>Verify</strong>.</li>
+        <li>Complete the primary contact person form and review details.</li>
+        <li>Upload:
+            <ul>
+                <li>1 identity document</li>
+                <li>1 proof of address</li>
+            </ul>
+        </li>
+        <li>Proceed to identity verification form:
+            <ul>
+                <li>Select verification option</li>
+                <li>Confirm <strong>Start Identity Check</strong></li>
+            </ul>
+        </li>
+    </ol>
+    <div class="warning">
+        <strong>Warning:</strong> Ensure all details match documents <em>exactly</em>. Edits are not allowed after submission.
+    </div>
+
+    <h3>Post-Verification Actions</h3>
+    <ul>
+        <li>Monitor on-screen confirmation and email for results within 2 business days.</li>
+        <li>Upon success, complete:
+            <ul>
+                <li>Developer profile form (SP-API access)</li>
+                <li>Service provider profile form</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>Frequently Asked Questions</h3>
+    
+    <p><strong>Why verify employees if the admin is already verified?</strong></p>
+    <p>Amazon requires all users to verify identities to secure sensitive business data.</p>
+    
+    <p><strong>Can denied applications be appealed?</strong></p>
+    <p>No. Verification decisions are final.</p>
+    
+    <p><strong>Is information editable after submission?</strong></p>
+    <p>No. Review carefully before submitting.</p>
+    
+    <p><strong>Can I save the form for later completion?</strong></p>
+    <p>Yes. Progress is automatically saved after each page.</p>
+</section>
+
+<!-- Section 8: API Usage Metrics -->
+<section id="api-usage-metrics">
+    <h2>8. API Usage Metrics in Solution Provider Portal</h2>
+    <p class="metadata">Источник: <a href="https://developer-docs.amazon.com/sp-api/docs/api-usage-metrics-in-spp">api-usage-metrics-in-spp</a></p>
+    
+    <p>View your application performance, API call volume, error rates, and usage metrics in Solution Provider Portal.</p>
+    
+    <p>The API usage dashboard in Solution Provider Portal helps you monitor performance across your registered applications. Use the dashboard to:</p>
+    <ul>
+        <li><strong>Track error rates:</strong> Monitor client error percentages to identify potential issues with your API implementations.</li>
+        <li><strong>Analyze call patterns:</strong> Review call volume trends to understand usage patterns.</li>
+        <li><strong>Identify problem operations:</strong> Use the detailed breakdown to pinpoint specific API operations that might need attention.</li>
+    </ul>
+    
+    <p>You can view metrics at the account level, filter by application, and filter by time frame.</p>
+    
+    <div class="note">
+        <strong>Note:</strong> Dashboard data is refreshed daily and shows the last update timestamp at the top of the page.
+    </div>
+
+    <h3>Accessing the API Usage Dashboard</h3>
+    <p>Within Solution Provider Portal, you can access the API usage dashboard in two ways:</p>
+    <ol>
+        <li><strong>From the main page:</strong> In the featured functions section, choose <strong>Manage API calls</strong>.</li>
+        <li><strong>From the navigation menu:</strong> Choose <strong>Apps</strong>, and then choose <strong>API Usage Dashboard</strong>.</li>
+    </ol>
+
+    <h3>Filtering Data</h3>
+    <p>Customize the dashboard display using these filters:</p>
+    <ul>
+        <li><strong>Application filter:</strong> Choose <strong>All Apps</strong> to view data for all applications or select a specific application from the dropdown.</li>
+        <li><strong>Time frame filter:</strong> Choose your desired time period (e.g., "This month").</li>
+    </ul>
+
+    <h3>Available Metrics</h3>
+    
+    <h4>Account-Level Summary</h4>
+    <p>The account-level summary provides an overview of your account's performance metrics:</p>
+    <ul>
+        <li><strong>Apps</strong> - Number of applications registered in your account</li>
+        <li><strong>Call volume</strong> - Total number of API calls across all applications</li>
+        <li><strong>Successful calls</strong> - Number of successful API calls</li>
+        <li><strong>Successful call rate</strong> - Percentage of successful calls</li>
+        <li><strong>Client errors</strong> - Number of client error responses</li>
+        <li><strong>Client error rate</strong> - Percentage of client error responses</li>
+    </ul>
+
+    <h4>Application-Level Details</h4>
+    <p>For each registered application, the dashboard shows a detailed breakdown table with:</p>
+    <ul>
+        <li><strong>Section</strong> - API section names (e.g., fba, dataKiosk, feeds, orders)</li>
+        <li><strong>Operation</strong> - Specific API endpoints and operations</li>
+        <li><strong>Call Volume</strong> - Total number of calls for each operation</li>
+        <li><strong>HTTP Status Codes</strong> - Response code distribution:
+            <ul>
+                <li>Successful calls (200, 201, 202, 204)</li>
+                <li>Client errors (400, 403, 404, 429)</li>
+                <li>Server errors (500)</li>
+            </ul>
+        </li>
+    </ul>
+</section>
+
+<footer style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #ccc; color: #666; font-size: 0.9em;">
+    <p>Документация извлечена из: <a href="https://developer-docs.amazon.com/sp-api/docs/">Amazon SP-API Developer Documentation</a></p>
+    <p>Раздел: SOLUTION PROVIDER PORTAL</p>
+    <p>Дата извлечения: 2026-01-15</p>
+</footer>
+
+</body>
+</html>
